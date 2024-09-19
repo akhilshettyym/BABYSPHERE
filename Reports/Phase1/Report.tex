@@ -8,6 +8,9 @@
 \usepackage{geometry}
 \usepackage{ragged2e}
 \usepackage{color}
+\usepackage{biblatex}
+\addbibresource{pic/reference.bib}
+
 \geometry{
 a4paper,
 total={210mm,297mm},
@@ -97,7 +100,7 @@ BABYSPHERE 2.0: A cloud-based smart monitoring device for your loved one
 Product based project (Software along with Hardware)
 
 \section*{Background for the  the project}
-In recent years, the rise in sudden infant death syndrome (SIDS)
+In recent years\cite{banerjee2002minimum}, the rise in sudden infant death syndrome (SIDS)
  and other health concerns related to newborns has highlighted 
  the need for continuous and accurate monitoring of babies. 
  Many parents face the challenge of balancing their busy 
@@ -129,30 +132,32 @@ The objectives of the proposed project work are:
 List the Software/Hardware required for the development of the project. 
 
 Example: 
-The software requirements are: Python IDE, Tensorflow, Keras, Android studio, Wamp web server. 
+The software\cite{10226197} requirements are: Python IDE, Tensorflow, Keras, Android studio, Wamp web server. 
 
 Hardware requirements are: GPU to perform training. 
 
 \newpage
 \pagestyle{plain}
 \renewcommand{\bibname}{References}
+\addcontentsline{toc}{chapter}{References}
 
-\begin{thebibliography}{35}
-\bibitem{li2024}
-Li, Siyuan, Lei Ke, Martin Danelljan, Luigi Piccinelli, Mattia Segu, Luc Van Gool, and Fisher Yu. "Matching Anything by Segmenting Anything." In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pp. 18963-18973. 2024.
+\printbibliography
+% \begin{thebibliography}{35}
+% \bibitem{li2024}
+% Li, Siyuan, Lei Ke, Martin Danelljan, Luigi Piccinelli, Mattia Segu, Luc Van Gool, and Fisher Yu. "Matching Anything by Segmenting Anything." In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pp. 18963-18973. 2024.
 
-\bibitem{ref0}
-Coşkun, Musab, Ayşegül Uçar, Özal Yildirim, and Yakup Demir. "Face recognition based on convolutional neural network." In 2017 international conference on modern electrical and energy systems (MEES), pp. 376-379. IEEE, 2017.
-\bibitem{ref1}
-Hu, Guosheng, Yongxin Yang, Dong Yi, Josef Kittler, William Christmas, Stan Z. Li, and Timothy Hospedales. "When face recognition meets with deep learning: an evaluation of convolutional neural networks for face recognition." In Proceedings of the IEEE international conference on computer vision Workshops, pp. 142-150. 2015.
+% \bibitem{ref0}
+% Coşkun, Musab, Ayşegül Uçar, Özal Yildirim, and Yakup Demir. "Face recognition based on convolutional neural network." In 2017 international conference on modern electrical and energy systems (MEES), pp. 376-379. IEEE, 2017.
+% \bibitem{ref1}
+% Hu, Guosheng, Yongxin Yang, Dong Yi, Josef Kittler, William Christmas, Stan Z. Li, and Timothy Hospedales. "When face recognition meets with deep learning: an evaluation of convolutional neural networks for face recognition." In Proceedings of the IEEE international conference on computer vision Workshops, pp. 142-150. 2015.
 
-\bibitem{ref2}
-Parkhi, Omkar, Andrea Vedaldi, and Andrew Zisserman. "Deep face recognition." In BMVC 2015-Proceedings of the British Machine Vision Conference 2015. British Machine Vision Association, 2015.
+% \bibitem{ref2}
+% Parkhi, Omkar, Andrea Vedaldi, and Andrew Zisserman. "Deep face recognition." In BMVC 2015-Proceedings of the British Machine Vision Conference 2015. British Machine Vision Association, 2015.
 
-\bibitem{ref3}
-Levitin, Anany. "Introduction to design and analysis of algorithms", 2/E. Pearson Education India, 2008.
+% \bibitem{ref3}
+% Levitin, Anany. "Introduction to design and analysis of algorithms", 2/E. Pearson Education India, 2008.
 
 
-\end{thebibliography}
+% \end{thebibliography}
 
 \end{document}
