@@ -28,7 +28,7 @@ bottom=0.75in,
 \centering
 \includegraphics[width=2.3cm,height=3cm]{./pic/vtu}
 \end{figure}
- 
+
 \textbf{PROJECT PROPOSAL}
 \par
 \textbf{ON}
@@ -100,7 +100,7 @@ BABYSPHERE 2.0: A cloud-based smart monitoring device for your loved one
 Product based project (Software along with Hardware)
 
 \section*{Background for the  the project}
-In recent years\cite{banerjee2002minimum}, the rise in sudden infant death syndrome (SIDS)
+In recent years, the rise in sudden infant death syndrome (SIDS)
  and other health concerns related to newborns has highlighted 
  the need for continuous and accurate monitoring of babies. 
  Many parents face the challenge of balancing their busy 
@@ -129,13 +129,17 @@ The objectives of the proposed project work are:
 
 
 \section*{Software / Hardware Requirements}
-List the Software/Hardware required for the development of the project. 
-
-Example: 
-The software\cite{10226197} requirements are: Python IDE, Tensorflow, Keras, Android studio, Wamp web server. 
-
-Hardware requirements are: GPU to perform training. 
-
+\subsection*{Software Requirements}
+\begin{enumerate}
+    \item React Native development framework to build the mobile app for cross-platform support.
+    \item Firebase cloud platform for real-time database management, data storage, and authentication.
+    \item TensorFlow Lite or OpenCV libraries for implementing computer vision algorithms\cite{10187295} on mobile devices to detect unsafe sleeping positions\cite{8300133}\cite{9292052}.
+    \item Mobile-optimized signal processing algorithms\cite{8575335} to analyze camera data for non-contact heart rate monitoring\cite{7177484}\cite{10226197}.
+    \item Node.js or similar backend technologies for handling API requests and interactions with cloud services.
+    \item Firebase Cloud Messaging or similar services for sending push notifications related to temperature changes, movement detection, or abnormal heart rate.
+    \item WebSockets or Firebase Realtime Database to enable real-time data updates in the app for temperature, movement, and heart rate monitoring.
+    \item Firebase Authentication to manage user accounts and secure access to baby monitoring data.
+\end{enumerate}
 \newpage
 \pagestyle{plain}
 \renewcommand{\bibname}{References}
