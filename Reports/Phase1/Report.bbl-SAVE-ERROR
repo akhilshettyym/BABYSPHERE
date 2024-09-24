@@ -1,0 +1,270 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{10226197}{article}{}
+      \name{author}{6}{}{%
+        {{hash=49f60a6ce338d88f4515565ea63a7149}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Yenming\bibnamedelima J.},
+           giveni={Y\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=11fecd28c76eb7ba1213020a4ff28866}{%
+           family={Lin},
+           familyi={L\bibinitperiod},
+           given={Lung-Chang},
+           giveni={L\bibinithyphendelim C\bibinitperiod}}}%
+        {{hash=825bde9f8d2af75bdff011c8522f8b99}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Shu-Ting},
+           giveni={S\bibinithyphendelim T\bibinitperiod}}}%
+        {{hash=a973ebce3a15a8b4d5484b771dc26bdc}{%
+           family={Hwang},
+           familyi={H\bibinitperiod},
+           given={Kao-Shing},
+           giveni={K\bibinithyphendelim S\bibinitperiod}}}%
+        {{hash=783b39f569514486abfd6b5a91a90bd1}{%
+           family={Liao},
+           familyi={L\bibinitperiod},
+           given={Chia-Te},
+           giveni={C\bibinithyphendelim T\bibinitperiod}}}%
+        {{hash=04136e12c7e750e729bf83603210bf9b}{%
+           family={Ho},
+           familyi={H\bibinitperiod},
+           given={Wen-Hsien},
+           giveni={W\bibinithyphendelim H\bibinitperiod}}}%
+      }
+      \strng{namehash}{23d6fdf71898318ba0944eaa2675faf6}
+      \strng{fullhash}{9f16372376b9ff90e46b0c0d59f36dc9}
+      \strng{bibnamehash}{23d6fdf71898318ba0944eaa2675faf6}
+      \strng{authorbibnamehash}{23d6fdf71898318ba0944eaa2675faf6}
+      \strng{authornamehash}{23d6fdf71898318ba0944eaa2675faf6}
+      \strng{authorfullhash}{9f16372376b9ff90e46b0c0d59f36dc9}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Access}
+      \field{title}{High-Reliability Non-Contact Photoplethysmography Imaging for Newborn Care by a Generative Artificial Intelligence}
+      \field{volume}{11}
+      \field{year}{2023}
+      \field{pages}{90801\bibrangedash 90810}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1109/ACCESS.2023.3307637
+      \endverb
+      \keyw{Skin;Pediatrics;Biomedical imaging;Image color analysis;Lighting;Synchronization;Filtering algorithms;Photoplethysmography;Surveillance;Prediction methods;Risk management;Thresholding (Imaging);Photoplethysmogram imaging (PPGi);non-contact surveillance;predictive adversarial adaptation;homographic filter;risk-sensitive generation;adaptive thresholding}
+    \endentry
+    \entry{moon2007sudden}{article}{}
+      \name{author}{3}{}{%
+        {{hash=612973370f75840305bce9d2eacaf320}{%
+           family={Moon},
+           familyi={M\bibinitperiod},
+           given={Rachel\bibnamedelima Y},
+           giveni={R\bibinitperiod\bibinitdelim Y\bibinitperiod}}}%
+        {{hash=cb3d0cf0d1ca68a8e3008de8327d724e}{%
+           family={Horne},
+           familyi={H\bibinitperiod},
+           given={Rosemary\bibnamedelima SC},
+           giveni={R\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=0bfd7e0625f7ef4017d9ccb4a888fd88}{%
+           family={Hauck},
+           familyi={H\bibinitperiod},
+           given={Fern\bibnamedelima R},
+           giveni={F\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{6ab198a1cf26e3edd41a1fa39bce1c93}
+      \strng{fullhash}{6ab198a1cf26e3edd41a1fa39bce1c93}
+      \strng{bibnamehash}{6ab198a1cf26e3edd41a1fa39bce1c93}
+      \strng{authorbibnamehash}{6ab198a1cf26e3edd41a1fa39bce1c93}
+      \strng{authornamehash}{6ab198a1cf26e3edd41a1fa39bce1c93}
+      \strng{authorfullhash}{6ab198a1cf26e3edd41a1fa39bce1c93}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Lancet}
+      \field{number}{9598}
+      \field{title}{Sudden infant death syndrome}
+      \field{volume}{370}
+      \field{year}{2007}
+      \field{pages}{1578\bibrangedash 1587}
+      \range{pages}{10}
+    \endentry
+    \entry{9292052}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=e24da3e9c56bac6bdf0d6f509c0bdcde}{%
+           family={Okuno},
+           familyi={O\bibinitperiod},
+           given={Ayaka},
+           giveni={A\bibinitperiod}}}%
+        {{hash=56f828356f5ab0104d06af50f9533424}{%
+           family={Ishikawa},
+           familyi={I\bibinitperiod},
+           given={Takaaki},
+           giveni={T\bibinitperiod}}}%
+        {{hash=2a6e7c65fc966d6aab37bcd5289b81c6}{%
+           family={Watanabe},
+           familyi={W\bibinitperiod},
+           given={Hiroshi},
+           giveni={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{8adaad2369638d4fda0ea037f82d9198}
+      \strng{fullhash}{8adaad2369638d4fda0ea037f82d9198}
+      \strng{bibnamehash}{8adaad2369638d4fda0ea037f82d9198}
+      \strng{authorbibnamehash}{8adaad2369638d4fda0ea037f82d9198}
+      \strng{authornamehash}{8adaad2369638d4fda0ea037f82d9198}
+      \strng{authorfullhash}{8adaad2369638d4fda0ea037f82d9198}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2020 IEEE 9th Global Conference on Consumer Electronics (GCCE)}
+      \field{title}{Rollover Detection of Infants Using Posture Estimation Model}
+      \field{year}{2020}
+      \field{pages}{490\bibrangedash 493}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1109/GCCE50665.2020.9292052
+      \endverb
+      \keyw{Surveillance;Rollover;Estimation;Cameras;Turning;Motion pictures;Consumer electronics;OpenPose;CPN;deep learning;Sleep Behavior in Infants}
+    \endentry
+    \entry{8300133}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=dfd213a5829ba8a70446effbba818345}{%
+           family={Raghavan},
+           familyi={R\bibinitperiod},
+           given={Neethu},
+           giveni={N\bibinitperiod}}}%
+        {{hash=04a4a351895abbf1197cd891affd568a}{%
+           family={Ullas},
+           familyi={U\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{ec0a83a08c38ab730d2b2dedc6a07eec}
+      \strng{fullhash}{ec0a83a08c38ab730d2b2dedc6a07eec}
+      \strng{bibnamehash}{ec0a83a08c38ab730d2b2dedc6a07eec}
+      \strng{authorbibnamehash}{ec0a83a08c38ab730d2b2dedc6a07eec}
+      \strng{authornamehash}{ec0a83a08c38ab730d2b2dedc6a07eec}
+      \strng{authorfullhash}{ec0a83a08c38ab730d2b2dedc6a07eec}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2017 International Conference on Wireless Communications, Signal Processing and Networking (WiSPNET)}
+      \field{title}{Infant movement detection and constant monitoring using wireless sensors}
+      \field{year}{2017}
+      \field{pages}{2109\bibrangedash 2114}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/WiSPNET.2017.8300133
+      \endverb
+      \keyw{Monitoring;Tracking;Pediatrics;Optical sensors;Cameras;Adaptive optics;Infant Monitoring;Childcare;Wireless Sensors;Kids Safety;Kids Security;Home Security}
+    \endentry
+    \entry{10187295}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=6824f2170532a510b705a77cfa2a1c8f}{%
+           family={Singh},
+           familyi={S\bibinitperiod},
+           given={Gurpreet},
+           giveni={G\bibinitperiod}}}%
+        {{hash=0888ef676d8aff2fa5edf645f3bed6b0}{%
+           family={Shekhar},
+           familyi={S\bibinitperiod},
+           given={Abhishek\bibnamedelima Raj},
+           giveni={A\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=44d7c25797072f0081aa96d04a9b36ff}{%
+           family={Yu},
+           familyi={Y\bibinitperiod},
+           given={Xinrui},
+           giveni={X\bibinitperiod}}}%
+        {{hash=b35d5db0249e80ad62c70fbaf9d3cd3f}{%
+           family={Saniie},
+           familyi={S\bibinitperiod},
+           given={Jafar},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{fa6eb7372ec305c504ed462bd3853225}
+      \strng{fullhash}{b9714d5b2f8d387499667502a86a400e}
+      \strng{bibnamehash}{fa6eb7372ec305c504ed462bd3853225}
+      \strng{authorbibnamehash}{fa6eb7372ec305c504ed462bd3853225}
+      \strng{authornamehash}{fa6eb7372ec305c504ed462bd3853225}
+      \strng{authorfullhash}{b9714d5b2f8d387499667502a86a400e}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2023 IEEE International Conference on Electro Information Technology (eIT)}
+      \field{title}{Smart Infant Monitoring System Using Computer Vision and AI}
+      \field{year}{2023}
+      \field{pages}{1\bibrangedash 6}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/eIT57321.2023.10187295
+      \endverb
+      \keyw{Deep learning;Pediatrics;Computer vision;Speech recognition;Cameras;Real-time systems;Artificial intelligence;infant monitoring system;deep learning;face detection;pose detection;jetson nano;computer vision}
+    \endentry
+    \entry{7177484}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=b633daa6b134f1c944ad2dc639ceacd7}{%
+           family={Tran},
+           familyi={T\bibinitperiod},
+           given={Duc\bibnamedelima Nhan},
+           giveni={D\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=7099340121fc965b66ac8886fcdf60f3}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Hyukzae},
+           giveni={H\bibinitperiod}}}%
+        {{hash=41a201cb2c2432762dcdd2e5b44057c5}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Changick},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{f8c6332eaa626f908fac366acae483c6}
+      \strng{fullhash}{f8c6332eaa626f908fac366acae483c6}
+      \strng{bibnamehash}{f8c6332eaa626f908fac366acae483c6}
+      \strng{authorbibnamehash}{f8c6332eaa626f908fac366acae483c6}
+      \strng{authornamehash}{f8c6332eaa626f908fac366acae483c6}
+      \strng{authorfullhash}{f8c6332eaa626f908fac366acae483c6}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2015 IEEE International Conference on Multimedia and Expo (ICME)}
+      \field{title}{A robust real time system for remote heart rate measurement via camera}
+      \field{year}{2015}
+      \field{pages}{1\bibrangedash 6}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/ICME.2015.7177484
+      \endverb
+      \keyw{Heart rate;Real-time systems;Face;Cameras;Monitoring;Noise measurement;Skin;PPG;remote heart rate measurement;vital signs monitoring;real-time system}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
