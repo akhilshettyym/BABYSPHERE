@@ -1,0 +1,438 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{ref8}{article}{}
+      \name{author}{9}{}{%
+        {{hash=2528bb16f700fb5eccb2f84d7da5352e}{%
+           family={Duvernoy},
+           familyi={D\bibinitperiod},
+           given={Basil},
+           giveni={B\bibinitperiod}}}%
+        {{hash=fcf6ae24a71f7c658591cc5d533fd51c}{%
+           family={Kappassov},
+           familyi={K\bibinitperiod},
+           given={Zhanat},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=5d193d290d7f4a6537c84f7b0636e663}{%
+           family={Topp},
+           familyi={T\bibinitperiod},
+           given={Sven},
+           giveni={S\bibinitperiod}}}%
+        {{hash=62c72949eb9e479cc7c9418d320933fc}{%
+           family={Milroy},
+           familyi={M\bibinitperiod},
+           given={Jeraldine},
+           giveni={J\bibinitperiod}}}%
+        {{hash=ece0fc54a1e38a64200e11309d087161}{%
+           family={Xiao},
+           familyi={X\bibinitperiod},
+           given={Shuangshuang},
+           giveni={S\bibinitperiod}}}%
+        {{hash=be73c4b56ef736bdf49f81abda8b5305}{%
+           family={Lacôte},
+           familyi={L\bibinitperiod},
+           given={Inès},
+           giveni={I\bibinitperiod}}}%
+        {{hash=8a04f4aad82e43d826396648deb88aa4}{%
+           family={Abdikarimov},
+           familyi={A\bibinitperiod},
+           given={Azamat},
+           giveni={A\bibinitperiod}}}%
+        {{hash=00808572c49eb2e3d6052de6e6fd7e74}{%
+           family={Hayward},
+           familyi={H\bibinitperiod},
+           given={Vincent},
+           giveni={V\bibinitperiod}}}%
+        {{hash=0e23a9b1bc733b413446b35200c9db12}{%
+           family={Ziat},
+           familyi={Z\bibinitperiod},
+           given={Mounia},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {Institute of Electrical}%
+        {Electronics Engineers (IEEE)}%
+      }
+      \strng{namehash}{ffe0e37a7917db82abfe174fff1ee7df}
+      \strng{fullhash}{5b34ad1cb2f9eceb006332ef0532a52b}
+      \strng{bibnamehash}{ffe0e37a7917db82abfe174fff1ee7df}
+      \strng{authorbibnamehash}{ffe0e37a7917db82abfe174fff1ee7df}
+      \strng{authornamehash}{ffe0e37a7917db82abfe174fff1ee7df}
+      \strng{authorfullhash}{5b34ad1cb2f9eceb006332ef0532a52b}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2377-3774}
+      \field{journaltitle}{IEEE Robotics and Automation Letters}
+      \field{month}{4}
+      \field{number}{4}
+      \field{title}{HaptiComm: A Touch-Mediated Communication Device for Deafblind Individuals}
+      \field{volume}{8}
+      \field{year}{2023}
+      \field{pages}{2014\bibrangedash 2021}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1109/lra.2023.3241758
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1109/lra.2023.3241758
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1109/lra.2023.3241758
+      \endverb
+    \endentry
+    \entry{ref5}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=f4ac73a22e4d3efe4561690bba640f95}{%
+           family={Evreinova},
+           familyi={E\bibinitperiod},
+           given={Tatiana},
+           giveni={T\bibinitperiod}}}%
+        {{hash=34ac29e010fdbc618cc6b86d8e74d4bb}{%
+           family={Evreinov},
+           familyi={E\bibinitperiod},
+           given={Grigori},
+           giveni={G\bibinitperiod}}}%
+        {{hash=e43b186d69daff420be403feb145c7a9}{%
+           family={Raisamo},
+           familyi={R\bibinitperiod},
+           given={Roope},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{119479d225e42606f64ca1c3b4a291fd}
+      \strng{fullhash}{119479d225e42606f64ca1c3b4a291fd}
+      \strng{bibnamehash}{119479d225e42606f64ca1c3b4a291fd}
+      \strng{authorbibnamehash}{119479d225e42606f64ca1c3b4a291fd}
+      \strng{authornamehash}{119479d225e42606f64ca1c3b4a291fd}
+      \strng{authorfullhash}{119479d225e42606f64ca1c3b4a291fd}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of HANDICAP 2002 2ème Conférence pour l'essor des technologies d'assistance}
+      \field{title}{Communication system for the people who are deaf or have low vision}
+      \field{year}{2002}
+      \field{pages}{115\bibrangedash 120}
+      \range{pages}{6}
+    \endentry
+    \entry{ref6}{article}{}
+      \name{author}{2}{}{%
+        {{hash=09f43a933e843fda2a9edad9f9c324fc}{%
+           family={Ghorpade},
+           familyi={G\bibinitperiod},
+           given={Shraddha\bibnamedelima R},
+           giveni={S\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=edb92e750d91cdb69f8a21ce6d9bb73d}{%
+           family={Waghmare},
+           familyi={W\bibinitperiod},
+           given={Surendra\bibnamedelima K},
+           giveni={S\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \strng{namehash}{daf49c1e59d12f2b28d8b5db36c80675}
+      \strng{fullhash}{daf49c1e59d12f2b28d8b5db36c80675}
+      \strng{bibnamehash}{daf49c1e59d12f2b28d8b5db36c80675}
+      \strng{authorbibnamehash}{daf49c1e59d12f2b28d8b5db36c80675}
+      \strng{authornamehash}{daf49c1e59d12f2b28d8b5db36c80675}
+      \strng{authorfullhash}{daf49c1e59d12f2b28d8b5db36c80675}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Hand}
+      \field{title}{A Communication System for Deaf and Dumb People}
+      \field{volume}{1}
+      \field{year}{2015}
+      \field{pages}{2}
+      \range{pages}{1}
+    \endentry
+    \entry{ref2}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=c77cdff6c9e484f72a6ddf6b57373cc2}{%
+           family={Gollner},
+           familyi={G\bibinitperiod},
+           given={Ulrike},
+           giveni={U\bibinitperiod}}}%
+        {{hash=b3db09ad18010d32674758140cf95ef9}{%
+           family={Bieling},
+           familyi={B\bibinitperiod},
+           given={Tom},
+           giveni={T\bibinitperiod}}}%
+        {{hash=d6882f85bf96ad398905a40d9876d9ea}{%
+           family={Joost},
+           familyi={J\bibinitperiod},
+           given={Gesche},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Kingston, Ontario, Canada}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{d32071307ed63774f448cbf32cafab8e}
+      \strng{fullhash}{d32071307ed63774f448cbf32cafab8e}
+      \strng{bibnamehash}{d32071307ed63774f448cbf32cafab8e}
+      \strng{authorbibnamehash}{d32071307ed63774f448cbf32cafab8e}
+      \strng{authornamehash}{d32071307ed63774f448cbf32cafab8e}
+      \strng{authorfullhash}{d32071307ed63774f448cbf32cafab8e}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Marginalized communities like deaf-blind people are excluded from several forms of communication. This paper introduces a novel system of interaction to support deafblind people's communication and therefore enhance their independence. We introduce the Mobile Lorm Glove: a mobile communication and translation device for the deafblind. The glove translates the hand-touch alphabet Lorm, a common form of communication used by people with both hearing and sight impairment, into text and vice versa. We will present a hardware prototype, created in a participatory design process, which enables the deaf-blind user to compose messages via fabric pressure sensors placed on the palm of the glove to be transmitted as an SMS to the receiver's handheld. Initiated by small vibrating motors located on the back of the glove, tactile feedback patterns allow the wearer to perceive incoming messages. We discuss related work, prototype design and interaction design and application scenarios. We conclude with an outlook into further research.}
+      \field{booktitle}{Proceedings of the Sixth International Conference on Tangible, Embedded and Embodied Interaction}
+      \field{isbn}{9781450311748}
+      \field{series}{TEI '12}
+      \field{title}{Mobile Lorm Glove: introducing a communication device for deaf-blind people}
+      \field{year}{2012}
+      \field{pages}{127\bibrangedash 130}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1145/2148131.2148159
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/2148131.2148159
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/2148131.2148159
+      \endverb
+      \keyw{translator,tactile alphabet,mobile communication,interaction,glove,disability,deaf-blind,Lorm}
+    \endentry
+    \entry{ref7}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=02d48ddf7b27e0b1277acfeec4757102}{%
+           family={Monti},
+           familyi={M\bibinitperiod},
+           given={Lorenzo},
+           giveni={L\bibinitperiod}}}%
+        {{hash=66a64ed6b67003a30b625b8aa8afde78}{%
+           family={Delnevo},
+           familyi={D\bibinitperiod},
+           given={Giovanni},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{30ed366f4289f12a620e37463df1d22a}
+      \strng{fullhash}{30ed366f4289f12a620e37463df1d22a}
+      \strng{bibnamehash}{30ed366f4289f12a620e37463df1d22a}
+      \strng{authorbibnamehash}{30ed366f4289f12a620e37463df1d22a}
+      \strng{authornamehash}{30ed366f4289f12a620e37463df1d22a}
+      \strng{authorfullhash}{30ed366f4289f12a620e37463df1d22a}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2018 15th IEEE Annual Consumer Communications &amp; Networking Conference (CCNC)}
+      \field{month}{1}
+      \field{title}{On improving GlovePi: Towards a many-to-many communication among deaf-blind users}
+      \field{volume}{9}
+      \field{year}{2018}
+      \field{pages}{1\bibrangedash 5}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.1109/ccnc.2018.8319236
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1109/ccnc.2018.8319236
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1109/ccnc.2018.8319236
+      \endverb
+    \endentry
+    \entry{ref4}{article}{}
+      \name{author}{4}{}{%
+        {{hash=7183f023522b9224ccd8a3b1ef790ae9}{%
+           family={Narute},
+           familyi={N\bibinitperiod},
+           given={Pooja},
+           giveni={P\bibinitperiod}}}%
+        {{hash=5089d054e257454f40ee1859808196b6}{%
+           family={Pawar},
+           familyi={P\bibinitperiod},
+           given={Sayali},
+           giveni={S\bibinitperiod}}}%
+        {{hash=ae0824b8db4ae1cc28057ae71ee9f760}{%
+           family={Poman},
+           familyi={P\bibinitperiod},
+           given={Aishwarya},
+           giveni={A\bibinitperiod}}}%
+        {{hash=49fa4d57a314ab73c4bec68de6a8be2f}{%
+           family={Pote},
+           familyi={P\bibinitperiod},
+           given={A.\bibnamedelimi J.},
+           giveni={A\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{926b05c24eaee3dcfbb31298c8e198ee}
+      \strng{fullhash}{a63e0dd048df91cbe304c606a682d87d}
+      \strng{bibnamehash}{926b05c24eaee3dcfbb31298c8e198ee}
+      \strng{authorbibnamehash}{926b05c24eaee3dcfbb31298c8e198ee}
+      \strng{authornamehash}{926b05c24eaee3dcfbb31298c8e198ee}
+      \strng{authorfullhash}{a63e0dd048df91cbe304c606a682d87d}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International Journal of Advance Research and Innovative Ideas in Education}
+      \field{title}{An Efficient Communication System for Blind, Dumb and Deaf People}
+      \field{volume}{4}
+      \field{year}{2018}
+      \field{pages}{1681\bibrangedash 1690}
+      \range{pages}{10}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:66975128
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:66975128
+      \endverb
+    \endentry
+    \entry{ref1}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=8a982f98d2081880bf1569daec25a0fa}{%
+           family={Ramirez-Garibay},
+           familyi={R\bibinithyphendelim G\bibinitperiod},
+           given={Fernando},
+           giveni={F\bibinitperiod}}}%
+        {{hash=734a5fcd7894a5cb77f676e903b0d897}{%
+           family={Olivarria},
+           familyi={O\bibinitperiod},
+           given={Cesar\bibnamedelima Millan},
+           giveni={C\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=baa9e6e38b4db30ad585b8a6282dd743}{%
+           family={Eufracio\bibnamedelima Aguilera},
+           familyi={E\bibinitperiod\bibinitdelim A\bibinitperiod},
+           given={Alejandro\bibnamedelima Federico},
+           giveni={A\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=7f3cdad5e70e997438c4cd5fabaa71cf}{%
+           family={Huegel},
+           familyi={H\bibinitperiod},
+           given={Joel\bibnamedelima C.},
+           giveni={J\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{e45eaed5a0017791c5d525ca39415d72}
+      \strng{fullhash}{140d7b5897a942e8b1ba94b7da3098f1}
+      \strng{bibnamehash}{e45eaed5a0017791c5d525ca39415d72}
+      \strng{authorbibnamehash}{e45eaed5a0017791c5d525ca39415d72}
+      \strng{authornamehash}{e45eaed5a0017791c5d525ca39415d72}
+      \strng{authorfullhash}{140d7b5897a942e8b1ba94b7da3098f1}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{IEEE Global Humanitarian Technology Conference (GHTC 2014)}
+      \field{month}{10}
+      \field{title}{MyVox—Device for the communication between people: blind, deaf, deaf-blind and unimpaired}
+      \field{volume}{12}
+      \field{year}{2014}
+      \field{pages}{506\bibrangedash 509}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1109/ghtc.2014.6970330
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1109/ghtc.2014.6970330
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1109/ghtc.2014.6970330
+      \endverb
+    \endentry
+    \entry{ref3}{inproceedings}{}
+      \name{author}{7}{}{%
+        {{hash=a7aedb56ebf0a6549bba63fbf8f5ed05}{%
+           family={Theil},
+           familyi={T\bibinitperiod},
+           given={Arthur},
+           giveni={A\bibinitperiod}}}%
+        {{hash=e26e5ee14f553f9b4ee068cb395ee0bf}{%
+           family={Buchweitz},
+           familyi={B\bibinitperiod},
+           given={Lea},
+           giveni={L\bibinitperiod}}}%
+        {{hash=352a72161449f52185f9caaef3b48b7c}{%
+           family={Gay},
+           familyi={G\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod}}}%
+        {{hash=c5134d46bead469c38b03eed2f85a09c}{%
+           family={Lindell},
+           familyi={L\bibinitperiod},
+           given={Eva},
+           giveni={E\bibinitperiod}}}%
+        {{hash=cbbe0aee45b05ee2e216204167adfdac}{%
+           family={Guo},
+           familyi={G\bibinitperiod},
+           given={Li},
+           giveni={L\bibinitperiod}}}%
+        {{hash=a450d17c378c0683c13f139a262c9ada}{%
+           family={Persson},
+           familyi={P\bibinitperiod},
+           given={Nils-Krister},
+           giveni={N\bibinithyphendelim K\bibinitperiod}}}%
+        {{hash=876780a6748047b711b6802755a8fd5b}{%
+           family={Korn},
+           familyi={K\bibinitperiod},
+           given={Oliver},
+           giveni={O\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Essen, Germany}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{cb96eac133833883993e80df98782ddb}
+      \strng{fullhash}{cd65bd1fb244ca1ed806faaa3f603360}
+      \strng{bibnamehash}{cb96eac133833883993e80df98782ddb}
+      \strng{authorbibnamehash}{cb96eac133833883993e80df98782ddb}
+      \strng{authornamehash}{cb96eac133833883993e80df98782ddb}
+      \strng{authorfullhash}{cd65bd1fb244ca1ed806faaa3f603360}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Deafblindness, also known as dual sensory loss, is the combination of sight and hearing impairments of such extent that it becomes difficult for one sense to compensate for the other. Communication issues are a key concern for the Deafblind community. We present the design and technical implementation of the Tactile Board: a mobile Augmentative and Alternative Communication (AAC) device for individuals with deafblindness. The Tactile Board allows text and speech to be translated into vibrotactile signs that are displayed real-time to the user via a haptic wearable. Our aim is to facilitate communication for the deafblind community, creating opportunities for these individuals to initiate and engage in social interactions with other people without the direct need of an intervener.}
+      \field{booktitle}{Proceedings of the 19th International Conference on Mobile and Ubiquitous Multimedia}
+      \field{isbn}{9781450388702}
+      \field{series}{MUM '20}
+      \field{title}{Tactile Board: A Multimodal Augmentative and Alternative Communication Device for Individuals with Deafblindness}
+      \field{year}{2020}
+      \field{pages}{223\bibrangedash 228}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1145/3428361.3428465
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/3428361.3428465
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/3428361.3428465
+      \endverb
+      \keyw{wearables,visual impairments,tangible interaction,haptic communication,deaf-blindness,assistive technology,AAC}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
