@@ -498,127 +498,134 @@ The project advances the state-of-the-art by merging health monitoring with vide
 This project differentiates itself from existing works that focus solely on either wearable sensors or video-based monitoring by integrating both components into a single, cohesive system. This comprehensive approach makes it more effective in providing thorough monitoring of infants. The incorporation of deep learning techniques for posture detection, combined with real-time alerts, sets this system apart from those that rely merely on sensor-based monitoring. Furthermore, the use of a cloud infrastructure ensures seamless access to data from remote locations, allowing busy parents to stay informed about their baby’s health at all times. This combination of features not only enhances the practicality of the system but also addresses the evolving needs of modern families.
 
 
-\chapter{Software Requirements Specification}
-\section{Functional requirements}
+\chapter{Software Requirement Specification}
 
-\textbf{Speech-to-Text Conversion:}\\
-Integrate robust speech recognition tools or APIs, such as Google Cloud Speech-to-Text or Python's SpeechRecognition library. Capture and transcribe spoken words into written text. Ensure high accuracy in speech-to-text conversion to facilitate precise communication.
+\section{Functional Requirements}
 
-\noindent\textbf{Text-to-Braille Conversion:}\\
-Develop a sophisticated algorithm capable of translating transcribed text into Braille characters. Support different Braille standards and languages. Efficiency to minimize processing time for text-to-Braille conversion.
+\subsection{User Management}
+\begin{itemize}
+    \item Users will have the ability to create an account using email and password authentication. Account management features will include options to update personal information, reset passwords, and delete accounts.
+    \item The application must implement secure login and logout procedures to protect user data, including multi-factor authentication for added security.
+\end{itemize}
 
-\noindent\textbf{Braille Hardware Integration:}\\
-Integrate with Braille hardware systems i.e. device containing the sensor and actuators. Enable real-time sensory updates for seamless interaction.
+\subsection{Data Monitoring}
+\begin{itemize}
+    \item The system will continuously fetch and display real-time data for baby parameters such as body temperature, room temperature, humidity, heart rate, and SpO2 levels through the integration of various IoT sensors.
+    \item Users will have access to live video feeds from a camera connected to the Raspberry Pi, allowing them to visually monitor their baby at all times.
+\end{itemize}
 
-\noindent\textbf{User Interface Development:}\\
-Design an intuitive user interface for easy interaction.
-Facilitate smooth communication between the application and Braille hardware.
+\subsection{Alerts and Notifications}
+\begin{itemize}
+    \item The system will monitor predefined thresholds for all critical parameters, and users will receive immediate notifications (via push notifications or SMS) if any parameter, such as temperature or heart rate, exceeds safe levels.
+    \item Utilizing computer vision algorithms, the system will analyze the baby’s posture and send alerts if it detects unsafe sleeping positions, particularly if the baby is at risk of sleeping on their tummy.
+\end{itemize}
 
-\noindent\textbf{Hardware Interaction:}\\
-Develop a system that interfaces seamlessly with the chosen Braille hardware.
-Ensure the application can send Braille characters to the hardware for physical representation.
+\subsection{Historical Data Access}
+\begin{itemize}
+    \item The application will allow users to access historical data and trends for all monitored parameters over selectable time periods. Users can view graphs and statistics to understand trends in their baby's health.
+    \item Users will have the capability to export their data in various formats (e.g., CSV, PDF) for personal records or sharing with healthcare professionals.
+\end{itemize}
 
-\section{Non-Functional requirements}
-\textbf{Security Measures:}\\
-Implement robust security protocols to ensure user data privacy and secure communication.
+\section{Non-Functional Requirements}
 
-\noindent\textbf{Usability Testing:}\\
-Conduct extensive usability testing with deaf-blind users to evaluate system functionality. Gather feedback for continual improvement.
+\subsection{Usability}
+\begin{itemize}
+    \item The application must be designed with a user-friendly interface, ensuring that even non-technical users can navigate easily. Help sections should be readily available for guidance.
+    \item The application should support multiple languages to cater to a diverse user base.
+\end{itemize}
 
-\noindent\textbf{Accessibility Standards Compliance:}\\
-Ensure compliance with accessibility standards to cater to the specific needs of the deaf-blind community. Test and enhance the application's compatibility with different screen reader software.
+\subsection{Reliability}
+\begin{itemize}
+    \item The system should provide 99.9\% uptime to ensure continuous monitoring, especially during critical periods when parents are not home.
+    \item Implement data backup strategies to prevent loss of critical monitoring data and ensure that the system can recover from failures seamlessly.
+\end{itemize}
 
-\noindent\textbf{Language and Braille Standards Support:}\\
-Support Braille standards to enhance versatility and stay updated with the latest Braille standards and ensure compatibility
+\subsection{Security}
+\begin{itemize}
+    \item All sensitive user data must be encrypted during transmission and storage to protect against unauthorized access.
+    \item Implement secure authentication protocols (e.g., OAuth2) to safeguard user accounts and personal information.
+\end{itemize}
 
-\section{User Interface Designs}
-\textbf{Intuitive Design:}\\
-\qquad Simple Navigation:
-Design a straightforward navigation system that is easy for deaf-blind users to comprehend. Utilize clear and concise menu structures to facilitate intuitive interaction.
+\subsection{Scalability}
+\begin{itemize}
+    \item The system architecture must support scalability, enabling it to handle an increasing number of users and devices without compromising performance.
+    \item Utilize cloud services that can easily scale resources up or down based on demand.
+\end{itemize}
 
-\noindent\textbf{Accessibility Features:}\\
-Tactile Feedback Options:
-Integrate tactile feedback options within the user interface to enhance the user experience for deaf-blind individuals. Provide customizable settings for feedback intensity and type.
+\section{User Interface Design}
 
-\noindent\textbf{Design specifications:}\\
-Maintain a consistent design language across the website and application to provide a unified user experience. Design the website to be responsive across different devices, ensuring accessibility on desktops, tablets, and smartphones.
+\subsection{Layout}
+\begin{itemize}
+    \item The main dashboard will present an overview of the baby's current health metrics, including temperature, heart rate, and other relevant data, and it should be easy to interpret, with clear visual indicators.
+    \item Users should be able to navigate effortlessly between different sections of the application, such as historical data views, alert logs, and settings.
+\end{itemize}
 
+\subsection{Color Scheme and Branding}
+\begin{itemize}
+    \item The application should use a soothing color palette (e.g., soft blues and greens) to create a calming atmosphere for users, promoting comfort and ease.
+    \item All branding elements, including logos and fonts, should be consistently applied throughout the app to enhance brand recognition.
+\end{itemize}
 
-\section{Hardware and Software requirements}
-\subsection{Hardware Requirements:}
+\subsection{Accessibility}
+\begin{itemize}
+    \item The design should ensure that users with disabilities can easily navigate the app, incorporating features such as screen reader compatibility and adjustable text sizes.
+\end{itemize}
 
-\textbf{Sensors for Braille Input:}\\
-Deploy sensors capable of detecting Braille characters either through touch or proximity sensors. Ensure the sensors are responsive to user input for a seamless interaction experience.
+\section{Hardware \& Software Requirements}
 
-\noindent\textbf{Actuators for Tactile Feedback:}\\
-Integrate actuators to provide tactile feedback corresponding to the Braille characters displayed. Design the actuators to deliver precise and distinguishable tactile sensations for each Braille character.
+\subsection{Hardware Requirements}
+\begin{itemize}
+    \item A Raspberry Pi (minimum Model 3B) will be used for processing video feeds and interfacing with IoT sensors, with a compatible camera module for video input.
+    \item The system will include multiple sensors such as temperature sensors (e.g., DHT22), humidity sensors, heart rate sensors (e.g., MAX30100), and SpO2 sensors.
+    \item A Raspberry Pi camera module will be utilized for live monitoring.
+\end{itemize}
 
-\noindent\textbf{Braille Symbol Actuator/Sensor:}\\
-Employ a hardware system as the primary hardware interface. Ensure the device can dynamically represent different Braille characters based on user inputs and can sense.
+\subsection{Software Requirements}
+\begin{itemize}
+    \item The system will run on Raspbian or any compatible Linux-based OS for the Raspberry Pi to support necessary libraries and applications.
+    \item React Native will be used for mobile app development, allowing cross-platform functionality for both Android and iOS.
+    \item Firebase will serve as the backend for real-time data storage and user authentication, providing scalability and ease of integration.
+    \item OpenCV will be utilized for computer vision tasks, specifically for detecting unsafe baby sleeping positions, and MQTT will be used as the messaging protocol to facilitate communication between the Raspberry Pi and the cloud.
+\end{itemize}
 
-\subsection{Software Requirements:}
+\section{Performance Requirements}
 
-\textbf{Speech-to-Text Conversion Software:}\\
-Utilize reliable speech recognition tools such as APIs, PyAudio, SpeechRecognition, and librosa by Python library for accurate conversion of spoken words into written text. Select a technology stack that supports real-time speech-to-text conversion.
+\subsection{Response Time}
+\begin{itemize}
+    \item The application should provide real-time updates for health metrics with a maximum latency of 2 seconds to ensure timely alerts and monitoring.
+    \item Live video feeds should load within 3 seconds to provide parents with immediate visual access to their baby.
+\end{itemize}
 
-\noindent\textbf{Text-to-Braille Conversion Algorithm:}\\
-Develop a robust algorithm for translating the transcribed text into Braille characters using Python. Ensure the algorithm supports various Braille standards and languages.
-
-\noindent\textbf{Braille to Hardware Translation Software:}\\
-Implement software to translate the Braille characters into signals that can be understood by the hardware. Developing a communication protocol using a hardware device that can be used by sensing for seamless interaction between the software and hardware components.
-
-\noindent\textbf{Website or Application:}\\
-Create a user-friendly website or application interface for text-based communication. Include features for speech-to-text conversion, text-to-Braille conversion, and seamless interaction with the hardware.
-
-\noindent\textbf{Operating System Compatibility:}\\
-Ensure compatibility with major operating systems, such as Android and iOS, for mobile applications. For websites, ensure compatibility across different web browsers.
-
-\noindent\textbf{Integration with ROS (Robot Operating System):}\\
-Implement the necessary software components to integrate with ROS. Ensure smooth communication between different software modules.
-
-
-\section{Performance Requirements }
-\textbf{Real-time Speech-to-Text Conversion:}\\
-Achieve near-instantaneous speech-to-text conversion. Evaluate system response time for spoken words to text. Ensure real-time transcription for effective communication.
-
-\noindent\textbf{Efficient Text-to-Braille Translation:}\\
-Swift translation of text to Braille characters. Assess the speed of the text-to-Braille conversion algorithm. Minimize delays in Braille representation.
-
-\noindent\textbf{Seamless Hardware Interaction:}\\
-Establish real-time communication with Braille hardware. Monitor time for Braille characters to be transmitted and displayed. Achieve responsive updates on the Braille hardware.
-
-\noindent\textbf{Scalability:}\\
-Ensure optimal performance with increased user interactions. Evaluate system performance under varying loads. Maintain optimal performance with a growing user base and data load.
-
-\noindent\textbf{Resource Utilization:}\\
-Optimize resource usage for efficient operation. Assess CPU, memory, and network utilization. Ensure resource-efficient operation on diverse devices.
-
-\noindent\textbf{Error Handling:}\\
-Implement effective error-handling mechanisms. Evaluate the system's ability to manage errors. Gracefully handle errors to minimize disruption.
-
-\noindent\textbf{Usability Testing:}\\
-Conduct usability testing based on user feedback. Gather feedback on system responsiveness and ease of use. Regular testing and iterative improvements for user satisfaction.
-
+\subsection{Data Processing}
+\begin{itemize}
+    \item The system should continuously process and analyze health data to ensure timely alerts and notifications, maintaining performance even with multiple concurrent users.
+\end{itemize}
 
 \section{Design Constraints}
-\textbf{Portability:}\\
-The system must be designed for portability, considering use across different devices. Optimize the user interface and functionalities for seamless operation on various platforms, including mobile devices and desktop computers.
 
-\noindent\textbf{Device Compatibility:}\\
-Ensure compatibility with a variety of devices commonly used by the deaf-blind community. Design the system to adapt to different screen sizes, resolutions, and hardware configurations for widespread accessibility.
+\subsection{Technical Constraints}
+\begin{itemize}
+    \item The system must operate within the processing capabilities and memory limits of the selected hardware (Raspberry Pi).
+    \item Ensure that data storage and processing comply with relevant data protection regulations, such as GDPR or HIPAA, depending on the target market.
+\end{itemize}
 
-\noindent\textbf{Real-time Communication:}\\
-Address the need for real-time communication between the application and hardware. Optimize data transmission and processing to minimize latency, providing users with immediate updates on the Braille hardware.
-
-\noindent\textbf{Usability for Deaf-Blind Users:}\\
-Prioritize usability for individuals with dual sensory impairments. Conduct usability testing with the deaf-blind community, incorporating their feedback to optimize the system's accessibility and ease of use.
+\subsection{Environmental Constraints}
+\begin{itemize}
+    \item The system must function effectively in varying home environments, considering factors like Wi-Fi signal strength, which could impact data transmission and monitoring capabilities.
+\end{itemize}
 
 \section{Other Requirements}
-\textbf{Long-term Support Plans:}\\
-Develop strategies for long-term system support and updates. Establish a framework for ongoing maintenance, addressing evolving technological standards and user needs.
 
-\noindent\textbf{Training Programs:}\\
-Provide comprehensive training programs for users, educators, and support staff. Design training materials and sessions to ensure effective usage and support, promoting accessibility and user empowerment.
+\subsection{Compliance Requirements}
+\begin{itemize}
+    \item The system must comply with health and safety regulations applicable to baby monitoring devices, ensuring that all hardware components are safe for use around infants.
+\end{itemize}
+
+\subsection{Documentation}
+\begin{itemize}
+    \item Comprehensive user manuals must be provided to assist users in setting up and using the monitoring system effectively.
+    \item Detailed technical documentation should be created for future maintenance and potential upgrades, outlining system architecture and component specifications.
+\end{itemize}
 
 % \chapter{System Design}
 % \section{Abstract Design}
