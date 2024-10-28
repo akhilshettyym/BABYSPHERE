@@ -94,23 +94,23 @@ bottom=0.65in,
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% Acknowledgement %%%%%%%%%%%%%%%
 
-\pagestyle{empty}
-\setstretch{1.8}
-\pagenumbering{roman}
-\chapter*{\centering ACKNOWLEDGEMENT}
+% \pagestyle{empty}
+% \setstretch{1.8}
+% \pagenumbering{roman}
+% \chapter*{\centering ACKNOWLEDGEMENT}
 
 
-The joy and satisfaction that accompany the partial completion of any task would be incomplete without thanking those who made it possible. We consider ourselves proud to be a part of St Joseph Engineering College, the institution which moulded us in all our endeavours. We express our sincere gratitude to the management for providing state-of-the-art facilities and support throughout our project.
-\vspace{10pt}\\
-We owe our profound gratitude to our project guide \textbf{Dr Sridevi Saralaya}, Professor and Head of the Department, Computer Science and Engineering, St Joseph Engineering College, for her valuable guidance and support during the entire period of our project.
-\vspace{10pt}\\
-We are indebted to our respected Principal, \textbf{Dr Rio D'Souza} for his valuable guidance and encouragement throughout the project.
-\vspace{10pt}\\
-We express our sincere gratitude to \textbf{Rev Fr Wilfred Prakash D'Souza}, Director, and \textbf{Rev Fr Kenneth Rayner Crasta}, Assistant Director, for their unwavering support and provision of facilities throughout the development stages of our project.
-\vspace{10pt}\\
-We wish to express our sincere gratitude to all the Faculty and Technical staff of the Department and friends and family for their valuable help and support during the period of development of our project .\\
+% The joy and satisfaction that accompany the partial completion of any task would be incomplete without thanking those who made it possible. We consider ourselves proud to be a part of St Joseph Engineering College, the institution which moulded us in all our endeavours. We express our sincere gratitude to the management for providing state-of-the-art facilities and support throughout our project.
+% \vspace{10pt}\\
+% We owe our profound gratitude to our project guide \textbf{Dr Sridevi Saralaya}, Professor and Head of the Department, Computer Science and Engineering, St Joseph Engineering College, for her valuable guidance and support during the entire period of our project.
+% \vspace{10pt}\\
+% We are indebted to our respected Principal, \textbf{Dr Rio D'Souza} for his valuable guidance and encouragement throughout the project.
+% \vspace{10pt}\\
+% We express our sincere gratitude to \textbf{Rev Fr Wilfred Prakash D'Souza}, Director, and \textbf{Rev Fr Kenneth Rayner Crasta}, Assistant Director, for their unwavering support and provision of facilities throughout the development stages of our project.
+% \vspace{10pt}\\
+% We wish to express our sincere gratitude to all the Faculty and Technical staff of the Department and friends and family for their valuable help and support during the period of development of our project .\\
 
-\newpage
+% \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% Abstract %%%%%%%%%%%%%%%
 \pagestyle{empty}
@@ -119,10 +119,17 @@ We wish to express our sincere gratitude to all the Faculty and Technical staff 
 \chapter*{\centering ABSTRACT}
 
 \begin{justify}
-  Cloud-Based Smart Monitoring System for Baby Health and Safety is a software-driven solution designed to provide real-time monitoring and alerts for parents, focusing on the baby’s health and safety. The system collects data from various hardware sensors, including body temperature, room humidity, and heart rate, along with video feeds for continuous observation of the baby's movements. The software component plays a critical role by processing this data to detect abnormalities such as fever, unsafe sleeping postures (like tummy sleeping), and irregular movements, using cloud-based services and computer vision algorithms.
 
-  \noindent A significant feature of the system is the streaming of the Raspberry Pi-based camera video data to the cloud, where the software analyzes the baby’s posture to help prevent risks such as Sudden Infant Death Syndrome (SIDS). The software also carries out detection of crying sounds, which triggers instant notifications to parents via the mobile application. The app also monitors environmental factors such as humidity and sends real-time alerts when unsafe conditions or health risks are detected. This phase of the project emphasizes the integration of cloud services, advanced data processing algorithms, and user-friendly notifications, ensuring robust, real-time monitoring with a focus on the software's efficiency.
-\end{justify}
+  The need for reliable infant monitoring systems has become increasingly essential due to the high demands of modern parenting and the need to ensure infant safety. This project presents a ``Cloud-Based Smart Monitoring System for Baby Health and Safety," designed to monitor various health metrics of infants, such as body temperature, heart rate, room temperature, humidity, and posture, offering parents peace of mind through real-time notifications and alerts.
+
+\noindent Research and development in the field of non-contact health monitoring have progressed significantly, utilizing technologies like remote photoplethysmography and computer vision for health parameter detection. However, most current systems either lack comprehensive monitoring capabilities or depend on contact-based sensors that may disrupt infant comfort. This project addresses these limitations by proposing a comprehensive, non-contact monitoring solution that integrates contactless sensors and machine learning techniques to monitor critical parameters. Our goal is to deliver a holistic, efficient, and user-friendly system for infant health and safety monitoring.
+
+\noindent The research methodology encompasses the development of a mobile application that interacts with a cloud-based system and sensors, designed to monitor and analyze infant health data in real-time. The novel solution incorporates computer vision algorithms to track baby posture and detect when the infant is sleeping on its tummy, potentially preventing sudden infant death syndrome (SIDS). Experimental results demonstrate the reliability and accuracy of the system in various environmental conditions, providing immediate alerts during abnormalities.
+
+\noindent This work demonstrates significant benefits by enhancing infant safety, reducing the need for continuous parental monitoring, and offering peace of mind. The system's cloud-based architecture enables remote monitoring, which saves on resources and energy.
+
+\noindent Future work can explore extending the system’s capabilities to detect additional health parameters and integrate AI for predictive health analysis, making it an even more comprehensive monitoring tool.
+  \end{justify}
 
 \setstretch{1.2}
 \renewcommand{\contentsname}{\centering Table of Contents}
@@ -186,7 +193,13 @@ With the advancement of technology, there has been a growing interest in creatin
 
 \section{Problem statement }
 To develop a cloud-based smart monitoring system that addresses the challenges parents face in continuously monitoring their infants, particularly when away from home. The system will use real-time data from sensors and video feeds to detect unsafe sleeping postures, abnormal body temperature, irregular heart rate, and environmental factors such as humidity. By using software-driven algorithms for analysis and alerting, the system will notify parents instantly of any concerns, thus preventing risks like Sudden Infant Death Syndrome (SIDS) and ensuring the infant's health and safety.
-
+The objectives of the proposed project work are:
+\begin{enumerate}
+    \item To develop a mobile app that collects the body temperature of the baby and room temperature from the cloud, which is transmitted from the monitoring device.
+    \item To integrate computer vision technology to detect unsafe sleeping positions of the baby.
+    \item To create a user-friendly interface that allows parents to easily monitor real-time temperature readings.
+    \item To deliver actionable notifications through app alerts when abnormal readings or unsafe sleeping position is detected.
+\end{enumerate}
 \section{Scope and Importance of the Project}
 The Cloud-Based Smart Monitoring System for Baby Health and Safety aims to provide a comprehensive, software-driven solution for real-time monitoring of a baby’s health, environment, and movements. The project’s scope includes the development of advanced algorithms to detect unsafe sleeping postures using computer vision, as well as the integration of sensor data from temperature, humidity, and heart rate monitors. The software will process this data in real-time through a cloud infrastructure, delivering instant alerts to parents via a mobile application whenever abnormalities are detected, such as a sudden change in the baby’s sleeping position, body temperature, or crying. This monitoring will be continuous and remote, ensuring that parents receive timely notifications even when they are away from home.
 
