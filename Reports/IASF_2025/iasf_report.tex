@@ -11,6 +11,7 @@
 \usepackage{tabularx}
 \usepackage[backend=biber, sorting=none, style=ieee]{biblatex}
 \usepackage{color}
+\usepackage{float}
 
 \addbibresource{reference.bib} 
 \geometry{
@@ -88,7 +89,7 @@ bottom=0.65in,
   {\large \textbf{Vamanjoor, Mangaluru - 575028, Karnataka}}
   \par
   \vspace{12pt}
-  {\Large \textbf{2024-25}}
+  % {\Large \textbf{2024-25}}
 \end{center}
 
 \newpage
@@ -112,7 +113,7 @@ bottom=0.65in,
 %%%%%%%%%%%%%%%%%%%%% Headders and Footers %%%%%%%%%%%%%%%
 \setlength{\textheight}{0.98\textheight} % Adjust to leave space above the footer
 \setlength{\headheight}{30pt} % Increase space for the header
-\setlength{\footskip}{20pt} % Adjust space for the footer
+\setlength{\footskip}{30pt} % Adjust space for the footer
 \fancyhf{} % clear header and footer
 \fancyhead[L]{Cloud-Based Smart Monitoring System for Baby Health and Safety} % header centered
 \fancyhead[R]{Chapter \thechapter} % header centered
@@ -150,11 +151,11 @@ Ensuring Infant Health and Safety Through Real-Time Monitoring and Intelligent A
 \begin{tabular}{|l|l|l|}
   \hline
   \textbf{Name} & \textbf{USN} & \textbf{Email ID} \\ \hline
-  Aaron Tauro       & 4SO21CS002 & email \\ \hline
-  Abhik L Salian    & 4SO21CS004 & 21e03.abhik@sjec.ac.in \\ \hline
-  Akhil Shetty M    & 4SO21CS013 & email \\ \hline
-  H Karthik P Nayak & 4SO21CS058 & 21e19.karthik@sjec.ac.in \\ \hline
-  Nishayne C Vaz    & 4SO20CS000 & email \\ \hline
+  Aaron Tauro       & 4SO21CS002 & aarontauro00@gmail.com \\ \hline
+  Abhik L Salian    & 4SO21CS004 & abhiksalian0728@gmail.com \\ \hline
+  Akhil Shetty M    & 4SO21CS013 & akhilshettym2003@gmail.com \\ \hline
+  H Karthik P Nayak & 4SO21CS058 & karthiknayak2003@gmail.com \\ \hline
+  Nishayne C Vaz    & 4SO20CS000 & vaznish@gmail.com \\ \hline
 \end{tabular}
 
 
@@ -199,6 +200,16 @@ To deepen our understanding, we created an empathy map representing caregivers' 
 The empathy map visually represents user emotions and pain points, providing a clear and comprehensive understanding of the caregivers’ perspectives. We identified that caregivers' feelings of anxiety were strongly tied to a lack of reliable monitoring solutions, leading them to crave a system that offers reassurance through continuous health data and timely alerts.
 
 This research and empathy-driven approach have shaped our project’s features to ensure a user-centered design that genuinely addresses caregiver concerns. The insights gained will be foundational in our development process, guiding every aspect of our solution from functionality to user interface design. By incorporating real user needs, we are more likely to develop a solution that resonates with and is beneficial to our target audience.
+\subsection{Empathy Map}
+The empathy map (Figure \ref{fig:empathy}) illustrates the emotions, thoughts, behaviors, and pain points of caregivers. This map has been instrumental in understanding user needs and guiding the design of our baby monitoring system.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.3]{./pic/empathy.jpg}
+  \caption{Empathy map capturing caregiver insights for the baby monitoring system.}
+  \label{fig:empathy}
+\end{figure}
+
 
 \chapter{Definition}
 \section{Point of View (POV)}
@@ -230,79 +241,119 @@ Our initial prototype focuses on combining hardware components with a software i
 We designed the prototype with scalability in mind, ensuring future additions (like more health metrics or connectivity options) could be easily integrated. The prototype is aimed at being user-friendly and accessible, while providing the essential functionalities required for effective baby monitoring.
 
 \section{Images/Samples}
-\subsection{Architectural diagram}
-The architectural diagram shown in Figure \ref{fig:architecture} represents the high-level structure of the system, illustrating the relationships between various components. The key components of the architecture include IoT sensors for data collection, a Raspberry Pi for data processing, cloud infrastructure for storage, and a mobile application for data access and monitoring.
+\subsection{Architectural Diagram}
+The architectural diagram in Figure \ref{fig:architecture} illustrates the baby monitoring system's high-level structure, highlighting component interactions.
+
 \begin{itemize}
-  \item \textbf{User (Parents):} The caregiver uses the mobile application to initiate data recordings for essential health parameters such as heart rate, temperature, SpO2 levels, and humidity. They receive notifications directly on their mobile device if any abnormal readings or health concerns are detected.
-  \item \textbf{Mobile User Interface:} This interface on the caregiver’s mobile device serves as the primary point of interaction, where requests for data are sent to the sensing system and health information is displayed for monitoring.
-  \item \textbf{Sensing System:} Comprised of sensors like the Humidity Sensor, Heart Rate Sensor, Temperature Sensor, and SpO2 Sensor, this system captures real-time health data from the baby and forwards it to the processor for further analysis.
-  \item \textbf{Processor (Raspberry Pi):} The Raspberry Pi processes the raw data received from the sensors, organizing it into a format suitable for storage and retrieval, and sends it to the Firebase database.
-  \item \textbf{Database (Firebase):} The database acts as a central storage location, holding all processed data. It enables the mobile application to retrieve information as needed and supports real-time monitoring by the machine learning model.
-  \item \textbf{Pre-trained ML Model:} This model monitors the data in Firebase for any patterns or values that indicate potential health issues. When abnormal readings are detected, it generates alerts that are immediately sent to the caregiver via the mobile app.
+  \item \textbf{User (Parents):} Monitors health metrics (heart rate, temperature, SpO2, humidity) via a mobile app, receiving alerts for abnormal readings.
+  \item \textbf{Mobile User Interface:} Displays health data and sends user requests to the sensing system.
+  \item \textbf{Sensing System:} Collects real-time data via sensors (Humidity, Heart Rate, Temperature, SpO2).
+  \item \textbf{Processor (Raspberry Pi):} Processes sensor data for structured storage in Firebase.
+  \item \textbf{Database (Firebase):} Centralized storage enabling real-time monitoring and data retrieval.
+  \item \textbf{Pre-trained ML Model:} Analyzes Firebase data for irregularities, alerting the caregiver through the app if issues are detected.
 \end{itemize}
+
 \begin{figure}[hbtp]
   \centering
   \includegraphics[scale=0.6]{./pic/architecture.png}
-  \caption{Architectural Diagram showing the interaction of various entities of the baby monitoring system.}
+  \caption{Architectural Diagram illustrating interactions within the baby monitoring system.}
   \label{fig:architecture}
 \end{figure}
+
 \subsection{Use Case Diagram}
-The use case diagram shown in Figure \ref{fig:usecase} captures the various interactions between the user and the system, demonstrating how the parent or caregiver interacts with different functionalities to ensure the baby’s safety and well-being. This diagram highlights the key features of the system from a user perspective.
+The use case diagram in Figure \ref{fig:usecase} illustrates interactions between the caregiver and the baby monitoring system, emphasizing key functionalities.
+
 \begin{itemize}
-  \item \textbf{Actors:} The primary actor in this system is the parent or caregiver who uses the mobile application to interact with the system. The parent relies on the app to receive real-time data, notifications, and alerts about the baby's status. Secondary actors may include medical professionals or support staff who could access the system during emergencies.
-  \item \textbf{Use Cases:} The use cases represent the main functionalities available to the parent. These include:
+  \item \textbf{Actors:} 
   \begin{itemize}
-    \item \textbf{Monitoring Baby’s Health Metrics:} The system displays real-time information such as the baby's temperature, heart rate, room humidity, and SpO2 levels on the dashboard. This allows parents to continuously keep track of their baby’s well-being from any location.
-    \item \textbf{Viewing Live Video Feeds:} Parents can access a live video stream of their baby’s crib or play area. This feature allows for constant visual monitoring, providing additional peace of mind.
-    \item \textbf{Receiving Alerts for Abnormal Conditions:} The system triggers alerts if it detects unsafe conditions, such as the baby rolling onto their stomach, abnormal heart rate, or a high room temperature. These notifications are sent instantly to the parent's mobile device.
-    \item \textbf{Managing System Settings:} The parent can configure various settings, such as setting thresholds for temperature and heart rate, managing notification preferences, and adjusting video feed quality. The system also allows parents to toggle between real-time data and historical data views.
-    \item \textbf{Exporting Historical Data:} Parents can view or export the baby’s historical health data for further analysis or sharing with healthcare professionals. This feature provides a long-term record of the baby’s health trends, which can be helpful for medical consultations.
+    \item \textbf{Primary Actor:} Parents or caregivers who rely on the mobile app for real-time data and notifications about the baby's status.
+    \item \textbf{Secondary Actors:} Medical professionals or support staff who may access the system during emergencies.
+  \end{itemize}
+  
+  \item \textbf{Use Cases:}
+  \begin{itemize}
+    \item \textbf{Monitoring Baby’s Health Metrics:} Displays real-time information (temperature, heart rate, humidity, SpO2) on the dashboard for continuous monitoring.
+    \item \textbf{Viewing Live Video Feeds:} Allows parents to access live video streams of the baby’s crib or play area for constant visual monitoring.
+    \item \textbf{Receiving Alerts for Abnormal Conditions:} Sends instant notifications for unsafe conditions (e.g., rolling over, abnormal heart rate, high temperature).
+    \item \textbf{Managing System Settings:} Enables configuration of thresholds, notification preferences, and video quality, as well as toggling between real-time and historical views.
+    \item \textbf{Exporting Historical Data:} Allows parents to view or export historical health data for further analysis or sharing with healthcare professionals.
   \end{itemize}
 \end{itemize}
+
 \begin{figure}[hbtp]
   \centering
   \includegraphics[scale=0.6]{./pic/usercase.png}
-  \caption{Use Case Diagram showing the interaction between users and the system.}
+  \caption{Use Case Diagram illustrating interactions between users and the system.}
   \label{fig:usecase}
 \end{figure}
-\subsection{Sequence diagram}
-The sequence diagram in Figure \ref{fig:sequence} demonstrates the flow of actions between the User, Mobile Application, Sensing System, and Database in the Cloud-Based Smart Monitoring System for Baby Health and Safety. Here's a detailed breakdown of the steps involved:
+
+\subsection{Sequence Diagram}
+The sequence diagram in Figure \ref{fig:sequence} illustrates the interaction flow among the User, Mobile Application, Sensing System, and Cloud Database in the baby monitoring system.
+
 \begin{enumerate}
-  \item \textbf{User starts the mobile application:} The process begins when the user (typically a parent or caregiver) opens the mobile app to monitor the baby’s health metrics in real-time.
-  \item \textbf{User starts the live feed:} Once inside the app, the user initiates the live feed, which triggers the sensing system to collect data from various sensors monitoring the baby’s environment and health.
-  \item \textbf{Sensing System collects data:} The sensing system comprises multiple sensors that continuously measure various parameters:
+  \item \textbf{User starts the mobile application:} The caregiver opens the app to monitor the baby’s health metrics.
+  \item \textbf{User starts the live feed:} The user initiates the live feed, prompting the sensing system to collect data.
+  \item \textbf{Sensing System collects data:} Various sensors monitor:
   \begin{itemize}
-    \item  \textbf{Heartbeat:} A sensor records the baby’s heart rate.
-    \item \textbf{Humidity:} The surrounding room humidity is sensed to ensure it is within a safe range.
-    \item \textbf{Temperature:} The baby’s body temperature and room temperature are monitored.
-    \item \textbf{SpO2:} A sensor checks the baby’s blood oxygen saturation (SpO2) to track oxygen levels.
+    \item \textbf{Heartbeat:} Records the baby’s heart rate.
+    \item \textbf{Humidity:} Measures room humidity to maintain safety.
+    \item \textbf{Temperature:} Monitors the baby's body and room temperature.
+  \item \textbf{SpO2:} A sensor checks the baby’s blood oxygen saturation (SpO2) to track oxygen levels.
   \end{itemize}
-  \item \textbf{Data is stored in the Database:} After processing the sensor data, the sensing system sends it to the cloud-based database, where it is stored for real-time analysis and long-term record-keeping.
-  \item \textbf{Alert is triggered:} If any of the sensed values exceed predefined safety thresholds (e.g., an abnormal heart rate or high room temperature), an alert is triggered, and the system generates a notification to inform the user.
-  \item \textbf{Results are returned to the Mobile Application:} The mobile app retrieves the processed data from the database and displays it in the user interface. The user can then see real-time health metrics and make informed decisions based on the system's results.
-  \item \textbf{User views the results:} Finally, the user views the current health metrics and environmental data on the mobile application, ensuring that the baby is in a safe and healthy condition. If an alert was triggered, the user will also be notified within the app.
+  \item \textbf{Data is stored in the Database:} Processed sensor data is sent to the cloud database for analysis and record-keeping.
+  \item \textbf{Alert is triggered:} If any values exceed safety thresholds (e.g., abnormal heart rate, high temperature), an alert is generated.
+  \item \textbf{Results are returned to the Mobile Application:} The app retrieves processed data from the database and displays it to the user.
+  \item \textbf{User views the results:} The user checks real-time health metrics, ensuring the baby's safety, and receives alerts if any were triggered.
 \end{enumerate}
+
 \begin{figure}[hbtp]
   \centering
   \includegraphics[scale=0.6]{./pic/sequence.png}
-  \caption{Sequence diagram showing the timeline of interaction between different entities in the system}
+  \caption{Sequence diagram showing the timeline of interaction between different entities in the system.}
   \label{fig:sequence}
 \end{figure}
 
+
 \subsection{Data Flow Diagram}
 The data flow diagram shown in Figure \ref{fig:dataflow} outlines how data travels through the system, highlighting the interaction between sensors, the Raspberry Pi, cloud storage, and the mobile application.
+
 \begin{itemize}
-  \item \textbf{Sensors:} The first layer involves IoT sensors collecting real-time data on the baby’s health and environmental conditions.
-  \item \textbf{Raspberry Pi:} The Raspberry Pi acts as a bridge, processing sensor data and relaying it to the cloud.
-  \item \textbf{Cloud Database:} In the cloud, data is securely stored and processed. The system continuously checks the data against preset safety thresholds and sends alerts when abnormalities are detected.
-  \item \textbf{Mobile Application:} The app fetches data from the cloud and displays it to the user in real-time. Parents can also retrieve historical data for deeper insights into the baby’s health trends.
+  \item \textbf{Sensors:} IoT sensors collect real-time data on the baby’s health and environmental conditions.
+  \item \textbf{Raspberry Pi:} Acts as a bridge, processing sensor data and relaying it to the cloud.
+  \item \textbf{Cloud Database:} Data is securely stored and processed in the cloud. The system checks data against safety thresholds and sends alerts for any abnormalities detected.
+  \item \textbf{Mobile Application:} The app fetches data from the cloud and displays it to the user in real-time. Parents can also access historical data for deeper insights into the baby’s health trends.
 \end{itemize}
+
 \begin{figure}[hbtp]
   \centering
   \includegraphics[scale=0.35]{./pic/WhatsApp Image 2024-10-23 at 22.00.55_66baa9c8.jpg}
-  \caption{Data flow diagram showing how the data travels through the system}
+  \caption{Data flow diagram showing how the data travels through the system.}
   \label{fig:dataflow}
 \end{figure}
+\subsection{Hardware Components}
+The hardware components utilized in the system are as follows:
+
+\begin{itemize}
+  \item \textbf{Raspberry Pi (Model 3B or higher):} Serves as the main processing unit for handling video feeds and interfacing with IoT sensors. It is equipped with a compatible camera module for video input.
+  
+  \item \textbf{Camera Module:} A Raspberry Pi camera module will be used for live monitoring, providing real-time video feeds of the baby’s environment.
+
+  \item \textbf{Sensors:}
+  \begin{itemize}
+    \item \textbf{Temperature Sensor:} DHT22 sensor for accurate temperature measurements.
+    \item \textbf{Humidity Sensor:} Monitors ambient humidity levels to ensure a comfortable environment.
+    \item \textbf{Heart Rate Sensor:} MAX30100 sensor for measuring the baby's heart rate.
+    \item \textbf{SpO2 Sensor:} Monitors blood oxygen saturation levels to track the baby's health.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.3]{./pic/Hardware.jpg}
+  \caption{Hardware components used in the baby monitoring system.}
+  \label{fig:hardware}
+\end{figure}
+
 
 \chapter{Testing and Feedback}
 \section{Testing Process}
@@ -335,7 +386,7 @@ The user interface flow for the application (Figure \ref{fig:uiflow}) is designe
   \item \textbf{Stats Screen:} The Stats screen gives a detailed view of the baby’s health trends over time. 
   \item \textbf{Profile Screen:} The Profile screen offers personalized features for the user. They can call a doctor directly from the app if any issues are detected, access emergency contacts quickly for immediate assistance, modify details such as contact information, health preferences, and other personal settings to ensure the app is tailored to their needs.
 \end{enumerate}
-\begin{figure}[hbtp]
+\begin{figure}[H]
   \centering
   \includegraphics[scale=0.32]{./pic/uiflow.png}
   \caption{User Interface Flow}
@@ -363,7 +414,11 @@ By implementing these next steps, we aim to improve our monitoring system’s fu
 Our project mentor played a crucial role in shaping and guiding the direction of the Cloud-Based Smart Monitoring System for Baby Health and Safety. From the initial project selection stage, the mentor provided insights into the relevance of baby health monitoring systems, particularly the gaps in existing solutions regarding real-time alerts and comprehensive health metric tracking. They emphasized the need for a user-centered approach, ensuring that each feature of our project directly addresses a caregiver’s primary concerns and usability needs. The mentor also encouraged us to consider sustainable design elements and scalability, which helped in aligning our project with long-term user expectations and potential growth.
 
 \section{Mentor Value Addition}
-To be added
+Throughout the development process, our mentor provided invaluable feedback on the prototype, offering technical and practical insights that significantly enhanced our solution. During the prototyping phase, the mentor suggested refining the alert system to allow caregivers to customize notification preferences, making the device more adaptable to different caregiving scenarios.
+
+Additionally, our mentor recommended conducting iterative testing with real users early on to identify usability challenges. This advice was instrumental in uncovering interface elements that could be streamlined, such as simplifying the app’s navigation and making the alert dashboard more visually intuitive. Their emphasis on creating a modular design also guided us in structuring the codebase to facilitate future expansion, aligning with our goal of potentially integrating more advanced health metrics.
+
+The mentor’s constructive feedback and continuous support throughout each phase of our project greatly contributed to refining our prototype and building a solution that is both practical and aligned with user needs. Their guidance not only helped us address current challenges but also prepared us to think proactively about future developments and scalability.
 
 \newpage
 \renewcommand{\bibname}{References}
