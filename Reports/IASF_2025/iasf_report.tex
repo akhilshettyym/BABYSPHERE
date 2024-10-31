@@ -257,28 +257,17 @@ This streamlined architecture ensures efficient data collection, analysis, and t
 \end{figure}
 
 \subsection{Use Case Diagram}
-The use case diagram in Figure \ref{fig:usecase} illustrates interactions between the caregiver and the baby monitoring system, emphasizing key functionalities.
+This use case diagram in Figure \ref{fig:usecase} outlines the product designed to monitor a baby's health and safety through interactions with a User (caregiver), a Sensing System, and a Medical Practitioner.
 
-\begin{itemize}
-  \item \textbf{Actors:}
-        \begin{itemize}
-          \item \textbf{Primary Actor:} Parents or caregivers who rely on the mobile app for real-time data and notifications about the baby's status.
-          \item \textbf{Secondary Actors:} Medical professionals or support staff who may access the system during emergencies.
-        \end{itemize}
-
-  \item \textbf{Use Cases:}
-        \begin{itemize}
-          \item \textbf{Monitoring Baby’s Health Metrics:} Displays real-time information (temperature, heart rate, humidity, $SpO_2$) on the dashboard for continuous monitoring.
-          \item \textbf{Viewing Live Video Feeds:} Allows caregivers to access live video streams of the baby’s crib or play area for constant visual monitoring.
-          \item \textbf{Receiving Alerts for Abnormal Conditions:} Sends instant notifications for unsafe conditions (e.g., rolling over, abnormal heart rate, high temperature).
-          \item \textbf{Managing System Settings:} Enables configuration of thresholds, notification preferences, and video quality, as well as toggling between real-time and historical views.
-          \item \textbf{Exporting Historical Data:} Allows Parents to view or export historical health data for further analysis or sharing with healthcare professionals.
-        \end{itemize}
-\end{itemize}
-
+\begin{enumerate}
+  \item \textbf{User:} The User can view a live camera feed and request the recording of health metrics, which are stored in the database. If any unsafe conditions (like risky postures) are detected, the system sends alerts to the User for immediate action.
+  \item \textbf{Sensing System:} The Sensing System collects health data (e.g., posture) and sends it to the monitoring system. The system processes this data to detect potential safety risks, triggering alerts when necessary.
+  \item \textbf{Medical Practitioner:} The Medical Practitioner reviews health metrics stored in the system and provides insights or recommendations, which the system relays to the User to support safe caregiving.
+\end{enumerate}
+Overall, the system combines real-time monitoring, data storage, and expert feedback to ensure the baby’s health and safety effectively.
 \begin{figure}[hbtp]
   \centering
-  \includegraphics[scale=0.6]{./pic/usercase.png}
+  \includegraphics[scale=0.8]{./pic/Use case.png}
   \caption{Use Case Diagram illustrating interactions between users and the system.}
   \label{fig:usecase}
 \end{figure}
@@ -302,22 +291,22 @@ This sequence diagram effectively demonstrates how the system monitors and proce
 \end{figure}
 
 
-\subsection{Data Flow Diagram}
-The data flow diagram shown in Figure \ref{fig:dataflow} outlines how data travels through the system, highlighting the interaction between sensors, the Raspberry Pi, cloud storage, and the mobile application.
+% \subsection{Data Flow Diagram}
+% The data flow diagram shown in Figure \ref{fig:dataflow} outlines how data travels through the system, highlighting the interaction between sensors, the Raspberry Pi, cloud storage, and the mobile application.
 
-\begin{itemize}
-  \item \textbf{Sensors:} IoT sensors collect real-time data on the baby’s health and environmental conditions.
-  \item \textbf{Raspberry Pi:} Acts as a bridge, processing sensor data and relaying it to the cloud.
-  \item \textbf{Cloud Database:} Data is securely stored and processed in the cloud. The system checks data against safety thresholds and sends alerts for any abnormalities detected.
-  \item \textbf{Mobile Application:} The app fetches data from the cloud and displays it to the user in real-time. Parents can also access historical data for deeper insights into the baby’s health trends.
-\end{itemize}
+% \begin{itemize}
+%   \item \textbf{Sensors:} IoT sensors collect real-time data on the baby’s health and environmental conditions.
+%   \item \textbf{Raspberry Pi:} Acts as a bridge, processing sensor data and relaying it to the cloud.
+%   \item \textbf{Cloud Database:} Data is securely stored and processed in the cloud. The system checks data against safety thresholds and sends alerts for any abnormalities detected.
+%   \item \textbf{Mobile Application:} The app fetches data from the cloud and displays it to the user in real-time. Parents can also access historical data for deeper insights into the baby’s health trends.
+% \end{itemize}
 
-\begin{figure}[hbtp]
-  \centering
-  \includegraphics[scale=0.35]{./pic/WhatsApp Image 2024-10-23 at 22.00.55_66baa9c8.jpg}
-  \caption{Data flow diagram showing how the data travels through the system.}
-  \label{fig:dataflow}
-\end{figure}
+% \begin{figure}[hbtp]
+%   \centering
+%   \includegraphics[scale=0.35]{./pic/WhatsApp Image 2024-10-23 at 22.00.55_66baa9c8.jpg}
+%   \caption{Data flow diagram showing how the data travels through the system.}
+%   \label{fig:dataflow}
+% \end{figure}
 \subsection{Hardware Components}
 The hardware components and their placement in the cradle are shown in Figure \ref{fig:hardware} and Figure \ref{fig:cradle} respectively.
 
