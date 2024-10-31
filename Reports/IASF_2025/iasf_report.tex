@@ -150,12 +150,12 @@ Ensuring Infant Health and Safety Through Real-Time Monitoring and Intelligent A
 \section{Team Members}
 \begin{tabular}{|l|l|l|}
   \hline
-  \textbf{Name} & \textbf{USN} & \textbf{Email ID} \\ \hline
-  Aaron Tauro       & 4SO21CS002 & aarontauro00@gmail.com \\ \hline
-  Abhik L Salian    & 4SO21CS004 & abhiksalian0728@gmail.com \\ \hline
-  Akhil Shetty M    & 4SO21CS013 & akhilshettym2003@gmail.com \\ \hline
-  H Karthik P Nayak & 4SO21CS058 & karthiknayak2003@gmail.com \\ \hline
-  Nishayne C Vaz    & 4SO20CS000 & vaznish@gmail.com \\ \hline
+  \textbf{Name}     & \textbf{USN} & \textbf{Email ID}          \\ \hline
+  Aaron Tauro       & 4SO21CS002   & aarontauro00@gmail.com     \\ \hline
+  Abhik L Salian    & 4SO21CS004   & abhiksalian0728@gmail.com  \\ \hline
+  Akhil Shetty M    & 4SO21CS013   & akhilshettym2003@gmail.com \\ \hline
+  H Karthik P Nayak & 4SO21CS058   & karthiknayak2003@gmail.com \\ \hline
+  Nishayne C Vaz    & 4SO20CS000   & vaznish@gmail.com          \\ \hline
 \end{tabular}
 
 
@@ -190,10 +190,10 @@ To deepen our understanding, we created an empathy map representing caregivers' 
 \begin{itemize}
   \item \textbf{Says:} ``I just need to know that my baby is safe, especially when they’re sleeping.” Caregivers repeatedly expressed their desire for a solution that provides them with peace of mind.
 
- \item \textbf{Thinks:} ``Is my baby sleeping safely? What if I miss something important?" Many caregivers reported a constant mental burden, worrying about their child’s safety, which often impacts their own rest and productivity.
-  
+  \item \textbf{Thinks:} ``Is my baby sleeping safely? What if I miss something important?" Many caregivers reported a constant mental burden, worrying about their child’s safety, which often impacts their own rest and productivity.
+
   \item \textbf{Feels:} Caregivers consistently described feeling anxious, fearful, and stressed, particularly at night or during naps. They noted that while traditional baby monitors provide some reassurance, they lack comprehensive health tracking and alerting capabilities.
-  
+
   \item \textbf{Does:} Many caregivers frequently check on their baby physically, even if it interrupts their own sleep. The absence of a reliable monitoring solution leads them to take extra precautions, such as adjusting the baby's position multiple times during sleep, keeping bedroom doors open, and using outdated baby monitors for audio or video surveillance.
 \end{itemize}
 \subsection{Empathy Map Visual Representation}
@@ -264,20 +264,20 @@ The architectural diagram in Figure \ref{fig:architecture} illustrates the baby 
 The use case diagram in Figure \ref{fig:usecase} illustrates interactions between the caregiver and the baby monitoring system, emphasizing key functionalities.
 
 \begin{itemize}
-  \item \textbf{Actors:} 
-  \begin{itemize}
-    \item \textbf{Primary Actor:} Parents or caregivers who rely on the mobile app for real-time data and notifications about the baby's status.
-    \item \textbf{Secondary Actors:} Medical professionals or support staff who may access the system during emergencies.
-  \end{itemize}
-  
+  \item \textbf{Actors:}
+        \begin{itemize}
+          \item \textbf{Primary Actor:} Parents or caregivers who rely on the mobile app for real-time data and notifications about the baby's status.
+          \item \textbf{Secondary Actors:} Medical professionals or support staff who may access the system during emergencies.
+        \end{itemize}
+
   \item \textbf{Use Cases:}
-  \begin{itemize}
-    \item \textbf{Monitoring Baby’s Health Metrics:} Displays real-time information (temperature, heart rate, humidity, SpO2) on the dashboard for continuous monitoring.
-    \item \textbf{Viewing Live Video Feeds:} Allows parents to access live video streams of the baby’s crib or play area for constant visual monitoring.
-    \item \textbf{Receiving Alerts for Abnormal Conditions:} Sends instant notifications for unsafe conditions (e.g., rolling over, abnormal heart rate, high temperature).
-    \item \textbf{Managing System Settings:} Enables configuration of thresholds, notification preferences, and video quality, as well as toggling between real-time and historical views.
-    \item \textbf{Exporting Historical Data:} Allows parents to view or export historical health data for further analysis or sharing with healthcare professionals.
-  \end{itemize}
+        \begin{itemize}
+          \item \textbf{Monitoring Baby’s Health Metrics:} Displays real-time information (temperature, heart rate, humidity, SpO2) on the dashboard for continuous monitoring.
+          \item \textbf{Viewing Live Video Feeds:} Allows parents to access live video streams of the baby’s crib or play area for constant visual monitoring.
+          \item \textbf{Receiving Alerts for Abnormal Conditions:} Sends instant notifications for unsafe conditions (e.g., rolling over, abnormal heart rate, high temperature).
+          \item \textbf{Managing System Settings:} Enables configuration of thresholds, notification preferences, and video quality, as well as toggling between real-time and historical views.
+          \item \textbf{Exporting Historical Data:} Allows parents to view or export historical health data for further analysis or sharing with healthcare professionals.
+        \end{itemize}
 \end{itemize}
 
 \begin{figure}[hbtp]
@@ -294,12 +294,12 @@ The sequence diagram in Figure \ref{fig:sequence} illustrates the interaction fl
   \item \textbf{User starts the mobile application:} The caregiver opens the app to monitor the baby’s health metrics.
   \item \textbf{User starts the live feed:} The user initiates the live feed, prompting the sensing system to collect data.
   \item \textbf{Sensing System collects data:} Various sensors monitor:
-  \begin{itemize}
-    \item \textbf{Heartbeat:} Records the baby’s heart rate.
-    \item \textbf{Humidity:} Measures room humidity to maintain safety.
-    \item \textbf{Temperature:} Monitors the baby's body and room temperature.
-  \item \textbf{SpO2:} A sensor checks the baby’s blood oxygen saturation (SpO2) to track oxygen levels.
-  \end{itemize}
+        \begin{itemize}
+          \item \textbf{Heartbeat:} Records the baby’s heart rate.
+          \item \textbf{Humidity:} Measures room humidity to maintain safety.
+          \item \textbf{Temperature:} Monitors the baby's body and room temperature.
+          \item \textbf{SpO2:} A sensor checks the baby’s blood oxygen saturation (SpO2) to track oxygen levels.
+        \end{itemize}
   \item \textbf{Data is stored in the Database:} Processed sensor data is sent to the cloud database for analysis and record-keeping.
   \item \textbf{Alert is triggered:} If any values exceed safety thresholds (e.g., abnormal heart rate, high temperature), an alert is generated.
   \item \textbf{Results are returned to the Mobile Application:} The app retrieves processed data from the database and displays it to the user.
@@ -335,16 +335,16 @@ The hardware components utilized in the system are as follows (Figure \ref{fig:h
 
 \begin{itemize}
   \item \textbf{Raspberry Pi (Model 3B or higher):} Serves as the main processing unit for handling video feeds and interfacing with IoT sensors. It is equipped with a compatible camera module for video input.
-  
+
   \item \textbf{Camera Module:} A Raspberry Pi camera module will be used for live monitoring, providing real-time video feeds of the baby’s environment.
 
   \item \textbf{Sensors:}
-  \begin{itemize}
-    \item \textbf{Temperature Sensor:} DHT22 sensor for accurate temperature measurements.
-    \item \textbf{Humidity Sensor:} Monitors ambient humidity levels to ensure a comfortable environment.
-    \item \textbf{Heart Rate Sensor:} MAX30100 sensor for measuring the baby's heart rate.
-    \item \textbf{SpO2 Sensor:} Monitors blood oxygen saturation levels to track the baby's health.
-  \end{itemize}
+        \begin{itemize}
+          \item \textbf{Temperature Sensor:} DHT22 sensor for accurate temperature measurements.
+          \item \textbf{Humidity Sensor:} Monitors ambient humidity levels to ensure a comfortable environment.
+          \item \textbf{Heart Rate Sensor:} MAX30100 sensor for measuring the baby's heart rate.
+          \item \textbf{SpO2 Sensor:} Monitors blood oxygen saturation levels to track the baby's health.
+        \end{itemize}
 \end{itemize}
 
 \begin{figure}[H]
@@ -383,7 +383,7 @@ The user interface flow for the application (Figure \ref{fig:uiflow}) is designe
   \item \textbf{Sign-Up Screen:} New users are taken to the Sign-Up screen after the onboarding. Here, they can create an account by providing a username, email, and password. A simple and user-friendly form guides the registration process. After filling in the details, they can tap Sign Up. If they already have an account, they are given the option to switch to the login screen.
   \item \textbf{Login Screen:} Existing users access the Login screen, where they can sign in by entering their email and password. There’s also a Forgot password option for those who might need help recovering their credentials. After entering valid credentials, the user taps Log In to access the app’s features.
   \item \textbf{Home Screen:} After logging in, the user is taken to the Home screen. This screen displays key baby health data, including real-time temperature tracking, humidity levels and SpO2 levels.
-  \item \textbf{Stats Screen:} The Stats screen gives a detailed view of the baby’s health trends over time. 
+  \item \textbf{Stats Screen:} The Stats screen gives a detailed view of the baby’s health trends over time.
   \item \textbf{Profile Screen:} The Profile screen offers personalized features for the user. They can call a doctor directly from the app if any issues are detected, access emergency contacts quickly for immediate assistance, modify details such as contact information, health preferences, and other personal settings to ensure the app is tailored to their needs.
 \end{enumerate}
 \begin{figure}[H]
