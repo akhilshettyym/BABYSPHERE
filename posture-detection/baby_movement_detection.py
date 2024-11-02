@@ -1,7 +1,7 @@
 import cv2
 import mediapipe as mp
 
-# Initialize Mediapipe pose class
+# Initialize Mediapipe pose and drawing classes
 mp_pose = mp.solutions.pose
 mp_drawing = mp.solutions.drawing_utils
 
@@ -17,6 +17,17 @@ def is_tummy_sleeping(pose_landmarks):
     
     # Check if the nose is closer to shoulder level, indicating face-down alignment
     if is_face_down and nose.y > left_shoulder.y and nose.y > right_shoulder.y:
+        return True
+    return False
+
+# Function to check if the baby is sleeping sideways based on eye proximity
+def is_side_sleeping(pose_landmarks):
+    left_eye = pose_landmarks.landmark[mp_pose.PoseLandmark.LEFT_EYE]
+    right_eye = pose_landmarks.landmark[mp_pose.PoseLandmark.RIGHT_EYE]
+    
+    # Check if the horizontal distance between eyes is very small, indicating a sideways roll
+    eye_distance = abs(left_eye.x - right_eye.x)
+    if eye_distance < 0.02:  # Adjust threshold based on testing
         return True
     return False
 
@@ -48,6 +59,11 @@ while True:
         # Check for unsafe sleeping patterns
         if is_tummy_sleeping(results.pose_landmarks):
             cv2.putText(frame, 'Alert: Baby is sleeping on tummy!', (50, 50), 
+                        cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2, cv2.LINE_AA)
+        
+        # Check for side-sleeping position
+        elif is_side_sleeping(results.pose_landmarks):
+            cv2.putText(frame, 'Alert: Baby is sleeping on side!', (50, 100), 
                         cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2, cv2.LINE_AA)
 
     # Show the video feed
