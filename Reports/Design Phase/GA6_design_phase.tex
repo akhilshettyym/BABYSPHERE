@@ -13,7 +13,6 @@
 \usepackage{color}
 
 \addbibresource{reference.bib}
-
 \geometry{
 a4paper,
 total={210mm,297mm},
@@ -31,7 +30,7 @@ bottom=0.65in,
     \centering
     \includegraphics[width=2.3cm,height=3cm]{./pic/vtu}
   \end{figure}
-
+ 
   \textbf{PROJECT WORK DESIGN PHASE REPORT}
   \par
   \textbf{ON}
@@ -153,15 +152,15 @@ bottom=0.65in,
 \fancyfoot[L]{Department of Computer Science and Engineering, SJEC, Mangaluru} % footer centered
 \fancyfoot[R]{\thepage} % page number on the right
 \renewcommand{\headrule}{%
-  {\color[RGB]{97, 35, 34}\hrule width\headwidth height 2pt} % Top line
+  {\color[RGB]{0,0,0}\hrule width\headwidth height 2pt} % Top line
   \vspace{0.07\baselineskip}% Add space between lines
-  {\color[RGB]{97, 35, 34}\hrule width\headwidth height 0.5pt} % Bottom line
+  {\color[RGB]{0,0,0}\hrule width\headwidth height 0.5pt} % Bottom line
 }
 \renewcommand{\footrule}{%
 
-  {\color[RGB]{97, 35, 34}\hrule width\headwidth height 0.5pt} % Top line
+  {\color[RGB]{0,0,0}\hrule width\headwidth height 0.5pt} % Top line
   \vspace{0.07\baselineskip}% Add space between lines
-  {\color[RGB]{97, 35, 34}\hrule width\headwidth height 2pt} % Bottom line
+  {\color[RGB]{0,0,0}\hrule width\headwidth height 2pt} % Bottom line
 }
 
 
@@ -193,6 +192,7 @@ With the advancement of technology, there has been a growing interest in creatin
 
 \section{Problem statement }
 To develop a cloud-based smart monitoring system that addresses the challenges parents face in continuously monitoring their infants, particularly when away from home. The system will use real-time data from sensors and video feeds to detect unsafe sleeping postures, abnormal body temperature, irregular heart rate, and environmental factors such as humidity. By using software-driven algorithms for analysis and alerting, the system will notify parents instantly of any concerns, thus preventing risks like Sudden Infant Death Syndrome (SIDS) and ensuring the infant's health and safety.
+\section{Objectives}
 The objectives of the proposed project work are:
 \begin{enumerate}
     \item To develop a mobile app that collects the body temperature of the baby and room temperature from the cloud, which is transmitted from the monitoring device.
@@ -765,10 +765,12 @@ This chapter outlines the system design for the Cloud-Based Smart Monitoring Sys
 \subsection{Architectural diagram}
 The architectural diagram shown in Figure \ref{fig:architecture} represents the high-level structure of the system, illustrating the relationships between various components. The key components of the architecture include IoT sensors for data collection, a Raspberry Pi for data processing, cloud infrastructure for storage, and a mobile application for data access and monitoring.
 \begin{itemize}
-  \item \textbf{IoT Sensors:} The system includes a range of sensors for monitoring the baby’s vital signs, room conditions, and movements. These sensors gather data in real-time, which is then transmitted to a local processing unit.
-  \item \textbf{Raspberry Pi:} This acts as the local hub, receiving data from the sensors and sending it to the cloud for long-term storage and further analysis. The Raspberry Pi plays a vital role in ensuring that the data is processed and transmitted securely.
-  \item \textbf{Cloud Infrastructure:} The cloud serves as a central repository where data is stored and analyzed. The system leverages cloud services for real-time data storage, processing, and push notifications. Firebase, AWS, or similar cloud platforms provide backend services for authentication, data storage, and notifications.
-  \item \textbf{Mobile Application:} This serves as the front-end interface for parents to access real-time data, receive alerts, and control system settings. It allows users to monitor the baby’s health metrics, such as body temperature, heart rate, room conditions, and live video feeds from anywhere with an internet connection.
+  \item \textbf{User (Parents):} The caregiver uses the mobile application to initiate data recordings for essential health parameters such as heart rate, temperature, SpO2 levels, and humidity. They receive notifications directly on their mobile device if any abnormal readings or health concerns are detected.
+  \item \textbf{Mobile User Interface:} This interface on the caregiver’s mobile device serves as the primary point of interaction, where requests for data are sent to the sensing system and health information is displayed for monitoring.
+  \item \textbf{Sensing System:} Comprised of sensors like the Humidity Sensor, Heart Rate Sensor, Temperature Sensor, and SpO2 Sensor, this system captures real-time health data from the baby and forwards it to the processor for further analysis.
+  \item \textbf{Processor (Raspberry Pi):} The Raspberry Pi processes the raw data received from the sensors, organizing it into a format suitable for storage and retrieval, and sends it to the Firebase database.
+  \item \textbf{Database (Firebase):} The database acts as a central storage location, holding all processed data. It enables the mobile application to retrieve information as needed and supports real-time monitoring by the machine learning model.
+  \item \textbf{Pre-trained ML Model:} This model monitors the data in Firebase for any patterns or values that indicate potential health issues. When abnormal readings are detected, it generates alerts that are immediately sent to the caregiver via the mobile app.
 \end{itemize}
 \begin{figure}[hbtp]
   \centering
