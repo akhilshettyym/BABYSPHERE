@@ -1,15 +1,21 @@
-import React from 'react';
+// Tabs.tsx
+import React, { useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import DummySensor from './DummySensor';
-import SensorGraph from './SensorGraph';
+import DummySensor from '../../components/DummySensor';
+import SensorDashboard from '../../components/SensorDashboard';
+import { SensorData } from '../../types/SensorData';
 
 const Tab = createBottomTabNavigator();
 
-const Tabs = () => {
+const Tabs: React.FC = () => {
+  const [sensorData, setSensorData] = useState<SensorData[]>([]);
+
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Sensor Data" component={DummySensor} />
-      <Tab.Screen name="Graph" component={SensorGraph} />
+     
+      <Tab.Screen name="Dashboard">
+        {() => <SensorDashboard data={sensorData} />}
+      </Tab.Screen>
     </Tab.Navigator>
   );
 };

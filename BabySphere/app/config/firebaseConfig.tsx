@@ -4,13 +4,13 @@ import { getStorage } from 'firebase/storage'; // Storage import if needed
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDuOGFzm5mhD_zFmv_SrTUB3Q3_bSYfqgQ",
-  authDomain: "babymonitor-1f698.firebaseapp.com",
-  projectId: "babymonitor-1f698",
-  storageBucket: "babymonitor-1f698.appspot.com",
-  messagingSenderId: "972580959918",
-  appId: "1:972580959918:web:d2150389843163f9971f3f",
-  measurementId: "G-08D1NRCS3C"
+  apiKey: "AIzaSyCV0bsuW8kRIyYe5cPXyxW_GTuL_aK4rXU",
+  authDomain: "babysphere-3d697.firebaseapp.com",
+  projectId: "babysphere-3d697",
+  storageBucket: "babysphere-3d697.firebasestorage.app",
+  messagingSenderId: "218539208823",
+  appId: "1:218539208823:web:fe80a4b4089dab57b89672",
+  measurementId: "G-FDDLLS5RVV"
 };
 
 // Initialize Firebase
