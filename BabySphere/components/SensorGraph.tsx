@@ -17,12 +17,10 @@ const SensorGraph: React.FC<SensorGraphProps> = ({ data, selectedSensor }) => {
   const [selectedTimestamp, setSelectedTimestamp] = useState<string | null>(null);
 
   // If no sensor is selected, return null (no graph is displayed)
-  if (!selectedSensor) return null;
+  if (!selectedSensor || data.length === 0) return null;
 
   // Function to filter and process the data for display in the graph
   const filterData = () => {
-    if (data.length === 0) return { labels: [], values: [] }; // Return empty data if no data exists
-    
     const labels: string[] = []; // Array to store formatted timestamps
     const values: number[] = []; // Array to store sensor values
     let lastValue = data[0][selectedSensor as keyof SensorData] as number; // Initialize with the first value
@@ -57,7 +55,7 @@ const SensorGraph: React.FC<SensorGraphProps> = ({ data, selectedSensor }) => {
   const { labels, values } = filterData();
 
   // Function to handle when a data point is clicked on the chart
-  const handleDataPointClick = (data: any) => {
+  const handleDataPointClick = (data: { index: number }) => {
     const clickedIndex = data.index; // Get the index of the clicked data point
     if (clickedIndex !== undefined) {
       setSelectedTimestamp(labels[clickedIndex]); // Set the selected timestamp to the clicked data point
