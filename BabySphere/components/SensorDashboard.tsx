@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Modal, StyleSheet } from 'react-native';
+import { View, Modal, StyleSheet ,Text,TouchableOpacity } from 'react-native';
 import SensorGraph from './SensorGraph';
 import { SensorData } from '../types/SensorData';
-import SensorDataFetcher from './SensorDataFetcher';  // Import the renamed component
+import SensorDataFetcher from './SensorDataFetcher'; // Import the renamed component
+import SensorDashboardUI from './SensorDashboardUI'; // Import UI component
 
 interface SensorDashboardProps {
   data: SensorData[]; // Data will be passed here
@@ -29,23 +30,13 @@ const SensorDashboard: React.FC<SensorDashboardProps> = ({ data }) => {
     <View style={styles.container}>
       <SensorDataFetcher setSensorData={setSensorData} />  {/* Now passing setSensorData */}
 
-      {/* Render sensor boxes */}
-      <TouchableOpacity style={styles.box} onPress={() => openModal('ambient_temperature')}>
-        <Text>Ambient Temp: {latestData.ambient_temperature?.toFixed(2) ?? 'N/A'}°C</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.box} onPress={() => openModal('object_temperature')}>
-        <Text>Object Temp: {latestData.object_temperature?.toFixed(2) ?? 'N/A'}°C</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.box} onPress={() => openModal('temperature')}>
-        <Text>Temperature: {latestData.temperature?.toFixed(2) ?? 'N/A'}°C</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.box} onPress={() => openModal('humidity')}>
-        <Text>Humidity: {latestData.humidity?.toFixed(2) ?? 'N/A'}%</Text>
-      </TouchableOpacity>
+      {/* Render the UI component with latest data and openModal function */}
+      <SensorDashboardUI latestData={latestData} openModal={openModal} />
+      <Text></Text>
 
       {/* Modal for showing Sensor Graph */}
       <Modal visible={modalVisible} transparent animationType="slide">
-        <View style={styles.modalContainer}>
+        <View style={styles.modalContainer}><Text></Text>
           <View style={styles.modalContent}>
             <SensorGraph data={sensorData} selectedSensor={selectedSensor} />  {/* Pass the renamed state variable */}
             <TouchableOpacity onPress={closeModal} style={styles.closeButton}>
@@ -63,14 +54,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  box: {
-    width: 150,
-    padding: 20,
-    margin: 10,
-    backgroundColor: '#f2f2f2',
-    alignItems: 'center',
-    borderRadius: 8,
   },
   modalContainer: {
     flex: 1,

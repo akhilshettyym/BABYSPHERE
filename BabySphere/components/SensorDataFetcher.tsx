@@ -46,8 +46,7 @@ const DummySensor: React.FC<DummySensorProps> = ({ setSensorData }) => {
 
   return (
     <View>
-      <Text>Latest Temperature: {temperature}°C</Text>
-      <Text>Latest Humidity: {humidity}%</Text>
+      <Text></Text>
     </View>
   );
 };
