@@ -61,6 +61,18 @@ const SensorGraph: React.FC<SensorGraphProps> = ({ data, selectedSensor }) => {
       setSelectedTimestamp(labels[clickedIndex]); // Set the selected timestamp to the clicked data point
     }
   };
+  const getLineColor = () => {
+    switch (selectedSensor) {
+      case 'temperature':
+        return '#6fa3ef'; // Soft Blue for temperature
+      case 'humidity':
+        return '#fce74c'; // Gentle Yellow for humidity
+      case 'heartRate':
+        return '#f8c8d1'; // Soft Pink for heart rate
+      default:
+        return '#a8e6a1'; // Pastel Green for general sensor data
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -68,23 +80,30 @@ const SensorGraph: React.FC<SensorGraphProps> = ({ data, selectedSensor }) => {
 
       {/* Line chart component displaying sensor data */}
       <LineChart
-        data={{
-          labels, // Labels (timestamps)
-          datasets: [{ data: values }], // Values (sensor readings)
-        }}
-        width={Dimensions.get('window').width * 0.9} // Chart width set to 90% of screen width
-        height={220} // Fixed height for the chart
-        chartConfig={{
-          backgroundColor: '#1E2923',
-          backgroundGradientFrom: '#08130D',
-          backgroundGradientTo: '#08130D',
-          decimalPlaces: 2, // Round to 2 decimal places
-          color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`, // Green color for the chart line
-          labelColor: () => '#fff', // White color for the labels for visibility
-        }}
-        style={styles.chart} // Styling for the chart container
-        onDataPointClick={handleDataPointClick} // Event listener for when a data point is clicked
-      />
+  data={{
+    labels, // Labels (timestamps)
+    datasets: [{ data: values }], // Values (sensor readings)
+  }}
+  width={Dimensions.get('window').width * 0.9} // Chart width set to 90% of screen width
+  height={220} // Fixed height for the chart
+  chartConfig={{
+    backgroundColor: '#f4f4f9', // Light Gray background
+    backgroundGradientFrom: '#ffffff', // White background
+    backgroundGradientTo: '#ffffff', // White background
+    decimalPlaces: 2, // Round to 2 decimal places
+    color: (opacity = 1) => getLineColor(), // Dynamic color based on selected sensor
+    labelColor: () => '#333333', // Dark Gray for labels
+    propsForDots: {
+      r: '6',
+      strokeWidth: '2',
+      stroke: '#ffffff',
+    },
+    strokeWidth: 2, // Adjust the stroke width of the lines
+    // No gridColor property. Use other properties like padding or borderWidth to style the graph
+  }}
+  style={styles.chart} // Styling for the chart container
+  onDataPointClick={handleDataPointClick} // Event listener for when a data point is clicked
+/>
 
       {/* If a timestamp is selected, display it below the chart */}
       {selectedTimestamp && (
