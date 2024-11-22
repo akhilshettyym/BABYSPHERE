@@ -34,13 +34,14 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'space-evenly',
+    justifyContent: 'space-between',
     padding: 10,
+    backgroundColor: '#FFFFFF', // White background
   },
   card: {
     width: '45%',
     padding: 20,
-    marginBottom: 15,
+    marginVertical: 10,
     borderRadius: 10,
     alignItems: 'center',
     shadowColor: '#000',
@@ -52,13 +53,13 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#000000',
   },
   value: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: '600',
     marginTop: 5,
-    color: '#555',
+    color: '#000000',
   },
 });
 

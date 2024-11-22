@@ -5,5 +5,6 @@ export interface SensorData {
     temperature: number;
     humidity: number;
     timestamp: Date;
+    [key: string]: any;
   }
 export default SensorData  
