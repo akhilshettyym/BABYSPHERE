@@ -50,6 +50,7 @@ const SensorGraph: React.FC<SensorGraphProps> = ({ data, selectedSensor }) => {
 
     return { labels, values }; // Return the filtered labels and values
   };
+  
 
   // Get the filtered labels and values based on the selected sensor
   const { labels, values } = filterData();

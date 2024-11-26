@@ -1,27 +1,25 @@
 import React, { useState } from 'react';
-import { View, Modal, StyleSheet ,Text,TouchableOpacity } from 'react-native';
-import SensorGraph from './SensorGraph';
-import SensorGraphWithTimeframe from './SensorGraphWithTimeframe'
+import { View, Modal, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import SensorDataFetcher from './SensorDataFetcher'; // Component to fetch sensor data
 import { SensorData } from '../types/SensorData';
-import SensorDataFetcher from './SensorDataFetcher'; // Import the renamed component
-import SensorDashboardUI from './SensorDashboardUI'; // Import UI component
+import SensorGraphWithTimeframe from './SensorGraphWithTimeframe'; // Component for graphs
+import SensorDashboardUI from './SensorDashboardUI';
 
-interface SensorDashboardProps {
-  data: SensorData[]; // Data will be passed here
-}
-
-const SensorDashboard: React.FC<SensorDashboardProps> = ({ data }) => {
+const SensorDashboard: React.FC<{ data: SensorData[] }> = ({ data }) => {
+  const [sensorData, setSensorData] = useState<SensorData[]>(data);
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedSensor, setSelectedSensor] = useState<string | null>(null);
-  const [sensorData, setSensorData] = useState<SensorData[]>([]); // Renamed the state variable
 
-  const latestData = sensorData[sensorData.length - 1] || {}; // Use the renamed state variable
+  // Get the latest data point
+  const latestData = sensorData[sensorData.length - 1] || {};
 
+  // Open modal with the selected sensor
   const openModal = (sensor: string) => {
     setSelectedSensor(sensor);
     setModalVisible(true);
   };
 
+  // Close modal
   const closeModal = () => {
     setModalVisible(false);
     setSelectedSensor(null);
@@ -29,18 +27,22 @@ const SensorDashboard: React.FC<SensorDashboardProps> = ({ data }) => {
 
   return (
     <View style={styles.container}>
-      <SensorDataFetcher setSensorData={setSensorData} />  {/* Now passing setSensorData */}
-
-      {/* Render the UI component with latest data and openModal function */}
+      {/* Fetch and update sensor data */}
+      <SensorDataFetcher setSensorData={setSensorData} />
       <SensorDashboardUI latestData={latestData} openModal={openModal} />
-      <Text></Text>
+      
 
-      {/* Modal for showing Sensor Graph */}
+      
+      {/* Modal for displaying sensor graphs */}
       <Modal visible={modalVisible} transparent animationType="slide">
-        <View style={styles.modalContainer}><Text></Text>
+        <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
-          <SensorGraphWithTimeframe data={sensorData} />
-          {/* Pass the renamed state variable */}
+            {/* Render graphs based on the selected sensor */}
+            {selectedSensor && (
+              <SensorGraphWithTimeframe data={sensorData} sensor={selectedSensor} />
+            )}
+
+            {/* Close button */}
             <TouchableOpacity onPress={closeModal} style={styles.closeButton}>
               <Text style={styles.closeText}>Close</Text>
             </TouchableOpacity>
@@ -54,18 +56,46 @@ const SensorDashboard: React.FC<SensorDashboardProps> = ({ data }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    backgroundColor: '#FFFFFF', // White background
+    padding: 10,
+    backgroundColor: '#f9f9f9',
+  },
+  dashboard: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+  },
+  box: {
+    width: '45%',
+    height: 100,
+    backgroundColor: '#ffffff',
+    borderRadius: 10,
+    padding: 10,
+    marginBottom: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    shadowOffset: { width: 0, height: 2 },
+  },
+  boxTitle: {
+    fontSize: 14,
+    color: '#555555',
+    marginBottom: 5,
+  },
+  boxValue: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#333333',
   },
   modalContainer: {
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
     justifyContent: 'center',
     alignItems: 'center',
   },
   modalContent: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#ffffff',
     padding: 20,
     borderRadius: 10,
     width: '90%',
@@ -82,4 +112,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
+
 export default SensorDashboard;

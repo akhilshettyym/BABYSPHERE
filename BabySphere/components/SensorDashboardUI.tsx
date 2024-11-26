@@ -7,24 +7,41 @@ interface SensorDashboardUIProps {
 }
 
 const SensorDashboardUI: React.FC<SensorDashboardUIProps> = ({ latestData, openModal }) => {
+  const formatValue = (value: number | null | undefined) => {
+    if (typeof value === 'number') {
+      return value.toFixed(2); // Format the number to 2 decimal places
+    }
+    return 'N/A'; // Return 'N/A' if the value is not a valid number
+  };
+
   return (
     <View style={styles.container}>
-      {/* Render sensor cards */}
+      {/* Render sensor cards based on the provided sensor data */}
       <TouchableOpacity style={[styles.card, { backgroundColor: '#FFCDD2' }]} onPress={() => openModal('ambient_temperature')}>
         <Text style={styles.label}>Ambient Temp</Text>
-        <Text style={styles.value}>{latestData.ambient_temperature?.toFixed(2) ?? 'N/A'}°C</Text>
+        <Text style={styles.value}>{formatValue(latestData.ambient_temperature)}°C</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={[styles.card, { backgroundColor: '#C8E6C9' }]} onPress={() => openModal('object_temperature')}>
-        <Text style={styles.label}>Object Temp</Text>
-        <Text style={styles.value}>{latestData.object_temperature?.toFixed(2) ?? 'N/A'}°C</Text>
+
+
+
+      <TouchableOpacity style={[styles.card, { backgroundColor: '#BBDEFB' }]} onPress={() => openModal('baby_temperature')}>
+        <Text style={styles.label}>Baby Temp</Text>
+        <Text style={styles.value}>{formatValue(latestData.baby_temperature)}°C</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={[styles.card, { backgroundColor: '#BBDEFB' }]} onPress={() => openModal('temperature')}>
-        <Text style={styles.label}>Temperature</Text>
-        <Text style={styles.value}>{latestData.temperature?.toFixed(2) ?? 'N/A'}°C</Text>
-      </TouchableOpacity>
+
       <TouchableOpacity style={[styles.card, { backgroundColor: '#FFF9C4' }]} onPress={() => openModal('humidity')}>
         <Text style={styles.label}>Humidity</Text>
-        <Text style={styles.value}>{latestData.humidity?.toFixed(2) ?? 'N/A'}%</Text>
+        <Text style={styles.value}>{formatValue(latestData.humidity)}%</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={[styles.card, { backgroundColor: '#FFEB3B' }]} onPress={() => openModal('spo2')}>
+        <Text style={styles.label}>SPO2</Text>
+        <Text style={styles.value}>{formatValue(latestData.spo2)}%</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={[styles.card, { backgroundColor: '#FFEB3B' }]} onPress={() => openModal('heart_rate')}>
+        <Text style={styles.label}>Heart Rate</Text>
+        <Text style={styles.value}>{formatValue(latestData.heart_rate)} bpm</Text>
       </TouchableOpacity>
     </View>
   );

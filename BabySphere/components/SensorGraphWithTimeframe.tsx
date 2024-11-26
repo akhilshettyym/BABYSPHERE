@@ -6,14 +6,20 @@ import { SensorData } from '../types/SensorData'; // Adjust the path as needed
 
 interface SensorGraphWithTimeframeProps {
   data: SensorData[];
+  sensor: string;
 }
 
-const SensorGraphWithTimeframe: React.FC<SensorGraphWithTimeframeProps> = ({ data }) => {
+const SensorGraphWithTimeframe: React.FC<SensorGraphWithTimeframeProps> = ({ data, sensor }) => {
   const [selectedTimeframe, setSelectedTimeframe] = useState('5s');
-  const [selectedParameter, setSelectedParameter] = useState('temperature');
+  const [selectedParameter, setSelectedParameter] = useState(sensor); // Set based on the passed sensor
   const [filteredData, setFilteredData] = useState<SensorData[]>([]);
 
-  // Effect to filter data based on the selected timeframe
+  // Update selected parameter whenever the sensor prop changes
+  useEffect(() => {
+    setSelectedParameter(sensor);
+  }, [sensor]);
+
+  // Filter data based on the selected timeframe
   useEffect(() => {
     if (data.length > 0) {
       const now = new Date();
@@ -75,22 +81,23 @@ const SensorGraphWithTimeframe: React.FC<SensorGraphWithTimeframeProps> = ({ dat
     return aggregated;
   };
 
-  // Calculates aggregate values for a batch of data
+  // Calculate aggregate values for a batch of data
   const calculateAggregate = (batch: SensorData[]): SensorData => {
     const avg = (key: keyof SensorData) =>
       batch.reduce((acc, curr) => acc + (curr[key] as number), 0) / batch.length;
 
     return {
       id: batch[0].id,
-      temperature: avg('temperature'),
-      humidity: avg('humidity'),
       ambient_temperature: avg('ambient_temperature'),
-      object_temperature: avg('object_temperature'),
-      timestamp: batch[0].timestamp, // Keep the first timestamp
+      baby_temperature: avg('baby_temperature'),
+      humidity: avg('humidity'),
+      spo2: avg('spo2'),
+      heartRate: avg('heartRate'),
+      timestamp: batch[0].timestamp,
     };
   };
 
-  // Formats timestamp to dd/mm/yyyy or dd/mm/yyyy hh:mm based on context
+  // Format timestamp to dd/mm/yyyy or dd/mm/yyyy hh:mm based on context
   const formatTimestamp = (date: Date, format: 'date' | 'datetime') => {
     const day = String(date.getDate()).padStart(2, '0');
     const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -107,14 +114,15 @@ const SensorGraphWithTimeframe: React.FC<SensorGraphWithTimeframeProps> = ({ dat
     Alert.alert(
       'Sensor Data Details',
       `Timestamp: ${formatTimestamp(dataPoint.timestamp, timestampFormat)}\n` +
-        `Temperature: ${dataPoint.temperature}°C\n` +
+        `Baby Temperature: ${dataPoint.baby_temperature}°C\n` +
         `Humidity: ${dataPoint.humidity}%\n` +
-        `Ambient Temp: ${dataPoint.ambient_temperature}°C\n` +
-        `Object Temp: ${dataPoint.object_temperature}°C`
+        `Ambient Temperature: ${dataPoint.ambient_temperature}°C\n` +
+        `SpO2: ${dataPoint.spo2}%\n` +
+        `Heart Rate: ${dataPoint.heartRate} bpm`
     );
   };
 
-  // Renders the Line Chart
+  // Render the Line Chart
   const renderChart = () => {
     if (filteredData.length === 0)
       return <Text>No data available for the selected timeframe.</Text>;
@@ -160,7 +168,7 @@ const SensorGraphWithTimeframe: React.FC<SensorGraphWithTimeframeProps> = ({ dat
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Sensor Data</Text>
+      <Text style={styles.title}>Sensor Data: {selectedParameter}</Text>
 
       {/* Parameter Selector */}
       <Picker
@@ -168,10 +176,11 @@ const SensorGraphWithTimeframe: React.FC<SensorGraphWithTimeframeProps> = ({ dat
         style={styles.picker}
         onValueChange={(value) => setSelectedParameter(value)}
       >
-        <Picker.Item label="Temperature" value="temperature" />
+        <Picker.Item label="Baby Temperature" value="baby_temperature" />
         <Picker.Item label="Humidity" value="humidity" />
         <Picker.Item label="Ambient Temperature" value="ambient_temperature" />
-        <Picker.Item label="Object Temperature" value="object_temperature" />
+        <Picker.Item label="SpO2" value="spo2" />
+        <Picker.Item label="Heart Rate" value="heartRate" />
       </Picker>
 
       {/* Timeframe Selector */}
