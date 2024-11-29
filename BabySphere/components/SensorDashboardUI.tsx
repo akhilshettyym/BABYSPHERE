@@ -19,72 +19,98 @@ const SensorDashboardUI: React.FC<SensorDashboardUIProps> = ({ latestData, openM
     }
     return 'N/A'; // Default case
   };
-  
-  
 
   return (
-    <View style={styles.container}>
-      {/* Render sensor cards based on the provided sensor data */}
-      <TouchableOpacity style={[styles.card, { backgroundColor: '#FFCDD2' }]} onPress={() => openModal('ambient_temperature')}>
-        <Text style={styles.label}>Ambient Temp</Text>
-        <Text style={styles.value}>{formatValue(latestData.ambient_temperature)}°C</Text>
-      </TouchableOpacity>
+    <View style={styles.mainContainer}>
+      <Text style={styles.heading}>Sensor Values</Text>
+      <View style={styles.container}>
+        <View style={styles.item}>
+          <Text style={styles.label}>Heart Rate</Text>
+          <Text style={styles.value}>{formatValue(latestData.heart_rate)} bpm</Text>
+        </View>
+        <View style={styles.item}>
+          <Text style={styles.label}>Baby Temp</Text>
+          <Text style={styles.value}>{formatValue(latestData.baby_temperature)}°C</Text>
+        </View>
+        <View style={styles.item}>
+          <Text style={styles.label}>Humidity</Text>
+          <Text style={styles.value}>{formatValue(latestData.humidity)}%</Text>
+        </View>
+        <View style={styles.item}>
+          <Text style={styles.label}>SPO2</Text>
+          <Text style={styles.value}>{formatValue(latestData.spo2)}%</Text>
+        </View>
+        <View style={styles.item}>
+          <Text style={styles.label}>Ambient Temp</Text>
+          <Text style={styles.value}>{formatValue(latestData.ambient_temperature)}°C</Text>
+        </View>
+      </View>
 
-
-
-      <TouchableOpacity style={[styles.card, { backgroundColor: '#BBDEFB' }]} onPress={() => openModal('baby_temperature')}>
-        <Text style={styles.label}>Baby Temp</Text>
-        <Text style={styles.value}>{formatValue(latestData.baby_temperature)}°C</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={[styles.card, { backgroundColor: '#FFF9C4' }]} onPress={() => openModal('humidity')}>
-        <Text style={styles.label}>Humidity</Text>
-        <Text style={styles.value}>{formatValue(latestData.humidity)}%</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={[styles.card, { backgroundColor: '#FFEB3B' }]} onPress={() => openModal('spo2')}>
-        <Text style={styles.label}>SPO2</Text>
-        <Text style={styles.value}>{formatValue(latestData.spo2)}%</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={[styles.card, { backgroundColor: '#FFEB3B' }]} onPress={() => openModal('heart_rate')}>
-        <Text style={styles.label}>Heart Rate</Text>
-        <Text style={styles.value}>{formatValue(latestData.heart_rate)} bpm</Text>
+      {/* Button to view graphs */}
+      <TouchableOpacity style={styles.button} onPress={() => openModal('graph')}>
+        <Text style={styles.buttonText}>View Graphs</Text>
       </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
+  mainContainer: {
     padding: 10,
     backgroundColor: '#FFFFFF', // White background
+    flex: 1,
   },
-  card: {
-    width: '45%',
-    padding: 20,
-    marginVertical: 10,
-    borderRadius: 10,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 5,
-    elevation: 3,
+  heading: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#A3D8F4', // Heading color
+    textAlign: 'center',
+    marginBottom: 20,
+  },
+  container: {
+    flexDirection: 'row', // Align items in a row
+    flexWrap: 'wrap', // Wrap to the next line if needed
+    justifyContent: 'space-between', // Space between each value
+  },
+  item: {
+    width: '45%', // Adjust width to fit 2 items in a row
+    alignItems: 'center', // Center align text
+    marginBottom: 15, // Space between rows
   },
   label: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#000000',
+    fontSize: 12,
+    fontWeight: '500',
+    color: '#4A4A4A', // Dark gray color for label
+    marginBottom: 5,
+    textAlign: 'center',
   },
   value: {
-    fontSize: 18,
-    fontWeight: '600',
-    marginTop: 5,
-    color: '#000000',
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#B4E3A7', // Green color for the value
+  },
+  graphPlaceholder: {
+    height: 200,
+    backgroundColor: '#E0E0E0', // Light gray placeholder background
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginVertical: 20,
+  },
+  graphText: {
+    color: '#4A4A4A',
+    fontSize: 16,
+    fontStyle: 'italic',
+  },
+  button: {
+    backgroundColor: '#FDC1C5', // Button color
+    padding: 15,
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  buttonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#FFFFFF', // White text
   },
 });
 
