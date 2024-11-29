@@ -15,9 +15,13 @@ const SensorGraphWithTimeframe: React.FC<SensorGraphWithTimeframeProps> = ({ dat
   const [filteredData, setFilteredData] = useState<SensorData[]>([]);
 
   // Update selected parameter whenever the sensor prop changes
-  useEffect(() => {
-    setSelectedParameter(sensor);
-  }, [sensor]);
+// Update selected parameter whenever the sensor prop changes
+useEffect(() => {
+  if (sensor) {
+    setSelectedParameter(sensor); // Sync selectedParameter with sensor
+  }
+}, [sensor]);
+
 
   // Filter data based on the selected timeframe
   useEffect(() => {
@@ -172,16 +176,17 @@ const SensorGraphWithTimeframe: React.FC<SensorGraphWithTimeframeProps> = ({ dat
 
       {/* Parameter Selector */}
       <Picker
-        selectedValue={selectedParameter}
-        style={styles.picker}
-        onValueChange={(value) => setSelectedParameter(value)}
-      >
-        <Picker.Item label="Baby Temperature" value="baby_temperature" />
-        <Picker.Item label="Humidity" value="humidity" />
-        <Picker.Item label="Ambient Temperature" value="ambient_temperature" />
-        <Picker.Item label="SpO2" value="spo2" />
-        <Picker.Item label="Heart Rate" value="heartRate" />
-      </Picker>
+  selectedValue={selectedParameter}
+  style={styles.picker}
+  onValueChange={(value) => setSelectedParameter(value)} // Update the parameter on selection
+>
+  <Picker.Item label="Baby Temperature" value="baby_temperature" />
+  <Picker.Item label="Humidity" value="humidity" />
+  <Picker.Item label="Ambient Temperature" value="ambient_temperature" />
+  <Picker.Item label="SpO2" value="spo2" />
+  <Picker.Item label="Heart Rate" value="heartRate" />
+</Picker>
+
 
       {/* Timeframe Selector */}
       <Picker
