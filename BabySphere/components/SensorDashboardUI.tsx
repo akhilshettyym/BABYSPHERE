@@ -7,12 +7,20 @@ interface SensorDashboardUIProps {
 }
 
 const SensorDashboardUI: React.FC<SensorDashboardUIProps> = ({ latestData, openModal }) => {
-  const formatValue = (value: number | null | undefined) => {
-    if (typeof value === 'number') {
-      return value.toFixed(2); // Format the number to 2 decimal places
+  const formatValue = (value: number | string | null | undefined) => {
+    if (value === null || value === undefined || value === '') {
+      return 'N/A';
     }
-    return 'N/A'; // Return 'N/A' if the value is not a valid number
+    if (typeof value === 'number') {
+      return value.toFixed(2);
+    }
+    if (!isNaN(Number(value))) {
+      return Number(value).toFixed(2); // Convert strings to numbers and format
+    }
+    return 'N/A'; // Default case
   };
+  
+  
 
   return (
     <View style={styles.container}>

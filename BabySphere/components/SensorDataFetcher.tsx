@@ -17,14 +17,16 @@ const SensorDataFetcher: React.FC<SensorDataFetcherProps> = ({ setSensorData }) 
         const data = doc.data();
         return {
           id: doc.id,
-          ambient_temperature: data.ambient_temperature || '0',
-          baby_temperature: data.object_temperature || '0',
-          humidity: data.humidity || '0',
-          spo2: data.spo2 || '0',
-          heartRate: data.heartRate || '0',
+          ambient_temperature: parseFloat(data.ambient_temperature) || 0,
+          baby_temperature: parseFloat(data.object_temperature) || 0,
+          humidity: parseFloat(data.humidity) || 0,
+          spo2: parseFloat(data.spo2) || 0,
+          heartRate: parseFloat(data.heartRate || data.heart_rate) || 0,
           timestamp: data.timestamp?.toDate() || new Date(),
         };
+        
       });
+      console.log('Fetched sensor data:', allData);
 
       setSensorData(allData);
     });
