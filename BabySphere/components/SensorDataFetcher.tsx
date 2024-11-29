@@ -26,7 +26,7 @@ const SensorDataFetcher: React.FC<SensorDataFetcherProps> = ({ setSensorData }) 
         };
         
       });
-      console.log('Fetched sensor data:', allData);
+      
 
       setSensorData(allData);
     });
