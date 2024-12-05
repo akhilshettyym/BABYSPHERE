@@ -1,21 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import NewHeader from '../../components/NewHeader';
 import NewSensorDashboard from '../../components/NewSensorDashboard';
-import SensorDataFetcher from '../../components/SensorDataFetcher';
+import { db } from '../../config/firebaseConfig';
+import { collection, onSnapshot, query, orderBy, limit } from 'firebase/firestore';
 import { SensorData } from '../../types/SensorData';
 
 const HomePage: React.FC = () => {
   const [sensorData, setSensorData] = useState<SensorData[]>([]);
+
+  useEffect(() => {
+    const q = query(
+      collection(db, 'sensor_data'),
+      orderBy('timestamp', 'desc'),
+      limit(10)
+    );
+
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const newData = snapshot.docs.map((doc) => {
+        const data = doc.data();
+        return {
+          id: doc.id,
+          ambient_temperature: parseFloat(data.ambient_temperature) || 0,
+          baby_temperature: parseFloat(data.object_temperature) || 0,
+          humidity: parseFloat(data.humidity) || 0,
+          spo2: parseFloat(data.spo2) || 0,
+          heartRate: parseFloat(data.heartRate || data.heart_rate) || 0,
+          timestamp: data.timestamp?.toDate() || new Date(),
+        };
+      });
+      setSensorData(newData.reverse());
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>
       <NewHeader />
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.content}>
-          <SensorDataFetcher setSensorData={setSensorData} />
           <NewSensorDashboard data={sensorData} />
           <TouchableOpacity style={styles.alertButton}>
             <Ionicons name="notifications" size={24} color="#8AA9B8" />
