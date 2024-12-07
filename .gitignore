@@ -24,4 +24,24 @@ Reports/Design Phase/GA6_design_phase.toc
 Reports/Design Phase/GA6_design_phase.run.xml
 Reports/Design Phase/GA6_design_phase.synctex.gz
 
+
+Reports/IASF_2025/iasf_report.aux
+Reports/IASF_2025/iasf_report.fdb_latexmk
+Reports/IASF_2025/iasf_report.fls
+Reports/IASF_2025/iasf_report.log
+Reports/IASF_2025/iasf_report.bbl
+Reports/IASF_2025/iasf_report.bbl-SAVE-ERROR
+Reports/IASF_2025/iasf_report.bcf
+Reports/IASF_2025/iasf_report.blg
+Reports/IASF_2025/iasf_report.lof
+Reports/IASF_2025/iasf_report.lot
+Reports/IASF_2025/iasf_report.toc
+Reports/IASF_2025/iasf_report.run.xml
+Reports/IASF_2025/iasf_report.synctex.gz
+
+
 frontend/BABYSPHERE/node_modules
+node_modules
+BabySphere/node_modules
+
+.expo/
