@@ -1,11 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, StyleSheet, Text, Alert } from "react-native";
 import { Calendar } from "react-native-calendars";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const CalendarScreen = () => {
-  const [markedDates, setMarkedDates] = useState({
-    "2024-12-10": { marked: true, dotColor: "blue", activeOpacity: 0.5 },
+  const getToday = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
+
+  const [markedDates, setMarkedDates] = useState(() => {
+    const today = getToday();
+    return {
+      [today]: {
+        selected: true,
+        selectedColor: "#FDC1C5", // Highlight color for today
+      },
+    };
   });
 
   const handleDayPress = (day) => {
@@ -14,7 +28,7 @@ const CalendarScreen = () => {
     // Update markedDates
     setMarkedDates({
       ...markedDates,
-      [selectedDate]: { marked: true, dotColor: "green" },
+      [selectedDate]: { selected: true, selectedColor: "green" },
     });
 
     Alert.alert("Date Selected", `You marked ${selectedDate} on the calendar.`);
