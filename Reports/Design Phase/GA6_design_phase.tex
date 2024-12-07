@@ -13,7 +13,6 @@
 \usepackage{color}
 
 \addbibresource{reference.bib}
-
 \geometry{
 a4paper,
 total={210mm,297mm},
@@ -31,7 +30,7 @@ bottom=0.65in,
     \centering
     \includegraphics[width=2.3cm,height=3cm]{./pic/vtu}
   \end{figure}
-
+ 
   \textbf{PROJECT WORK DESIGN PHASE REPORT}
   \par
   \textbf{ON}
@@ -94,23 +93,23 @@ bottom=0.65in,
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% Acknowledgement %%%%%%%%%%%%%%%
 
-\pagestyle{empty}
-\setstretch{1.8}
-\pagenumbering{roman}
-\chapter*{\centering ACKNOWLEDGEMENT}
+% \pagestyle{empty}
+% \setstretch{1.8}
+% \pagenumbering{roman}
+% \chapter*{\centering ACKNOWLEDGEMENT}
 
 
-The joy and satisfaction that accompany the partial completion of any task would be incomplete without thanking those who made it possible. We consider ourselves proud to be a part of St Joseph Engineering College, the institution which moulded us in all our endeavours. We express our sincere gratitude to the management for providing state-of-the-art facilities and support throughout our project.
-\vspace{10pt}\\
-We owe our profound gratitude to our project guide \textbf{Dr Sridevi Saralaya}, Professor and Head of the Department, Computer Science and Engineering, St Joseph Engineering College, for her valuable guidance and support during the entire period of our project.
-\vspace{10pt}\\
-We are indebted to our respected Principal, \textbf{Dr Rio D'Souza} for his valuable guidance and encouragement throughout the project.
-\vspace{10pt}\\
-We express our sincere gratitude to \textbf{Rev Fr Wilfred Prakash D'Souza}, Director, and \textbf{Rev Fr Kenneth Rayner Crasta}, Assistant Director, for their unwavering support and provision of facilities throughout the development stages of our project.
-\vspace{10pt}\\
-We wish to express our sincere gratitude to all the Faculty and Technical staff of the Department and friends and family for their valuable help and support during the period of development of our project .\\
+% The joy and satisfaction that accompany the partial completion of any task would be incomplete without thanking those who made it possible. We consider ourselves proud to be a part of St Joseph Engineering College, the institution which moulded us in all our endeavours. We express our sincere gratitude to the management for providing state-of-the-art facilities and support throughout our project.
+% \vspace{10pt}\\
+% We owe our profound gratitude to our project guide \textbf{Dr Sridevi Saralaya}, Professor and Head of the Department, Computer Science and Engineering, St Joseph Engineering College, for her valuable guidance and support during the entire period of our project.
+% \vspace{10pt}\\
+% We are indebted to our respected Principal, \textbf{Dr Rio D'Souza} for his valuable guidance and encouragement throughout the project.
+% \vspace{10pt}\\
+% We express our sincere gratitude to \textbf{Rev Fr Wilfred Prakash D'Souza}, Director, and \textbf{Rev Fr Kenneth Rayner Crasta}, Assistant Director, for their unwavering support and provision of facilities throughout the development stages of our project.
+% \vspace{10pt}\\
+% We wish to express our sincere gratitude to all the Faculty and Technical staff of the Department and friends and family for their valuable help and support during the period of development of our project .\\
 
-\newpage
+% \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% Abstract %%%%%%%%%%%%%%%
 \pagestyle{empty}
@@ -119,10 +118,17 @@ We wish to express our sincere gratitude to all the Faculty and Technical staff 
 \chapter*{\centering ABSTRACT}
 
 \begin{justify}
-  Cloud-Based Smart Monitoring System for Baby Health and Safety is a software-driven solution designed to provide real-time monitoring and alerts for parents, focusing on the baby’s health and safety. The system collects data from various hardware sensors, including body temperature, room humidity, and heart rate, along with video feeds for continuous observation of the baby's movements. The software component plays a critical role by processing this data to detect abnormalities such as fever, unsafe sleeping postures (like tummy sleeping), and irregular movements, using cloud-based services and computer vision algorithms.
 
-  \noindent A significant feature of the system is the streaming of the Raspberry Pi-based camera video data to the cloud, where the software analyzes the baby’s posture to help prevent risks such as Sudden Infant Death Syndrome (SIDS). The software also carries out detection of crying sounds, which triggers instant notifications to parents via the mobile application. The app also monitors environmental factors such as humidity and sends real-time alerts when unsafe conditions or health risks are detected. This phase of the project emphasizes the integration of cloud services, advanced data processing algorithms, and user-friendly notifications, ensuring robust, real-time monitoring with a focus on the software's efficiency.
-\end{justify}
+  The need for reliable infant monitoring systems has become increasingly essential due to the high demands of modern parenting and the need to ensure infant safety. This project presents a ``Cloud-Based Smart Monitoring System for Baby Health and Safety," designed to monitor various health metrics of infants, such as body temperature, heart rate, room temperature, humidity, and posture, offering parents peace of mind through real-time notifications and alerts.
+
+\noindent Research and development in the field of non-contact health monitoring have progressed significantly, utilizing technologies like remote photoplethysmography and computer vision for health parameter detection. However, most current systems either lack comprehensive monitoring capabilities or depend on contact-based sensors that may disrupt infant comfort. This project addresses these limitations by proposing a comprehensive, non-contact monitoring solution that integrates contactless sensors and machine learning techniques to monitor critical parameters. Our goal is to deliver a holistic, efficient, and user-friendly system for infant health and safety monitoring.
+
+\noindent The research methodology encompasses the development of a mobile application that interacts with a cloud-based system and sensors, designed to monitor and analyze infant health data in real-time. The novel solution incorporates computer vision algorithms to track baby posture and detect when the infant is sleeping on its tummy, potentially preventing sudden infant death syndrome (SIDS). Experimental results demonstrate the reliability and accuracy of the system in various environmental conditions, providing immediate alerts during abnormalities.
+
+\noindent This work demonstrates significant benefits by enhancing infant safety, reducing the need for continuous parental monitoring, and offering peace of mind. The system's cloud-based architecture enables remote monitoring, which saves on resources and energy.
+
+\noindent Future work can explore extending the system’s capabilities to detect additional health parameters and integrate AI for predictive health analysis, making it an even more comprehensive monitoring tool.
+  \end{justify}
 
 \setstretch{1.2}
 \renewcommand{\contentsname}{\centering Table of Contents}
@@ -146,15 +152,15 @@ We wish to express our sincere gratitude to all the Faculty and Technical staff 
 \fancyfoot[L]{Department of Computer Science and Engineering, SJEC, Mangaluru} % footer centered
 \fancyfoot[R]{\thepage} % page number on the right
 \renewcommand{\headrule}{%
-  {\color[RGB]{97, 35, 34}\hrule width\headwidth height 2pt} % Top line
+  {\color[RGB]{0,0,0}\hrule width\headwidth height 2pt} % Top line
   \vspace{0.07\baselineskip}% Add space between lines
-  {\color[RGB]{97, 35, 34}\hrule width\headwidth height 0.5pt} % Bottom line
+  {\color[RGB]{0,0,0}\hrule width\headwidth height 0.5pt} % Bottom line
 }
 \renewcommand{\footrule}{%
 
-  {\color[RGB]{97, 35, 34}\hrule width\headwidth height 0.5pt} % Top line
+  {\color[RGB]{0,0,0}\hrule width\headwidth height 0.5pt} % Top line
   \vspace{0.07\baselineskip}% Add space between lines
-  {\color[RGB]{97, 35, 34}\hrule width\headwidth height 2pt} % Bottom line
+  {\color[RGB]{0,0,0}\hrule width\headwidth height 2pt} % Bottom line
 }
 
 
@@ -186,7 +192,14 @@ With the advancement of technology, there has been a growing interest in creatin
 
 \section{Problem statement }
 To develop a cloud-based smart monitoring system that addresses the challenges parents face in continuously monitoring their infants, particularly when away from home. The system will use real-time data from sensors and video feeds to detect unsafe sleeping postures, abnormal body temperature, irregular heart rate, and environmental factors such as humidity. By using software-driven algorithms for analysis and alerting, the system will notify parents instantly of any concerns, thus preventing risks like Sudden Infant Death Syndrome (SIDS) and ensuring the infant's health and safety.
-
+\section{Objectives}
+The objectives of the proposed project work are:
+\begin{enumerate}
+    \item To develop a mobile app that collects the body temperature of the baby and room temperature from the cloud, which is transmitted from the monitoring device.
+    \item To integrate computer vision technology to detect unsafe sleeping positions of the baby.
+    \item To create a user-friendly interface that allows parents to easily monitor real-time temperature readings.
+    \item To deliver actionable notifications through app alerts when abnormal readings or unsafe sleeping position is detected.
+\end{enumerate}
 \section{Scope and Importance of the Project}
 The Cloud-Based Smart Monitoring System for Baby Health and Safety aims to provide a comprehensive, software-driven solution for real-time monitoring of a baby’s health, environment, and movements. The project’s scope includes the development of advanced algorithms to detect unsafe sleeping postures using computer vision, as well as the integration of sensor data from temperature, humidity, and heart rate monitors. The software will process this data in real-time through a cloud infrastructure, delivering instant alerts to parents via a mobile application whenever abnormalities are detected, such as a sudden change in the baby’s sleeping position, body temperature, or crying. This monitoring will be continuous and remote, ensuring that parents receive timely notifications even when they are away from home.
 
@@ -752,10 +765,12 @@ This chapter outlines the system design for the Cloud-Based Smart Monitoring Sys
 \subsection{Architectural diagram}
 The architectural diagram shown in Figure \ref{fig:architecture} represents the high-level structure of the system, illustrating the relationships between various components. The key components of the architecture include IoT sensors for data collection, a Raspberry Pi for data processing, cloud infrastructure for storage, and a mobile application for data access and monitoring.
 \begin{itemize}
-  \item \textbf{IoT Sensors:} The system includes a range of sensors for monitoring the baby’s vital signs, room conditions, and movements. These sensors gather data in real-time, which is then transmitted to a local processing unit.
-  \item \textbf{Raspberry Pi:} This acts as the local hub, receiving data from the sensors and sending it to the cloud for long-term storage and further analysis. The Raspberry Pi plays a vital role in ensuring that the data is processed and transmitted securely.
-  \item \textbf{Cloud Infrastructure:} The cloud serves as a central repository where data is stored and analyzed. The system leverages cloud services for real-time data storage, processing, and push notifications. Firebase, AWS, or similar cloud platforms provide backend services for authentication, data storage, and notifications.
-  \item \textbf{Mobile Application:} This serves as the front-end interface for parents to access real-time data, receive alerts, and control system settings. It allows users to monitor the baby’s health metrics, such as body temperature, heart rate, room conditions, and live video feeds from anywhere with an internet connection.
+  \item \textbf{User (Parents):} The caregiver uses the mobile application to initiate data recordings for essential health parameters such as heart rate, temperature, SpO2 levels, and humidity. They receive notifications directly on their mobile device if any abnormal readings or health concerns are detected.
+  \item \textbf{Mobile User Interface:} This interface on the caregiver’s mobile device serves as the primary point of interaction, where requests for data are sent to the sensing system and health information is displayed for monitoring.
+  \item \textbf{Sensing System:} Comprised of sensors like the Humidity Sensor, Heart Rate Sensor, Temperature Sensor, and SpO2 Sensor, this system captures real-time health data from the baby and forwards it to the processor for further analysis.
+  \item \textbf{Processor (Raspberry Pi):} The Raspberry Pi processes the raw data received from the sensors, organizing it into a format suitable for storage and retrieval, and sends it to the Firebase database.
+  \item \textbf{Database (Firebase):} The database acts as a central storage location, holding all processed data. It enables the mobile application to retrieve information as needed and supports real-time monitoring by the machine learning model.
+  \item \textbf{Pre-trained ML Model:} This model monitors the data in Firebase for any patterns or values that indicate potential health issues. When abnormal readings are detected, it generates alerts that are immediately sent to the caregiver via the mobile app.
 \end{itemize}
 \begin{figure}[hbtp]
   \centering
