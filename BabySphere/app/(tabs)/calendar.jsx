@@ -1,37 +1,70 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Text, Alert } from "react-native";
+import { View, StyleSheet, Text, Button, Alert } from "react-native";
 import { Calendar } from "react-native-calendars";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { db, auth } from "../../config/firebaseConfig"; // Adjust path
+import { onAuthStateChanged } from "firebase/auth";
+import { collection, query, where, onSnapshot, addDoc } from "firebase/firestore";
 
 const CalendarScreen = () => {
-  const getToday = () => {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, "0");
-    const day = String(today.getDate()).padStart(2, "0");
-    return `${year}-${month}-${day}`;
+  const [markedDates, setMarkedDates] = useState({});
+  const [currentUser, setCurrentUser] = useState(null);
+
+  // Fetch current user
+  useEffect(() => {
+    // Alert.alert("Alert Title", "This is the message.");
+
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setCurrentUser(user);
+        fetchUserEvents(user.uid);
+      } else {
+        setCurrentUser(null);
+      }
+    });
+
+    return unsubscribe;
+  }, []);
+
+  // Fetch events for the logged-in user
+  const fetchUserEvents = async (userId) => {
+    const eventsRef = collection(db, "events");
+    const q = query(eventsRef, where("userId", "==", userId));
+
+    onSnapshot(q, (snapshot) => {
+      const events = {};
+      snapshot.forEach((doc) => {
+        const data = doc.data();
+        events[data.date] = { marked: true, dotColor: "blue" };
+      });
+      setMarkedDates(events);
+    });
   };
 
-  const [markedDates, setMarkedDates] = useState(() => {
-    const today = getToday();
-    return {
-      [today]: {
-        selected: true,
-        selectedColor: "#FDC1C5", // Highlight color for today
-      },
-    };
-  });
+  // Add a new event to Firestore
+  const addEvent = async (date) => {
+    if (!currentUser) {
+      Alert.alert("Error", "You must be logged in to add events.");
+      return;
+    }
+
+    try {
+      const eventsRef = collection(db, "events");
+      await addDoc(eventsRef, {
+        userId: currentUser.uid,
+        date,
+        title: "New Event", // Customize as needed
+      });
+      Alert.alert("Event Added", `Event added for ${date}`);
+    } catch (error) {
+      console.error("Error adding event: ", error);
+      Alert.alert("Error", "Could not add event.");
+    }
+  };
 
   const handleDayPress = (day) => {
     const selectedDate = day.dateString;
-
-    // Update markedDates
-    setMarkedDates({
-      ...markedDates,
-      [selectedDate]: { selected: true, selectedColor: "green" },
-    });
-
-    Alert.alert("Date Selected", `You marked ${selectedDate} on the calendar.`);
+    addEvent(selectedDate);
   };
 
   return (
