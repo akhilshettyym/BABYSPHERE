@@ -1,8 +1,8 @@
 import { StatusBar } from "expo-status-bar";
 import { router } from "expo-router";
-import { View, Text,  ScrollView, StyleSheet, Dimensions } from "react-native";
+import { View, Text, ScrollView, StyleSheet, Dimensions } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-
+import { Link } from "expo-router";
 import { images } from "../../constants/images";
 import CustomButton from "../../components/CustomButton";
 
@@ -14,9 +14,8 @@ const Welcome = () => {
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.innerContainer}>
           {/* Logo */}
-          
+
           {/* Illustration */}
-          
 
           {/* Main Heading */}
           <View style={styles.headingContainer}>
@@ -25,12 +24,12 @@ const Welcome = () => {
               Possibilities with{" "}
               <Text style={styles.highlight}>BABYSPHERE</Text>
             </Text>
-            
           </View>
 
           {/* Subtitle */}
           <Text style={styles.subtitle}>
-            Peace of Mind for Every Parent: Baby Health in the Palm of Your Hand.
+            Peace of Mind for Every Parent: Baby Health in the Palm of Your
+            Hand.
           </Text>
 
           {/* Continue Button */}
@@ -40,6 +39,12 @@ const Welcome = () => {
             containerStyles={styles.button}
           />
         </View>
+        {/* <Link
+          href="/calendar"
+          style={{ marginTop: 20, color: "#FDC1C5", fontSize: 16 }}
+        >
+          Open Calendar
+        </Link> */}
       </ScrollView>
 
       <StatusBar backgroundColor="#161622" style="light" />
@@ -61,7 +66,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 16,
   },
-  
+
   illustration: {
     width: "100%",
     maxWidth: 380,
