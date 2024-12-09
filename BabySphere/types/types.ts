@@ -6,15 +6,16 @@ export interface User {
   }
   
   export interface Event {
-    id: string;
-    title: string;
-    description: string;
-    date: string;
-    time: string;
-    priority: 'low' | 'medium' | 'high';
-    userId: string;
-  }
-  
+  id: string;
+  title: string;
+  description: string;
+  date: string;
+  time: string;
+  notificationTime: string;
+  priority: 'low' | 'medium' | 'high';
+  userId: string;
+  createdAt: string;
+}
   
   
   // Props for components
@@ -35,9 +36,9 @@ export interface User {
   }
   
   export interface AddEventButtonProps {
-    onAddEvent: (event: Omit<Event, 'id'>) => void;
-    selectedDate: string;
-  }
+  onAddEvent: (event: Omit<Event, 'id' | 'createdAt'>) => void;
+  selectedDate: string;
+}
   
   // State types
   export interface AppState {
@@ -54,5 +55,4 @@ export interface User {
     | { type: 'UPDATE_EVENT'; payload: Event }
     | { type: 'DELETE_EVENT'; payload: string }
     | { type: 'SET_SELECTED_DATE'; payload: string };
-  
-  
+

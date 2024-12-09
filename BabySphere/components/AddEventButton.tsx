@@ -9,7 +9,9 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [time, setTime] = useState(new Date());
+  const [notificationTime, setNotificationTime] = useState(new Date());
   const [showTimePicker, setShowTimePicker] = useState(false);
+  const [showNotificationTimePicker, setShowNotificationTimePicker] = useState(false);
   const [priority, setPriority] = useState<Event['priority']>('low');
 
   const handleAddEvent = () => {
@@ -17,6 +19,7 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
       title,
       description,
       time: time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      notificationTime: notificationTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       date: selectedDate,
       priority,
       userId: 'tempUserId', // This should be replaced with the actual user ID
@@ -29,6 +32,7 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
     setTitle('');
     setDescription('');
     setTime(new Date());
+    setNotificationTime(new Date());
     setPriority('low');
   };
 
@@ -36,6 +40,13 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
     setShowTimePicker(Platform.OS === 'ios');
     if (selectedTime) {
       setTime(selectedTime);
+    }
+  };
+
+  const onNotificationTimeChange = (event: any, selectedTime: Date | undefined) => {
+    setShowNotificationTimePicker(Platform.OS === 'ios');
+    if (selectedTime) {
+      setNotificationTime(selectedTime);
     }
   };
 
@@ -66,7 +77,7 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
               onChangeText={setDescription}
             />
             <TouchableOpacity onPress={() => setShowTimePicker(true)} style={styles.input}>
-              <Text>{time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</Text>
+              <Text>Event Time: {time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</Text>
             </TouchableOpacity>
             {showTimePicker && (
               <DateTimePicker
@@ -75,6 +86,18 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
                 is24Hour={true}
                 display="default"
                 onChange={onTimeChange}
+              />
+            )}
+            <TouchableOpacity onPress={() => setShowNotificationTimePicker(true)} style={styles.input}>
+              <Text>Notification Time: {notificationTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</Text>
+            </TouchableOpacity>
+            {showNotificationTimePicker && (
+              <DateTimePicker
+                value={notificationTime}
+                mode="time"
+                is24Hour={true}
+                display="default"
+                onChange={onNotificationTimeChange}
               />
             )}
             <View style={styles.pickerContainer}>

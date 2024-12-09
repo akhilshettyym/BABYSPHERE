@@ -15,7 +15,9 @@ export const EventCard: React.FC<EventCardProps> = ({ event, onUpdate }) => {
       <View style={styles.content}>
         <Text style={styles.title}>{event.title}</Text>
         <Text style={styles.description}>{event.description}</Text>
-        <Text style={styles.time}>{event.time}</Text>
+        <Text style={styles.time}>Event Time: {event.time}</Text>
+        <Text style={styles.time}>Notification Time: {event.notificationTime}</Text>
+        <Text style={styles.time}>Created: {new Date(event.createdAt).toLocaleString()}</Text>
       </View>
       <TouchableOpacity style={styles.priorityButton} onPress={handlePriorityChange}>
         <Text style={styles.priorityText}>{event.priority}</Text>

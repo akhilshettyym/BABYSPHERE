@@ -45,7 +45,7 @@ const CalendarScreen: React.FC = () => {
     });
   };
 
-  const addEvent = async (newEvent: Omit<Event, 'id'>) => {
+  const addEvent = async (newEvent: Omit<Event, 'id' | 'createdAt'>) => {
     if (!currentUser) {
       Alert.alert('Error', 'You must be logged in to add events.');
       return;
@@ -53,11 +53,13 @@ const CalendarScreen: React.FC = () => {
 
     try {
       const eventsRef = collection(db, 'events');
+      const createdAt = new Date().toISOString();
       const docRef = await addDoc(eventsRef, {
         ...newEvent,
         userId: currentUser.uid,
+        createdAt,
       });
-      const addedEvent: Event = { id: docRef.id, ...newEvent };
+      const addedEvent: Event = { id: docRef.id, ...newEvent, createdAt };
       setEvents([...events, addedEvent]);
       Alert.alert('Event Added', `Event "${newEvent.title}" added for ${newEvent.date}`);
     } catch (error) {
