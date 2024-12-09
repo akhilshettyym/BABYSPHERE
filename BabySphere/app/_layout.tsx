@@ -1,78 +1,26 @@
 import { Stack } from 'expo-router';
-import { useEffect, useState } from 'react';
-import { useFonts } from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen';
-import { onAuthStateChanged, User } from 'firebase/auth';
+import { useEffect } from 'react';
+import { useSegments, useRouter } from 'expo-router';
+import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../config/firebaseConfig';
-import { View, Text } from 'react-native';
-import { ActivityIndicator } from 'react-native';
 
 export default function RootLayout() {
-  const [user, setUser] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const [loaded, error] = useFonts({
-    // Add your custom fonts here if needed
-    // For example:
-    // 'Inter-Bold': require('../assets/fonts/Inter-Bold.otf'),
-  });
+  const segments = useSegments();
+  const router = useRouter();
 
   useEffect(() => {
-    if (error) console.error('Font loading error:', error);
-  }, [error]);
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setIsLoading(false);
-    });
-
-    return () => unsubscribe();
-  }, []);
-
-  useEffect(() => {
-    async function prepare() {
-      try {
-        await SplashScreen.preventAutoHideAsync();
-        if (loaded) {
-          await SplashScreen.hideAsync();
-        }
-      } catch (e) {
-        console.warn('Error in prepare:', e);
+    onAuthStateChanged(auth, (user) => {
+      const inAuthGroup = segments[0] === '(auth)';
+      
+      if (user && inAuthGroup) {
+        // Redirect authenticated users to the home page if they're on an auth page
+        router.replace('/(tabs)/HomePage');
+      } else if (!user && !inAuthGroup) {
+        // Redirect unauthenticated users to the sign-in page
+        router.replace('/(auth)/sign-in');
       }
-    }
-    prepare();
-  }, [loaded]);
+    });
+  }, [segments]);
 
-  if (!loaded || isLoading) {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <ActivityIndicator size="large" color="#0000ff" />
-        <Text>Loading...</Text>
-      </View>
-    );
-  }
-
-  return (
-    <Stack>
-      {user ? (
-        <>
-          <Stack.Screen 
-            name="(tabs)" 
-            options={{ headerShown: false }} 
-          />
-          <Stack.Screen 
-            name="profile" 
-            options={{ title: 'Profile' }} 
-          />
-        </>
-      ) : (
-        <Stack.Screen 
-          name="(auth)" 
-          options={{ headerShown: false }} 
-        />
-      )}
-    </Stack>
-  );
+  return <Stack screenOptions={{ headerShown: false }} />;
 }
-

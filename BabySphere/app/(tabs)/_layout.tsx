@@ -1,43 +1,65 @@
-import React, { useEffect, useState } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../../config/firebaseConfig';
-import LandingPage from '../(auth)/landing';
-import SignInScreen from '../(auth)/sign-in';
-import SignUpScreen from '../(auth)/sign-up';
-import HomePage from './HomePage';
-import { User } from 'firebase/auth'; // Adjust based on your setup
+import { Tabs } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
 
-const Stack = createNativeStackNavigator();
-
-function App() {
-  const [user, setUser] = useState<User | null>(null);
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
-
-    return () => unsubscribe();
-  }, []);
-
+export default function AppLayout() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        {user ? (
-          <Stack.Screen name="HomePage" component={HomePage} options={{ headerShown: false }} />
-        ) : (
-          <>
-            <Stack.Screen name="landing" component={LandingPage} options={{ headerShown: false }} />
-            <Stack.Screen name="sign-in" component={SignInScreen} options={{ headerShown: false }} />
-            <Stack.Screen name="sign-up" component={SignUpScreen} options={{ headerShown: false }} />
-          </>
-        )}
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Tabs screenOptions={{
+      tabBarStyle: {
+        backgroundColor: '#FFFFFF',
+        borderTopWidth: 1,
+        borderTopColor: '#E5E5E5',
+        paddingBottom: 5,
+        paddingTop: 5,
+      },
+      tabBarActiveTintColor: '#A3D8F4',
+      tabBarInactiveTintColor: '#8AA9B8',
+      headerShown: false,
+    }}>
+      <Tabs.Screen
+        name="home"
+        options={{
+          title: 'Home',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="home" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="baby-monitor"
+        options={{
+          title: 'Monitor',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="body" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="calendar"
+        options={{
+          title: 'Calendar',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="calendar" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="live-feed"
+        options={{
+          title: 'Live Feed',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="videocam" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="wellness"
+        options={{
+          title: 'Wellness',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="fitness" size={size} color={color} />
+          ),
+        }}
+      />
+    </Tabs>
   );
 }
-
-export default App;
-
