@@ -2,23 +2,30 @@ import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../../config/firebaseConfig';
-import LandingPage from '../(auth)/landing';
-import SignInScreen from '../(auth)/sign-in';
-import SignUpScreen from '../(auth)/sign-up';
-import HomePage from './HomePage';
+import { auth } from '../config/firebaseConfig';
+import LandingPage from './(auth)/landing';
+import SignInScreen from './(auth)/sign-in';
+import SignUpScreen from './(auth)/sign-up';
+import HomePage from './(tabs)/HomePage';
 import { User } from 'firebase/auth'; // Adjust based on your setup
 
-const Stack = createNativeStackNavigator();
+export type RootStackParamList = {
+  landing: undefined;
+  'sign-in': undefined;
+  'sign-up': undefined;
+  HomePage: undefined;
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function App() {
-  const [user, setUser] = useState<User | null>(null);
+    const [user, setUser] = useState<User | null>(null);
+  
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     });
-
     return () => unsubscribe();
   }, []);
 
@@ -40,4 +47,3 @@ function App() {
 }
 
 export default App;
-

@@ -3,6 +3,7 @@
     "entryPoint": "./node_modules/expo-router/entry.js",
     "name": "BabySphere",
     "slug": "BabySphere",
+    "newArchEnabled": true,
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
