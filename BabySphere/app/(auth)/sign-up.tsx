@@ -1,128 +1,144 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert } from 'react-native';
+import { StyleSheet, Text, View, Alert } from 'react-native';
 import { router } from 'expo-router';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../../config/firebaseConfig';
+import AuthLayout from '../../components/AuthLayout';
+import AuthInput from '../../components/AuthInput';
+import AuthButton from '../../components/AuthButton';
 
 const SignUpScreen = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({ name: '', email: '', password: '' });
+
+  const validateForm = () => {
+    const newErrors = { name: '', email: '', password: '' };
+    let isValid = true;
+
+    if (!name) {
+      newErrors.name = 'Name is required';
+      isValid = false;
+    }
+    if (!email) {
+      newErrors.email = 'Email is required';
+      isValid = false;
+    }
+    if (!password) {
+      newErrors.password = 'Password is required';
+      isValid = false;
+    } else if (password.length < 6) {
+      newErrors.password = 'Password must be at least 6 characters';
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
 
   const handleSignUp = async () => {
-    if (name && email && password) {
-      try {
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        await updateProfile(userCredential.user, { displayName: name });
-        Alert.alert('Success', 'Account created successfully!', [
-          { text: 'OK', onPress: () => router.push('/(auth)/sign-in') }
-        ]);
-      } catch (error) {
-        Alert.alert('Error', 'Something went wrong');
-      }
-    } else {
-      Alert.alert('Error', 'Please fill in all fields');
+    if (!validateForm()) return;
+
+    setLoading(true);
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(userCredential.user, { displayName: name });
+      Alert.alert('Success', 'Account created successfully!', [
+        { text: 'OK', onPress: () => router.push('/(auth)/sign-in') }
+      ]);
+    } catch (error) {
+      Alert.alert('Error', 'Failed to create account');
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.content}>
-        <Text style={styles.title}>Sign Up</Text>
+    <AuthLayout>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Text style={styles.title}>Create Account</Text>
+          <Text style={styles.subtitle}>Sign up to get started</Text>
+        </View>
+
         <View style={styles.form}>
-          <View style={styles.inputContainer}>
-            <Text style={styles.label}>Name</Text>
-            <TextInput 
-              style={styles.input} 
-              value={name}
-              onChangeText={setName}
-            />
-          </View>
-          <View style={styles.inputContainer}>
-            <Text style={styles.label}>Email</Text>
-            <TextInput 
-              style={styles.input} 
-              value={email}
-              onChangeText={setEmail}
-              keyboardType="email-address"
-              autoCapitalize="none"
-            />
-          </View>
-          <View style={styles.inputContainer}>
-            <Text style={styles.label}>Password</Text>
-            <TextInput 
-              style={styles.input} 
-              secureTextEntry 
-              value={password}
-              onChangeText={setPassword}
-            />
-          </View>
-          <TouchableOpacity style={styles.button} onPress={handleSignUp}>
-            <Text style={styles.buttonText}>Sign Up</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => router.push('/(auth)/sign-in')}>
-            <Text style={styles.linkText}>Already have an account? Sign In</Text>
-          </TouchableOpacity>
+          <AuthInput
+            label="Name"
+            icon="person-outline"
+            value={name}
+            onChangeText={setName}
+            placeholder="Enter your name"
+            error={errors.name}
+          />
+
+          <AuthInput
+            label="Email"
+            icon="mail-outline"
+            value={email}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+            autoCapitalize="none"
+            placeholder="Enter your email"
+            error={errors.email}
+          />
+
+          <AuthInput
+            label="Password"
+            icon="lock-closed-outline"
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry
+            placeholder="Create a password"
+            error={errors.password}
+          />
+
+          <AuthButton
+            title="Sign Up"
+            onPress={handleSignUp}
+            loading={loading}
+          />
+
+          <Text
+            style={styles.linkText}
+            onPress={() => router.push('/(auth)/sign-in')}
+          >
+            Already have an account? Sign In
+          </Text>
         </View>
       </View>
-    </View>
+    </AuthLayout>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F8F9FA',
   },
-  content: {
-    flex: 1,
-    padding: 20,
-    justifyContent: 'center',
+  header: {
+    alignItems: 'center',
+    marginBottom: 32,
   },
   title: {
     fontSize: 28,
     fontWeight: 'bold',
-    marginBottom: 30,
-    textAlign: 'center',
-    color: '#333',
+    color: '#2D3748',
+    marginBottom: 8,
+  },
+  subtitle: {
+    fontSize: 16,
+    color: '#718096',
   },
   form: {
-    gap: 20,
-  },
-  inputContainer: {
-    gap: 8,
-  },
-  label: {
-    fontSize: 16,
-    fontWeight: '500',
-    color: '#666',
-  },
-  input: {
-    backgroundColor: '#FFF',
-    padding: 16,
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: '#E1E1E1',
-    fontSize: 16,
-  },
-  button: {
-    backgroundColor: '#A3D8F4',
-    padding: 16,
-    borderRadius: 12,
-    alignItems: 'center',
-    marginTop: 10,
-  },
-  buttonText: {
-    color: '#FFF',
-    fontSize: 16,
-    fontWeight: '600',
+    gap: 16,
   },
   linkText: {
     color: '#A3D8F4',
     fontSize: 16,
     fontWeight: '600',
     textAlign: 'center',
-    marginTop: 20,
+    marginTop: 16,
   },
 });
 
