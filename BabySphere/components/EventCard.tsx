@@ -1,13 +1,20 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { EventCardProps, Event } from '../types/types';
+import { Ionicons } from '@expo/vector-icons';
+import { Event } from '../types/types';
 
-export const EventCard: React.FC<EventCardProps> = ({ event, onUpdate }) => {
+interface EventCardProps {
+  event: Event;
+  onUpdate: (updatedEvent: Partial<Event>) => void;
+  onDelete: () => void;
+}
+
+export const EventCard: React.FC<EventCardProps> = ({ event, onUpdate, onDelete }) => {
   const handlePriorityChange = () => {
     const priorities: Array<Event['priority']> = ['low', 'medium', 'high'];
     const currentIndex = priorities.indexOf(event.priority);
     const newPriority = priorities[(currentIndex + 1) % priorities.length];
-    onUpdate({ ...event, priority: newPriority });
+    onUpdate({ priority: newPriority });
   };
 
   return (
@@ -19,9 +26,14 @@ export const EventCard: React.FC<EventCardProps> = ({ event, onUpdate }) => {
         <Text style={styles.time}>Notification Time: {event.notificationTime}</Text>
         <Text style={styles.time}>Created: {new Date(event.createdAt).toLocaleString()}</Text>
       </View>
-      <TouchableOpacity style={styles.priorityButton} onPress={handlePriorityChange}>
-        <Text style={styles.priorityText}>{event.priority}</Text>
-      </TouchableOpacity>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.priorityButton} onPress={handlePriorityChange}>
+          <Text style={styles.priorityText}>{event.priority}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.deleteButton} onPress={onDelete}>
+          <Ionicons name="trash-outline" size={24} color="#FF6B6B" />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -72,16 +84,25 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#8AA9B8',
   },
+  buttonContainer: {
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
+  },
   priorityButton: {
     backgroundColor: '#B4E3A7',
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 20,
+    marginBottom: 8,
   },
   priorityText: {
     color: '#8AA9B8',
     fontWeight: 'bold',
     textTransform: 'capitalize',
+  },
+  deleteButton: {
+    padding: 4,
   },
 });
 

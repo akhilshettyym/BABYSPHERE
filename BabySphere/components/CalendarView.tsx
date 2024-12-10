@@ -78,3 +78,4 @@ const getPriorityColor = (priority: Event['priority']) => {
 };
 
 const styles = StyleSheet.create({});
+

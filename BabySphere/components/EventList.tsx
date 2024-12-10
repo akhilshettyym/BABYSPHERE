@@ -6,9 +6,10 @@ import { EventCard } from './EventCard';
 interface EventListProps {
   events: Event[];
   onUpdateEvent: (updatedEvent: Event) => Promise<void>;
+  onDeleteEvent: (eventId: string) => Promise<void>;
 }
 
-export const EventList: React.FC<EventListProps> = ({ events, onUpdateEvent }) => {
+export const EventList: React.FC<EventListProps> = ({ events, onUpdateEvent, onDeleteEvent }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Events</Text>
@@ -19,6 +20,7 @@ export const EventList: React.FC<EventListProps> = ({ events, onUpdateEvent }) =
           <EventCard 
             event={item} 
             onUpdate={(updatedEvent) => onUpdateEvent({ ...item, ...updatedEvent })}
+            onDelete={() => onDeleteEvent(item.id)}
           />
         )}
         ListEmptyComponent={<Text style={styles.emptyText}>No events for this date</Text>}

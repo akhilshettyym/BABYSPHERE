@@ -2,17 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { onAuthStateChanged } from 'firebase/auth';
-import { collection, query, where, onSnapshot, addDoc, updateDoc, doc } from 'firebase/firestore';
+import { collection, query, where, onSnapshot, addDoc, updateDoc, doc, deleteDoc } from 'firebase/firestore';
 import { db, auth } from '../../config/firebaseConfig';
 import { CalendarView } from '../../components/CalendarView';
 import { EventList } from '../../components/EventList';
 import { AddEventButton } from '../../components/AddEventButton';
 import { Event, User } from '../../types/types';
-
-interface EventListProps {
-  events: Event[];
-  onUpdateEvent: (updatedEvent: Event) => Promise<void>;
-}
 
 const CalendarScreen: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<string>(new Date().toISOString().split('T')[0]);
@@ -80,6 +75,18 @@ const CalendarScreen: React.FC = () => {
     }
   };
 
+  const deleteEvent = async (eventId: string) => {
+    try {
+      const eventRef = doc(db, 'events', eventId);
+      await deleteDoc(eventRef);
+      setEvents(events.filter(event => event.id !== eventId));
+      Alert.alert('Event Deleted', 'The event has been successfully deleted.');
+    } catch (error) {
+      console.error('Error deleting event: ', error);
+      Alert.alert('Error', 'Could not delete event.');
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Baby Monitor</Text>
@@ -91,6 +98,7 @@ const CalendarScreen: React.FC = () => {
       <EventList
         events={events.filter((event) => event.date === selectedDate)}
         onUpdateEvent={updateEvent}
+        onDeleteEvent={deleteEvent}
       />
       <AddEventButton onAddEvent={addEvent} selectedDate={selectedDate} />
     </SafeAreaView>
