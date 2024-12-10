@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Modal, TextInput, Alert, TouchableWithoutFeedback, Keyboard, Animated } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Modal, TextInput, Alert, TouchableWithoutFeedback, Keyboard, Animated, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Event } from '../types/types';
@@ -24,6 +24,10 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
   const [dateError, setDateError] = useState(false);
   const [timeError, setTimeError] = useState(false);
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
+
+  const [dateString, setDateString] = useState(date.toLocaleDateString());
+  const [timeString, setTimeString] = useState(time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+  const [notificationTimeString, setNotificationTimeString] = useState(notificationTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
 
   const titleInputRef = useRef<TextInput>(null);
   const descriptionInputRef = useRef<TextInput>(null);
@@ -56,8 +60,8 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
     onAddEvent({
       title,
       description,
-      time: time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      notificationTime: notificationTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      time: timeString,
+      notificationTime: notificationTimeString,
       date: date.toISOString().split('T')[0],
       priority,
       userId: 'tempUserId', // This should be replaced with the actual user ID
@@ -78,12 +82,16 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
     setDateError(false);
     setTimeError(false);
     setHasUnsavedChanges(false);
+    setDateString(new Date(selectedDate).toLocaleDateString());
+    setTimeString(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+    setNotificationTimeString(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
   };
 
   const onDateChange = (event: any, selectedDate: Date | undefined) => {
     setShowDatePicker(false);
     if (selectedDate) {
       setDate(selectedDate);
+      setDateString(selectedDate.toLocaleDateString());
       setDateError(false);
       setHasUnsavedChanges(true);
     }
@@ -93,6 +101,7 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
     setShowTimePicker(false);
     if (selectedTime) {
       setTime(selectedTime);
+      setTimeString(selectedTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
       setTimeError(false);
       setHasUnsavedChanges(true);
     }
@@ -102,34 +111,7 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
     setShowNotificationTimePicker(false);
     if (selectedTime) {
       setNotificationTime(selectedTime);
-      setHasUnsavedChanges(true);
-    }
-  };
-
-  const handleManualDateInput = (text: string) => {
-    const parsedDate = new Date(Date.parse(text));
-    if (!isNaN(parsedDate.getTime())) {
-      setDate(parsedDate);
-      setDateError(false);
-      setHasUnsavedChanges(true);
-    } else {
-      setDateError(true);
-      setHasUnsavedChanges(true);
-    }
-  };
-
-  const handleManualTimeInput = (text: string, setter: React.Dispatch<React.SetStateAction<Date>>) => {
-    const [time, period] = text.split(' ');
-    const [hours, minutes] = time.split(':').map(Number);
-    if (!isNaN(hours) && !isNaN(minutes)) {
-      const newTime = new Date();
-      newTime.setHours(period === 'PM' && hours !== 12 ? hours + 12 : hours);
-      newTime.setMinutes(minutes);
-      setter(newTime);
-      setTimeError(false);
-      setHasUnsavedChanges(true);
-    } else {
-      setTimeError(true);
+      setNotificationTimeString(selectedTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
       setHasUnsavedChanges(true);
     }
   };
@@ -196,50 +178,40 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
           display="default"
           onChange={onChange}
         />
-        <TouchableOpacity
-          style={styles.dateTimePickerButton}
-          onPress={() => {
-            if (mode === 'date') setShowDatePicker(false);
-            else if (mode === 'time') setShowTimePicker(false);
-            else setShowNotificationTimePicker(false);
-          }}
-        >
-          <Text style={styles.dateTimePickerButtonText}>Done</Text>
-        </TouchableOpacity>
       </View>
     );
   };
 
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-      <View>
-        <TouchableOpacity
-          style={[styles.button, { backgroundColor: getPriorityColor(priority) }]}
-          onPress={() => setModalVisible(true)}
-        >
-          <Text style={styles.buttonText}>Add Event</Text>
-        </TouchableOpacity>
-        <Modal
-          animationType="none"
-          transparent={true}
-          visible={modalVisible}
-          onRequestClose={handleCloseModal}
-        >
-          <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-            <View style={styles.modalOverlay}>
-              <Animated.View 
-                style={[
-                  styles.modalContent,
-                  {
-                    transform: [{
-                      translateY: slideAnimation.interpolate({
-                        inputRange: [0, 1],
-                        outputRange: [600, 0]
-                      })
-                    }]
-                  }
-                ]}
-              >
+    <View>
+      <TouchableOpacity
+        style={[styles.button, { backgroundColor: getPriorityColor(priority) }]}
+        onPress={() => setModalVisible(true)}
+      >
+        <Text style={styles.buttonText}>Add Event</Text>
+      </TouchableOpacity>
+      <Modal
+        animationType="none"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={handleCloseModal}
+      >
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+          <View style={styles.modalOverlay}>
+            <Animated.View 
+              style={[
+                styles.modalContent,
+                {
+                  transform: [{
+                    translateY: slideAnimation.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [600, 0]
+                    })
+                  }]
+                }
+              ]}
+            >
+              <ScrollView contentContainerStyle={styles.scrollViewContent}>
                 <Text style={styles.modalTitle}>Add New Event</Text>
                 <View style={styles.priorityBadge}>
                   <Text style={[styles.priorityText, { color: getPriorityColor(priority) }]}>
@@ -289,59 +261,95 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
                 </View>
                 <View style={styles.inputContainer}>
                   <Text style={styles.inputLabel}>Date *</Text>
-                  <TouchableOpacity
-                    style={styles.dateTimeContainer}
-                    onPress={() => setShowDatePicker(true)}
-                  >
+                  <View style={styles.dateTimeContainer}>
                     <TextInput
                       style={[styles.dateTimeInput, dateError && styles.inputError]}
                       placeholder="MM/DD/YYYY"
                       placeholderTextColor="#A0AEC0"
-                      value={date.toLocaleDateString()}
-                      editable={false}
+                      value={dateString}
+                      onChangeText={(text) => {
+                        setDateString(text);
+                        const newDate = new Date(text);
+                        if (!isNaN(newDate.getTime())) {
+                          setDate(newDate);
+                          setDateError(false);
+                        } else {
+                          setDateError(true);
+                        }
+                        setHasUnsavedChanges(true);
+                      }}
                     />
-                    <View style={styles.dateTimeIcon}>
+                    <TouchableOpacity
+                      style={styles.dateTimeIcon}
+                      onPress={() => setShowDatePicker(true)}
+                    >
                       <Ionicons name="calendar-outline" size={24} color="#8AA9B8" />
-                    </View>
-                  </TouchableOpacity>
+                    </TouchableOpacity>
+                  </View>
                   {dateError && <Text style={styles.errorText}>Invalid date format</Text>}
+                  {showDatePicker && renderDateTimePicker(showDatePicker, date, onDateChange, 'date')}
                 </View>
                 <View style={styles.inputContainer}>
                   <Text style={styles.inputLabel}>Event Time *</Text>
-                  <TouchableOpacity
-                    style={styles.dateTimeContainer}
-                    onPress={() => setShowTimePicker(true)}
-                  >
+                  <View style={styles.dateTimeContainer}>
                     <TextInput
                       style={[styles.dateTimeInput, timeError && styles.inputError]}
                       placeholder="HH:MM AM/PM"
                       placeholderTextColor="#A0AEC0"
-                      value={time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                      editable={false}
+                      value={timeString}
+                      onChangeText={(text) => {
+                        setTimeString(text);
+                        const [hours, minutes] = text.split(':');
+                        const newTime = new Date();
+                        newTime.setHours(parseInt(hours, 10));
+                        newTime.setMinutes(parseInt(minutes, 10));
+                        if (!isNaN(newTime.getTime())) {
+                          setTime(newTime);
+                          setTimeError(false);
+                        } else {
+                          setTimeError(true);
+                        }
+                        setHasUnsavedChanges(true);
+                      }}
                     />
-                    <View style={styles.dateTimeIcon}>
+                    <TouchableOpacity
+                      style={styles.dateTimeIcon}
+                      onPress={() => setShowTimePicker(true)}
+                    >
                       <Ionicons name="time-outline" size={24} color="#8AA9B8" />
-                    </View>
-                  </TouchableOpacity>
+                    </TouchableOpacity>
+                  </View>
                   {timeError && <Text style={styles.errorText}>Invalid time format</Text>}
+                  {showTimePicker && renderDateTimePicker(showTimePicker, time, onTimeChange, 'time')}
                 </View>
                 <View style={styles.inputContainer}>
                   <Text style={styles.inputLabel}>Notification Time *</Text>
-                  <TouchableOpacity
-                    style={styles.dateTimeContainer}
-                    onPress={() => setShowNotificationTimePicker(true)}
-                  >
+                  <View style={styles.dateTimeContainer}>
                     <TextInput
                       style={styles.dateTimeInput}
                       placeholder="HH:MM AM/PM"
                       placeholderTextColor="#A0AEC0"
-                      value={notificationTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                      editable={false}
+                      value={notificationTimeString}
+                      onChangeText={(text) => {
+                        setNotificationTimeString(text);
+                        const [hours, minutes] = text.split(':');
+                        const newTime = new Date();
+                        newTime.setHours(parseInt(hours, 10));
+                        newTime.setMinutes(parseInt(minutes, 10));
+                        if (!isNaN(newTime.getTime())) {
+                          setNotificationTime(newTime);
+                        }
+                        setHasUnsavedChanges(true);
+                      }}
                     />
-                    <View style={styles.dateTimeIcon}>
+                    <TouchableOpacity
+                      style={styles.dateTimeIcon}
+                      onPress={() => setShowNotificationTimePicker(true)}
+                    >
                       <Ionicons name="notifications-outline" size={24} color="#8AA9B8" />
-                    </View>
-                  </TouchableOpacity>
+                    </TouchableOpacity>
+                  </View>
+                  {showNotificationTimePicker && renderDateTimePicker(showNotificationTimePicker, notificationTime, onNotificationTimeChange, 'time')}
                 </View>
                 <View style={styles.buttonContainer}>
                   <TouchableOpacity 
@@ -358,15 +366,12 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
                     <Text style={styles.addButtonText}>Add Event</Text>
                   </TouchableOpacity>
                 </View>
-              </Animated.View>
-            </View>
-          </TouchableWithoutFeedback>
-        </Modal>
-        {renderDateTimePicker(showDatePicker, date, onDateChange, 'date')}
-        {renderDateTimePicker(showTimePicker, time, onTimeChange, 'time')}
-        {renderDateTimePicker(showNotificationTimePicker, notificationTime, onNotificationTimeChange, 'time')}
-      </View>
-    </TouchableWithoutFeedback>
+              </ScrollView>
+            </Animated.View>
+          </View>
+        </TouchableWithoutFeedback>
+      </Modal>
+    </View>
   );
 };
 
@@ -397,13 +402,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#F8F9FA',
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
-    padding: 24,
-    alignItems: 'center',
+    maxHeight: '90%',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
+  },
+  scrollViewContent: {
+    padding: 24,
   },
   modalTitle: {
     fontSize: 24,
@@ -532,22 +539,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 16,
     alignItems: 'center',
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-  },
-  dateTimePickerButton: {
-    marginTop: 16,
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    backgroundColor: '#B4E3A7',
-    borderRadius: 8,
-  },
-  dateTimePickerButtonText: {
-    color: '#FFFFFF',
-    fontWeight: 'bold',
-    fontSize: 16,
+    marginTop: 8,
   },
 });
 
