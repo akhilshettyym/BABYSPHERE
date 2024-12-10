@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Modal, TextInput, Alert, TouchableWithoutFeedback, Keyboard, Animated, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Modal, TextInput, Alert, TouchableWithoutFeedback, Keyboard, Animated, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Event } from '../types/types';
@@ -24,6 +24,8 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
   const [dateError, setDateError] = useState(false);
   const [timeError, setTimeError] = useState(false);
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
+  const [timeAmPm, setTimeAmPm] = useState<'AM' | 'PM'>('AM');
+  const [notificationTimeAmPm, setNotificationTimeAmPm] = useState<'AM' | 'PM'>('AM');
 
   const [dateString, setDateString] = useState(date.toLocaleDateString());
   const [timeString, setTimeString] = useState(time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
@@ -49,7 +51,7 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
     }
   }, [modalVisible]);
 
-  const isFormValid = title.trim() !== '' && !isNaN(date.getTime()) && !isNaN(time.getTime());
+  const isFormValid = title.trim() !== '' && dateString.length === 10 && timeString.length === 5;
 
   const handleAddEvent = () => {
     if (!isFormValid) {
@@ -57,12 +59,15 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
       return;
     }
 
+    const formattedTime = `${timeString} ${timeAmPm}`;
+    const formattedNotificationTime = `${notificationTimeString} ${notificationTimeAmPm}`;
+
     onAddEvent({
       title,
       description,
-      time: timeString,
-      notificationTime: notificationTimeString,
-      date: date.toISOString().split('T')[0],
+      time: formattedTime,
+      notificationTime: formattedNotificationTime,
+      date: dateString,
       priority,
       userId: 'tempUserId', // This should be replaced with the actual user ID
     });
@@ -85,10 +90,11 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
     setDateString(new Date(selectedDate).toLocaleDateString());
     setTimeString(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
     setNotificationTimeString(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+    setTimeAmPm('AM');
+    setNotificationTimeAmPm('AM');
   };
 
   const onDateChange = (event: any, selectedDate: Date | undefined) => {
-    setShowDatePicker(false);
     if (selectedDate) {
       setDate(selectedDate);
       setDateString(selectedDate.toLocaleDateString());
@@ -98,7 +104,6 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
   };
 
   const onTimeChange = (event: any, selectedTime: Date | undefined) => {
-    setShowTimePicker(false);
     if (selectedTime) {
       setTime(selectedTime);
       setTimeString(selectedTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
@@ -108,7 +113,6 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
   };
 
   const onNotificationTimeChange = (event: any, selectedTime: Date | undefined) => {
-    setShowNotificationTimePicker(false);
     if (selectedTime) {
       setNotificationTime(selectedTime);
       setNotificationTimeString(selectedTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
@@ -178,6 +182,16 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
           display="default"
           onChange={onChange}
         />
+        <TouchableOpacity
+          style={styles.dateTimePickerButton}
+          onPress={() => {
+            if (mode === 'date') setShowDatePicker(false);
+            else if (mode === 'time') setShowTimePicker(false);
+            else setShowNotificationTimePicker(false);
+          }}
+        >
+          <Text style={styles.dateTimePickerButtonText}>Done</Text>
+        </TouchableOpacity>
       </View>
     );
   };
@@ -197,7 +211,10 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
         onRequestClose={handleCloseModal}
       >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-          <View style={styles.modalOverlay}>
+          <KeyboardAvoidingView 
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            style={styles.modalOverlay}
+          >
             <Animated.View 
               style={[
                 styles.modalContent,
@@ -264,13 +281,20 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
                   <View style={styles.dateTimeContainer}>
                     <TextInput
                       style={[styles.dateTimeInput, dateError && styles.inputError]}
-                      placeholder="MM/DD/YYYY"
+                      placeholder="DD/MM/YYYY"
                       placeholderTextColor="#A0AEC0"
                       value={dateString}
+                      onFocus={() => setDateString('')}
                       onChangeText={(text) => {
-                        setDateString(text);
-                        const newDate = new Date(text);
-                        if (!isNaN(newDate.getTime())) {
+                        const formatted = text
+                          .replace(/\D/g, '')
+                          .replace(/^(\d{2})/, '$1/')
+                          .replace(/^(\d{2})\/(\d{2})/, '$1/$2/')
+                          .slice(0, 10);
+                        setDateString(formatted);
+                        const [day, month, year] = formatted.split('/');
+                        const newDate = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+                        if (!isNaN(newDate.getTime()) && formatted.length === 10) {
                           setDate(newDate);
                           setDateError(false);
                         } else {
@@ -278,6 +302,8 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
                         }
                         setHasUnsavedChanges(true);
                       }}
+                      keyboardType="numeric"
+                      maxLength={10}
                     />
                     <TouchableOpacity
                       style={styles.dateTimeIcon}
@@ -294,16 +320,21 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
                   <View style={styles.dateTimeContainer}>
                     <TextInput
                       style={[styles.dateTimeInput, timeError && styles.inputError]}
-                      placeholder="HH:MM AM/PM"
+                      placeholder="HH:MM"
                       placeholderTextColor="#A0AEC0"
                       value={timeString}
+                      onFocus={() => setTimeString('')}
                       onChangeText={(text) => {
-                        setTimeString(text);
-                        const [hours, minutes] = text.split(':');
+                        const formatted = text
+                          .replace(/\D/g, '')
+                          .replace(/^(\d{2})/, '$1:')
+                          .slice(0, 5);
+                        setTimeString(formatted);
+                        const [hours, minutes] = formatted.split(':');
                         const newTime = new Date();
                         newTime.setHours(parseInt(hours, 10));
                         newTime.setMinutes(parseInt(minutes, 10));
-                        if (!isNaN(newTime.getTime())) {
+                        if (!isNaN(newTime.getTime()) && formatted.length === 5) {
                           setTime(newTime);
                           setTimeError(false);
                         } else {
@@ -311,7 +342,23 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
                         }
                         setHasUnsavedChanges(true);
                       }}
+                      keyboardType="numeric"
+                      maxLength={5}
                     />
+                    <View style={styles.amPmContainer}>
+                      <TouchableOpacity
+                        style={[styles.amPmButton, timeAmPm === 'AM' && styles.amPmButtonSelected]}
+                        onPress={() => setTimeAmPm('AM')}
+                      >
+                        <Text style={[styles.amPmButtonText, timeAmPm === 'AM' && styles.amPmButtonTextSelected]}>AM</Text>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        style={[styles.amPmButton, timeAmPm === 'PM' && styles.amPmButtonSelected]}
+                        onPress={() => setTimeAmPm('PM')}
+                      >
+                        <Text style={[styles.amPmButtonText, timeAmPm === 'PM' && styles.amPmButtonTextSelected]}>PM</Text>
+                      </TouchableOpacity>
+                    </View>
                     <TouchableOpacity
                       style={styles.dateTimeIcon}
                       onPress={() => setShowTimePicker(true)}
@@ -327,21 +374,42 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
                   <View style={styles.dateTimeContainer}>
                     <TextInput
                       style={styles.dateTimeInput}
-                      placeholder="HH:MM AM/PM"
+                      placeholder="HH:MM"
                       placeholderTextColor="#A0AEC0"
                       value={notificationTimeString}
+                      onFocus={() => setNotificationTimeString('')}
                       onChangeText={(text) => {
-                        setNotificationTimeString(text);
-                        const [hours, minutes] = text.split(':');
+                        const formatted = text
+                          .replace(/\D/g, '')
+                          .replace(/^(\d{2})/, '$1:')
+                          .slice(0, 5);
+                        setNotificationTimeString(formatted);
+                        const [hours, minutes] = formatted.split(':');
                         const newTime = new Date();
                         newTime.setHours(parseInt(hours, 10));
                         newTime.setMinutes(parseInt(minutes, 10));
-                        if (!isNaN(newTime.getTime())) {
+                        if (!isNaN(newTime.getTime()) && formatted.length === 5) {
                           setNotificationTime(newTime);
                         }
                         setHasUnsavedChanges(true);
                       }}
+                      keyboardType="numeric"
+                      maxLength={5}
                     />
+                    <View style={styles.amPmContainer}>
+                      <TouchableOpacity
+                        style={[styles.amPmButton, notificationTimeAmPm === 'AM' && styles.amPmButtonSelected]}
+                        onPress={() => setNotificationTimeAmPm('AM')}
+                      >
+                        <Text style={[styles.amPmButtonText, notificationTimeAmPm === 'AM' && styles.amPmButtonTextSelected]}>AM</Text>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        style={[styles.amPmButton, notificationTimeAmPm === 'PM' && styles.amPmButtonSelected]}
+                        onPress={() => setNotificationTimeAmPm('PM')}
+                      >
+                        <Text style={[styles.amPmButtonText, notificationTimeAmPm === 'PM' && styles.amPmButtonTextSelected]}>PM</Text>
+                      </TouchableOpacity>
+                    </View>
                     <TouchableOpacity
                       style={styles.dateTimeIcon}
                       onPress={() => setShowNotificationTimePicker(true)}
@@ -368,7 +436,7 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
                 </View>
               </ScrollView>
             </Animated.View>
-          </View>
+          </KeyboardAvoidingView>
         </TouchableWithoutFeedback>
       </Modal>
     </View>
@@ -540,6 +608,42 @@ const styles = StyleSheet.create({
     padding: 16,
     alignItems: 'center',
     marginTop: 8,
+  },
+  dateTimePickerButton: {
+    marginTop: 16,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    backgroundColor: '#B4E3A7',
+    borderRadius: 8,
+  },
+  dateTimePickerButtonText: {
+    color: '#FFFFFF',
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+  amPmContainer: {
+    flexDirection: 'row',
+    marginLeft: 8,
+  },
+  amPmButton: {
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 4,
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
+    marginHorizontal: 2,
+  },
+  amPmButtonSelected: {
+    backgroundColor: '#B4E3A7',
+    borderColor: '#B4E3A7',
+  },
+  amPmButtonText: {
+    color: '#8AA9B8',
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  amPmButtonTextSelected: {
+    color: '#FFFFFF',
   },
 });
 
