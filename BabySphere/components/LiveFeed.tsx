@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
-import VideoPlayer from './VideoPlayer';
+import VideoPlayer from './VideoPlayer'; // Updated VideoPlayer
 import LiveParameters from './LiveParameters';
 import SensorDataFetcher from './SensorDataFetcher';
 import { SensorData } from '../types/SensorData';
@@ -9,6 +9,10 @@ const LiveFeed: React.FC = () => {
   const [sensorData, setSensorData] = useState<SensorData[]>([]);
 
   const latestData = sensorData.length > 0 ? sensorData[sensorData.length - 1] : null;
+
+  // Replace with the actual URI for Mobile B's camera feed
+  // const cameraFeedUri = 'http://192.168.220.250:8080/video'; 
+  const cameraFeedUri = "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8";
 
   return (
     <SafeAreaView style={styles.container}>
@@ -19,7 +23,7 @@ const LiveFeed: React.FC = () => {
           <View style={styles.redDot} />
         </View>
       </View>
-      <VideoPlayer uri="https://example.com/baby-monitor-stream" />
+      <VideoPlayer uri={cameraFeedUri} />
       <LiveParameters latestData={latestData} />
     </SafeAreaView>
   );
@@ -55,4 +59,3 @@ const styles = StyleSheet.create({
 });
 
 export default LiveFeed;
-
