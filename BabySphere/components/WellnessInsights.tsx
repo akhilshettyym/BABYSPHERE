@@ -1,65 +1,59 @@
 import React from 'react';
-import { Sparkles, Heart, Brain, Moon, TrendingUp } from 'lucide-react';
-import type { WellnessLog } from '../types/wellness';
-import { generateInsights } from '../utils/insights';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Card } from './ui/Card';
+import { colors } from '../utils/colors';
 
-interface WellnessInsightsProps {
-  logs: WellnessLog[];
-}
-
-const ICONS = {
-  energy: Brain,
-  stress: Heart,
-  sleep: Moon,
-  pattern: TrendingUp
-};
-
-export function WellnessInsights({ logs }: WellnessInsightsProps) {
-  const insights = generateInsights(logs);
-
-  if (insights.length === 0) {
-    return (
-      <div className="text-center text-gray-500 py-8">
-        <Sparkles className="w-8 h-8 mx-auto mb-3" />
-        <p>Start tracking your wellness to receive personalized insights!</p>
-      </div>
-    );
-  }
+export function WellnessInsights() {
+  const insights = [
+    { title: 'Remember to hydrate', icon: '💧', color: '#00A896' },
+    { title: 'Take a break', icon: '☕', color: '#FFE4A7' },
+    { title: 'Take a break', icon: '🌿', color: '#98E2C6' },
+    { title: 'High stress', icon: '🧘‍♀️', color: '#FFB5BA' }
+  ];
 
   return (
-    <div className="space-y-6">
-      <h3 className="text-lg font-medium flex items-center gap-2">
-        <Sparkles className="w-5 h-5" />
-        Personalized Insights
-      </h3>
-      
-      <div className="space-y-4">
-        {insights.map((insight, index) => {
-          const Icon = ICONS[insight.type as keyof typeof ICONS] || Sparkles;
-          
-          return (
-            <div key={index} className="bg-blue-50 p-4 rounded-lg">
-              <div className="flex items-start gap-3">
-                <div className="text-blue-600">
-                  <Icon className="w-6 h-6" />
-                </div>
-                <div>
-                  <h4 className="font-medium text-blue-900">{insight.title}</h4>
-                  <p className="text-blue-700 text-sm mt-1">{insight.description}</p>
-                  <ul className="mt-2 space-y-1">
-                    {insight.recommendations.map((rec, idx) => (
-                      <li key={idx} className="text-sm text-blue-600 flex items-center gap-2">
-                        <span className="w-1 h-1 bg-blue-600 rounded-full" />
-                        {rec}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </div>
+    <Card>
+      <Text style={styles.title}>Personalized Insights</Text>
+      <View style={styles.grid}>
+        {insights.map((insight, index) => (
+          <TouchableOpacity
+            key={index}
+            style={[styles.insightCard, { backgroundColor: insight.color }]}
+          >
+            <Text style={styles.insightIcon}>{insight.icon}</Text>
+            <Text style={styles.insightText}>{insight.title}</Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+    </Card>
   );
 }
+
+const styles = StyleSheet.create({
+  title: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: colors.primary,
+    marginBottom: 16,
+  },
+  grid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 12,
+  },
+  insightCard: {
+    width: '48%',
+    aspectRatio: 1,
+    borderRadius: 16,
+    padding: 16,
+    justifyContent: 'space-between',
+  },
+  insightIcon: {
+    fontSize: 24,
+  },
+  insightText: {
+    color: colors.primary,
+    fontSize: 14,
+    fontWeight: '500',
+  },
+});

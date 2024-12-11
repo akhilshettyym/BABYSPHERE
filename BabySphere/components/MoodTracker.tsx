@@ -1,57 +1,83 @@
 import React from 'react';
-import { Smile, Meh, Frown, Battery, BatteryCharging } from 'lucide-react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Card } from './ui/Card';
+import { theme } from '../utils/theme';
 import type { MoodType } from '../types/wellness';
 
 interface MoodTrackerProps {
   onMoodSelect: (mood: MoodType) => void;
-  onEnergySelect: (level: number) => void;
   selectedMood?: MoodType;
-  energyLevel?: number;
 }
 
-export function MoodTracker({ onMoodSelect, onEnergySelect, selectedMood, energyLevel }: MoodTrackerProps) {
-  const moods: { type: MoodType; icon: React.ReactNode; label: string }[] = [
-    { type: 'happy', icon: <Smile className="w-8 h-8" />, label: 'Happy' },
-    { type: 'content', icon: <Smile className="w-8 h-8" />, label: 'Content' },
-    { type: 'neutral', icon: <Meh className="w-8 h-8" />, label: 'Neutral' },
-    { type: 'stressed', icon: <Frown className="w-8 h-8" />, label: 'Stressed' },
-    { type: 'exhausted', icon: <Battery className="w-8 h-8" />, label: 'Exhausted' },
-  ];
+export function MoodTracker({ onMoodSelect, selectedMood }: MoodTrackerProps) {
+  const moods = [
+    { type: 'happy', color: theme.colors.yellow, label: 'Happy' },
+    { type: 'sad', color: theme.colors.pink, label: 'Sad' },
+    { type: 'tired', color: theme.colors.blue, label: 'Tired' },
+    { type: 'stressed', color: theme.colors.green, label: 'Stressed' },
+  ] as const;
 
   return (
-    <div className="space-y-6">
-      <div className="space-y-2">
-        <h3 className="text-lg font-medium">How are you feeling?</h3>
-        <div className="flex gap-4">
-          {moods.map(({ type, icon, label }) => (
-            <button
-              key={type}
-              onClick={() => onMoodSelect(type)}
-              className={`p-4 rounded-lg flex flex-col items-center gap-2 transition-colors
-                ${selectedMood === type ? 'bg-blue-100 text-blue-600' : 'bg-gray-50 hover:bg-gray-100'}`}
-            >
-              {icon}
-              <span className="text-sm">{label}</span>
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div className="space-y-2">
-        <h3 className="text-lg font-medium">Energy Level</h3>
-        <div className="flex items-center gap-4">
-          <Battery className="w-6 h-6" />
-          <input
-            type="range"
-            min="1"
-            max="5"
-            value={energyLevel || 3}
-            onChange={(e) => onEnergySelect(Number(e.target.value))}
-            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
-          />
-          <BatteryCharging className="w-6 h-6" />
-        </div>
-      </div>
-    </div>
+    <Card>
+      <Text style={styles.title}>Parent</Text>
+      <Text style={styles.subtitle}>Mood & Energy</Text>
+      <View style={styles.moodGrid}>
+        {moods.map(({ type, color, label }) => (
+          <TouchableOpacity
+            key={type}
+            style={[
+              styles.moodButton,
+              { backgroundColor: color },
+              selectedMood === type && styles.selectedMood
+            ]}
+            onPress={() => onMoodSelect(type)}
+          >
+            <View style={styles.moodCircle} />
+            <Text style={styles.moodLabel}>{label}</Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+    </Card>
   );
 }
+
+const styles = StyleSheet.create({
+  title: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: theme.colors.text,
+    marginBottom: 4,
+  },
+  subtitle: {
+    fontSize: 14,
+    color: theme.colors.textSecondary,
+    marginBottom: 16,
+  },
+  moodGrid: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  moodButton: {
+    width: '23%',
+    aspectRatio: 1,
+    borderRadius: 12,
+    padding: 12,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  selectedMood: {
+    borderWidth: 2,
+    borderColor: theme.colors.primary,
+  },
+  moodCircle: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    backgroundColor: 'white',
+  },
+  moodLabel: {
+    color: theme.colors.text,
+    fontSize: 12,
+    fontWeight: '500',
+  },
+});
