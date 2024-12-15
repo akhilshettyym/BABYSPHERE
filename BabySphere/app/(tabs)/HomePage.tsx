@@ -63,6 +63,7 @@ const HomePage: React.FC = () => {
     return unsubscribe;
   }, []);
 
+  //this useEffect will fire when either one of the dependencies changes. 
   useEffect(() => {
     const unsubscribe = fetchData(selectedDate);
     return () => unsubscribe();

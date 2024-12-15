@@ -1,7 +1,7 @@
 export interface SensorData {
   id: string;
   ambient_temperature: number;
-  temperature: number; // Rename from object_temperature
+  baby_temperature: number; // Rename from object_temperature
   humidity: number;
   spo2: number; // New field for SpO2
   heartRate: number; // New field for heart rate

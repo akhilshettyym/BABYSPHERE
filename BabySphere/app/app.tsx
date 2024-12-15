@@ -1,3 +1,4 @@
+import { StrictMode } from 'react';
 import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -21,7 +22,8 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function App() {
     const [user, setUser] = useState<User | null>(null);
   
-
+  //When you pass an empty array as the second argument to useEffect, 
+  //you're telling React to only run the effect "once", after the initial render.
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -30,6 +32,7 @@ function App() {
   }, []);
 
   return (
+    <StrictMode>
     <NavigationContainer>
       <Stack.Navigator>
         {user ? (
@@ -43,6 +46,7 @@ function App() {
         )}
       </Stack.Navigator>
     </NavigationContainer>
+    </StrictMode>
   );
 }
 

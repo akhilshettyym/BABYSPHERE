@@ -1,8 +1,10 @@
-import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore'; // Firestore import
-import { getStorage } from 'firebase/storage'; // Storage import if needed
-import { getAuth } from 'firebase/auth';
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore"; // Firestore import
+import { getStorage } from "firebase/storage"; // Storage import if needed
+import { getAuth } from "firebase/auth";
 
+// Firebase Firestore is a NoSQL document database that allows you to easily store, sync, 
+// and query data for your mobile and web applications
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCV0bsuW8kRIyYe5cPXyxW_GTuL_aK4rXU",
@@ -24,5 +26,4 @@ const db = getFirestore(app);
 const storage = getStorage(app);
 const auth = getAuth(app);
 
-
-export { db, storage,auth}
+export { db, storage, auth };

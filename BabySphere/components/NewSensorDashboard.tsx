@@ -14,6 +14,7 @@ const NewSensorDashboard: React.FC<NewSensorDashboardProps> = ({ data, isDarkMod
   const [chartData, setChartData] = useState<number[]>([]);
   const [chartLabels, setChartLabels] = useState<string[]>([]);
 
+  //this useEffect will fire when either one of the dependencies changes. 
   useEffect(() => {
     if (selectedSensor && data.length > 0) {
       const latestData = data.slice(-10); // Last 10 data points

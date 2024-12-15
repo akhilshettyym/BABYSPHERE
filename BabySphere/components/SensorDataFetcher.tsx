@@ -15,7 +15,9 @@ const SensorDataFetcher: React.FC<SensorDataFetcherProps> = ({ setSensorData }) 
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const allData: SensorData[] = snapshot.docs.map((doc) => {
         const data = doc.data();
-        return {
+        //console.log("this is data from firebase", data);
+
+        return {          
           id: doc.id,
           ambient_temperature: parseFloat(data.ambient_temperature) || 0,
           baby_temperature: parseFloat(data.object_temperature) || 0,
@@ -24,10 +26,7 @@ const SensorDataFetcher: React.FC<SensorDataFetcherProps> = ({ setSensorData }) 
           heartRate: parseFloat(data.heartRate || data.heart_rate) || 0,
           timestamp: data.timestamp?.toDate() || new Date(),
         };
-        
       });
-      
-
       setSensorData(allData);
     });
 
