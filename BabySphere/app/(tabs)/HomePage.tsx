@@ -5,8 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import NewHeader from '../../components/NewHeader';
 import NewSensorDashboard from '../../components/NewSensorDashboard';
 import DatePicker from '../../components/DatePicker';
-import { db } from '../../config/firebaseConfig';
-import { collection, onSnapshot, query, orderBy, limit, where } from 'firebase/firestore';
+import SensorDataFetcher from '../../components/SensorDataFetcher';
 import { SensorData } from '../../types/SensorData';
 
 const HomePage: React.FC = () => {
@@ -20,59 +19,17 @@ const HomePage: React.FC = () => {
   const fetchData = useCallback((date: Date) => {
     setIsLoading(true);
     setError(null);
-
-    const startOfDay = new Date(date);
-    startOfDay.setHours(0, 0, 0, 0);
-    const endOfDay = new Date(date);
-    endOfDay.setHours(23, 59, 59, 999);
-
-    const q = query(
-      collection(db, 'sensor_data'),
-      where('timestamp', '>=', startOfDay),
-      where('timestamp', '<=', endOfDay),
-      orderBy('timestamp', 'desc'),
-      limit(100)
-    );
-
-    const unsubscribe = onSnapshot(q, 
-      (snapshot) => {
-        const newData = snapshot.docs.map((doc) => {
-          const data = doc.data();
-          return {
-            id: doc.id,
-            ambient_temperature: parseFloat(data.ambient_temperature) || 0,
-            temperature: parseFloat(data.object_temperature) || 0,
-            humidity: parseFloat(data.humidity) || 0,
-            spo2: parseFloat(data.spo2) || 0,
-            heartRate: parseFloat(data.heartRate || data.heart_rate) || 0,
-            timestamp: data.timestamp?.toDate() || new Date(),
-          };
-        });
-        setSensorData(newData.reverse());
-        setIsLoading(false);
-        setRefreshing(false);
-      },
-      (err) => {
-        console.error("Error fetching data: ", err);
-        setError("Failed to fetch data. Please try again.");
-        setIsLoading(false);
-        setRefreshing(false);
-      }
-    );
-
-    return unsubscribe;
   }, []);
 
-  //this useEffect will fire when either one of the dependencies changes. 
   useEffect(() => {
-    const unsubscribe = fetchData(selectedDate);
-    return () => unsubscribe();
-  }, [fetchData, selectedDate]);
+    setIsLoading(true);
+    setError(null);
+  }, [selectedDate]);
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
-    fetchData(selectedDate);
-  }, [fetchData, selectedDate]);
+    //fetchData(selectedDate); //This line is no longer needed as data fetching is handled by SensorDataFetcher
+  }, []);
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
@@ -88,6 +45,12 @@ const HomePage: React.FC = () => {
         }
       >
         <View style={[styles.content, isDarkMode && styles.darkContent]}>
+          <SensorDataFetcher 
+            setSensorData={setSensorData} 
+            selectedDate={selectedDate}
+            setIsLoading={setIsLoading}
+            setError={setError}
+          />
           <DatePicker selectedDate={selectedDate} onDateChange={setSelectedDate} />
           {isLoading ? (
             <ActivityIndicator size="large" color="#8AA9B8" />
@@ -171,4 +134,3 @@ const styles = StyleSheet.create({
 });
 
 export default HomePage;
-

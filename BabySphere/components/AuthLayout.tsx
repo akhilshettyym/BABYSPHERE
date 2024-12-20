@@ -16,7 +16,7 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
     >
       <View style={styles.imageContainer}>
         <Image
-          source={{ uri: 'https://images.unsplash.com/photo-1544126592-807ade215a0b?w=800&auto=format&fit=crop' }}
+          source={require('C:/BABYSPHERE-2.0/BabySphere/assets/images/WhatsApp Image 2024-12-20 at 4.19.06 PM.jpeg')}
           style={[styles.image, { height: height * 0.25 }]}
           resizeMode="contain"
         />

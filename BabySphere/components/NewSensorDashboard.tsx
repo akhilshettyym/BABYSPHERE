@@ -69,6 +69,7 @@ const NewSensorDashboard: React.FC<NewSensorDashboardProps> = ({ data, isDarkMod
                 stroke: isDarkMode ? '#B4E3A7' : '#8AA9B8',
               },
             }}
+            withVerticalLabels={false}
             bezier
             style={styles.chart}
           />
