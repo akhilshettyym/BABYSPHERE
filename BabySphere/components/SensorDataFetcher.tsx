@@ -40,7 +40,7 @@ const SensorDataFetcher: React.FC<SensorDataFetcherProps> = ({
           return {
             id: doc.id,
             ambient_temperature: parseFloat(data.ambient_temperature) || 0,
-            baby_temperature: parseFloat(data.object_temperature) || 0,
+            baby_temperature: parseFloat(data.baby_temperature) || 0,
             humidity: parseFloat(data.humidity) || 0,
             spo2: parseFloat(data.spo2) || 0,
             heartRate: parseFloat(data.heartRate || data.heart_rate) || 0,

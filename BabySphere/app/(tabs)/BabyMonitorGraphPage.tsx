@@ -1,12 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  ScrollView,
-  Dimensions,
-} from 'react-native';
+import {View,Text,StyleSheet,TouchableOpacity,ScrollView,Dimensions,} from 'react-native';
 import { LineChart, BarChart } from 'react-native-chart-kit';
 import { Ionicons } from '@expo/vector-icons';
 import SensorDataFetcher from '../../components/SensorDataFetcher';

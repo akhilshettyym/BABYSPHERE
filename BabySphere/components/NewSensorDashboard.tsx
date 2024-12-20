@@ -88,7 +88,7 @@ const NewSensorDashboard: React.FC<NewSensorDashboardProps> = ({ data, isDarkMod
   return (
     <View style={styles.container}>
       <View style={styles.sensorGrid}>
-        {renderSensorCard('Temperature', latestData.temperature || 0, '°C', 'thermometer', 'temperature')}
+        {renderSensorCard('Temperature', latestData.baby_temperature || 0, '°C', 'thermometer', 'temperature')}
         {renderSensorCard('SpO2', latestData.spo2 || 0, '%', 'pulse', 'spo2')}
         {renderSensorCard('Heart Rate', latestData.heartRate || 0, 'bpm', 'heart', 'heartRate')}
         {renderSensorCard('Humidity', latestData.humidity || 0, '%', 'water', 'humidity')}
