@@ -471,14 +471,15 @@ const styles = StyleSheet.create({
     marginTop: -20,
   },
   xAxisLabel: {
+    bottom: -15,
     fontSize: 12,
     color: "#8AA9B8",
     marginTop: 8,
   },
   yAxisLabel: {
     position: "absolute",
-    left: -40,
-    top: 100,
+    left: -36,
+    top: -120,
     transform: [{ rotate: "270deg" }],
     fontSize: 12,
     color: "#8AA9B8",
