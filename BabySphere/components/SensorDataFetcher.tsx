@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-import { View } from 'react-native';
-import { collection, onSnapshot, query, orderBy, where } from 'firebase/firestore';
+import { collection, query, where, orderBy, onSnapshot } from 'firebase/firestore';
 import { db } from '../config/firebaseConfig';
 import { SensorData } from '../types/SensorData';
 
@@ -47,7 +46,7 @@ const SensorDataFetcher: React.FC<SensorDataFetcherProps> = ({
             timestamp: data.timestamp?.toDate() || new Date(),
           };
         });
-        setSensorData(newData.reverse());
+        setSensorData(newData);
         setIsLoading(false);
       },
       (err) => {
