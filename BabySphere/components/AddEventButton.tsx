@@ -7,9 +7,10 @@ import { Event } from '../types/types';
 interface AddEventButtonProps {
   onAddEvent: (newEvent: Omit<Event, 'id' | 'createdAt'>) => Promise<void>;
   selectedDate: string;
+  userId: string | undefined;
 }
 
-export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, selectedDate }) => {
+export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, selectedDate, userId }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -54,6 +55,10 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
   const isFormValid = title.trim() !== '' && dateString.length === 10 && timeString.length === 5;
 
   const handleAddEvent = () => {
+    if (!userId) {
+      Alert.alert('Error', 'You must be logged in to add events.');
+      return;
+    }
     if (!isFormValid) {
       Alert.alert('Error', 'Please fill in all required fields correctly.');
       return;
@@ -62,18 +67,29 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
     const formattedTime = `${timeString} ${timeAmPm}`;
     const formattedNotificationTime = `${notificationTimeString} ${notificationTimeAmPm}`;
 
-    onAddEvent({
+    const newEvent = {
       title,
       description,
       time: formattedTime,
       notificationTime: formattedNotificationTime,
       date: dateString,
       priority,
-      userId: 'tempUserId', // This should be replaced with the actual user ID
-    });
-    setModalVisible(false);
-    resetForm();
-    Alert.alert('Success', 'Event added successfully!');
+      userId: userId || 'anonymous', // Use 'anonymous' if userId is undefined
+    };
+
+    console.log('Attempting to add event:', newEvent);
+
+    onAddEvent(newEvent)
+      .then(() => {
+        console.log('Event added successfully');
+        setModalVisible(false);
+        resetForm();
+        Alert.alert('Success', 'Event added successfully!');
+      })
+      .catch((error) => {
+        console.error('Error adding event:', error);
+        Alert.alert('Error', 'Failed to add event. Please try again.');
+      });
   };
 
   const resetForm = () => {

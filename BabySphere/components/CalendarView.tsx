@@ -16,7 +16,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ selectedDate, onSele
         marked: true,
         dots: [],
         selected: event.date === selectedDate,
-        selectedColor: '#FDC1C5',
+        selectedColor: '#E0E0E0',
       };
     }
     acc[event.date].dots.push({ color: getPriorityColor(event.priority) });
@@ -27,7 +27,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ selectedDate, onSele
     markedDates[selectedDate] = {
       ...markedDates[selectedDate],
       selected: true,
-      selectedColor: '#FDC1C5',
+      selectedColor: '#E0E0E0',
     };
   }
 
@@ -37,19 +37,19 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ selectedDate, onSele
       markedDates={markedDates}
       markingType="multi-dot"
       theme={{
-        backgroundColor: '#D1C4E9',
-        calendarBackground: '#D1C4E9',
-        textSectionTitleColor: '#8AA9B8',
-        selectedDayBackgroundColor: '#FDC1C5',
-        selectedDayTextColor: '#8AA9B8',
-        todayTextColor: '#B4E3A7',
-        dayTextColor: '#8AA9B8',
-        textDisabledColor: '#d9e1e8',
-        dotColor: '#B4E3A7',
-        selectedDotColor: '#8AA9B8',
-        arrowColor: '#B4E3A7',
-        monthTextColor: '#8AA9B8',
-        indicatorColor: '#B4E3A7',
+        backgroundColor: '#FFFFFF',
+        calendarBackground: '#FFFFFF',
+        textSectionTitleColor: '#757575',
+        selectedDayBackgroundColor: '#E0E0E0',
+        selectedDayTextColor: '#000000',
+        todayTextColor: '#1976D2',
+        dayTextColor: '#212121',
+        textDisabledColor: '#BDBDBD',
+        dotColor: '#1976D2',
+        selectedDotColor: '#1976D2',
+        arrowColor: '#757575',
+        monthTextColor: '#212121',
+        indicatorColor: '#1976D2',
         textDayFontFamily: 'System',
         textMonthFontFamily: 'System',
         textDayHeaderFontFamily: 'System',
@@ -67,15 +67,14 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ selectedDate, onSele
 const getPriorityColor = (priority: Event['priority']) => {
   switch (priority) {
     case 'high':
-      return '#FF0000';
+      return '#F44336';
     case 'medium':
-      return '#FFA500';
+      return '#FFA000';
     case 'low':
-      return '#00FF00';
+      return '#4CAF50';
     default:
-      return '#B4E3A7';
+      return '#1976D2';
   }
 };
-
 const styles = StyleSheet.create({});
 

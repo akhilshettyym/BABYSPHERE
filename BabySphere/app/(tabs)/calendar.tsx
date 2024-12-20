@@ -21,6 +21,7 @@ const CalendarScreen: React.FC = () => {
         fetchUserEvents(user.uid);
       } else {
         setCurrentUser(null);
+        setEvents([]);
       }
     });
 
@@ -31,13 +32,17 @@ const CalendarScreen: React.FC = () => {
     const eventsRef = collection(db, 'events');
     const q = query(eventsRef, where('userId', '==', userId));
 
-    onSnapshot(q, (snapshot) => {
+    const unsubscribe = onSnapshot(q, (snapshot) => {
       const fetchedEvents: Event[] = [];
       snapshot.forEach((doc) => {
         fetchedEvents.push({ id: doc.id, ...doc.data() } as Event);
       });
       setEvents(fetchedEvents);
+    }, (error) => {
+      console.error("Error fetching events: ", error);
     });
+
+    return unsubscribe;
   };
 
   const addEvent = async (newEvent: Omit<Event, 'id' | 'createdAt'>) => {
@@ -49,17 +54,15 @@ const CalendarScreen: React.FC = () => {
     try {
       const eventsRef = collection(db, 'events');
       const createdAt = new Date().toISOString();
-      const docRef = await addDoc(eventsRef, {
+      await addDoc(eventsRef, {
         ...newEvent,
         userId: currentUser.uid,
         createdAt,
       });
-      const addedEvent: Event = { id: docRef.id, ...newEvent, createdAt };
-      setEvents([...events, addedEvent]);
-      Alert.alert('Event Added', `Event "${newEvent.title}" added for ${newEvent.date}`);
+      Alert.alert('Success', 'Event added successfully!');
     } catch (error) {
       console.error('Error adding event: ', error);
-      Alert.alert('Error', 'Could not add event.');
+      Alert.alert('Error', 'Could not add event. Please try again.');
     }
   };
 
@@ -67,11 +70,10 @@ const CalendarScreen: React.FC = () => {
     try {
       const eventRef = doc(db, 'events', updatedEvent.id);
       await updateDoc(eventRef, updatedEvent as { [x: string]: any });
-      setEvents(events.map(event => event.id === updatedEvent.id ? updatedEvent : event));
-      Alert.alert('Event Updated', `Event "${updatedEvent.title}" has been updated.`);
+      Alert.alert('Success', 'Event updated successfully!');
     } catch (error) {
       console.error('Error updating event: ', error);
-      Alert.alert('Error', 'Could not update event.');
+      Alert.alert('Error', 'Could not update event. Please try again.');
     }
   };
 
@@ -79,11 +81,10 @@ const CalendarScreen: React.FC = () => {
     try {
       const eventRef = doc(db, 'events', eventId);
       await deleteDoc(eventRef);
-      setEvents(events.filter(event => event.id !== eventId));
-      Alert.alert('Event Deleted', 'The event has been successfully deleted.');
+      Alert.alert('Success', 'Event deleted successfully!');
     } catch (error) {
       console.error('Error deleting event: ', error);
-      Alert.alert('Error', 'Could not delete event.');
+      Alert.alert('Error', 'Could not delete event. Please try again.');
     }
   };
 
@@ -100,7 +101,11 @@ const CalendarScreen: React.FC = () => {
         onUpdateEvent={updateEvent}
         onDeleteEvent={deleteEvent}
       />
-      <AddEventButton onAddEvent={addEvent} selectedDate={selectedDate} />
+      <AddEventButton 
+        onAddEvent={addEvent} 
+        selectedDate={selectedDate} 
+        userId={currentUser?.uid} 
+      />
     </SafeAreaView>
   );
 };
