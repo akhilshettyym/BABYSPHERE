@@ -8,7 +8,7 @@ export interface ParentData {
   
   export interface BabyData {
     name: string;
-    dateOfBirth: string;
+    dateOfBirth: Date;
     gender: string;
     medicalConditions: string;
   }
@@ -16,4 +16,20 @@ export interface ParentData {
   export interface Errors {
     [key: string]: string;
   }
+  
+  export interface FirestoreUserData {
+    parent: {
+      name: string;
+      email: string;
+      phone: string;
+    };
+    baby: {
+      name: string;
+      dateOfBirth: string;
+      gender: string;
+      medicalConditions: string;
+    };
+    createdAt: string;
+  }
+  
   

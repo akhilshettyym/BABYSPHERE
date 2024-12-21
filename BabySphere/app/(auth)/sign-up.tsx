@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, Alert, ScrollView, TouchableOpacity } from 'react-native';
 import { router } from 'expo-router';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { auth } from '../../config/firebaseConfig';
+import { doc, setDoc } from 'firebase/firestore';
+import { auth, db } from '../../config/firebaseConfig';
 import AuthLayout from '../../components/AuthLayout';
 import AuthInput from '../../components/AuthInput';
 import AuthButton from '../../components/AuthButton';
+import DatePicker from '../../components/DatePicker';
 import { Ionicons } from '@expo/vector-icons';
 import { ParentData, BabyData, Errors } from '../../types/auth';
 
@@ -20,7 +22,7 @@ const SignUpScreen = () => {
   });
   const [babyData, setBabyData] = useState<BabyData>({
     name: '',
-    dateOfBirth: '',
+    dateOfBirth: new Date(),
     gender: '',
     medicalConditions: '',
   });
@@ -53,11 +55,31 @@ const SignUpScreen = () => {
       await updateProfile(userCredential.user, {
         displayName: parentData.name,
       });
+
+      // Store user data in Firestore
+      const userData = {
+        parent: {
+          name: parentData.name,
+          email: parentData.email,
+          phone: parentData.phone,
+        },
+        baby: {
+          name: babyData.name,
+          dateOfBirth: babyData.dateOfBirth.toISOString(),
+          gender: babyData.gender,
+          medicalConditions: babyData.medicalConditions,
+        },
+        createdAt: new Date().toISOString(),
+      };
+
+      await setDoc(doc(db, 'users', userCredential.user.uid), userData);
+
       Alert.alert('Success', 'Account created successfully!', [
         { text: 'OK', onPress: () => router.push('/(auth)/sign-in') },
       ]);
     } catch (error) {
-      Alert.alert('Error', 'Failed to create account');
+      console.error('Error during sign up:', error);
+      Alert.alert('Error', 'Failed to create account. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -122,14 +144,14 @@ const SignUpScreen = () => {
         placeholder="Enter baby's full name"
         error={errors.babyName}
       />
-      <AuthInput
-        label="Date of Birth"
-        icon="calendar-outline"
-        value={babyData.dateOfBirth}
-        onChangeText={(text) => setBabyData({ ...babyData, dateOfBirth: text })}
-        placeholder="YYYY-MM-DD"
-        error={errors.dateOfBirth}
-      />
+      <View>
+        <Text style={styles.label}>Date of Birth</Text>
+        <DatePicker
+          selectedDate={babyData.dateOfBirth}
+          onDateChange={(date) => setBabyData({ ...babyData, dateOfBirth: date })}
+        />
+        {errors.dateOfBirth && <Text style={styles.errorText}>{errors.dateOfBirth}</Text>}
+      </View>
       <AuthInput
         label="Gender"
         icon="male-female-outline"
@@ -274,6 +296,17 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     textAlign: 'center',
     marginTop: 16,
+  },
+  label: {
+    fontSize: 16,
+    fontWeight: '500',
+    color: '#4A5568',
+    marginBottom: 8,
+  },
+  errorText: {
+    color: '#E53E3E',
+    fontSize: 14,
+    marginTop: 4,
   },
 });
 
