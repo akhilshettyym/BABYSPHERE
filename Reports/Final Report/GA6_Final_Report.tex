@@ -16,10 +16,10 @@
 \geometry{
 a4paper,
 total={210mm,297mm},
-left=1.0in,
+left=1.15in,
 right=0.85in,
-top=0.65in,
-bottom=0.65in,
+top=1.0in,
+bottom=1.0in,
 }
 \begin{document}
 \pagestyle{empty}
@@ -239,59 +239,20 @@ The joy and satisfaction that accompany the partial completion of any task would
 \addcontentsline{toc}{chapter}{\numberline{}List of Tables}
 \newpage
 
-\setstretch{1.2}
-\renewcommand{\contentsname}{\centering Table of Contents}
-\tableofcontents
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\fontsize{10}{12} \selectfont Cloud-Based Smart Monitoring System for Baby Health and Safety}
+\rhead{\fontsize{10}{12} \selectfont Chapter \thechapter}
+\lfoot{\fontsize{10}{12} \selectfont Department of Computer Science and Engineering, SJEC, Mangaluru}
+\rfoot{\fontsize{10}{12} \selectfont Page \thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
 
-\newpage
-\listoftables
-
-\listoffigures
-
-
-
-
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%% Headders and Footers %%%%%%%%%%%%%%%
-\fancyhf{} % clear header and footer
-\fancyhead[L]{Cloud-Based Smart Monitoring System for Baby Health and Safety} % header centered
-\fancyfoot[L]{Department of Computer Science and Engineering, SJEC, Mangaluru} % footer centered
-\fancyfoot[R]{\thepage} % page number on the right
-\renewcommand{\headrule}{%
-  {\color[RGB]{0,0,0}\hrule width\headwidth height 2pt} % Top line
-  \vspace{0.07\baselineskip}% Add space between lines
-  {\color[RGB]{0,0,0}\hrule width\headwidth height 0.5pt} % Bottom line
-}
-\renewcommand{\footrule}{%
-
-  {\color[RGB]{0,0,0}\hrule width\headwidth height 0.5pt} % Top line
-  \vspace{0.07\baselineskip}% Add space between lines
-  {\color[RGB]{0,0,0}\hrule width\headwidth height 2pt} % Bottom line
-}
-
-
-\renewcommand{\baselinestretch}{1.5}
-
-% \pagestyle{fancy}
-% \fancyhf{}
-% \lhead{\fontsize{10}{12} \selectfont Bidirectional Communication System for Deaf-blind Individuals}
-% \rhead{\fontsize{10}{12} \selectfont Chapter \thechapter}
-% \lfoot{\fontsize{10}{12} \selectfont Department of Computer Science and Engineering, SJEC, Mangaluru}
-% \rfoot{\fontsize{10}{12} \selectfont Page \thepage}
-% \renewcommand{\headrulewidth}{0.5pt}
-% \renewcommand{\footrulewidth}{0.5pt}
+\setstretch{1.5}
+\pagenumbering{arabic}
 
 
 %%%%%%%%%%%%%%%%%%%%%%% CHapetr 1 Introduction %%%%%%%%%%%%%
-\clearpage
-\setcounter{page}{1}
-\pagestyle{fancy}
-\setstretch{1.2}
-\pagenumbering{arabic}
-
 \chapter{Introduction}
 \par
 \section{Background}
@@ -309,7 +270,7 @@ The objectives of the proposed project work are:
     \item To create a user-friendly interface that allows parents to easily monitor real-time temperature readings.
     \item To deliver actionable notifications through app alerts when abnormal readings or unsafe sleeping position is detected.
 \end{enumerate}
-\section{Scope and Importance of the Project}
+\section{Scope}
 The Cloud-Based Smart Monitoring System for Baby Health and Safety aims to provide a comprehensive, software-driven solution for real-time monitoring of a baby’s health, environment, and movements. The project’s scope includes the development of advanced algorithms to detect unsafe sleeping postures using computer vision, as well as the integration of sensor data from temperature, humidity, and heart rate monitors. The software will process this data in real-time through a cloud infrastructure, delivering instant alerts to parents via a mobile application whenever abnormalities are detected, such as a sudden change in the baby’s sleeping position, body temperature, or crying. This monitoring will be continuous and remote, ensuring that parents receive timely notifications even when they are away from home.
 
 The project is highly relevant in today's fast-paced world, where parents are often unable to supervise their children around the clock. The system can be applied in homes, daycares, or hospitals, giving caregivers real-time insight into the baby’s well-being. By focusing on software for analyzing health and environmental data, this project addresses a significant gap in traditional baby monitors, which are often limited in functionality. The use of cloud technology ensures scalability, allowing for future enhancements such as the addition of more sensors or features, thereby making the system adaptable to evolving needs in infant care and monitoring.
