@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import Video from 'react-native-video';
+import { Video, ResizeMode } from 'expo-av';
 
-interface VideoPlayerProps {
-  uri: string;
-}
-
-const VideoPlayer: React.FC<VideoPlayerProps> = ({ uri }) => {
+const VideoPlayer: React.FC<{ uri: string }> = ({ uri }) => {
   const [isError, setIsError] = useState(false);
 
   return (
@@ -19,12 +15,12 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ uri }) => {
         <Video
           source={{ uri }}
           style={styles.video}
-          resizeMode="cover"
+          useNativeControls
+          resizeMode={ResizeMode.COVER}
           onError={(error) => {
             console.error("Error loading video:", error);
             setIsError(true);
           }}
-          controls={true}
         />
       )}
     </View>

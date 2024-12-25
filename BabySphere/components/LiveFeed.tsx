@@ -1,22 +1,28 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
-import VideoPlayer from './VideoPlayer'; // Updated VideoPlayer
+import VideoPlayer from './VideoPlayer';
 import LiveParameters from './LiveParameters';
 import SensorDataFetcher from './SensorDataFetcher';
 import { SensorData } from '../types/SensorData';
 
 const LiveFeed: React.FC = () => {
   const [sensorData, setSensorData] = useState<SensorData[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
 
   const latestData = sensorData.length > 0 ? sensorData[sensorData.length - 1] : null;
 
-  // Replace with the actual URI for Mobile B's camera feed
-  // const cameraFeedUri = 'http://192.168.220.250:8080/video'; 
   const cameraFeedUri = "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8";
 
   return (
     <SafeAreaView style={styles.container}>
-      <SensorDataFetcher setSensorData={setSensorData} />
+      <SensorDataFetcher 
+        setSensorData={setSensorData}
+        selectedDate={selectedDate}
+        setIsLoading={setIsLoading}
+        setError={setError}
+      />
       <View style={styles.header}>
         <View style={styles.liveIndicator}>
           <Text style={styles.liveText}>Live</Text>
@@ -25,6 +31,8 @@ const LiveFeed: React.FC = () => {
       </View>
       <VideoPlayer uri={cameraFeedUri} />
       <LiveParameters latestData={latestData} />
+      {isLoading && <Text>Loading...</Text>}
+      {error && <Text style={styles.errorText}>{error}</Text>}
     </SafeAreaView>
   );
 };
@@ -56,6 +64,11 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     backgroundColor: '#FDC1C5',
   },
+  errorText: {
+    color: 'red',
+    marginTop: 10,
+  },
 });
 
 export default LiveFeed;
+
