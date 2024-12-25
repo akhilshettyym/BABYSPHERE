@@ -1,15 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import {View,Text,StyleSheet,TouchableOpacity,ScrollView,Dimensions,} from 'react-native';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+  Dimensions,
+  RefreshControl,
+} from 'react-native';
 import { LineChart, BarChart } from 'react-native-chart-kit';
 import { Ionicons } from '@expo/vector-icons';
 import SensorDataFetcher from '../../components/SensorDataFetcher';
-import { SensorData } from '../../types/SensorData';
 import DatePicker from '../../components/DatePicker';
-
+import { SensorData } from '../../types/SensorData';
+import ViewShot from "react-native-view-shot";
+import * as Sharing from 'expo-sharing';
 const { width } = Dimensions.get('window');
 
 const BabyMonitorGraphPage: React.FC = () => {
   const numSlicedDataPoints: number = 5;
+  const graphRef = useRef<ViewShot | null>(null);
 
   const [sensorData, setSensorData] = useState<SensorData[]>([]);
   const [selectedTimeframe, setSelectedTimeframe] = useState<string>('hourly');
@@ -17,7 +27,8 @@ const BabyMonitorGraphPage: React.FC = () => {
   const [selectedParameter, setSelectedParameter] = useState<string>('baby_temperature');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [refreshing, setRefreshing] = useState(false);
 
   const timeframes = ['hourly', 'daily', 'weekly'];
   const graphTypes = ['line', 'bar'];
@@ -31,7 +42,42 @@ const BabyMonitorGraphPage: React.FC = () => {
     if (sensorData.length > 0) {
       renderGraph();
     }
-  }, [sensorData, selectedTimeframe, selectedGraph, selectedParameter]);
+  }, [sensorData, selectedTimeframe, selectedGraph, selectedParameter, selectedDate]);
+
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    SensorDataFetcher({
+      setSensorData,
+      selectedDate,
+      setIsLoading,
+      setError,
+    });
+    setRefreshing(false);
+  }, [selectedDate]);
+
+  const captureAndShareGraph = async () => {
+    try {
+        if (graphRef.current?.capture) {
+            const uri = await graphRef.current.capture();
+            if (uri && (await Sharing.isAvailableAsync())) {
+                await Sharing.shareAsync(uri, {
+                    mimeType: 'image/png',
+                    dialogTitle: 'Share Graph',
+                    UTI: 'public.png',
+                });
+            } else {
+                console.error("Sharing is not available on this platform.");
+            }
+        } else {
+            console.error("Graph reference is undefined or capture method is not available.");
+        }
+    } catch (error) {
+        console.error("Error sharing graph:", error);
+    }
+};
+
+  
+
 
   function getFormattedValue(item: SensorData) {
     let value: number;
@@ -156,7 +202,7 @@ const BabyMonitorGraphPage: React.FC = () => {
       selectedTimeframe,
       selectedParameter
     );
-    const chartData = cleansedData.slice(-numSlicedDataPoints);
+    const chartData = cleansedData.slice(-numSlicedDataPoints).reverse();
     console.log(
       'renderGraph: cleansedData: sliced available data points: ' +
         chartData.length
@@ -209,7 +255,7 @@ const BabyMonitorGraphPage: React.FC = () => {
       },
       width: width - 32,
       height: 260,
-      yAxisLabel: '',
+      yAxisLabel: parameters.find((param) => param.key === selectedParameter)?.unit || '',
       yAxisSuffix: '',
       chartConfig: {
         backgroundColor: '#F8F9FA',
@@ -232,33 +278,35 @@ const BabyMonitorGraphPage: React.FC = () => {
         yAxisInterval: 1,
         min: yAxisConfig.min,
         max: yAxisConfig.max,
+        yAxisLabelRotation: 270,
       },
       bezier: true,
     };
 
     return (
-      <View>
-        {selectedGraph === 'line' ? (
-          <LineChart {...commonProps} />
-        ) : (
-          <BarChart {...commonProps} />
-        )}
-        <View style={styles.axisLabels}>
-          <Text style={styles.yAxisLabel}>
-            Value (
-            {parameters.find((param) => param.key === selectedParameter)?.unit})
-          </Text>
+      <ViewShot ref={graphRef} options={{ format: "png", quality: 0.9 }}>
+        <View>
+          {selectedGraph === 'line' ? (
+            <LineChart {...commonProps} />
+          ) : (
+            <BarChart {...commonProps} />
+          )}
           <Text style={styles.xAxisLabel}>Time</Text>
         </View>
-      </View>
+      </ViewShot>
     );
   };
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView
+      style={styles.container}
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }
+    >
       <SensorDataFetcher
         setSensorData={setSensorData}
-        selectedDate={new Date()} 
+        selectedDate={selectedDate}
         setIsLoading={setIsLoading}
         setError={setError}
       />
@@ -268,6 +316,10 @@ const BabyMonitorGraphPage: React.FC = () => {
           <Ionicons name="arrow-back" size={24} color="#8AA9B8" />
         </TouchableOpacity>
         <Text style={styles.title}>Baby Monitor Graphs</Text>
+      </View>
+
+      <View style={styles.datePickerContainer}>
+        <DatePicker selectedDate={selectedDate} onDateChange={setSelectedDate} />
       </View>
 
       <View style={styles.controlsContainer}>
@@ -329,7 +381,13 @@ const BabyMonitorGraphPage: React.FC = () => {
         </View>
       </View>
 
-      <View style={styles.graphContainer}>{renderGraph()}</View>
+      <View style={styles.graphContainer}>
+        {renderGraph()}
+        <TouchableOpacity style={styles.downloadButton} onPress={captureAndShareGraph}>
+          <Ionicons name="download-outline" size={24} color="#FFFFFF" />
+          <Text style={styles.downloadButtonText}>Download Graph</Text>
+        </TouchableOpacity>
+      </View>
 
       <View style={styles.parameterContainer}>
         {parameters.map((param) => (
@@ -379,6 +437,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#8AA9B8',
   },
+  datePickerContainer: {
+    padding: 16,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 16,
+    marginHorizontal: 16,
+    marginBottom: 16,
+  },
   controlsContainer: {
     padding: 16,
   },
@@ -418,24 +483,11 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     marginBottom: 16,
   },
-  axisLabels: {
-    position: 'relative',
-    alignItems: 'center',
-    marginTop: -20,
-  },
   xAxisLabel: {
-    bottom: -15,
     fontSize: 12,
     color: '#8AA9B8',
+    textAlign: 'center',
     marginTop: 8,
-  },
-  yAxisLabel: {
-    position: 'absolute',
-    left: -36,
-    top: -120,
-    transform: [{ rotate: '270deg' }],
-    fontSize: 12,
-    color: '#8AA9B8',
   },
   parameterContainer: {
     flexDirection: 'row',
@@ -462,6 +514,21 @@ const styles = StyleSheet.create({
   parameterUnit: {
     color: '#8AA9B8',
     fontSize: 12,
+  },
+  downloadButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#8AA9B8',
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: 20,
+    marginTop: 16,
+  },
+  downloadButtonText: {
+    color: '#FFFFFF',
+    fontWeight: 'bold',
+    marginLeft: 8,
   },
 });
 
