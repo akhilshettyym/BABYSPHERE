@@ -4,6 +4,7 @@ import { LineChart, BarChart } from 'react-native-chart-kit';
 import { Ionicons } from '@expo/vector-icons';
 import SensorDataFetcher from '../../components/SensorDataFetcher';
 import { SensorData } from '../../types/SensorData';
+import DatePicker from '../../components/DatePicker';
 
 const { width } = Dimensions.get('window');
 
@@ -16,6 +17,7 @@ const BabyMonitorGraphPage: React.FC = () => {
   const [selectedParameter, setSelectedParameter] = useState<string>('baby_temperature');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  
 
   const timeframes = ['hourly', 'daily', 'weekly'];
   const graphTypes = ['line', 'bar'];
@@ -26,8 +28,10 @@ const BabyMonitorGraphPage: React.FC = () => {
   ];
 
   useEffect(() => {
-    renderGraph();
-  }, [selectedTimeframe]);
+    if (sensorData.length > 0) {
+      renderGraph();
+    }
+  }, [sensorData, selectedTimeframe, selectedGraph, selectedParameter]);
 
   function getFormattedValue(item: SensorData) {
     let value: number;
@@ -145,7 +149,7 @@ const BabyMonitorGraphPage: React.FC = () => {
 
   const renderGraph = () => {
     if (sensorData.length === 0) {
-      return;
+      return null;
     }
     const cleansedData = cleanseData(
       sensorData,
@@ -254,7 +258,7 @@ const BabyMonitorGraphPage: React.FC = () => {
     <ScrollView style={styles.container}>
       <SensorDataFetcher
         setSensorData={setSensorData}
-        selectedDate={new Date()} // You might want to use a state variable for this
+        selectedDate={new Date()} 
         setIsLoading={setIsLoading}
         setError={setError}
       />
