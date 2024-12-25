@@ -11,7 +11,8 @@
 \usepackage{tabularx}
 \usepackage[backend=biber, sorting=none, style=ieee]{biblatex}
 \usepackage{color}
-
+\usepackage{longtable}
+\usepackage{float}
 \addbibresource{reference.bib}
 \geometry{
 a4paper,
@@ -224,16 +225,16 @@ The joy and satisfaction that accompany the partial completion of any task would
 % \addcontentsline{toc}{chapter}{\numberline{}Abstract}
 \begin{justify}
 
-    The need for reliable infant monitoring systems has become increasingly essential due to the high demands of modern parenting and the need to ensure infant safety. This project presents a ``Cloud-Based Smart Monitoring System for Baby Health and Safety," designed to monitor various health metrics of infants, such as body temperature, heart rate, room temperature, humidity, and posture, offering parents peace of mind through real-time notifications and alerts.\\
+  The need for reliable infant monitoring systems has grown due to the high demands of modern parenting and the importance of ensuring infant safety. This project presents a ``Cloud-Based Smart Monitoring System for Baby Health and Safety," which monitors key health metrics such as body temperature, heart rate, room temperature, humidity, and posture. By providing real-time notifications and alerts, the system offers parents peace of mind and enhances infant safety.
   
-  \noindent Research and development in the field of non-contact health monitoring have progressed significantly, utilizing technologies like remote photoplethysmography and computer vision for health parameter detection. However, most current systems either lack comprehensive monitoring capabilities or depend on contact-based sensors that may disrupt infant comfort. This project addresses these limitations by proposing a comprehensive, non-contact monitoring solution that integrates contactless sensors and machine learning techniques to monitor critical parameters. Our goal is to deliver a holistic, efficient, and user-friendly system for infant health and safety monitoring.\\
+  Recent advancements in non-contact health monitoring utilize technologies like remote photoplethysmography and computer vision for detecting health parameters. However, existing systems often lack comprehensive capabilities or rely on contact-based sensors that may cause discomfort to infants. This project overcomes these challenges by integrating contactless sensors and machine learning techniques, creating a holistic and user-friendly monitoring solution.
   
-  \noindent The research methodology encompasses the development of a mobile application that interacts with a cloud-based system and sensors, designed to monitor and analyze infant health data in real-time. The novel solution incorporates computer vision algorithms to track baby posture and detect when the infant is sleeping on its tummy, potentially preventing sudden infant death syndrome (SIDS). Experimental results demonstrate the reliability and accuracy of the system in various environmental conditions, providing immediate alerts during abnormalities.\\
+  The methodology involves developing a mobile application that interacts with a cloud-based system and sensors to analyze infant health data in real time. The system employs computer vision algorithms to monitor baby posture and detect unsafe positions, such as tummy sleeping, potentially preventing sudden infant death syndrome (SIDS). Experimental results confirm the system's reliability and accuracy under various environmental conditions, providing immediate alerts during abnormalities.
   
-  \noindent This work demonstrates significant benefits by enhancing infant safety, reducing the need for continuous parental monitoring, and offering peace of mind. The system's cloud-based architecture enables remote monitoring, which saves on resources and energy.\\
+  This work significantly enhances infant safety by reducing the need for constant parental monitoring while offering peace of mind. The cloud-based architecture supports remote monitoring, ensuring efficient resource utilization. The system demonstrates a valuable contribution to infant health care by combining advanced technology with practical usability.
   
- % \noindent Future work can explore extending the system’s capabilities to detect additional health parameters and integrate AI for predictive health analysis, making it an even more comprehensive monitoring tool.\\
-\end{justify}
+  \end{justify}
+  
 
 
 \setstretch{1.2}
@@ -275,13 +276,13 @@ The objectives of the proposed project work are:
 \begin{enumerate}
     \item To develop a mobile app that collects the body temperature of the baby and room temperature from the cloud, which is transmitted from the monitoring device.
     \item To integrate computer vision technology to detect unsafe sleeping positions of the baby.
-    \item To create a user-friendly interface that allows parents to easily monitor real-time temperature readings.
+    \item To create a user-friendly interface that allows parents to easily monitor real-time temperature readings regardless of the distance.
     \item To deliver actionable notifications through app alerts when abnormal readings or unsafe sleeping position is detected.
 \end{enumerate}
 \section{Scope}
 The Cloud-Based Smart Monitoring System for Baby Health and Safety aims to provide a comprehensive, software-driven solution for real-time monitoring of a baby’s health, environment, and movements. The project’s scope includes the development of advanced algorithms to detect unsafe sleeping postures using computer vision, as well as the integration of sensor data from temperature, humidity, and heart rate monitors. The software will process this data in real-time through a cloud infrastructure, delivering instant alerts to parents via a mobile application whenever abnormalities are detected, such as a sudden change in the baby’s sleeping position, body temperature, or crying. This monitoring will be continuous and remote, ensuring that parents receive timely notifications even when they are away from home.
 
-The project is highly relevant in today's fast-paced world, where parents are often unable to supervise their children around the clock. The system can be applied in homes, daycares, or hospitals, giving caregivers real-time insight into the baby’s well-being. By focusing on software for analyzing health and environmental data, this project addresses a significant gap in traditional baby monitors, which are often limited in functionality. The use of cloud technology ensures scalability, allowing for future enhancements such as the addition of more sensors or features, thereby making the system adaptable to evolving needs in infant care and monitoring.
+The project is highly relevant in today's fast-paced world, where parents are often unable to supervise their children around the clock. The system can be applied in homes, daycares, or hospitals, giving caregivers real-time insight into the baby’s well-being. By focusing on software for analyzing health and environmental data, this project addresses a significant gap in traditional baby monitors, which are often limited in functionality. The use of cloud technology ensures scalability, allowing for future enhancements such as the addition of more sensors or features, thereby making the system adaptable to evolving needs in infant care and monitoring, as well as regardless of the distance between the parent and the child, the vitals of the child can be monitored by the parents from any location.
 
 %---------------------------- Chapter TWO --------------------------
 
@@ -521,7 +522,7 @@ The project is highly relevant in today's fast-paced world, where parents are of
 \setlength{\parskip}{1em}  % Adds 1em space between paragraphs
 
 \section{Comparison of existing methods}
-Table \ref{tab:comparison} provides a comparative overview of existing works in the realm of IoT-based baby monitoring systems, highlighting their identified problems, methodologies employed, key features, and limitations. Each entry in the table showcases a unique approach to addressing the challenges faced by parents in ensuring the safety and well-being of their infants. The studies range from systems focused on continuous monitoring through IoT sensors and machine learning to those emphasizing real-time data access and cloud integration. Despite their innovative solutions, several limitations persist, such as data security concerns, sensor accuracy issues, and the need for advanced analytics. This comparative analysis reveals the strengths and weaknesses of current technologies, paving the way for further advancements and innovations in the field of baby monitoring systems. The insights gained from this comparison will inform the design and implementation of the proposed ``Cloud-Based Smart Monitoring System for Baby Health and Safety," ensuring that it addresses existing gaps while enhancing overall infant care.
+Table \ref{tab:comparison} presents a comparative analysis of existing IoT-based baby monitoring systems, outlining their problems, methodologies, features, and limitations. The entries showcase diverse approaches to addressing parental concerns about infant safety and well-being, ranging from continuous monitoring using IoT sensors and machine learning to real-time data access via cloud integration. While these systems offer innovative solutions, limitations like data security, sensor accuracy, and lack of advanced analytics remain. This analysis highlights the strengths and gaps in current technologies, guiding the design of the proposed ``Cloud-Based Smart Monitoring System for Baby Health and Safety" to address these challenges and enhance infant care.
 
 % \begin{table}[h]
 %   \centering
@@ -622,7 +623,7 @@ This project differentiates itself from existing works that focus solely on eith
 \subsection{Usability}
 \begin{itemize}
   \item The application must be designed with a user-friendly interface, ensuring that even non-technical users can navigate easily. Help sections should be readily available for guidance.
-  \item The application should support multiple languages to cater to a diverse user base.
+  \item The application should be usable even by parents with limited digital literacy.
 \end{itemize}
 
 \subsection{Reliability}
@@ -633,14 +634,14 @@ This project differentiates itself from existing works that focus solely on eith
 
 \subsection{Security}
 \begin{itemize}
-  \item All sensitive user data must be encrypted during transmission and storage to protect against unauthorized access.
+  % \item All sensitive user data must be encrypted during transmission and storage to protect against unauthorized access.
   \item Implement secure authentication protocols (e.g., OAuth2) to safeguard user accounts and personal information.
 \end{itemize}
 
 \subsection{Scalability}
 \begin{itemize}
   \item The system architecture must support scalability, enabling it to handle an increasing number of users and devices without compromising performance.
-  \item Utilize cloud services that can easily scale resources up or down based on demand.
+  \item Utilize cloud services that can easily scale resources such as multiple user handling and catering multiple devices at the same time based on demand.
 \end{itemize}
 
 \section{User Interface Design}
@@ -1102,15 +1103,19 @@ The results demonstrate that the "Cloud-Based Smart Monitoring System for Baby H
 \chapter{Conclusion and Future Work}
 
 \section{Conclusion}
-In conclusion, this project offers a comprehensive solution to monitor key health metrics such as body temperature, heart rate, room temperature, humidity, and posture. By integrating real-time notifications and alerts, the system provides parents with peace of mind, ensuring that any abnormalities are promptly addressed. The innovative use of computer vision algorithms to monitor baby posture and prevent conditions like sudden infant death syndrome (SIDS) adds an extra layer of safety. With experimental results confirming the system's reliability and accuracy across different environmental conditions, this solution not only improves infant safety but also reduces the need for constant parental supervision. The cloud-based design facilitates efficient remote monitoring, offering a resource-saving and energy-efficient approach while enhancing overall child care.
+In conclusion, this project is reliable, accurate, and capable of meeting its intended objectives. The system offers a comprehensive solution to monitor key health metrics such as body temperature, heart rate, room temperature, humidity, and posture. By integrating real-time notifications and alerts, the system provides parents with peace of mind, ensuring that any abnormalities are promptly addressed. The innovative use of computer vision algorithms to monitor baby posture and prevent conditions like sudden infant death syndrome (SIDS) adds an extra layer of safety. 
 
-The system can be enhanced by incorporating additional health parameters, such as sleep patterns to provide a more comprehensive view of a baby's well-being. Moreover, by integrating AI algorithms, the system could leverage predictive analytics to identify potential health issues before they manifest, offering early warnings to parents and caregivers. AI could also enable personalized health recommendations based on the baby's unique health data, further optimizing care and enhancing overall safety. This expansion of capabilities would not only improve real-time monitoring but also enhance proactive health management for babies.
+The accuracy of the system was evaluated through various tests. The posture detection algorithm demonstrated high accuracy in identifying unsafe sleeping positions, such as tummy and side sleeping, with a high accuracy.% compared to manually labeled data. The system also monitored health parameters with an error margin of [XX]%, ensuring that body temperature, heart rate, SpO2 levels, and room conditions were accurately tracked. The experimental results confirmed the system's reliability and accuracy across different environmental conditions.
+
+With the successful implementation and testing, the system not only improves infant safety but also reduces the need for constant parental supervision. The cloud-based design facilitates efficient remote monitoring, offering a resource-saving and energy-efficient approach while enhancing overall child care.
+
+The system can be enhanced by incorporating additional health parameters, such as sleep patterns, to provide a more comprehensive view of a baby's well-being. Moreover, by integrating AI algorithms, the system could leverage predictive analytics to identify potential health issues before they manifest, offering early warnings to parents and caregivers. AI could also enable personalized health recommendations based on the baby's unique health data, further optimizing care and enhancing overall safety. This expansion of capabilities would not only improve real-time monitoring but also enhance proactive health management for babies.
 
 The successful implementation and testing of the system demonstrated its capability to:
 \begin{itemize}
-    \item Detect unsafe sleeping postures, such as tummy and side sleeping, with high accuracy.
-    \item Monitor environmental parameters, including room temperature, humidity, and baby body temperature, ensuring a safe environment.
-    \item Identify crying patterns effectively to notify caregivers of potential distress.
+    \item Detect unsafe sleeping postures, such as tummy and side sleeping, with a high accuracy.
+    \item Monitor environmental parameters, including room temperature, humidity, heart rate, SpO2 saturation levels of the baby, and baby body temperature, ensuring a safe environment.
+    % \item Identify crying patterns effectively to notify caregivers of potential distress.
     \item Deliver real-time alerts seamlessly to a React Native mobile application, enabling prompt actions by caregivers.
 \end{itemize}
 
@@ -1119,15 +1124,16 @@ Overall, the project achieved its objectives, proving to be a reliable and effic
 \section{Future Work}
 While the system has shown significant promise, there are several areas that can be further improved and expanded to enhance its functionality and usability. The following future directions are proposed:
 \begin{itemize}
-    \item \textbf{Enhanced Cry Detection:} Improve the robustness of the cry detection algorithm to distinguish between baby cries and other background noises, even in noisy environments.
-    \item \textbf{Battery Optimization:} Optimize power consumption for Raspberry Pi and connected hardware to extend battery life, ensuring continuous monitoring without frequent recharging.
+    \item \textbf{Implement Cry Detection:} Implement the cry detection algorithm to distinguish between baby cries and other background noises, even in noisy environments.
+    % \item \textbf{Battery Optimization:} Optimize power consumption for Raspberry Pi and connected hardware to extend battery life, ensuring continuous monitoring without frequent recharging.
     \item \textbf{Scalability:} Develop scalable solutions to monitor multiple babies simultaneously in scenarios such as nurseries or daycare centers.
     \item \textbf{Advanced Analytics:} Integrate machine learning models for predictive analytics, such as identifying early signs of health issues based on historical data.
-    \item \textbf{Mobile Application Features:} Enhance the React Native mobile application with features like data visualization, historical trend analysis, and multilingual support.
-    \item \textbf{Improved Network Resilience:} Implement offline data storage and synchronization to ensure functionality during network outages.
+    % \item \textbf{Mobile Application Features:} Enhance the React Native mobile application with features like data visualization, historical trend analysis, and multilingual support.
+    % \item \textbf{Improved Network Resilience:} Implement offline data storage and synchronization to ensure functionality during network outages.
     \item \textbf{Wearable Integration:} Explore the use of wearable devices for continuous and unobtrusive monitoring of vital signs like heart rate and oxygen levels.
     \item \textbf{Regulatory Compliance:} Ensure the system adheres to healthcare data privacy regulations, such as HIPAA, for broader deployment in healthcare settings.
     \item \textbf{User Feedback Integration:} Conduct user studies with caregivers to gather feedback and improve the usability and effectiveness of the system.
+    \item \textbf{Multiple Language Support:} The mobile app can include content in multiple languages, enabling a diverse audience to use the app.
 \end{itemize}
 
 By addressing these areas, the system can evolve into a more comprehensive and user-friendly solution, further enhancing its applicability in ensuring infant health and safety. The project sets a foundation for future innovations in the domain of smart monitoring systems and their role in caregiving.

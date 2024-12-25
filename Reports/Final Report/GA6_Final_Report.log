@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.11.20)  24 DEC 2024 08:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.11.20)  25 DEC 2024 19:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -395,7 +395,32 @@ Package biblatex Info: ... and expl3
 Package: xparse 2024-08-16 L3 Experimental document command parser
 )
 Package: blx-case-expl3 2024/03/21 v3.20 expl3 case changing code for biblatex
-))
+)) (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
+Package: longtable 2024-10-27 v4.22 Multi-page Table package (DPC)
+\LTleft=\skip98
+\LTright=\skip99
+\LTpre=\skip100
+\LTpost=\skip101
+\LTchunksize=\count403
+\LTcapwidth=\dimen159
+\LT@head=\box55
+\LT@firsthead=\box56
+\LT@foot=\box57
+\LT@lastfoot=\box58
+\LT@gbox=\box59
+\LT@cols=\count404
+\LT@rows=\count405
+\c@LT@tables=\count406
+\c@LT@chunks=\count407
+\LT@p@ftn=\toks24
+) (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count408
+\float@exts=\toks25
+\float@box=\box60
+\@float@everytoks=\toks26
+\@floatcapt=\box61
+)
 
 Package geometry Warning: Over-specification in `h'-direction.
     `width' (597.50787pt) is ignored.
@@ -404,38 +429,38 @@ Package geometry Warning: Over-specification in `h'-direction.
 Package geometry Warning: Over-specification in `v'-direction.
     `height' (845.04684pt) is ignored.
 
-\@quotelevel=\count403
-\@quotereset=\count404
+\@quotelevel=\count409
+\@quotereset=\count410
 (GA6_Final_Report.aux)
 \openout1 = `GA6_Final_Report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
  (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count405
-\scratchdimen=\dimen159
-\scratchbox=\box55
-\nofMPsegments=\count406
-\nofMParguments=\count407
-\everyMPshowfont=\toks24
-\MPscratchCnt=\count408
-\MPscratchDim=\dimen160
-\MPnumerator=\count409
-\makeMPintoPDFobject=\count410
-\everyMPtoPDFconversion=\toks25
+\scratchcounter=\count411
+\scratchdimen=\dimen160
+\scratchbox=\box62
+\nofMPsegments=\count412
+\nofMParguments=\count413
+\everyMPshowfont=\toks27
+\MPscratchCnt=\count414
+\MPscratchDim=\dimen161
+\MPnumerator=\count415
+\makeMPintoPDFobject=\count416
+\everyMPtoPDFconversion=\toks28
 ) (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -489,25 +514,25 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'GA6_Final_Report.bbl' found.
  (GA6_Final_Report.bbl)
-Package biblatex Info: Reference section=0 on input line 24.
-Package biblatex Info: Reference segment=0 on input line 24.
+Package biblatex Info: Reference section=0 on input line 25.
+Package biblatex Info: Reference segment=0 on input line 25.
 <./pic/vtu.png, id=1, 189.70876pt x 266.9975pt>
 File: ./pic/vtu.png Graphic file (type png)
 <use ./pic/vtu.png>
-Package pdftex.def Info: ./pic/vtu.png  used on input line 31.
+Package pdftex.def Info: ./pic/vtu.png  used on input line 32.
 (pdftex.def)             Requested size: 65.4409pt x 79.668pt.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 57.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 58.
  (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 57.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 58.
  (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 <./pic/sjeclogo.png, id=2, 158.09062pt x 145.29282pt>
 File: ./pic/sjeclogo.png Graphic file (type png)
 <use ./pic/sjeclogo.png>
-Package pdftex.def Info: ./pic/sjeclogo.png  used on input line 76.
+Package pdftex.def Info: ./pic/sjeclogo.png  used on input line 77.
 (pdftex.def)             Requested size: 79.0451pt x 72.64622pt.
 
 
@@ -516,14 +541,14 @@ Package pdftex.def Info: ./pic/sjeclogo.png  used on input line 76.
 {C:/Users/hp/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./pic/vtu.png> <./pic/sjeclogo.png>]
 File: ./pic/sjeclogo.png Graphic file (type png)
 <use ./pic/sjeclogo.png>
-Package pdftex.def Info: ./pic/sjeclogo.png  used on input line 107.
+Package pdftex.def Info: ./pic/sjeclogo.png  used on input line 108.
 (pdftex.def)             Requested size: 79.0451pt x 72.64622pt.
 
 
 [2]
 File: ./pic/sjeclogo.png Graphic file (type png)
 <use ./pic/sjeclogo.png>
-Package pdftex.def Info: ./pic/sjeclogo.png  used on input line 173.
+Package pdftex.def Info: ./pic/sjeclogo.png  used on input line 174.
 (pdftex.def)             Requested size: 79.0451pt x 72.64622pt.
 
 
@@ -532,57 +557,35 @@ Package pdftex.def Info: ./pic/sjeclogo.png  used on input line 173.
 [4
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 227--228
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 229--230
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 231--232
-
- []
-
-
 
 [5
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 233--234
-
- []
-
-
-
-[6] (GA6_Final_Report.toc
+] (GA6_Final_Report.toc
 Overfull \hbox (1.34006pt too wide) in paragraph at lines 18--18
  [][] []\OT1/cmr/m/n/14.4 Development of RTOs Based In-ter-net Con-nected Baby Mon- 
  []
 
 
 
-[7
+[6
 
 ]
 
-[8]
+[7]
 
-[9])
+[8])
 \tf@toc=\write4
 \openout4 = `GA6_Final_Report.toc'.
 
 
 
-[10] (GA6_Final_Report.lof)
+[9] (GA6_Final_Report.lof)
 \tf@lof=\write5
 \openout5 = `GA6_Final_Report.lof'.
 
 
 
-[11
+[10
 
 ] (GA6_Final_Report.lot)
 \tf@lot=\write6
@@ -590,7 +593,7 @@ Overfull \hbox (1.34006pt too wide) in paragraph at lines 18--18
 
 
 
-[12
+[11
 
 ]
 Chapter 1.
@@ -623,17 +626,17 @@ Chapter 2.
 [10]
 
 [11]
-Overfull \hbox (5.9098pt too wide) in paragraph at lines 469--469
+Overfull \hbox (5.9098pt too wide) in paragraph at lines 470--470
 []\OT1/cmr/bx/n/17.28 Smart Care-giv-ing Sup-port Cloud In-te-gra-tion Sys-
  []
 
 
-Overfull \hbox (21.8045pt too wide) in paragraph at lines 483--484
+Overfull \hbox (21.8045pt too wide) in paragraph at lines 484--485
 \OT1/cmr/m/n/14.4 to-wards im-proved parental re-sponse times dur-ing emer-gen-cies|demonstrating
  []
 
 
-Overfull \hbox (3.00468pt too wide) in paragraph at lines 488--489
+Overfull \hbox (3.00468pt too wide) in paragraph at lines 489--490
 \OT1/cmr/m/n/14.4 met-rics|ultimately fos-ter-ing bet-ter decision-making pro-cesses among care-
  []
 
@@ -642,26 +645,26 @@ Overfull \hbox (3.00468pt too wide) in paragraph at lines 488--489
 [12]
 
 [13]
-
-[14]
-Overfull \hbox (1.33534pt too wide) in paragraph at lines 562--562
+Overfull \hbox (1.33534pt too wide) in paragraph at lines 563--563
  []|\OT1/cmr/bx/n/10.95 Methodology| 
  []
 
 
-Overfull \hbox (2.26363pt too wide) in paragraph at lines 567--567
+Overfull \hbox (2.26363pt too wide) in paragraph at lines 568--568
  []|\OT1/cmr/m/n/10.95 Microcontroller 
  []
 
 
-Overfull \hbox (7.77061pt too wide) in paragraph at lines 560--573
+Overfull \hbox (7.77061pt too wide) in paragraph at lines 561--574
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 59.95987pt on input line 573.
+LaTeX Warning: Float too large for page by 59.95987pt on input line 574.
 
 
+
+[14]
 
 [15]
 
@@ -698,51 +701,51 @@ Chapter 4.
 [28
 
 ]
-<./pic/architecture.png, id=138, 657.45625pt x 467.7475pt>
+<./pic/architecture.png, id=135, 657.45625pt x 467.7475pt>
 File: ./pic/architecture.png Graphic file (type png)
 <use ./pic/architecture.png>
-Package pdftex.def Info: ./pic/architecture.png  used on input line 855.
+Package pdftex.def Info: ./pic/architecture.png  used on input line 856.
 (pdftex.def)             Requested size: 394.47679pt x 280.65065pt.
 
 
 [29]
 
 [30 <./pic/architecture.png>]
-<./pic/usercase.png, id=146, 475.7775pt x 411.5375pt>
+<./pic/usercase.png, id=143, 475.7775pt x 411.5375pt>
 File: ./pic/usercase.png Graphic file (type png)
 <use ./pic/usercase.png>
-Package pdftex.def Info: ./pic/usercase.png  used on input line 874.
+Package pdftex.def Info: ./pic/usercase.png  used on input line 875.
 (pdftex.def)             Requested size: 285.46869pt x 246.92441pt.
 
 
 [31]
 
 [32 <./pic/usercase.png>]
-<./pic/sequence.png, id=155, 695.59875pt x 479.7925pt>
+<./pic/sequence.png, id=152, 695.59875pt x 479.7925pt>
 File: ./pic/sequence.png Graphic file (type png)
 <use ./pic/sequence.png>
-Package pdftex.def Info: ./pic/sequence.png  used on input line 898.
+Package pdftex.def Info: ./pic/sequence.png  used on input line 899.
 (pdftex.def)             Requested size: 417.36247pt x 287.8777pt.
 
 
 [33]
 
 [34 <./pic/sequence.png>]
-<./pic/WhatsApp Image 2024-10-23 at 22.00.55_66baa9c8.jpg, id=163, 1172.38pt x 335.2525pt>
+<./pic/WhatsApp Image 2024-10-23 at 22.00.55_66baa9c8.jpg, id=160, 1172.38pt x 335.2525pt>
 File: ./pic/WhatsApp Image 2024-10-23 at 22.00.55_66baa9c8.jpg Graphic file (type jpg)
 <use ./pic/WhatsApp Image 2024-10-23 at 22.00.55_66baa9c8.jpg>
-Package pdftex.def Info: ./pic/WhatsApp Image 2024-10-23 at 22.00.55_66baa9c8.jpg  used on input line 914.
+Package pdftex.def Info: ./pic/WhatsApp Image 2024-10-23 at 22.00.55_66baa9c8.jpg  used on input line 915.
 (pdftex.def)             Requested size: 410.33914pt x 117.34013pt.
 
 
 [35 <./pic/WhatsApp Image 2024-10-23 at 22.00.55_66baa9c8.jpg>]
-<./pic/uiflow.png, id=167, 1441.385pt x 614.295pt>
+<./pic/uiflow.png, id=164, 1441.385pt x 614.295pt>
 File: ./pic/uiflow.png Graphic file (type png)
 <use ./pic/uiflow.png>
-Package pdftex.def Info: ./pic/uiflow.png  used on input line 932.
+Package pdftex.def Info: ./pic/uiflow.png  used on input line 933.
 (pdftex.def)             Requested size: 461.25262pt x 196.57841pt.
 
-Overfull \hbox (8.28473pt too wide) in paragraph at lines 932--933
+Overfull \hbox (8.28473pt too wide) in paragraph at lines 933--934
  [][] 
  []
 
@@ -769,7 +772,7 @@ Chapter 6.
 [42
 
 ]
-Underfull \hbox (badness 1242) in paragraph at lines 1024--1025
+Underfull \hbox (badness 1242) in paragraph at lines 1025--1026
 []\OT1/cmr/m/n/14.4 Data flow from sen-sors and cam-era to the Fire-base Re-al-time
  []
 
@@ -817,17 +820,17 @@ Package logreq Info: Writing requests to 'GA6_Final_Report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 10982 strings out of 473682
- 212245 string characters out of 5720643
- 1042305 words of memory out of 5000000
- 33936 multiletter control sequences out of 15000+600000
+ 11162 strings out of 473682
+ 214901 string characters out of 5720643
+ 1047128 words of memory out of 5000000
+ 34109 multiletter control sequences out of 15000+600000
  572201 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  66i,13n,81p,1282b,1276s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\hp\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcti1200.pk> <C:\Users\hp\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1440.pk><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on GA6_Final_Report.pdf (66 pages, 985632 bytes).
+Output written on GA6_Final_Report.pdf (65 pages, 984227 bytes).
 PDF statistics:
- 277 PDF objects out of 1000 (max. 8388607)
+ 274 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

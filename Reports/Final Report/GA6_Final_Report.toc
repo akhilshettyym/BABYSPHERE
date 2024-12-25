@@ -1,8 +1,8 @@
 \contentsline {chapter}{\hbox to\@tempdima {\hfil }Acknowledgement}{4}{}%
 \contentsline {chapter}{\hbox to\@tempdima {\hfil }Abstract}{5}{}%
-\contentsline {chapter}{\hbox to\@tempdima {\hfil }Table of Contents}{11}{}%
-\contentsline {chapter}{\hbox to\@tempdima {\hfil }List of Figures}{11}{}%
-\contentsline {chapter}{\hbox to\@tempdima {\hfil }List of Tables}{12}{}%
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Table of Contents}{10}{}%
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }List of Figures}{10}{}%
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }List of Tables}{11}{}%
 \contentsline {chapter}{\numberline {1}Introduction}{1}{}%
 \contentsline {section}{\numberline {1.1}Background}{1}{}%
 \contentsline {section}{\numberline {1.2}Problem statement }{2}{}%
@@ -19,7 +19,7 @@
 \contentsline {section}{\numberline {2.8}Smart Caregiving Support Cloud Integration Systems}{12}{}%
 \contentsline {section}{\numberline {2.9}Real time infant health monitoring system for hard of hearing parents}{13}{}%
 \contentsline {section}{\numberline {2.10}Comparison of existing methods}{14}{}%
-\contentsline {section}{\numberline {2.11}Proposed system}{15}{}%
+\contentsline {section}{\numberline {2.11}Proposed system}{16}{}%
 \contentsline {subsection}{\numberline {2.11.1}Importance of chosen project}{17}{}%
 \contentsline {subsection}{\numberline {2.11.2}Novelty in Proposed project}{17}{}%
 \contentsline {subsection}{\numberline {2.11.3}Advancement of State-of-the-Art}{18}{}%
@@ -34,7 +34,7 @@
 \contentsline {subsection}{\numberline {3.2.1}Usability}{22}{}%
 \contentsline {subsection}{\numberline {3.2.2}Reliability}{22}{}%
 \contentsline {subsection}{\numberline {3.2.3}Security}{22}{}%
-\contentsline {subsection}{\numberline {3.2.4}Scalability}{23}{}%
+\contentsline {subsection}{\numberline {3.2.4}Scalability}{22}{}%
 \contentsline {section}{\numberline {3.3}User Interface Design}{23}{}%
 \contentsline {subsection}{\numberline {3.3.1}Layout}{23}{}%
 \contentsline {subsection}{\numberline {3.3.2}Color Scheme and Branding}{23}{}%
