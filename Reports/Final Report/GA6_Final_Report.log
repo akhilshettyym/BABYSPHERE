@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.11.20)  25 DEC 2024 23:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.11.20)  26 DEC 2024 00:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -701,120 +701,112 @@ Chapter 4.
 [28
 
 ]
-<./pic/architecture.png, id=135, 657.45625pt x 467.7475pt>
-File: ./pic/architecture.png Graphic file (type png)
-<use ./pic/architecture.png>
-Package pdftex.def Info: ./pic/architecture.png  used on input line 856.
-(pdftex.def)             Requested size: 394.47679pt x 280.65065pt.
-
 
 [29]
+<./pic/finarch.png, id=138, 797.22844pt x 577.40718pt>
+File: ./pic/finarch.png Graphic file (type png)
+<use ./pic/finarch.png>
+Package pdftex.def Info: ./pic/finarch.png  used on input line 864.
+(pdftex.def)             Requested size: 438.477pt x 317.57494pt.
 
-[30 <./pic/architecture.png>]
-<./pic/usercase.png, id=143, 475.7775pt x 411.5375pt>
-File: ./pic/usercase.png Graphic file (type png)
-<use ./pic/usercase.png>
-Package pdftex.def Info: ./pic/usercase.png  used on input line 875.
-(pdftex.def)             Requested size: 285.46869pt x 246.92441pt.
+
+[30 <./pic/finarch.png>]
+<./pic/Use case.png, id=143, 438.63875pt x 642.4pt>
+File: ./pic/Use case.png Graphic file (type png)
+<use ./pic/Use case.png>
+Package pdftex.def Info: ./pic/Use case.png  used on input line 884.
+(pdftex.def)             Requested size: 394.77121pt x 578.15466pt.
 
 
 [31]
 
-[32 <./pic/usercase.png>]
-<./pic/sequence.png, id=152, 695.59875pt x 479.7925pt>
-File: ./pic/sequence.png Graphic file (type png)
-<use ./pic/sequence.png>
-Package pdftex.def Info: ./pic/sequence.png  used on input line 899.
-(pdftex.def)             Requested size: 417.36247pt x 287.8777pt.
-
+[32 <./pic/Use case.png>]
 
 [33]
-
-[34 <./pic/sequence.png>]
-<./pic/WhatsApp Image 2024-10-23 at 22.00.55_66baa9c8.jpg, id=160, 1172.38pt x 335.2525pt>
-File: ./pic/WhatsApp Image 2024-10-23 at 22.00.55_66baa9c8.jpg Graphic file (type jpg)
-<use ./pic/WhatsApp Image 2024-10-23 at 22.00.55_66baa9c8.jpg>
-Package pdftex.def Info: ./pic/WhatsApp Image 2024-10-23 at 22.00.55_66baa9c8.jpg  used on input line 915.
-(pdftex.def)             Requested size: 410.33914pt x 117.34013pt.
+<./pic/seq.png, id=155, 1620.80531pt x 776.14969pt>
+File: ./pic/seq.png Graphic file (type png)
+<use ./pic/seq.png>
+Package pdftex.def Info: ./pic/seq.png  used on input line 909.
+(pdftex.def)             Requested size: 437.62329pt x 209.56322pt.
 
 
-[35 <./pic/WhatsApp Image 2024-10-23 at 22.00.55_66baa9c8.jpg>]
-<./pic/uiflow.png, id=164, 1441.385pt x 614.295pt>
+[34 <./pic/seq.png>]
+
+[35]
+<./pic/uiflow.png, id=163, 1441.385pt x 614.295pt>
 File: ./pic/uiflow.png Graphic file (type png)
 <use ./pic/uiflow.png>
-Package pdftex.def Info: ./pic/uiflow.png  used on input line 933.
+Package pdftex.def Info: ./pic/uiflow.png  used on input line 943.
 (pdftex.def)             Requested size: 461.25262pt x 196.57841pt.
 
-Overfull \hbox (8.28473pt too wide) in paragraph at lines 933--934
+Overfull \hbox (8.28473pt too wide) in paragraph at lines 943--944
  [][] 
  []
 
 
 
-[36]
-
-[37 <./pic/uiflow.png>]
+[36 <./pic/uiflow.png>]
 Chapter 5.
 
 
-[38
+[37
 
 ]
+
+[38]
 
 [39]
 
 [40]
-
-[41]
 Chapter 6.
 
 
-[42
+[41
 
 ]
-Underfull \hbox (badness 1242) in paragraph at lines 1025--1026
+Underfull \hbox (badness 1242) in paragraph at lines 1035--1036
 []\OT1/cmr/m/n/14.4 Data flow from sen-sors and cam-era to the Fire-base Re-al-time
  []
 
 
 
+[42]
+
 [43]
 
 [44]
-
-[45]
 Chapter 7.
 
 
-[46
+[45
 
 ]
+
+[46]
 
 [47]
 
 [48]
 
 [49]
-
-[50]
 Chapter 8.
 
 
-[51
+[50
 
 ]
+
+[51]
 
 [52]
 
 [53]
 
-[54]
-
-[55
+[54
 
 ]
 
-[56] (GA6_Final_Report.aux)
+[55] (GA6_Final_Report.aux)
  ***********
 LaTeX2e <2024-11-01>
 L3 programming layer <2024-11-02>
@@ -824,17 +816,17 @@ Package logreq Info: Writing requests to 'GA6_Final_Report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 11162 strings out of 473682
- 214901 string characters out of 5720643
- 1047128 words of memory out of 5000000
- 34109 multiletter control sequences out of 15000+600000
+ 11154 strings out of 473682
+ 214377 string characters out of 5720643
+ 1047101 words of memory out of 5000000
+ 34101 multiletter control sequences out of 15000+600000
  572201 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  66i,13n,81p,1282b,1276s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\hp\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcti1200.pk> <C:\Users\hp\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1440.pk><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on GA6_Final_Report.pdf (67 pages, 987413 bytes).
+Output written on GA6_Final_Report.pdf (66 pages, 1439694 bytes).
 PDF statistics:
- 281 PDF objects out of 1000 (max. 8388607)
+ 276 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 36 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

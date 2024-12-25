@@ -225,34 +225,27 @@ INPUT C:\Users\hp\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbol
 INPUT C:\Users\hp\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Users\hp\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx10.tfm
 INPUT C:\Users\hp\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\tcrm1440.tfm
-INPUT .\pic\architecture.png
-INPUT .\pic\architecture.png
-INPUT .\pic\architecture.png
-INPUT .\pic\architecture.png
-INPUT .\pic\architecture.png
-INPUT .\pic\architecture.png
-INPUT .\pic\architecture.png
-INPUT .\pic\usercase.png
-INPUT .\pic\usercase.png
-INPUT .\pic\usercase.png
-INPUT .\pic\usercase.png
-INPUT .\pic\usercase.png
-INPUT .\pic\usercase.png
-INPUT .\pic\usercase.png
-INPUT .\pic\sequence.png
-INPUT .\pic\sequence.png
-INPUT .\pic\sequence.png
-INPUT .\pic\sequence.png
-INPUT .\pic\sequence.png
-INPUT .\pic\sequence.png
-INPUT .\pic\sequence.png
-INPUT .\pic\WhatsApp Image 2024-10-23 at 22.00.55_66baa9c8.jpg
-INPUT .\pic\WhatsApp Image 2024-10-23 at 22.00.55_66baa9c8.jpg
-INPUT .\pic\WhatsApp Image 2024-10-23 at 22.00.55_66baa9c8.jpg
-INPUT .\pic\WhatsApp Image 2024-10-23 at 22.00.55_66baa9c8.jpg
-INPUT .\pic\WhatsApp Image 2024-10-23 at 22.00.55_66baa9c8.jpg
-INPUT .\pic\WhatsApp Image 2024-10-23 at 22.00.55_66baa9c8.jpg
-INPUT .\pic\WhatsApp Image 2024-10-23 at 22.00.55_66baa9c8.jpg
+INPUT .\pic\finarch.png
+INPUT .\pic\finarch.png
+INPUT .\pic\finarch.png
+INPUT .\pic\finarch.png
+INPUT .\pic\finarch.png
+INPUT .\pic\finarch.png
+INPUT .\pic\finarch.png
+INPUT .\pic\Use case.png
+INPUT .\pic\Use case.png
+INPUT .\pic\Use case.png
+INPUT .\pic\Use case.png
+INPUT .\pic\Use case.png
+INPUT .\pic\Use case.png
+INPUT .\pic\Use case.png
+INPUT .\pic\seq.png
+INPUT .\pic\seq.png
+INPUT .\pic\seq.png
+INPUT .\pic\seq.png
+INPUT .\pic\seq.png
+INPUT .\pic\seq.png
+INPUT .\pic\seq.png
 INPUT .\pic\uiflow.png
 INPUT .\pic\uiflow.png
 INPUT .\pic\uiflow.png
