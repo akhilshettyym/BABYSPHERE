@@ -6,7 +6,11 @@ import NewHeader from '../../components/NewHeader';
 import NewSensorDashboard from '../../components/NewSensorDashboard';
 import DatePicker from '../../components/DatePicker';
 import SensorDataFetcher from '../../components/SensorDataFetcher';
+import { AlertModal } from '../../components/AlertModal/AlertModal';
+import { setupNotifications } from '../../utils/notificationUtils';
+import { useAlerts } from '../../hooks/useAlertSystem';
 import { SensorData } from '../../types/SensorData';
+import { defaultSettings } from '../../types/AlertTypes';
 
 const HomePage: React.FC = () => {
   const [sensorData, setSensorData] = useState<SensorData[]>([]);
@@ -15,38 +19,40 @@ const HomePage: React.FC = () => {
   const [refreshing, setRefreshing] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [isDarkMode, setIsDarkMode] = useState(false);
-
-  const fetchData = useCallback((date: Date) => {
-    setIsLoading(true);
-    setError(null);
-  }, []);
+  const [showAlertModal, setShowAlertModal] = useState(false);
+  const [settings, setSettings] = useState(defaultSettings);
+  const { alerts, checkThresholds } = useAlerts();
 
   useEffect(() => {
-    setIsLoading(true);
-    setError(null);
-  }, [selectedDate]);
+    if (sensorData.length > 0) {
+      const latestData = sensorData[sensorData.length - 1];
+      checkThresholds(latestData, settings);
+    }
+  }, [sensorData, settings, checkThresholds]);
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
-    //fetchData(selectedDate); //This line is no longer needed as data fetching is handled by SensorDataFetcher
   }, []);
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
   };
+  useEffect(() => {
+    setupNotifications();
+  }, []);
 
   return (
     <SafeAreaView style={[styles.container, isDarkMode && styles.darkContainer]}>
       <NewHeader />
-      <ScrollView 
+      <ScrollView
         contentContainerStyle={styles.scrollContent}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
       >
         <View style={[styles.content, isDarkMode && styles.darkContent]}>
-          <SensorDataFetcher 
-            setSensorData={setSensorData} 
+          <SensorDataFetcher
+            setSensorData={setSensorData}
             selectedDate={selectedDate}
             setIsLoading={setIsLoading}
             setError={setError}
@@ -59,7 +65,10 @@ const HomePage: React.FC = () => {
           ) : (
             <NewSensorDashboard data={sensorData} isDarkMode={isDarkMode} />
           )}
-          <TouchableOpacity style={styles.alertButton}>
+          <TouchableOpacity
+            style={styles.alertButton}
+            onPress={() => setShowAlertModal(true)}
+          >
             <Ionicons name="notifications" size={24} color="#8AA9B8" />
             <Text style={styles.alertButtonText}>View Alerts</Text>
           </TouchableOpacity>
@@ -71,6 +80,15 @@ const HomePage: React.FC = () => {
           </TouchableOpacity>
         </View>
       </ScrollView>
+
+      <AlertModal
+        visible={showAlertModal}
+        onClose={() => setShowAlertModal(false)}
+        alerts={alerts}
+        settings={settings}
+        onUpdateSettings={setSettings}
+        isDarkMode={isDarkMode}
+      />
     </SafeAreaView>
   );
 };
