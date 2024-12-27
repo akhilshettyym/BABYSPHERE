@@ -3,20 +3,22 @@ import { Ionicons } from '@expo/vector-icons';
 
 export default function AppLayout() {
   return (
-    <Tabs screenOptions={{
-      tabBarStyle: {
-        backgroundColor: '#FFFFFF',
-        borderTopWidth: 1,
-        borderTopColor: '#E5E5E5',
-        paddingBottom: 5,
-        paddingTop: 5,
-      },
-      tabBarActiveTintColor: '#A3D8F4',
-      tabBarInactiveTintColor: '#8AA9B8',
-      headerShown: false,
-    }}>
+    <Tabs
+      screenOptions={{
+        tabBarStyle: {
+          backgroundColor: '#FFFFFF',
+          borderTopWidth: 1,
+          borderTopColor: '#E5E5E5',
+          paddingBottom: 5,
+          paddingTop: 5,
+        },
+        tabBarActiveTintColor: '#A3D8F4',
+        tabBarInactiveTintColor: '#8AA9B8',
+        headerShown: false,
+      }}
+    >
       <Tabs.Screen
-        name="home"
+        name="HomePage"
         options={{
           title: 'Home',
           tabBarIcon: ({ color, size }) => (
@@ -25,9 +27,9 @@ export default function AppLayout() {
         }}
       />
       <Tabs.Screen
-        name="baby-monitor"
+        name="BabyMonitorGraph"
         options={{
-          title: 'Monitor',
+          title: 'Baby Monitor',
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="body" size={size} color={color} />
           ),
@@ -52,11 +54,20 @@ export default function AppLayout() {
         }}
       />
       <Tabs.Screen
-        name="wellness"
+        name="WellnessTracker"
         options={{
           title: 'Wellness',
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="fitness" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: 'Profile',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="person" size={size} color={color} />
           ),
         }}
       />

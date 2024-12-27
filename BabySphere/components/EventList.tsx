@@ -19,7 +19,7 @@ export const EventList: React.FC<EventListProps> = ({ events, onUpdateEvent, onD
         renderItem={({ item }) => (
           <EventCard 
             event={item} 
-            onUpdate={(updatedFields) => onUpdateEvent({ ...item, ...updatedFields })}
+            onUpdate={(updatedEvent) => onUpdateEvent({ ...item, ...updatedEvent })}
             onDelete={() => onDeleteEvent(item.id)}
           />
         )}
