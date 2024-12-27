@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebSocket Image and Alert</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 20px;
+    }
+    img {
+      max-width: 80%;
+      height: auto;
+      margin-top: 20px;
+      border: 1px solid #ccc;
+    }
+    .alert {
+      font-size: 1.5em;
+      color: #333;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>WebSocket Live Image and Alert</h1>
+  <p>Waiting for data from WebSocket...</p>
+  <div class="alert">Alert: N/A</div>
+  <img id="image" alt="Image will appear here once received from WebSocket" />
+
+  <script>
+    // Update this with the Raspberry Pi's IP address
+    const wsUrl = "ws://192.168.40.120:8765";
+
+    // Select DOM elements
+    const alertDiv = document.querySelector('.alert');
+    const imgElement = document.getElementById('image');
+
+    // Connect to WebSocket
+    const websocket = new WebSocket(wsUrl);
+
+    // Handle WebSocket connection open
+    websocket.onopen = () => {
+      console.log('WebSocket connection established.');
+    };
+
+    // Handle messages from WebSocket
+    websocket.onmessage = (event) => {
+      console.log('Received message:', event.data);
+
+      try {
+        // Parse the received data
+        const data = JSON.parse(event.data);
+
+        // Update the alert text
+        if (data.result) {
+          alertDiv.textContent = `Alert: ${data.result}`;
+        }
+
+        // Update the image
+        if (data.image) {
+          imgElement.src = `data:image/jpeg;base64,${data.image}`;
+        }
+      } catch (error) {
+        console.error('Error parsing WebSocket message:', error);
+      }
+    };
+
+    // Handle WebSocket errors
+    websocket.onerror = (error) => {
+      console.error('WebSocket error:', error);
+    };
+
+    // Handle WebSocket connection close
+    websocket.onclose = () => {
+      console.log('WebSocket connection closed.');
+      alertDiv.textContent = 'WebSocket connection closed.';
+    };
+  </script>
+</body>
+</html>

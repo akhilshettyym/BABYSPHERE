@@ -52,19 +52,6 @@ Reports/Final Report Updated/GA6_Final_Updated.toc
 Reports/Final Report Updated/GA6_Final_Updated.run.xml
 Reports/Final Report Updated/GA6_Final_Updated.synctex.gz
 
-Reports/IASF_2025/iasf_report.aux
-Reports/IASF_2025/iasf_report.fdb_latexmk
-Reports/IASF_2025/iasf_report.fls
-Reports/IASF_2025/iasf_report.log
-Reports/IASF_2025/iasf_report.bbl
-Reports/IASF_2025/iasf_report.bbl-SAVE-ERROR
-Reports/IASF_2025/iasf_report.bcf
-Reports/IASF_2025/iasf_report.blg
-Reports/IASF_2025/iasf_report.lof
-Reports/IASF_2025/iasf_report.lot
-Reports/IASF_2025/iasf_report.toc
-Reports/IASF_2025/iasf_report.run.xml
-Reports/IASF_2025/iasf_report.synctex.gz
 
 
 frontend/BABYSPHERE/node_modules
@@ -73,6 +60,7 @@ BabySphere/node_modules
 BabySphere/expo-env.d.ts
 
 .expo/
+
 
 
 Reports/IASF_2025/iasf_report.aux
@@ -92,3 +80,4 @@ Reports/IASF_2025/iasf_report.synctex.gz
 venv/
 posture-detection/babysphere-3d697-firebase-adminsdk-bx0hc-ea986b3209.json
 posture-detection/pyfi-demo-firebase-adminsdk-f64d3-041b367b77.json
+node_modules
