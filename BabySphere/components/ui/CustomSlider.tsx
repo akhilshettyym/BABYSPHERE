@@ -6,7 +6,6 @@ import {
   PanResponder,
   GestureResponderEvent,
   LayoutChangeEvent,
-  ViewStyle,
 } from 'react-native';
 import { theme } from '../../utils/theme';
 
@@ -33,9 +32,8 @@ export function CustomSlider({
 }: CustomSliderProps) {
   const [width, setWidth] = useState(0);
 
-  const getValueFromGesture = (pageX: number, locationX: number) => {
-    const xPos = pageX - locationX;
-    const ratio = Math.max(0, Math.min(1, xPos / width));
+  const getValueFromGesture = (pageX: number) => {
+    const ratio = Math.max(0, Math.min(1, pageX / width));
     const newValue = minimumValue + ratio * (maximumValue - minimumValue);
     return Math.round(newValue);
   };
@@ -44,11 +42,11 @@ export function CustomSlider({
     onStartShouldSetPanResponder: () => true,
     onMoveShouldSetPanResponder: () => true,
     onPanResponderGrant: (evt: GestureResponderEvent) => {
-      const newValue = getValueFromGesture(evt.nativeEvent.pageX, evt.nativeEvent.locationX);
+      const newValue = getValueFromGesture(evt.nativeEvent.locationX);
       onValueChange(newValue);
     },
     onPanResponderMove: (evt: GestureResponderEvent) => {
-      const newValue = getValueFromGesture(evt.nativeEvent.pageX, evt.nativeEvent.locationX);
+      const newValue = getValueFromGesture(evt.nativeEvent.locationX);
       onValueChange(newValue);
     },
   });
@@ -58,16 +56,24 @@ export function CustomSlider({
   };
 
   const progress = (value - minimumValue) / (maximumValue - minimumValue);
-  const progressWidth = progress * width; // Calculate width in pixels
+
+  const renderNumberLabels = () => {
+    const labels = [];
+    for (let i = minimumValue; i <= maximumValue; i++) {
+      labels.push(
+        <Text key={i} style={[styles.numberLabel, { left: `${((i - minimumValue) / (maximumValue - minimumValue)) * 100}%` }]}>
+          {i}
+        </Text>
+      );
+    }
+    return labels;
+  };
 
   return (
     <View style={[styles.container, style]}>
-      {showLabels && (
-        <View style={styles.labelContainer}>
-          <Text style={styles.label}>{minimumValue}</Text>
-          <Text style={styles.label}>{maximumValue}</Text>
-        </View>
-      )}
+      <View style={styles.numberLabelContainer}>
+        {renderNumberLabels()}
+      </View>
       <View
         style={styles.sliderContainer}
         onLayout={handleLayout}
@@ -79,15 +85,24 @@ export function CustomSlider({
               styles.progress,
               {
                 backgroundColor: minimumTrackTintColor,
-                width: progressWidth, // Use numeric value
+                width: `${progress * 100}%`,
               },
             ]}
           />
         </View>
         <View
-          style={[styles.thumb, { left: progressWidth }]} // Numeric value for 'left'
+          style={[
+            styles.thumb,
+            { left: `${progress * 100}%` },
+          ]}
         />
       </View>
+      {showLabels && (
+        <View style={styles.labelContainer}>
+          <Text style={styles.label}>{minimumValue}</Text>
+          <Text style={styles.label}>{maximumValue}</Text>
+        </View>
+      )}
     </View>
   );
 }
@@ -96,10 +111,24 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
   },
-  labelContainer: {
+  numberLabelContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 8,
+    height: 20,
+  },
+  numberLabel: {
+    position: 'absolute',
+    fontSize: 12,
+    color: theme.colors.textSecondary,
+    textAlign: 'center',
+    width: 20,
+    marginLeft: -10,
+  },
+  labelContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 8,
   },
   label: {
     fontSize: 14,
@@ -127,3 +156,4 @@ const styles = StyleSheet.create({
     ...theme.shadows.card,
   },
 });
+

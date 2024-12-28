@@ -16,6 +16,10 @@ export function SleepQuality({ onQualityChange, quality }: SleepQualityProps) {
     return 'Excellent';
   };
 
+  const handleQualityChange = (newQuality: number) => {
+    onQualityChange(Math.round(newQuality));
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>How was your sleep last night?</Text>
@@ -24,10 +28,11 @@ export function SleepQuality({ onQualityChange, quality }: SleepQualityProps) {
         value={quality}
         minimumValue={1}
         maximumValue={10}
-        onValueChange={onQualityChange}
+        onValueChange={handleQualityChange}
         minimumTrackTintColor={theme.colors.primary}
         maximumTrackTintColor={theme.colors.border}
-        showLabels={true}
+        showLabels={false}
+        style={styles.slider}
       />
     </View>
   );
@@ -49,4 +54,8 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     fontWeight: '500',
   },
+  slider: {
+    width: '100%',
+  },
 });
+
