@@ -23,24 +23,31 @@ export function useWellnessData(timeRange: TimeRange = 'week') {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const logs = await wellnessService.getRecentLogs(7);
-        
-        // Calculate averages
-        const averages = calculateAverages(logs);
-        setWeeklyAverages(averages);
-        
-        // Process trend data
-        const processed = processTrendData(logs);
-        setTrendData(processed);
+        const data = await wellnessService.getWellnessData(timeRange, 'current-user');
+        setWeeklyAverages({
+          mood: data.averages.mood,
+          sleep: data.averages.sleep
+        });
+        setTrendData({
+          mood: data.trends.mood.map(point => ({
+            x: new Date(point.date),
+            y: point.value
+          })),
+          sleep: data.trends.sleep.map(point => ({
+            x: new Date(point.date),
+            y: point.value
+          }))
+        });
       } catch (error) {
         console.error('Error fetching wellness data:', error);
       } finally {
         setLoading(false);
       }
     };
-
+  
     fetchData();
   }, [timeRange]);
+  
 
   return {
     loading,
