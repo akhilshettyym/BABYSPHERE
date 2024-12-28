@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, PanResponder, GestureResponderEvent, LayoutChangeEvent } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  PanResponder,
+  GestureResponderEvent,
+  LayoutChangeEvent,
+  ViewStyle,
+} from 'react-native';
 import { theme } from '../../utils/theme';
 
 interface CustomSliderProps {
@@ -10,6 +18,7 @@ interface CustomSliderProps {
   minimumTrackTintColor?: string;
   maximumTrackTintColor?: string;
   style?: any;
+  showLabels?: boolean;
 }
 
 export function CustomSlider({
@@ -20,6 +29,7 @@ export function CustomSlider({
   minimumTrackTintColor = theme.colors.primary,
   maximumTrackTintColor = theme.colors.border,
   style,
+  showLabels = true,
 }: CustomSliderProps) {
   const [width, setWidth] = useState(0);
 
@@ -48,28 +58,54 @@ export function CustomSlider({
   };
 
   const progress = (value - minimumValue) / (maximumValue - minimumValue);
-  const progressWidth = progress * 100; // Make it a number for width
+  const progressWidth = progress * width; // Calculate width in pixels
 
   return (
-    <View style={[styles.container, style]} onLayout={handleLayout} {...panResponder.panHandlers}>
-      <View style={[styles.track, { backgroundColor: maximumTrackTintColor }]}>
-        <View 
-          style={[
-            styles.progress, 
-            { 
-              backgroundColor: minimumTrackTintColor,
-              width: progressWidth, // Use number here
-            }
-          ]} 
+    <View style={[styles.container, style]}>
+      {showLabels && (
+        <View style={styles.labelContainer}>
+          <Text style={styles.label}>{minimumValue}</Text>
+          <Text style={styles.label}>{maximumValue}</Text>
+        </View>
+      )}
+      <View
+        style={styles.sliderContainer}
+        onLayout={handleLayout}
+        {...panResponder.panHandlers}
+      >
+        <View style={[styles.track, { backgroundColor: maximumTrackTintColor }]}>
+          <View
+            style={[
+              styles.progress,
+              {
+                backgroundColor: minimumTrackTintColor,
+                width: progressWidth, // Use numeric value
+              },
+            ]}
+          />
+        </View>
+        <View
+          style={[styles.thumb, { left: progressWidth }]} // Numeric value for 'left'
         />
       </View>
-      <View style={[styles.thumb, { left: progressWidth }]} /> {/* Use number here as well */}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    width: '100%',
+  },
+  labelContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 8,
+  },
+  label: {
+    fontSize: 14,
+    color: theme.colors.textSecondary,
+  },
+  sliderContainer: {
     height: 40,
     justifyContent: 'center',
   },
