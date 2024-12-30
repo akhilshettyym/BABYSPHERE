@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
-import VideoPlayer from './VideoPlayer';
+import { View, Text, StyleSheet, SafeAreaView, Platform } from 'react-native';
+import { WebView } from 'react-native-webview';
 import LiveParameters from './LiveParameters';
 import SensorDataFetcher from './SensorDataFetcher';
 import { SensorData } from '../types/SensorData';
@@ -13,7 +13,7 @@ const LiveFeed: React.FC = () => {
 
   const latestData = sensorData.length > 0 ? sensorData[sensorData.length - 1] : null;
 
-  const cameraFeedUri = "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8";
+  const cameraFeedUri = "http://172.17.0.232:5002/processed_feed"; // Replace with your live stream URL
 
   return (
     <SafeAreaView style={styles.container}>
@@ -29,7 +29,24 @@ const LiveFeed: React.FC = () => {
           <View style={styles.redDot} />
         </View>
       </View>
-      <VideoPlayer uri={cameraFeedUri} />
+
+      {/* Live Stream Component */}
+      {Platform.OS === 'web' ? (
+        <iframe 
+          src={cameraFeedUri} 
+          style={styles.iframe} 
+          title="Live Stream" 
+        />
+      ) : (
+        <View style={styles.webViewContainer}>
+          <WebView 
+            source={{ uri: cameraFeedUri }} 
+            style={styles.webView} 
+            onError={() => setError("Failed to load live stream")}
+          />
+        </View>
+      )}
+
       <LiveParameters latestData={latestData} />
       {isLoading && <Text>Loading...</Text>}
       {error && <Text style={styles.errorText}>{error}</Text>}
@@ -68,7 +85,18 @@ const styles = StyleSheet.create({
     color: 'red',
     marginTop: 10,
   },
+  iframe: {
+    width: '100%',
+    height: 300, //adjust as needed
+  },
+  webViewContainer: {
+    flex: 1,
+    height: 300, // Adjust as needed
+    marginTop: 10,
+  },
+  webView: {
+    flex: 1,
+  },
 });
 
 export default LiveFeed;
-

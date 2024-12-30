@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "expo": "^52.0.11",
+    "expo-video": "^2.0.3",
     "firebase": "^11.0.2",
     "react": "^18.3.1",
     "react-native": "^0.76.3",
@@ -8,7 +9,8 @@
     "react-native-chart-kit": "^6.12.0",
     "react-native-charts-wrapper": "^0.6.0",
     "react-native-sound": "^0.11.2",
-    "react-native-vibration": "^0.2.0"
+    "react-native-vibration": "^0.2.0",
+    "react-native-webview": "^13.12.5"
   },
   "devDependencies": {
     "@types/react": "^18.3.12",
