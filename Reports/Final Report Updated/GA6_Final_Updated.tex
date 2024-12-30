@@ -569,7 +569,7 @@ Table \ref{tab:comparison} presents a comparative analysis of existing IoT-based
   \caption{Comparison of Existing Work}
   \label{tab:comparison}
   \small
-  \begin{tabular}{|>{\centering\arraybackslash}p{3cm}|>{\centering\arraybackslash}p{3cm}|>{\centering\arraybackslash}p{2.5cm}|>{\centering\arraybackslash}p{3cm}|>{\centering\arraybackslash}p{2.5cm}|}
+  \begin{tabular}{|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2.5cm}|>{\centering\arraybackslash}p{3cm}|>{\centering\arraybackslash}p{2.5cm}|}
     \hline
     \textbf{Paper Title}                                                                                     & \textbf{Identified Problem}                      & \textbf{Methodology}                                       & \textbf{Key Features}                                             & \textbf{Limitations}                                               \\ \hline
     \textbf{IoT Based Smart Baby Monitoring System with Emotion Recognition\cite{alam2023iot}}               & Continuous monitoring challenges for parents     & IoT sensors + ML                                           & Emotion detection, notifications                                  & Data security concerns                                             \\ \hline
@@ -579,7 +579,7 @@ Table \ref{tab:comparison} presents a comparative analysis of existing IoT-based
     \textbf{IOT Based Baby Monitoring System Smart Cradle\cite{9442022}}                                     & Automation needs in baby care                    & Microcontroller + sensors                                  & Automated responses to crying                                     & Limited health tracking features                                   \\ \hline
     \textbf{Smart Infant Baby Monitoring System Using IoT\cite{Kumar2023}}                                   & High SIDS Rates; Inadequate Monitoring           & Raspberry Pi + Sensors; SMS Notifications                  & Significant reduction in SIDS incidents; High parent satisfaction & Advanced analytics needed; Predictive capabilities                 \\ \hline
     \textbf{Development of RTOs Based Internet Connected Baby Monitoring System\cite{mishra2018development}} & Lack of Real-Time Data Access                    & Multiple Sensors + Cloud Storage; User-Friendly App Design & Reliable alerts; Enhanced parental engagement reported            & UI enhancements suggested; Additional sensor integrations          \\ \hline
-    \textbf{Smart Caregiving Support Cloud Integration Systems\cite{10578217}}                               & Lack integration between functionalities         & Cloud computing technologies + sensor outputs; Mobile app  & Data from sensors and cloud is aggregated into one interface      & Scalability enhancment suggested                                   \\ \hline
+    \textbf{Smart Caregiving Support Cloud Integration Systems\cite{10578217}}                               & Lack integration between functionalities         & Cloud computing technologies + sensor outputs; Mobile app  & Data from sensors and cloud is aggregated into one interface      & Scalability enhancment suggested                                   \\ \hline 
     \textbf{Real time infant health monitoring system for hard of hearing parents\cite{aktacs2016real}}      & Lack immediate access to critical health metrics & IoT technologies capture vital signs                       & Effective performance by providing continuous updates             & Suggested exploring integration with healthcare providers’ systems \\ \hline
   \end{tabular}
 \end{table}
@@ -995,6 +995,14 @@ The hardware implementation involved integrating various sensors and a camera mo
     \item The Raspberry Pi was configured to send the processed data to Firebase over a Wi-Fi connection.
   \end{itemize}
 \end{itemize}
+\subsection{CAD representation of the hardware setup}
+Shown in Figure \ref{fig:hardware} is the 3D pictorial representation of the hardware setup which consists of Raspberry Pi, power adaptor and all the sensors along with the camera.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=1]{./pic/hardware.png}
+  \caption{CAD Model of the hardware setup designed using Autodesk Inventor}
+  \label{fig:hardware}
+\end{figure}
 \section{Software Implementation}
 The software implementation focused on developing the front-end application, backend integration, and computer vision-based posture detection.
 \begin{itemize}
