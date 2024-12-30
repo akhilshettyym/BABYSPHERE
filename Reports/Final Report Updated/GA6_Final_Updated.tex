@@ -10,7 +10,9 @@
 \usepackage{color}
 \usepackage[backend=biber, sorting=none, style=ieee]{biblatex}
 \usepackage{float}
-
+\usepackage{subcaption}
+\usepackage{setspace}
+\usepackage{float}
 \addbibresource{reference.bib}
 
 \geometry{
@@ -1014,6 +1016,105 @@ The software implementation focused on developing the front-end application, bac
     \item Algorithms to identify tummy-sleeping and side-sleeping positions were fine-tuned based on testing data.
   \end{itemize}
 \end{itemize}
+\section{Screenshots of the mobile app}
+
+\subsection{Sign Up and Sign In Pages}
+The Sign Up page (Figure \ref{fig:sign-up}) allows new users to create an account by entering their details, while the Sign In page (Figure \ref{fig:sign-in}) authenticates existing users using their email and password.
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.22\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{./pic/sign-up.jpeg}
+    \caption{Sign Up page}
+    \label{fig:sign-up}
+\end{subfigure}
+% \hfill
+  \hspace{0.1\textwidth}
+  \begin{subfigure}[b]{0.22\textwidth} % Adjust width
+      \centering
+      \includegraphics[width=\textwidth]{./pic/sign-in.jpeg}
+      \caption{Sign In page}
+      \label{fig:sign-in}
+  \end{subfigure}
+  
+  
+  \caption{Sign Up and Sign In pages of the baby monitoring app for user registration and user authentication.}
+    \label{fig:auth-pages}
+\end{figure}
+\subsection{Dashboard (Live Vitals)}
+The dashboard given in Figure \ref{fig:dashboard} provides a real-time display of the baby's vital signs, including body temperature, heart rate, SpO2, and humidity. 
+% It serves as the central hub for live monitoring, ensuring parents have instant access to critical health data.
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.22\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{./pic/dashboard.jpeg}
+    \caption{Dashboard - Light theme}
+    \label{fig:dashboard-light}
+\end{subfigure}
+% \hfill
+  \hspace{0.1\textwidth}
+  \begin{subfigure}[b]{0.22\textwidth} % Adjust width
+      \centering
+      \includegraphics[width=\textwidth]{./pic/dark-mode.jpeg}
+      \caption{Dashboard - Dark theme}
+      \label{fig:dashboard-dark}
+  \end{subfigure}
+  
+  
+  \caption{Comprehensive real-time display of vital health parameters.}
+    \label{fig:dashboard}
+\end{figure}
+\subsection{Graph Page (Vitals History)}
+Figure \ref{fig:graph} visualizes the historical fluctuations in the baby’s vitals through interactive graphs. Parents can track trends over time to identify patterns or anomalies in the baby's health.
+\begin{figure}[hbtp]
+  \centering
+  \includegraphics[scale=0.1]{./pic/graphs.jpeg}
+  \caption{Graph page for detailed visualization of historical health data trends.}
+  \label{fig:graph}
+\end{figure}
+\subsection{Live-feed Page}
+The live-feed page in Figure \ref{fig:live-feed} streams video from the camera in real time, allowing parents to monitor the baby's movements and posture. This feature helps ensure the baby's safety by detecting abnormal sleeping positions or other concerns.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.15]{./pic/live-feed.jpeg}
+  \caption{Live-feed page for seamless live video monitoring for enhanced baby safety.}
+  \label{fig:live-feed}
+\end{figure}
+\subsection{Profile Page}
+Figure \ref{fig:profile} contains personal information about the user and the baby. It includes details like the baby’s name, date of birth, and other relevant data, offering a personalized experience.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.2]{./pic/profile.jpeg}
+  \caption{Profile page for consolidated user and baby information at a glance.}
+  \label{fig:profile}
+\end{figure}
+
+\subsection{Calendar}
+The calendar page (Figure \ref{fig:calendar}) allows parents to log and view important dates such as vaccination schedules, doctor appointments, or milestones. It serves as a central planner for managing the baby’s care routine.
+Add event page in Figure \ref{fig:add-event} enables parents to add custom events to the calendar, such as reminders for medical check-ups, birthdays, or specific tasks. It helps streamline the baby’s schedule efficiently.
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.24\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{./pic/calendar.jpeg}
+    \caption{Calendar}
+    \label{fig:cal}
+\end{subfigure}
+% \hfill
+  \hspace{0.1\textwidth}
+  \begin{subfigure}[b]{0.23\textwidth} % Adjust width
+      \centering
+      \includegraphics[width=\textwidth]{./pic/add-event.jpeg}
+      \caption{Adding events to calendar}
+      \label{fig:add-event}
+  \end{subfigure}
+  
+  
+  \caption{Calendar for efficient management of critical dates and events.}
+    \label{fig:calendar}
+\end{figure}
 \chapter{System Testing}
 
 System testing ensures that the entire system functions as intended, meeting all specified requirements. This chapter discusses the objective, methodology, tools used, and the results of system testing conducted for the project.
