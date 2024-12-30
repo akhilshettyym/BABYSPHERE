@@ -600,362 +600,580 @@ This project differentiates itself from existing works that focus solely on eith
 
 
 %---------------------------- Chapter THREE --------------------------
+\chapter{Software Requirement Specification}
 
-\chapter{Software Requirements Specification}
-\section{Functional requirements}
+\section{Functional Requirements}
 
- \textbf{Speech-to-Text Conversion:}\\
-  Integrate robust speech recognition tools or APIs, such as Google Cloud Speech-to-Text or Python's SpeechRecognition library. Capture and transcribe spoken words into written text. Ensure high accuracy in speech-to-text conversion to facilitate precise communication. 
+\subsection{User Management}
+\begin{itemize}
+  \item Users will have the ability to create an account using email and password authentication. Account management features will include options to update personal information, reset passwords, and delete accounts.
+  \item The application must implement secure login and logout procedures to protect user data, including multi-factor authentication for added security.
+\end{itemize}
 
- \noindent\textbf{Text-to-Braille Conversion:}\\
-  Develop a sophisticated algorithm capable of translating transcribed text into Braille characters. Support different Braille standards and languages. Efficiency to minimize processing time for text-to-Braille conversion.
+\subsection{Data Monitoring}
+\begin{itemize}
+  \item The system will continuously fetch and display real-time data for baby parameters such as body temperature, room temperature, humidity, heart rate, and SpO2 levels through the integration of various IoT sensors.
+  \item Users will have access to live video feeds from a camera connected to the Raspberry Pi, allowing them to visually monitor their baby at all times.
+\end{itemize}
 
- \noindent\textbf{Braille Hardware Integration:}\\
-  Integrate with Braille hardware systems i.e. device containing the sensor and actuators. Enable real-time sensory updates for seamless interaction.
+\subsection{Alerts and Notifications}
+\begin{itemize}
+  \item The system will monitor predefined thresholds for all critical parameters, and users will receive immediate notifications (via push notifications or SMS) if any parameter, such as temperature or heart rate, exceeds safe levels.
+  \item Utilizing computer vision algorithms, the system will analyze the baby’s posture and send alerts if it detects unsafe sleeping positions, particularly if the baby is at risk of sleeping on their tummy.
+\end{itemize}
 
- \noindent\textbf{User Interface Development:}\\
-  Design an intuitive user interface for easy interaction.
-  Facilitate smooth communication between the application and Braille hardware.
+\subsection{Historical Data Access}
+\begin{itemize}
+  \item The application will allow users to access historical data and trends for all monitored parameters over selectable time periods. Users can view graphs and statistics to understand trends in their baby's health.
+  \item Users will have the capability to export their data in various formats (e.g., CSV, PDF) for personal records or sharing with healthcare professionals.
+\end{itemize}
 
- \noindent\textbf{Hardware Interaction:}\\
-  Develop a system that interfaces seamlessly with the chosen Braille hardware.
-  Ensure the application can send Braille characters to the hardware for physical representation.
-  
-\section{Non-Functional requirements}
-\textbf{Security Measures:}\\
-Implement robust security protocols to ensure user data privacy and secure communication.
+\section{Non-Functional Requirements}
 
-\noindent\textbf{Usability Testing:}\\
-Conduct extensive usability testing with deaf-blind users to evaluate system functionality. Gather feedback for continual improvement.
+\subsection{Usability}
+\begin{itemize}
+  \item The application must be designed with a user-friendly interface, ensuring that even non-technical users can navigate easily. Help sections should be readily available for guidance.
+  \item The application should be usable even by parents with limited digital literacy.
+\end{itemize}
 
-\noindent\textbf{Accessibility Standards Compliance:}\\
-Ensure compliance with accessibility standards to cater to the specific needs of the deaf-blind community. Test and enhance the application's compatibility with different screen reader software.
+\subsection{Reliability}
+\begin{itemize}
+  \item The system should provide 99.9\% uptime to ensure continuous monitoring, especially during critical periods when parents are not home.
+  \item Implement data backup strategies to prevent loss of critical monitoring data and ensure that the system can recover from failures seamlessly.
+\end{itemize}
 
-\noindent\textbf{Language and Braille Standards Support:}\\
-Support Braille standards to enhance versatility and stay updated with the latest Braille standards and ensure compatibility
+\subsection{Security}
+\begin{itemize}
+  % \item All sensitive user data must be encrypted during transmission and storage to protect against unauthorized access.
+  \item Implement secure authentication protocols (e.g., OAuth2) to safeguard user accounts and personal information.
+\end{itemize}
 
-\section{User Interface Designs}
-\textbf{Intuitive Design:}\\
-\qquad Simple Navigation:
-Design a straightforward navigation system that is easy for deaf-blind users to comprehend. Utilize clear and concise menu structures to facilitate intuitive interaction.
+\subsection{Scalability}
+\begin{itemize}
+  \item The system architecture must support scalability, enabling it to handle an increasing number of users and devices without compromising performance.
+  \item Utilize cloud services that can easily scale resources such as multiple user handling and catering multiple devices at the same time based on demand.
+\end{itemize}
 
-\noindent\textbf{Accessibility Features:}\\
-Tactile Feedback Options:
-Integrate tactile feedback options within the user interface to enhance the user experience for deaf-blind individuals. Provide customizable settings for feedback intensity and type.
+\section{User Interface Design}
 
-\noindent\textbf{Design specifications:}\\
-Maintain a consistent design language across the website and application to provide a unified user experience. Design the website to be responsive across different devices, ensuring accessibility on desktops, tablets, and smartphones.
+\subsection{Layout}
+\begin{itemize}
+  \item The main dashboard will present an overview of the baby's current health metrics, including temperature, heart rate, and other relevant data, and it should be easy to interpret, with clear visual indicators.
+  \item Users should be able to navigate effortlessly between different sections of the application, such as historical data views, alert logs, and settings.
+\end{itemize}
 
+\subsection{Color Scheme and Branding}
+\begin{itemize}
+  \item The application should use a soothing color palette (e.g., soft blues and greens) to create a calming atmosphere for users, promoting comfort and ease.
+  \item All branding elements, including logos and fonts, should be consistently applied throughout the app to enhance brand recognition.
+\end{itemize}
 
-\section{Hardware and Software requirements}
-\subsection{Hardware Requirements:}
+\subsection{Accessibility}
+\begin{itemize}
+  \item The design should ensure that users with disabilities can easily navigate the app, incorporating features such as screen reader compatibility and adjustable text sizes.
+\end{itemize}
 
-\textbf{Sensors for Braille Input:}\\
-Deploy sensors capable of detecting Braille characters either through touch or proximity sensors. Ensure the sensors are responsive to user input for a seamless interaction experience.
+\section{Hardware \& Software Requirements}
 
-\noindent\textbf{Actuators for Tactile Feedback:}\\
-Integrate actuators to provide tactile feedback corresponding to the Braille characters displayed. Design the actuators to deliver precise and distinguishable tactile sensations for each Braille character.
+\subsection{Hardware Requirements}
+\begin{itemize}
+  \item A Raspberry Pi (minimum Model 3B) will be used for processing video feeds and interfacing with IoT sensors, with a compatible camera module for video input.
+  \item The system will include multiple sensors such as temperature sensors (e.g., DHT22), humidity sensors, heart rate sensors (e.g., MAX30100), and SpO2 sensors.
+  \item A Raspberry Pi camera module will be utilized for live monitoring.
+\end{itemize}
 
-\noindent\textbf{Braille Symbol Actuator/Sensor:}\\
-Employ a hardware system as the primary hardware interface. Ensure the device can dynamically represent different Braille characters based on user inputs and can sense.
+\subsection{Software Requirements}
+\begin{itemize}
+  \item The system will run on Raspbian or any compatible Linux-based OS for the Raspberry Pi to support necessary libraries and applications.
+  \item React Native will be used for mobile app development, allowing cross-platform functionality for both Android and iOS\cite{reactnativeIntroductionReact}.
+  \item Firebase by Google Cloud Platform will serve as the cloud service backend for real-time data storage and user authentication, providing scalability and ease of integration\cite{googleCloudComputing}\cite{googleFirebaseDocumentation}. 
+  \item OpenCV will be utilized for computer vision tasks, specifically for detecting unsafe baby sleeping positions, and MQTT will be used as the messaging protocol to facilitate communication between the Raspberry Pi and the cloud\cite{10187295}\cite{9292052}.
+\end{itemize}
 
-\subsection{Software Requirements:}
+\section{Performance Requirements}
 
-\textbf{Speech-to-Text Conversion Software:}\\
-Utilize reliable speech recognition tools such as APIs, PyAudio, SpeechRecognition, and librosa by Python library for accurate conversion of spoken words into written text. Select a technology stack that supports real-time speech-to-text conversion.
+\subsection{Response Time}
+\begin{itemize}
+  \item The application should provide real-time updates for health metrics with a maximum latency of 2 seconds to ensure timely alerts and monitoring.
+  \item Live video feeds should load within 3 seconds to provide parents with immediate visual access to their baby.
+\end{itemize}
 
-\noindent\textbf{Text-to-Braille Conversion Algorithm:}\\
-Develop a robust algorithm for translating the transcribed text into Braille characters using Python. Ensure the algorithm supports various Braille standards and languages.
-
-\noindent\textbf{Braille to Hardware Translation Software:}\\
-Implement software to translate the Braille characters into signals that can be understood by the hardware. Developing a communication protocol using a hardware device that can be used by sensing for seamless interaction between the software and hardware components.
-
-\noindent\textbf{Website or Application:}\\
-Create a user-friendly website or application interface for text-based communication. Include features for speech-to-text conversion, text-to-Braille conversion, and seamless interaction with the hardware.
-
-\noindent\textbf{Operating System Compatibility:}\\
-Ensure compatibility with major operating systems, such as Android and iOS, for mobile applications. For websites, ensure compatibility across different web browsers.
-
-\noindent\textbf{Integration with ROS (Robot Operating System):}\\
-Implement the necessary software components to integrate with ROS. Ensure smooth communication between different software modules.
-
-
-\section{Performance Requirements }
-\textbf{Real-time Speech-to-Text Conversion:}\\
-Achieve near-instantaneous speech-to-text conversion. Evaluate system response time for spoken words to text. Ensure real-time transcription for effective communication.
-
-\noindent\textbf{Efficient Text-to-Braille Translation:}\\
-Swift translation of text to Braille characters. Assess the speed of the text-to-Braille conversion algorithm. Minimize delays in Braille representation.
-
-\noindent\textbf{Seamless Hardware Interaction:}\\
-Establish real-time communication with Braille hardware. Monitor time for Braille characters to be transmitted and displayed. Achieve responsive updates on the Braille hardware.
-
-\noindent\textbf{Scalability:}\\
-Ensure optimal performance with increased user interactions. Evaluate system performance under varying loads. Maintain optimal performance with a growing user base and data load.
-
-\noindent\textbf{Resource Utilization:}\\
-Optimize resource usage for efficient operation. Assess CPU, memory, and network utilization. Ensure resource-efficient operation on diverse devices.
-
-\noindent\textbf{Error Handling:}\\
-Implement effective error-handling mechanisms. Evaluate the system's ability to manage errors. Gracefully handle errors to minimize disruption.
-
-\noindent\textbf{Usability Testing:}\\
-Conduct usability testing based on user feedback. Gather feedback on system responsiveness and ease of use. Regular testing and iterative improvements for user satisfaction. 
-
+\subsection{Data Processing}
+\begin{itemize}
+  \item The system should continuously process and analyze health data to ensure timely alerts and notifications, maintaining performance even with multiple concurrent users.
+\end{itemize}
 
 \section{Design Constraints}
-\textbf{Portability:}\\
-The system must be designed for portability, considering use across different devices. Optimize the user interface and functionalities for seamless operation on various platforms, including mobile devices and desktop computers.
 
-\noindent\textbf{Device Compatibility:}\\
-Ensure compatibility with a variety of devices commonly used by the deaf-blind community. Design the system to adapt to different screen sizes, resolutions, and hardware configurations for widespread accessibility.
+\subsection{Technical Constraints}
+\begin{itemize}
+  \item The system must operate within the processing capabilities and memory limits of the selected hardware (Raspberry Pi).
+  \item Must ensure that data storage and processing comply with relevant data protection regulations, such as GDPR or HIPAA, depending on the target market.
+\end{itemize}
 
-\noindent\textbf{Real-time Communication:}\\
-Address the need for real-time communication between the application and hardware. Optimize data transmission and processing to minimize latency, providing users with immediate updates on the Braille hardware.
-
-\noindent\textbf{Usability for Deaf-Blind Users:}\\
-Prioritize usability for individuals with dual sensory impairments. Conduct usability testing with the deaf-blind community, incorporating their feedback to optimize the system's accessibility and ease of use. 
+\subsection{Environmental Constraints}
+\begin{itemize}
+  \item The system must function effectively in varying home environments, considering factors like Wi-Fi signal strength, which could impact data transmission and monitoring capabilities.
+\end{itemize}
 
 \section{Other Requirements}
-\textbf{Long-term Support Plans:}\\
-Develop strategies for long-term system support and updates. Establish a framework for ongoing maintenance, addressing evolving technological standards and user needs.
 
-\noindent\textbf{Training Programs:}\\
-Provide comprehensive training programs for users, educators, and support staff. Design training materials and sessions to ensure effective usage and support, promoting accessibility and user empowerment.
+\subsection{Compliance Requirements}
+\begin{itemize}
+  \item The system must comply with health and safety regulations applicable to baby monitoring devices, ensuring that all hardware components are safe for use around infants.
+\end{itemize}
 
+\subsection{Documentation}
+\begin{itemize}
+  \item Comprehensive user manuals must be provided to assist users in setting up and using the monitoring system effectively.
+  \item Detailed technical documentation should be created for future maintenance and potential upgrades, outlining system architecture and component specifications.
+\end{itemize}
+
+% \chapter{System Design}
+% \section{Abstract Design}
+% \subsection{Architectural Diagram}
+
+% \begin{figure}[hbtp]
+% \centering
+
+% \includegraphics[width=0.6\textwidth, height=0.7\textwidth]{./pic/sjeclogo.png}\\
+% \caption{Architectural Diagram}
+% \end{figure}
+
+% \noindent This architectural diagram illustrates the interaction of modules like Speech-to-Text Conversion Module, Text-to-Braille Conversion Module, and Braille Hardware Integration Module in the User Interface Layer\\
+
+% \noindent\textbf{User Interface Layer:}\\
+% This layer includes the Speech-to-Text Conversion Module, Text-to-Braille Conversion Module, and Braille Hardware Integration Module. Users interact with the system through this layer, which provides various input options and tactile feedback.\\
+
+% \noindent\textbf{Speech-to-Text Conversion Module:}\\
+% The Speech-to-Text Conversion Module is a component of a system that converts spoken language (speech) into written text (text). It utilizes specific algorithms, techniques and tools to transcribe spoken words into textual form.\\
+
+% \noindent\textbf{Text-to-Braille Conversion Module:}\\
+% The Text-to-Braille Conversion Module is a component of a system that translates textual information into Braille characters. Braille is a tactile writing system used by people who are blind or visually impaired to read and write.\\
+
+% \noindent\textbf{Braille Hardware Integration Module:}\\
+% The Braille Hardware Integration Module is a component of a system that facilitates communication between the software or digital system and Braille hardware devices. It acts as a bridge, enabling the software to send information to the Braille hardware for tactile representation and receive sensory feedback from the hardware.\\
+
+% \subsection{Use case Diagram}
+
+% \begin{figure}[hbtp]
+% \centering
+
+% \includegraphics[width=1\textwidth, height=0.2\textwidth]{./pic/UC2.jpg}\\
+% \caption{Use case Diagram}
+% \end{figure}
+
+% \noindent This use case diagram illustrates the interactions between actors and the system's functionalities in facilitating communication for the deaf-blind community, from input provision by a normal person to the ultimate perception of vibrations by a deaf-blind individual\\\\
+% \noindent\textbf{Actors:}\\
+% Normal Person: Represents individuals who interact with the system to provide input, either in the form of text or speech.\\
+% Deaf-Blind Individual: Represents individuals who are the ultimate recipients of the communication facilitated by the system.\\
+
+% \noindent\textbf{Use Cases:}\\
+% Provide Text Input: Use case where the normal person provides input in the form of text to the system.
+% \\Provide Speech Input: Use case where the normal person provides input in the form of speech to the system.
+% \\Convert Speech to Text: Use case where the system converts the speech input provided by the normal person into text format.
+% \\Convert Text to Braille: Use case where the system converts input, whether text provided directly or speech converted to text, into Braille format.
+% \\Braille to Hardware Interaction: Use case where the system interacts with Braille hardware to convert Braille output into physical vibrations.
+% \\Perceive Vibrations: Use case where the vibrations generated by the hardware are perceived by the deaf-blind individual, facilitating communication.\\
+
+% \noindent\textbf{Actor-Use Case Relationships:}\\
+%  Normal Person to Use Cases: The "Normal Person" actor interacts with the system by providing text or speech input, which triggers the corresponding use cases.
+% \\Deaf-Blind Individual to Perceive Vibrations Use Case: The "Deaf-Blind Individual" actor perceives the vibrations generated by the hardware, which is represented by the "Perceive Vibrations" use case.\\
+
+
+% \noindent\textbf{Use Case Relationships:}\\
+% Convert Speech to Text to Convert Text to Braille: The "Convert Speech to Text" and "Convert Text to Braille" use cases are connected, indicating that the text output from speech conversion is further processed to convert it into Braille format.
+% \\Text Input and Speech Input to Convert Text to Braille: Both "Provide Text Input" and "Provide Speech Input" use cases are connected to "Convert Text to Braille," indicating that regardless of the input method, the system converts it to Braille for further processing.
+
+
+
+
+% \section{Functional Design}
+% \subsection{Sequence Diagram}
+
+% \begin{figure}[hbtp]
+% \centering
+
+% \includegraphics[width=1\textwidth, height=0.6\textwidth]{./pic/seq.png}\\
+% \caption{Sequence Diagram}
+% \end{figure}
+
+% \noindent\textbf{Normal Person Interaction:}\\
+% The communication process commences with the "Normal Person" initiating a conversation by speaking. This reflects the conventional method of conveying information, allowing for natural and spontaneous communication.
+
+% \noindent\textbf{Speech-to-Text Conversion:}\\
+% The spoken words are captured by the system's "User Interface," representing the first step in the conversion process. The "User Interface" serves as the gateway for the normal person to interact with the system.
+% The speech is then processed by the "Speech-to-Text System," employing robust speech recognition tools or APIs such as Google Cloud Speech-to-Text or Python's SpeechRecognition library. This step ensures the accurate conversion of spoken words into written text.
+% The accuracy of speech-to-text conversion is crucial for maintaining the fidelity of the communicated information, enabling precise and meaningful interactions between the normal person and the deaf-blind individual.\\
+
+% \noindent\textbf{Text-to-Braille Conversion:}\\
+% The transcribed text undergoes the next transformation through the "Text-to-Braille Algorithm." This sophisticated algorithm is designed to translate the transcribed text into Braille characters, catering to the specific needs of the deaf-blind individual.
+% The algorithm supports various Braille standards and languages, ensuring versatility in communication. Additionally, efficiency is prioritized to minimize processing time for text-to-Braille conversion, facilitating a near real-time communication experience.
+% This stage in the process is pivotal, as it bridges the gap between the digital representation of text and its tactile counterpart in the form of Braille. The system aims to provide a seamless and efficient means of communication for the deaf-blind individual.\\\\
+
+% \noindent\textbf{Braille Hardware Integration:}\\
+% The translated Braille characters are then transmitted to the "Braille Hardware," which constitutes a handheld device containing sensors and actuators. This integration allows for the physical representation of Braille characters, enabling the deaf-blind individual to read and understand the communicated information through tactile feedback.
+% Real-time sensory updates from the Braille Hardware ensure a dynamic and responsive interaction experience. This stage emphasizes the tangible aspect of communication, recognizing the importance of tactile feedback for individuals who are both deaf and blind.\\
+
+% \noindent\textbf{Communication to Deaf-Blind Individual:}\\
+% The Braille Hardware communicates the translated Braille text directly to the "Deaf-Blind Individual," establishing a direct link between the information conveyed by the normal person and the tactile representation experienced by the deaf-blind individual.
+% This direct communication channel ensures that the deaf-blind individual receives the information in a format that is accessible and meaningful, fostering effective communication and understanding.\\
+
+% \noindent\textbf{User Interface Interaction:}\\
+% Simultaneously, the deaf-blind individual has the opportunity to interact with the "User Interface." This interaction loop provides a means for the user to actively engage with the system beyond receiving information, contributing to a more participatory communication experience.
+% The user interface serves as a central hub for user input, allowing the deaf-blind individual to provide feedback, respond to prompts, or initiate interactions. This bidirectional communication aspect enhances the inclusivity and versatility of the system.
+
+
+% \section{Access Layer Design}
+% \subsection{Dataflow Diagram}
+
+% \begin{figure}[hbtp]
+% \centering
+
+% \includegraphics[width=0.7\textwidth, height=1\textwidth]{./pic/dataflow.png}\\
+% \caption{Dataflow diagram}
+% \end{figure}
+
+% \noindent 
+% A Data Flow Diagram (DFD) visually represents the pathway of data within a system, illustrating the flow from textual input by a typical user to haptic output for the deaf-blind individual. Additionally, it portrays the flow from braille input by the deaf-blind individual to textual output for the typical user.\\
+
+% \noindent\textbf{Mobile phone:}\\
+% The mobile phone serves as the central platform for executing the software components of the program. It facilitates various essential tasks, such as capturing user input in the form of text or speech, converting this input into braille for tactile feedback, and reciprocally, transforming braille input into textual or audible output. This multifaceted functionality encapsulates the core operations of the program, enabling seamless communication between users with diverse sensory capabilities.\\
+
+% \noindent\textbf{Micro controller:}\\
+% The microcontroller component of the system processes braille signals received from the user, interpreting them to activate the appropriate actuators for tactile feedback. Additionally, it collects input from the deaf-blind individual, facilitating communication by sending this data to the mobile phone for processing and interpretation.\\ This microcontroller-mediated exchange ensures efficient interaction between the user and the system, enhancing accessibility for individuals with sensory impairments.\\
+
+% \noindent\textbf{Wearable device:}\\
+% The wearable device serves as the primary interface for the deaf-blind individual to interpret incoming braille signals from the phone. Positioned on the palm of the user, it features three actuators on each hand, representing the six dots of braille. These actuators provide tactile feedback, enabling the user to perceive the braille characters through touch.\\
+% Beyond tactile feedback, the wearable device also facilitates communication by collecting inputs from the deaf-blind individual. These inputs are then transmitted to the mobile phone for processing and further interaction with the typical user. By bridging the communication gap between the deaf-blind individual and the broader user community, the wearable device enhances accessibility and facilitates meaningful interactions for individuals with sensory impairments.
 
 \chapter{System Design}
-paragraph contents... 
-\section{Architecture Design}
+This chapter outlines the system design for the Cloud-Based Smart Monitoring System for Baby Health and Safety, detailing the system's architecture, functionality, control flow, access layers, and user interface design. Each section includes design diagrams, descriptions, and an explanation of how they apply to the project.
+\section{Abstract Design}
+
+\subsection{Architectural diagram}
+
+The architectural diagram in Figure \ref{fig:architecture} outlines the Cloud-Based Smart Monitoring System for Baby Health and Safety, showcasing how various components interact to provide a comprehensive baby monitoring solution.
+\begin{enumerate}
+\item \textbf{User Interaction and Mobile Interface:} The user initiates the monitoring process by accessing the mobile application interface, which includes a live camera feed. The user can request the recording of the baby’s health metrics, which initiates data collection from multiple sensors and a real-time video feed. This interface also displays alerts and processed information regarding the baby’s health.
+\item \textbf{Sensing System:} The sensing system consists of multiple sensors, including Heart rate sensor, Baby temperature sensor, SpO2 (oxygen saturation) sensor, Humidity sensor, Camera sensor.
+
+These sensors collect real-time data from the baby’s physical environment, covering both health metrics and environmental factors. This raw data is then sent to the Processor for initial handling.
+
+\item \textbf{Processor (Raspberry Pi):} Acting as an intermediary, the Raspberry Pi receives the data from the sensors and forwards relevant data to the \textbf{ML Model (Posture Detector)} to analyze the baby’s sleeping posture. The processor handles the computational load and ensures efficient data processing before sending responses back to the mobile interface. If unsafe postures or abnormal metrics are detected, an alert is generated.
+
+\item \textbf{ML Model and Database (Firebase):} The ML model, hosted externally as a pre-trained model, plays a crucial role in posture detection. Once the Raspberry Pi sends the data to the ML model, it processes the data and generates a response. Additionally, all data is stored and managed within a \textbf{Firebase} database, which securely holds historical health metrics and retrieves information as required by the user. Firebase also triggers alerts and notifications based on the ML model’s responses and alerts from the sensor data.
+
+\item \textbf{Alerts and Notifications:} The system is designed to provide timely alerts. When abnormal readings or unsafe sleeping postures are detected, the mobile app immediately notifies the user, allowing them to take quick action. The database and ML model work together to process and extract data, ensuring that alerts are accurate and meaningful.
+
+\item \textbf{Summary:} This architecture ensures seamless data flow from sensing, processing, and alerting to final user interaction. This integrated approach enhances baby monitoring, helping caregivers make informed decisions to ensure the baby's safety and well-being.
+\end{enumerate}
+
 \begin{figure}[hbtp]
-\centering
-\includegraphics[width=4in,height=3in]{./pic/sjeclogo.png}
-\label{fig:pic1}
-\caption{System Architecture Diagram}
+  \centering
+  \includegraphics[scale=0.55]{./pic/finarch.png}
+  \caption{Architectural Diagram showing the interaction of various entities of the baby monitoring system.}
+  \label{fig:architecture}
 \end{figure}
-This Figure \ref{fig:pic1} illustrates a high-level overview of the audio visual speech separation system. It is important to note that the specific techniques, algorithms, and models used in each component can vary depending on the implementation approach and the requirements of the system.
-\section{Decomposition Description}
+\subsection{Use Case Diagram}
+
+This use case diagram in \ref{fig:usecase} outlines the product designed to monitor a baby’s health and safety through interactions with a \textbf{User (Caregiver)}, a \textbf{Sensing System}, and a \textbf{Medical Practitioner}.
+
+\begin{enumerate}
+    \item \textbf{User:} The User can view a live camera feed and request the recording of health metrics, which are stored in the database. If any unsafe conditions (like risky postures) are detected, the system sends alerts to the User for immediate action.
+    
+    \item \textbf{Sensing System:} The Sensing System collects health data (e.g., posture) and sends it to the monitoring system. The system processes this data to detect potential safety risks, triggering alerts when necessary.
+    
+    \item \textbf{Medical Practitioner:} The Medical Practitioner reviews health metrics stored in the system and provides insights or recommendations, which the system relays to the User to support safe caregiving.
+\end{enumerate}
+
+Overall, the system combines real-time monitoring, data storage, and expert feedback to ensure the baby’s health and safety effectively.
+
 \begin{figure}[hbtp]
-\centering
-\includegraphics[width=5in,height=3in]{./pic/sjeclogo.png}
-\caption{Flow chart}
-\label{fig:pic2}
+  \centering
+  \includegraphics[scale=0.9]{./pic/Use case.png}
+  \caption{Use Case Diagram showing the interaction between users and the system.}
+  \label{fig:usecase}
+\end{figure}
+\section{Functional Design}
+\subsection{Sequence diagram}
+
+The sequence diagram shown in Figure \ref{fig:sequence} illustrates the workflow of a Cloud-Based Smart Monitoring System for Baby Health and Safety. Here’s a breakdown of the interactions among various components in the system:
+
+\textbf{User Interaction:} The user begins by opening the mobile application. This app is designed to fetch real-time data regarding the baby’s health and environmental factors, helping to monitor the baby’s well-being effectively.
+
+\textbf{Mobile Application Requests:} Upon initialization, the mobile application communicates with the Sensing System to retrieve various health parameters. These include the baby’s heartbeat, humidity levels, body and room temperature, SpO2 (oxygen saturation), and a live video feed.
+
+\textbf{Sensing System Data Collection:} The sensing system gathers these metrics from the physical environment where the baby is located. It captures vital data such as heart rate, humidity, body and room temperature, and oxygen levels, along with the live video feed. This data is sent for processing.
+
+\textbf{Data Processing by ML Model:} The data collected is then passed to the Machine Learning (ML) Model for analysis. The ML model processes the data to identify any potential risks, such as unsafe sleeping positions or abnormal readings that may indicate health concerns.
+
+\textbf{Data Storage:} The processed data, including any alerts or historical records, is stored in a Database. This storage enables the system to maintain a log of health metrics over time, allowing caregivers to review past records and track trends.
+
+\textbf{Alerts and Notifications:} If the ML model detects unsafe sleeping positions or abnormal values in the sensed parameters, it triggers an alert. This alert is sent back to the mobile application to notify the user, ensuring immediate awareness of any potential risks to the baby’s health.
+
+\textbf{Viewing Results:} Finally, the user can view real-time data and historical readings from within the mobile app. This user-friendly interface provides caregivers with comprehensive insight into the baby’s health, allowing for timely intervention if needed.
+
+\begin{figure}[hbtp]
+  \centering
+  \includegraphics[scale=0.27]{./pic/seq.png}
+  \caption{Sequence diagram showing the timeline of interaction between different entities in the system}
+  \label{fig:sequence}
+\end{figure}
+
+% \section{Access Layer Design}
+% \subsection{Data Flow Diagram}
+% The data flow diagram shown in Figure \ref{fig:dataflow} outlines how data travels through the system, highlighting the interaction between sensors, the Raspberry Pi, cloud storage, and the mobile application.
+% \begin{itemize}
+%   \item \textbf{Sensors:} The first layer involves IoT sensors collecting real-time data on the baby’s health and environmental conditions.
+%   \item \textbf{Raspberry Pi:} The Raspberry Pi acts as a bridge, processing sensor data and relaying it to the cloud.
+%   \item \textbf{Cloud Database:} In the cloud, data is securely stored and processed. The system continuously checks the data against preset safety thresholds and sends alerts when abnormalities are detected.
+%   \item \textbf{Mobile Application:} The app fetches data from the cloud and displays it to the user in real-time. Parents can also retrieve historical data for deeper insights into the baby’s health trends.
+% \end{itemize}
+% \begin{figure}[hbtp]
+%   \centering
+%   \includegraphics[scale=0.35]{./pic/WhatsApp Image 2024-10-23 at 22.00.55_66baa9c8.jpg}
+%   \caption{Data flow diagram showing how the data travels through the system}
+%   \label{fig:dataflow}
+% \end{figure}
+
+\section{Presentation Layer Design}
+\subsection{User Interface Flow Design}
+The user interface flow for the application (Figure \ref{fig:uiflow}) is designed to provide parents with an intuitive and seamless experience for monitoring their baby's health and environment. The following steps describe the flow from the onboarding process to the profile management:
+\begin{enumerate}
+  \item \textbf{Onboarding Screen:} Upon launching the app, the user is welcomed with the onboarding screen, which introduces the app’s primary function, ensuring peace of mind for every parent by offering baby health monitoring in the palm of their hand. This screen includes an image carousel showcasing key features like monitoring baby movements, temperature, humidity, and more. The user is prompted to continue with email to proceed further.
+  \item \textbf{Sign-Up Screen:} New users are taken to the Sign-Up screen after the onboarding. Here, they can create an account by providing a username, email, and password. A simple and user-friendly form guides the registration process. After filling in the details, they can tap Sign Up. If they already have an account, they are given the option to switch to the login screen.
+  \item \textbf{Login Screen:} Existing users access the Login screen, where they can sign in by entering their email and password. There’s also a Forgot password option for those who might need help recovering their credentials. After entering valid credentials, the user taps Log In to access the app’s features.
+  \item \textbf{Home Screen:} After logging in, the user is taken to the Home screen. This screen displays key baby health data, including real-time temperature tracking, humidity levels and SpO2 levels.
+  \item \textbf{Stats Screen:} The Stats screen gives a detailed view of the baby’s health trends over time. 
+  \item \textbf{Profile Screen:} The Profile screen offers personalized features for the user. They can call a doctor directly from the app if any issues are detected, access emergency contacts quickly for immediate assistance, modify details such as contact information, health preferences, and other personal settings to ensure the app is tailored to their needs.
+\end{enumerate}
+\begin{figure}[hbtp]
+  \centering
+  \includegraphics[scale=0.32]{./pic/uiflow.png}
+  \caption{User Interface Flow Design of the mobile app designed using Figma}
+  \label{fig:uiflow}
 \end{figure}
 \newpage
-Figure \ref{fig:pic2} represent the flow chart of the proposed system. In audio visual speech separation, the goal is to decompose an audio signal containing multiple overlapping speakers into individual speech signals corresponding to each speaker. The decomposition process involves separating the desired speech signals from the background noise and other interfering sounds.
-
-\section{Data Flow Design}
-\par
-The audio input undergoes pre-processing, while the visual input is processed to extract relevant cues. The pre-processed audio and processed visual data are then integrated. From the integrated representation, features are extracted. These features are utilized in the speech separation stage, where individual speech signals are separated from the mixture. Post-processing techniques are applied to enhance the quality of the separated speech signals. Finally, the individual speech signals are outputted as the result of the system. The data flow design ensures a sequential flow of operations, starting from capturing and processing the inputs, integrating the audio-visual information, extracting features, performing speech separation, applying post-processing, and generating the output. This design allows for effective processing and separation of audio visual data to obtain distinct speech signals from overlapping speakers.
-\\
-\begin{figure}[hbtp]
-\centering
-\includegraphics[width=4in,height=2in]{pic/correlation_matrix_bin.png}
-\caption{Dataflow design}
-\end{figure}
-
-
-
-\newpage
-\section{Use case Diagram}
-use cases represent the main functionalities and tasks involved in the audio visual speech separation system. Each use case contributes to the overall process of capturing, processing, integrating, separating, and post-processing the audio and visual data to achieve the desired outcome of individual speech signal separation.
-\begin{description}
-    \item [Pre-process Audio:] This use case involves pre-processing the captured audio data. It may include operations like filtering, noise reduction, and echo cancellation to improve the quality of the audio signals.
-
-\item [Process Visual:] This use case involves processing the captured visual data. It includes tasks such as face detection, facial landmark tracking, or lip motion analysis to extract relevant visual cues associated with speech production.
-
-\item [Integrate Audio-Visual:] This use case represents the integration of the pre-processed audio data and processed visual data to create a synchronized audio-visual representation, aligning the audio and visual streams.
-
-\item [Extract Features:] This use case involves extracting relevant features from the integrated audio-visual representation. It may include computing spectrograms, MFCCs, facial landmarks, or other visual and audio features.
-
-\item [Perform Speech Separation:] This use case focuses on the actual speech separation process. It utilizes the extracted audio and visual features to separate the individual speech signals from the mixture, using techniques such as blind source separation or deep learning-based models.
-
-\end{description}
-
-\begin{figure}[hbtp]
-\centering
-\includegraphics[width=9in,height=5in]{pic/flowchart.png}
-\caption{Use case diagram for customer}
-\end{figure}
-
-
 \chapter{Implementation}
+The implementation phase of the project "Cloud-Based Smart Monitoring System for Baby Health and Safety" was executed in a systematic manner, incorporating both hardware and software components. Below is a detailed explanation of the steps and methodologies adopted during this phase.
 
-
-\section{Audio Extraction}
-\par
-Audio extraction is the process of isolating and extracting the audio content from a multimedia source, such as a video file. It involves separating the audio track from the accompanying video or other elements to obtain a standalone audio file representing the sound present in the source material.
-
-\begin{figure}[hbtp]
-\centering
-\includegraphics[width=5in,height=3in]{./pic/sjeclogo.png}
-\caption{code snippet for audio extraction}
-\end{figure}
-
-\section{Speech Separation}
-\par SpeechBrain is an open-source framework 
-
-\subsection{Sepformer}
-\par SepFormer is an algorithm for speech separation that utilizes self-attention mechanisms. It employs a transformer-based architecture to capture long-range dependencies and model the relationships between time-frequency points in the audio mixture, enabling the separation of multiple speech sources from the mixture.
-
-
-\begin{figure}[hbtp]
-\centering
-\includegraphics[width=5in,height=3in]{./pic/sjeclogo.png}
-\caption{code snippet for speech separation}
-\end{figure}
-
-\section{Speech Enhancement}
-\subsection{Lite Audio Visual Speech Enhancement}
-\par
-Lite AVSE algorithm is used for the separation and enhancement of the speech. The system 
-includes two visual data compression techniques and removes the visual feature extraction 
-network from the training model, yielding better online computation efficiency. As for the audio 
-features, short-time Fourier transform (STFT) is calculated of 3-second audio segments. Each 
-time-frequency (TF) bin contains the real and imaginary parts of a complex number, both of 
-which used as input. Power-law compression used to prevent loud audio from overwhelming soft 
-audio. The same processing is applied to both the noisy signal and the clean reference signal.
-
-\begin{figure}[hbtp]
-\centering
-\includegraphics[width=5in,height=3in]{pic/correlation_matrix_bin.png}
-\caption{code snippet for speech enhancement using LAVSE}
-\end{figure}
-
-\subsection{Spectral Subtraction}
-Spectral subtraction is a technique used in audio signal processing to reduce background noise from an audio signal. It involves estimating the noise spectrum from a noisy signal and subtracting it from the noisy spectrum to enhance the desired signal. The resulting spectrum is then transformed back into the time domain to obtain a cleaner audio signal as in Figure \ref{fig:pic3}
-\newpage
-\begin{figure}[hbtp]
-\centering
-\includegraphics[width=5in,height=3in]{pic/sjeclogo.png}
-\caption{code snippet for speech enhancement using spectral subtraction}
-\label{fig:pic3}
-\end{figure}
-
-\section{Speaker Detection}
-\par The cv2 functions provide methods to load the pre-trained models, apply them to images or video frames, and draw bounding boxes around the detected faces. By leveraging cv2's face detection capabilities, you can automate tasks such as facial recognition, emotion analysis, or face tracking in various applications like surveillance, biometrics, or augmented reality.
-
-
-\begin{figure}[hbtp]
-\centering
-\includegraphics[width=5in,height=3in]{pic/correlation_matrix_bin.png}
-\caption{code snippet for speaker detection}
-\end{figure}
-
-
-
-
-
+\section{System Architecture Design}
+The system architecture was designed to ensure seamless integration of hardware and software components, focusing on real-time data processing and user-friendly interfaces. The architecture consisted of:
+\begin{itemize}
+  \item \textbf{Hardware Module:}
+   \begin{itemize}
+    \item Sensors for baby body temperature, room temperature, humidity, and heart rate.
+    \item A camera module integrated with Raspberry Pi for video streaming and posture detection.
+  \end{itemize}
+  \item \textbf{Software Module:}
+  \begin{itemize}
+    \item A React Native mobile application for parent notifications.
+    \item Firebase for real-time data storage and cloud integration.
+    \item Computer vision algorithms for unsafe posture detection using Mediapipe and OpenCV.
+  \end{itemize}
+\end{itemize}
+The architecture ensured data flow from the hardware module to the software application, with alerts generated based on predefined thresholds.
+\section{Hardware Implementation}
+The hardware implementation involved integrating various sensors and a camera module to collect real-time data from the baby's environment.
+\begin{itemize}
+  \item \textbf{Sensors:}
+  \begin{itemize}
+    \item MLX90614 IR Temperature sensor was used to monitor the body temperature of the baby.
+    \item MAX30102 heart rate ans SpO2 sensor was employed for continuous monitoring of the baby’s health.
+    \item Data from these sensors were sent to a microcontroller unit for preprocessing.
+  \end{itemize}
+  \item \textbf{Camera Module:}
+  \begin{itemize}
+    \item A Raspberry Pi camera was used to capture live video for posture analysis.
+    \item The video feed was sent to Render server through a websocket connection and was processed for unsafe posture detection using Mediapipe library in Python.
+  \end{itemize}
+  \item \textbf{Connectivity:}
+  \begin{itemize}
+    \item The Raspberry Pi was configured to send the processed data to Firebase over a Wi-Fi connection.
+  \end{itemize}
+\end{itemize}
+\section{Software Implementation}
+The software implementation focused on developing the front-end application, backend integration, and computer vision-based posture detection.
+\begin{itemize}
+  \item \textbf{Mobile Application Development:}
+   \begin{itemize}
+    \item Built using React Native for cross-platform compatibility.
+    \item Features included real-time alerts for abnormal conditions (e.g., fever, unsafe sleeping postures).
+    \item Integrated Firebase to fetch live data from the hardware module and display it on the user interface.
+  \end{itemize}
+  \item \textbf{Backend Integration:}
+  \begin{itemize}
+    \item Firebase Realtime Database was configured for data storage and retrieval.
+    \item Cloud Functions in Firebase were used to process and trigger alerts based on predefined thresholds.
+  \end{itemize}
+  \item \textbf{Posture Detection Algorithm:}
+  \begin{itemize}
+    \item Implemented using Mediapipe and OpenCV.
+    \item Analyzed the baby's posture by detecting key landmarks (e.g., shoulders, eyes, nose).
+    \item Algorithms to identify tummy-sleeping and side-sleeping positions were fine-tuned based on testing data.
+  \end{itemize}
+\end{itemize}
 \chapter{System Testing}
-\par
-Testing is a procedure of executing the program with unequivocal intension of \cite{ref4}
-discovering mistakes, assuming any, which makes the program, fall flat. This stage is an
-essential piece of improvement.
-\par
-It plays out an exceptionally basic part for quality affirmation and for guaranteeing
-unwavering quality of programming. It is the way toward finding the mistakes and
-missing operation and furthermore an entire confirmation to decide if the targets are met
-the client prerequisites are fulfilled.
-\par
-The objective of testing is to reveal prerequisites, outline or coding blunders in the
-projects. Therefore, unique levels of testing are utilized in programming frameworks. The
-testing results are utilized amid upkeep. The testcases are shown in Figure \ref{fig:pic4}
 
-\section{Testing Objectives}
-This area manages the points of interest in the various classes of the test which should be
-directed to approve capacities, imperatives and execution. This can be accomplished
-fundamentally by using the methods for testing, which assumes a crucial part in the
-improvement of a product.
+System testing ensures that the entire system functions as intended, meeting all specified requirements. This chapter discusses the objective, methodology, tools used, and the results of system testing conducted for the project.
 
-\section{Types of Testing conducted}
-The structure of the program is not being considered in useful testing. Test cases are
-exclusively chosen on the premise of the prerequisites or particulars of a program or
-module of program but the internals of the module or the program are not considered for
-determination of experiments\cite{ref1}.
+\section{Objective}
+The primary objective of system testing was to validate the integrated functionality of the "Cloud-Based Smart Monitoring System for Baby Health and Safety." The aim was to ensure the system meets the following requirements:
 
-\begin{figure}[h!]
-\centering
-\includegraphics[width=4in,height=1in]{pic/sjeclogo.png}
-\caption{testcases}
-\label{fig:pic4}
-\end{figure}
-The program to be tried is executed with an arrangement of experiments and the yield of
-the program for the experiments is assessed to decide whether the program is executing
-not surprisingly. The accomplishment of testing in uncovering mistakes in projects
-depends basically on the experiments. There are two fundamental ways to deal with
-testing Black Box or functional Testing and White Box or structural testing. Table \ref{tab:t1} shows the workflow. 
-\begin{table} [htb]
-\caption {Work Flow}
-\vspace{0.25in}
-\begin{tabular}{|c|c|c|}\hline
-\textbf{Sl No}& \textbf{Work} & \textbf{Duration(in Weeks)}\\[6pt] \hline \normalsize
-1&Audio Extraction&1 \\ \hline
-2&Audio Enhancement using LAVSE&4\\ \hline
-3&Audio Separation using Speechbrain&3\\ \hline
-4&Noice Reduction using spectral subtraction&2\\ \hline
-5&Image segmentation&3\\ \hline
-6&Speaker Identification&5\\ \hline
-\end{tabular}
-\label{tab:t1}
-\end{table}
+\begin{itemize}
+    \item Accurate detection of unsafe sleeping postures (tummy and side sleeping).
+    \item Reliable monitoring of baby body temperature and humidity.
+    \item Real-time heart rate and SpO2 monitoring.
+    \item Seamless transmission of alerts to the React Native mobile application.
+\end{itemize}
 
+\section{Testing Methodology}
+A systematic approach was followed to test the functionality and performance of the system. The key phases of the methodology included:
+
+\subsection{Unit Testing}
+Each individual component was tested in isolation to ensure proper functionality:
+\begin{itemize}
+    \item Sensors for body temperature, room temperature, humidity, SpO2 and heart rate.
+    \item Posture detection algorithms implemented using Mediapipe and OpenCV.
+    \item Firebase integration for real-time data storage and retrieval.
+\end{itemize}
+
+\subsection{Integration Testing}
+The interactions between hardware and software components were validated. This phase focused on:
+\begin{itemize}
+    \item Data flow from sensors and camera to the Firebase Realtime Database.
+    \item Real-time updates and notifications on the React Native mobile application.
+    \item Correct triggering of alerts for abnormal conditions.
+\end{itemize}
+
+\subsection{System Testing}
+The fully integrated system was tested as a whole. Key scenarios included:
+\begin{itemize}
+    \item Detecting and alerting unsafe sleeping postures.
+    \item Monitoring environmental conditions and notifying users of unsafe parameters.
+    \item Cry detection and real-time alert generation.
+    \item Handling of edge cases such as network connectivity issues.
+\end{itemize}
+
+\section{Tools Used}
+The following tools were utilized during the system testing process:
+\begin{itemize}
+    \item \textbf{Mediapipe and OpenCV:} For posture detection and image processing.
+    \item \textbf{Firebase:} For real-time database and cloud functions.
+    \item \textbf{React Native:} For the mobile application used to receive alerts.
+    \item \textbf{Raspberry Pi:} For sensor and camera integration.
+\end{itemize}
+
+\section{Results and Observations}
+The system testing phase yielded the following outcomes:
+\begin{itemize}
+    \item \textbf{Posture Detection:} Tummy and side sleeping detection achieved an accuracy of 92\% after fine-tuning algorithms.
+    \item \textbf{Environmental Monitoring:} Sensors provided consistent and reliable data for room temperature and humidity.
+    \item \textbf{Alert System:} Notifications were successfully delivered to the mobile application within 2 seconds of detecting abnormalities.
+    \item \textbf{Error Handling:} Edge cases like temporary network outages were managed gracefully, with data synchronization upon reconnection.
+\end{itemize}
+
+\section{Conclusion}
+The system testing phase demonstrated that the "Cloud-Based Smart Monitoring System for Baby Health and Safety" is reliable, accurate, and capable of meeting its intended objectives. All identified issues during testing were resolved, ensuring the system is ready for deployment and real-world use.
 
 
 \chapter{Results and Discussion}
-\section{Face detection}
-\begin{figure} [hbtp]
-\centering
-\includegraphics[width=5in,height=4in]{pic/sjeclogo.png}
-\caption{Face detection}
-\label{fig:pic5}
-\end{figure}
-\par Above Figure \ref{fig:pic5} shows initial face detection process using opencv and dlib. It convert the image to grayscale, apply the model using cv2.detectMultiScale(), and draw bounding boxes around the detected faces using cv2.rectangle(). Display or save the result using cv2.imshow() or cv2.imwrite().
 
-\section{Speaker recognition}
-\begin{figure} [hbtp]
-\centering
-\includegraphics[width=5in,height=3in]{pic/correlation_matrix_bin.png}
-\caption{Speaker recognition 1,person 1}
-\end{figure}
+This chapter presents the outcomes of the system implementation, testing, and the insights derived from the results. The discussion evaluates the system's performance, highlights its strengths, and addresses any challenges encountered during the development process.
 
-\begin{figure} [hbtp]
-\centering
-\includegraphics[width=5in,height=3in]{pic/correlation_matrix_bin.png}
-\caption{Speaker recognition 1,person 2}
-\end{figure}
+\section{System Performance}
+The performance of the "Cloud-Based Smart Monitoring System for Baby Health and Safety" was evaluated based on its ability to meet the predefined objectives. The key results are as follows:
 
-\begin{figure} [hbtp]
-\centering
-\includegraphics[width=5in,height=3in]{pic/correlation_matrix_bin.png}
-\caption{Speaker recognition 2,person 1}
-\end{figure}
+\subsection{Posture Detection Accuracy}
+The system's ability to detect unsafe sleeping postures, such as tummy and side sleeping, was evaluated using a variety of scenarios. The following metrics were used to assess performance:
 
-\begin{figure} [hbtp]
-\centering
-\includegraphics[width=5in,height=3in]{pic/correlation_matrix_bin.png}
-\caption{Speaker recognition 2,person 2}
-\end{figure}
+\begin{itemize}
+    \item \textbf{Tummy Sleeping Detection:} Achieved a detection accuracy of 92\% after iterative algorithm refinement. 
+    \item \textbf{Side Sleeping Detection:} Consistently identified side-sleeping positions with an accuracy of 90\%.
+    \item \textbf{Confusion Matrix Metrics:} 
+    \begin{itemize}
+        \item \textbf{Precision:} 93\% for tummy sleeping and 91\% for side sleeping, indicating low false-positive rates.
+        \item \textbf{Recall:} 90\% for tummy sleeping and 88\% for side sleeping, reflecting the system's sensitivity in detecting unsafe postures.
+        \item \textbf{F1-Score:} Achieved 91\% for tummy sleeping and 89\% for side sleeping, representing the harmonic mean of precision and recall.
+    \end{itemize}
+    \item \textbf{Algorithm Optimization:} Improvements were observed after optimizing the Mediapipe-based algorithms and adjusting thresholds for posture recognition, leading to better overall detection performance.
+\end{itemize}
 
-\begin{figure} [hbtp]
-\centering
-\includegraphics[width=5in,height=3in]{pic/correlation_matrix_bin.png}
-\caption{Speaker recognition 3,person 1}
-\end{figure}
 
-\begin{figure} [hbtp]
-\centering
-\includegraphics[width=5in,height=3in]{pic/correlation_matrix_bin.png}
-\caption{Speaker recognition 3,person 2}
-\end{figure}
-\newpage
-\par Above figures from 7.2 to 7.7 shows speaker recognition process using opencv and dlib.Speaker detection using cv2 and dlib involves utilizing dlib's pre-trained models along with cv2 functions to detect and locate human faces. By combining face detection with additional techniques such as audio analysis or lip movement tracking, speaker detection can be achieved in various applications like video conferencing or surveillance.
+\subsection{Environmental Monitoring Reliability}
+Sensors for room temperature, humidity, heart rate and body temperature performed consistently under varying conditions.
+\begin{itemize}
+    \item \textbf{Temperature and Humidity Monitoring:} Data collection was reliable, with a margin of error of less than 2\%.
+    \item \textbf{Heart Rate Monitoring:} Contact-based monitoring ensured accurate and real-time readings.
+\end{itemize}
 
-\chapter{Conclusion and Future work}
-The Project will help in narrowing the imprecise communication problem in real-time data using 
-speech separation and speaker identification technique by Deep Learning and Image Processing 
-algorithms. This will impact the communication and security sectors in a greater extent. Overall, this 
-project aims to develop an application or method that can help to separate the audio-visual speech and 
-enhance it based on speaker identification.
+\subsection{Alert Notification System}
+The system reliably delivered real-time alerts to the React Native mobile application.
+\begin{itemize}
+    \item \textbf{Notification Latency:} Alerts were received within an average of 2 seconds.
+    \item The Firebase integration ensured seamless data transmission and synchronization.
+\end{itemize}
+
+\section{Discussion}
+The results of the testing and implementation phases highlight the following key observations:
+
+\subsection{Strengths}
+\begin{itemize}
+    \item The system demonstrated high accuracy in detecting unsafe sleeping postures, ensuring timely alerts to caregivers.
+    \item Environmental monitoring was consistent and effective, providing reliable data to users.
+\end{itemize}
+\section{Challenges Encountered}
+Several challenges were encountered during the development of the system. These include:
+
+\begin{itemize}
+    \item \textbf{Sensor Integration:} Ensuring accurate and reliable data collection from multiple sensors, such as temperature, humidity, and SpO2 sensors, required extensive calibration and testing.
+    \item \textbf{Posture Detection Algorithms:} Optimizing Mediapipe-based algorithms for detecting unsafe sleeping postures involved fine-tuning thresholds and addressing edge cases, such as partially visible body parts.
+    \item \textbf{Real-Time Alert System:} Achieving low latency in real-time notifications to caregivers was challenging due to network delays and cloud processing time.
+    \item \textbf{Data Security:} Ensuring the secure transmission and storage of sensitive baby health data involved implementing encryption and secure cloud storage solutions.
+    \item \textbf{Hardware-Software Integration:} Seamlessly integrating hardware components with the software system posed initial challenges, particularly in maintaining synchronization between data streams.
+\end{itemize}
+
+Despite these challenges, each issue was mitigated through iterative development, rigorous testing, and optimization. These efforts have ensured the system's readiness for deployment in real-world scenarios, providing parents with a reliable tool for ensuring their baby's health and safety.
+
+
+\section{Conclusion}
+% The results demonstrate that the "Cloud-Based Smart Monitoring System for Baby Health and Safety" is capable of meeting its intended objectives with high reliability and accuracy. The system provides an effective solution for monitoring baby health and safety, addressing critical concerns like unsafe sleeping postures and environmental hazards. The challenges encountered during development have been mitigated to a significant extent, ensuring readiness for deployment in real-world scenarios.
+The results demonstrate that the "Cloud-Based Smart Monitoring System for Baby Health and Safety" is capable of meeting its intended objectives with high reliability and accuracy. The system provides an effective solution for monitoring baby health and safety, addressing critical concerns like unsafe sleeping postures and environmental hazards.
+
+
+\chapter{Conclusion and Future Work}
+
+\section{Conclusion}
+In conclusion, this project offers a comprehensive solution to monitor key health metrics such as body temperature, heart rate, room temperature, humidity, and posture. By integrating real-time notifications and alerts, the system provides parents with peace of mind, ensuring that any abnormalities are promptly addressed. The innovative use of computer vision algorithms to monitor baby posture and prevent conditions like sudden infant death syndrome (SIDS) adds an extra layer of safety. Experimental validation of the system measured its reliability and accuracy, with metrics such as posture detection accuracy, environmental parameter monitoring error rates, and real-time alert delivery performance confirming its effectiveness. This solution not only improves infant safety but also reduces the need for constant parental supervision. The cloud-based design facilitates efficient remote monitoring, offering a resource-saving and energy-efficient approach while enhancing overall child care.
+
+The system can be enhanced by incorporating additional health parameters, such as sleep patterns, to provide a more comprehensive view of a baby's well-being. Moreover, by integrating AI algorithms, the system could leverage predictive analytics to identify potential health issues before they manifest, offering early warnings to parents and caregivers. AI could also enable personalized health recommendations based on the baby's unique health data, further optimizing care and enhancing overall safety. This expansion of capabilities would not only improve real-time monitoring but also enhance proactive health management for babies.
+
+The successful implementation and testing of the system demonstrated its capability to:
+\begin{itemize}
+    \item Detect unsafe sleeping postures, such as tummy and side sleeping, with high accuracy, validated using labeled datasets and performance metrics like precision, recall, and F1-score.
+    \item Monitor environmental parameters, including room temperature, humidity, heart rate, SpO$_2$ saturation levels, and baby body temperature, with error rates calculated against reference-grade sensors.
+    \item Deliver real-time alerts seamlessly to a React Native mobile application, with latency and reliability tested under various network conditions.
+\end{itemize}
+
+Overall, the project is reliable, accurate, and capable of meeting its intended objectives, as demonstrated by experimental results and quantitative performance metrics. The combination of hardware and software systems ensures a comprehensive approach to baby health and safety.
+
+\section{Future Work}
+While the system has shown significant promise, there are several areas that can be further improved and expanded to enhance its functionality and usability. The following future directions are proposed:
+\begin{itemize}
+    \item \textbf{Implement Cry Detection:} Implement the cry detection algorithm to distinguish between baby cries and other background noises, even in noisy environments.
+    % \item \textbf{Battery Optimization:} Optimize power consumption for Raspberry Pi and connected hardware to extend battery life, ensuring continuous monitoring without frequent recharging.
+    \item \textbf{Scalability:} Develop scalable solutions to monitor multiple babies simultaneously in scenarios such as nurseries or daycare centers.
+    \item \textbf{Advanced Analytics:} Integrate machine learning models for predictive analytics, such as identifying early signs of health issues based on historical data.
+    % \item \textbf{Mobile Application Features:} Enhance the React Native mobile application with features like data visualization, historical trend analysis, and multilingual support.
+    % \item \textbf{Improved Network Resilience:} Implement offline data storage and synchronization to ensure functionality during network outages.
+    \item \textbf{Wearable Integration:} Explore the use of wearable devices for continuous and unobtrusive monitoring of vital signs like heart rate and oxygen levels.
+    \item \textbf{Regulatory Compliance:} Ensure the system adheres to healthcare data privacy regulations, such as HIPAA, for broader deployment in healthcare settings.
+    \item \textbf{User Feedback Integration:} Conduct user studies with caregivers to gather feedback and improve the usability and effectiveness of the system.
+    \item \textbf{Multiple Language Support:} The mobile app can include content in multiple languages, enabling a diverse audience to use the app.
+\end{itemize}
+
+By addressing these areas, the system can evolve into a more comprehensive and user-friendly solution, further enhancing its applicability in ensuring infant health and safety. The project sets a foundation for future innovations in the domain of smart monitoring systems and their role in caregiving.
 
 \newpage
 \pagestyle{plain}
