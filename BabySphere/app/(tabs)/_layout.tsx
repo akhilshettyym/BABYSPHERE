@@ -31,10 +31,11 @@ export default function AppLayout() {
         options={{
           title: 'Baby Monitor',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="body" size={size} color={color} />
+            <Ionicons name="pulse" size={size} color={color} />
           ),
         }}
       />
+
       <Tabs.Screen
         name="calendar"
         options={{
