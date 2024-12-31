@@ -1,0 +1,603 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global/global}
+    \entry{alam2023iot}{article}{}{}
+      \name{author}{7}{}{%
+        {{hash=75fac3f3bc7a3d549741ff6f1a805335}{%
+           family={Alam},
+           familyi={A\bibinitperiod},
+           given={Hina},
+           giveni={H\bibinitperiod}}}%
+        {{hash=f6e0abf9bb55df7ad4aa93f3933b8675}{%
+           family={Burhan},
+           familyi={B\bibinitperiod},
+           given={Muhammad},
+           giveni={M\bibinitperiod}}}%
+        {{hash=5e88eb0405224337dd234b2d03c1527a}{%
+           family={Gillani},
+           familyi={G\bibinitperiod},
+           given={Anusha},
+           giveni={A\bibinitperiod}}}%
+        {{hash=6fb1b943d10f11fc8666d1a24c3e29f6}{%
+           family={Haq},
+           familyi={H\bibinitperiod},
+           given={Ihtisham\bibnamedelima ul},
+           giveni={I\bibinitperiod\bibinitdelim u\bibinitperiod}}}%
+        {{hash=1280a97649bc6145d1fdefe916767672}{%
+           family={Arshed},
+           familyi={A\bibinitperiod},
+           given={Muhammad\bibnamedelima Asad},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=468984768f8115b78b03eee93cbdba90}{%
+           family={Shafi},
+           familyi={S\bibinitperiod},
+           given={Muhammad},
+           giveni={M\bibinitperiod}}}%
+        {{hash=fdfd3a3ef44078e90b3c2f1f8fdad2f9}{%
+           family={Ahmad},
+           familyi={A\bibinitperiod},
+           given={Saeed},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{77df4eaf997a253d779a1ad51b1f55fd}
+      \strng{fullhash}{0c7eec712f048ce53949ec40d01ae438}
+      \strng{fullhashraw}{0c7eec712f048ce53949ec40d01ae438}
+      \strng{bibnamehash}{77df4eaf997a253d779a1ad51b1f55fd}
+      \strng{authorbibnamehash}{77df4eaf997a253d779a1ad51b1f55fd}
+      \strng{authornamehash}{77df4eaf997a253d779a1ad51b1f55fd}
+      \strng{authorfullhash}{0c7eec712f048ce53949ec40d01ae438}
+      \strng{authorfullhashraw}{0c7eec712f048ce53949ec40d01ae438}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Wireless Communications and Mobile Computing}
+      \field{number}{1}
+      \field{title}{IoT based smart baby monitoring system with emotion recognition using machine learning}
+      \field{volume}{2023}
+      \field{year}{2023}
+      \field{pages}{1175450}
+      \range{pages}{1}
+    \endentry
+    \entry{Singh2021}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=b79e67a1bbf6832d4b5f88fbb35754ad}{%
+           family={Singh},
+           familyi={S\bibinitperiod},
+           given={Yash},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {International Journal for Research in Applied Science}%
+        {Engineering Technology (IJRASET)}%
+      }
+      \strng{namehash}{b79e67a1bbf6832d4b5f88fbb35754ad}
+      \strng{fullhash}{b79e67a1bbf6832d4b5f88fbb35754ad}
+      \strng{fullhashraw}{b79e67a1bbf6832d4b5f88fbb35754ad}
+      \strng{bibnamehash}{b79e67a1bbf6832d4b5f88fbb35754ad}
+      \strng{authorbibnamehash}{b79e67a1bbf6832d4b5f88fbb35754ad}
+      \strng{authornamehash}{b79e67a1bbf6832d4b5f88fbb35754ad}
+      \strng{authorfullhash}{b79e67a1bbf6832d4b5f88fbb35754ad}
+      \strng{authorfullhashraw}{b79e67a1bbf6832d4b5f88fbb35754ad}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2321-9653}
+      \field{journaltitle}{International Journal for Research in Applied Science and Engineering Technology}
+      \field{month}{12}
+      \field{number}{12}
+      \field{title}{IOT Based Baby Monitoring System}
+      \field{volume}{9}
+      \field{year}{2021}
+      \field{pages}{2184\bibrangedash 2190}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.22214/ijraset.2021.39699
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.22214/ijraset.2021.39699
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.22214/ijraset.2021.39699
+      \endverb
+    \endentry
+    \entry{Hossain2023}{article}{}{}
+      \name{author}{10}{}{%
+        {{hash=f9bc601785976b87b6d81989a9a5fe83}{%
+           family={Hossain},
+           familyi={H\bibinitperiod},
+           given={Mohammad\bibnamedelima Mobarak},
+           giveni={M\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=843f31b0b54d5dd7cf2e11d7c243be1e}{%
+           family={Kashem},
+           familyi={K\bibinitperiod},
+           given={Mohammod\bibnamedelima Abul},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=08ed2335e4035cb312c03454b8c95614}{%
+           family={Islam},
+           familyi={I\bibinitperiod},
+           given={Md.\bibnamedelimi Monirul},
+           giveni={M\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=5312114af60e272aa8e7acde6e72a1a3}{%
+           family={Sahidullah},
+           familyi={S\bibinitperiod},
+           given={Md.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=0e04c1be760560012da3f539e2418d86}{%
+           family={Mumu},
+           familyi={M\bibinitperiod},
+           given={Sumona\bibnamedelima Hoque},
+           giveni={S\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=24548bf793bb4455b339549f512880d8}{%
+           family={Uddin},
+           familyi={U\bibinitperiod},
+           given={Jia},
+           giveni={J\bibinitperiod}}}%
+        {{hash=416d2efa6eeee6939ac87051e517609f}{%
+           family={Aray},
+           familyi={A\bibinitperiod},
+           given={Daniel\bibnamedelima Gavilanes},
+           giveni={D\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=3ad1e18050cae6d69ff958ef7a2b0fe8}{%
+           family={Torre\bibnamedelima Diez},
+           familyi={T\bibinitperiod\bibinitdelim D\bibinitperiod},
+           given={Isabel},
+           giveni={I\bibinitperiod},
+           prefix={de\bibnamedelima la},
+           prefixi={d\bibinitperiod\bibinitdelim l\bibinitperiod}}}%
+        {{hash=38c004e153a7beeec2ef81b0ccd7821e}{%
+           family={Ashraf},
+           familyi={A\bibinitperiod},
+           given={Imran},
+           giveni={I\bibinitperiod}}}%
+        {{hash=4eff99f827bd48d92a1aa61b26c3e047}{%
+           family={Samad},
+           familyi={S\bibinitperiod},
+           given={Md\bibnamedelima Abdus},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {MDPI AG}%
+      }
+      \strng{namehash}{b76da47bf49fcb3cc5c94e3b683b73ac}
+      \strng{fullhash}{06a6668242c2b29007330cdbd3b7fdbd}
+      \strng{fullhashraw}{06a6668242c2b29007330cdbd3b7fdbd}
+      \strng{bibnamehash}{b76da47bf49fcb3cc5c94e3b683b73ac}
+      \strng{authorbibnamehash}{b76da47bf49fcb3cc5c94e3b683b73ac}
+      \strng{authornamehash}{b76da47bf49fcb3cc5c94e3b683b73ac}
+      \strng{authorfullhash}{06a6668242c2b29007330cdbd3b7fdbd}
+      \strng{authorfullhashraw}{06a6668242c2b29007330cdbd3b7fdbd}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1424-8220}
+      \field{journaltitle}{Sensors}
+      \field{month}{11}
+      \field{number}{23}
+      \field{title}{Internet of Things in Pregnancy Care Coordination and Management: A Systematic Review}
+      \field{volume}{23}
+      \field{year}{2023}
+      \field{pages}{9367}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3390/s23239367
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.3390/s23239367
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.3390/s23239367
+      \endverb
+    \endentry
+    \entry{9454187}{inproceedings}{}{}
+      \name{author}{5}{}{%
+        {{hash=3be19adb9aa13a242602b174dcbcae1c}{%
+           family={Ishtiaq\bibnamedelima Salehin},
+           familyi={I\bibinitperiod\bibinitdelim S\bibinitperiod},
+           given={H.\bibnamedelimi M.},
+           giveni={H\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=2cc7b0a53e1961ed51a1ae42cf9e5182}{%
+           family={Anjum\bibnamedelima Joy},
+           familyi={A\bibinitperiod\bibinitdelim J\bibinitperiod},
+           given={Quazi\bibnamedelima Rubayet},
+           giveni={Q\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=2ad95d8147aa76cd136ec1d9c3e228fd}{%
+           family={Zuhra\bibnamedelima Aparna},
+           familyi={Z\bibinitperiod\bibinitdelim A\bibinitperiod},
+           given={Fatima\bibnamedelima Tuz},
+           giveni={F\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=582e28117e8c1edd0d4766680b51d515}{%
+           family={Ridwan},
+           familyi={R\bibinitperiod},
+           given={Ahnaf\bibnamedelima Tahmid},
+           giveni={A\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=9deececfd79060b571d78b07ccc5e2f4}{%
+           family={Khan},
+           familyi={K\bibinitperiod},
+           given={Riasat},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{fed158fca21ca945cb5892c2b3d1eae1}
+      \strng{fullhash}{f53e6a72e3d82216577e4ab66c65df93}
+      \strng{fullhashraw}{f53e6a72e3d82216577e4ab66c65df93}
+      \strng{bibnamehash}{f53e6a72e3d82216577e4ab66c65df93}
+      \strng{authorbibnamehash}{f53e6a72e3d82216577e4ab66c65df93}
+      \strng{authornamehash}{fed158fca21ca945cb5892c2b3d1eae1}
+      \strng{authorfullhash}{f53e6a72e3d82216577e4ab66c65df93}
+      \strng{authorfullhashraw}{f53e6a72e3d82216577e4ab66c65df93}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2021 IEEE World AI IoT Congress (AIIoT)}
+      \field{title}{Development of an IoT based Smart Baby Monitoring System with Face Recognition}
+      \field{year}{2021}
+      \field{pages}{0292\bibrangedash 0296}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.1109/AIIoT52608.2021.9454187
+      \endverb
+      \keyw{Pediatrics;Microcontrollers;Face recognition;Moisture;Humidity;Cameras;Real-time systems;Arduino Mega;Baby Monitoring System;Cloud Server;Face Recognition;GSM module;Raspberry Pi;Real-Time Streaming}
+    \endentry
+    \entry{9442022}{inproceedings}{}{}
+      \name{author}{4}{}{%
+        {{hash=2433e4f6584ff855f2adbe71d2840a0e}{%
+           family={Joseph},
+           familyi={J\bibinitperiod},
+           given={Senoj},
+           giveni={S\bibinitperiod}}}%
+        {{hash=918e013c434e12ae8d0709b53be9448b}{%
+           family={Gautham.J},
+           familyi={G\bibinitperiod},
+           given={Ajay},
+           giveni={A\bibinitperiod}}}%
+        {{hash=41e3ed7d616d3eca8888494486ebc155}{%
+           family={Kumar},
+           familyi={K\bibinitperiod},
+           given={Akshaya},
+           giveni={A\bibinitperiod}}}%
+        {{hash=82332818e789f1f6eb934bf851034071}{%
+           family={Harish\bibnamedelima Babu},
+           familyi={H\bibinitperiod\bibinitdelim B\bibinitperiod},
+           given={M.K},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{afbed4b367235a28d31496518d4730de}
+      \strng{fullhash}{3f978b46885a6b69ef910860c3cbf06e}
+      \strng{fullhashraw}{3f978b46885a6b69ef910860c3cbf06e}
+      \strng{bibnamehash}{3f978b46885a6b69ef910860c3cbf06e}
+      \strng{authorbibnamehash}{3f978b46885a6b69ef910860c3cbf06e}
+      \strng{authornamehash}{afbed4b367235a28d31496518d4730de}
+      \strng{authorfullhash}{3f978b46885a6b69ef910860c3cbf06e}
+      \strng{authorfullhashraw}{3f978b46885a6b69ef910860c3cbf06e}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2021 7th International Conference on Advanced Computing and Communication Systems (ICACCS)}
+      \field{title}{IOT Based Baby Monitoring System Smart Cradle}
+      \field{volume}{1}
+      \field{year}{2021}
+      \field{pages}{748\bibrangedash 751}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1109/ICACCS51430.2021.9442022
+      \endverb
+      \keyw{Temperature sensors;Pediatrics;Visualization;Technological innovation;Surveillance;Insurance;Cameras;Baby cradle;crying pattern;IOT}
+    \endentry
+    \entry{Kumar2023}{article}{}{}
+      \name{author}{6}{}{%
+        {{hash=2b74f9a5fccf143ee514aa09c4a128ee}{%
+           family={Kumar},
+           familyi={K\bibinitperiod},
+           given={M\bibnamedelima Ravi},
+           giveni={M\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=d8e75ac41709ee8ccad564d58c610af6}{%
+           family={Harshitha},
+           familyi={H\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+        {{hash=c504a59307e88fb18a4981c33c38a058}{%
+           family={Prathyusha},
+           familyi={P\bibinitperiod},
+           given={A.\bibnamedelimi Siva},
+           giveni={A\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=334903d4f4b6f1a054b222e9fe1cc03f}{%
+           family={Sangeetha},
+           familyi={S\bibinitperiod},
+           given={Ch.},
+           giveni={C\bibinitperiod}}}%
+        {{hash=df2fef31c4916b0cf226bba47f089006}{%
+           family={Rao},
+           familyi={R\bibinitperiod},
+           given={Ch.\bibnamedelimi Duraga},
+           giveni={C\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=f09f274225f3b45502103aef22a67fb7}{%
+           family={Nitesh},
+           familyi={N\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {International Journal for Research in Applied Science}%
+        {Engineering Technology (IJRASET)}%
+      }
+      \strng{namehash}{ebf26f26ac26d6b1e623f71234ef1ee1}
+      \strng{fullhash}{beac7c371b8767f7fdc94528c3968c56}
+      \strng{fullhashraw}{beac7c371b8767f7fdc94528c3968c56}
+      \strng{bibnamehash}{beac7c371b8767f7fdc94528c3968c56}
+      \strng{authorbibnamehash}{beac7c371b8767f7fdc94528c3968c56}
+      \strng{authornamehash}{ebf26f26ac26d6b1e623f71234ef1ee1}
+      \strng{authorfullhash}{beac7c371b8767f7fdc94528c3968c56}
+      \strng{authorfullhashraw}{beac7c371b8767f7fdc94528c3968c56}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2321-9653}
+      \field{journaltitle}{International Journal for Research in Applied Science and Engineering Technology}
+      \field{month}{4}
+      \field{number}{4}
+      \field{title}{Smart Infant Baby Monitoring System Using IOT}
+      \field{volume}{11}
+      \field{year}{2023}
+      \field{pages}{3003\bibrangedash 3008}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.22214/ijraset.2023.50764
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.22214/ijraset.2023.50764
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.22214/ijraset.2023.50764
+      \endverb
+    \endentry
+    \entry{mishra2018development}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=9511a8b210e7888e085bd268dc0633d9}{%
+           family={Mishra},
+           familyi={M\bibinitperiod},
+           given={Suman},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{9511a8b210e7888e085bd268dc0633d9}
+      \strng{fullhash}{9511a8b210e7888e085bd268dc0633d9}
+      \strng{fullhashraw}{9511a8b210e7888e085bd268dc0633d9}
+      \strng{bibnamehash}{9511a8b210e7888e085bd268dc0633d9}
+      \strng{authorbibnamehash}{9511a8b210e7888e085bd268dc0633d9}
+      \strng{authornamehash}{9511a8b210e7888e085bd268dc0633d9}
+      \strng{authorfullhash}{9511a8b210e7888e085bd268dc0633d9}
+      \strng{authorfullhashraw}{9511a8b210e7888e085bd268dc0633d9}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Indian Journal of Public Health Research Development}
+      \field{number}{2}
+      \field{title}{Development of RTOs based internet connected baby monitoring system}
+      \field{volume}{9}
+      \field{year}{2018}
+      \field{pages}{345}
+      \range{pages}{1}
+    \endentry
+    \entry{10578217}{inproceedings}{}{}
+      \name{author}{4}{}{%
+        {{hash=c523d565607ad5cfb7fb7d16d7f693dc}{%
+           family={Hapsari},
+           familyi={H\bibinitperiod},
+           given={Diajeng\bibnamedelimb Tyas\bibnamedelima Purwa},
+           giveni={D\bibinitperiod\bibinitdelim T\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=b6bdfc897754f2a9ac9a4d52914101f2}{%
+           family={Nataliani},
+           familyi={N\bibinitperiod},
+           given={Yessica},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=6165f4fe11e745a2e2e51ec28540a992}{%
+           family={Sembiring},
+           familyi={S\bibinitperiod},
+           given={Irwan},
+           giveni={I\bibinitperiod}}}%
+        {{hash=01938bb5cfa9746296c03872c88c0b91}{%
+           family={Wahyono},
+           familyi={W\bibinitperiod},
+           given={Teguh},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{a58a86a67a2cfab28ca3112336594650}
+      \strng{fullhash}{937171c02d30e7fdf6acb4f42acf846b}
+      \strng{fullhashraw}{937171c02d30e7fdf6acb4f42acf846b}
+      \strng{bibnamehash}{937171c02d30e7fdf6acb4f42acf846b}
+      \strng{authorbibnamehash}{937171c02d30e7fdf6acb4f42acf846b}
+      \strng{authornamehash}{a58a86a67a2cfab28ca3112336594650}
+      \strng{authorfullhash}{937171c02d30e7fdf6acb4f42acf846b}
+      \strng{authorfullhashraw}{937171c02d30e7fdf6acb4f42acf846b}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2024 International Conference on Smart Computing, IoT and Machine Learning (SIML)}
+      \field{title}{Smart Caregiving Support Cloud Integration Systems}
+      \field{year}{2024}
+      \field{pages}{167\bibrangedash 173}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1109/SIML61815.2024.10578217
+      \endverb
+      \keyw{Cloud computing;Pediatrics;Accuracy;Computational modeling;Scalability;Machine learning;Real-time systems;Infant cry analysis;ESP8266 WiFi module;real-time;smart caregiving support;infant health}
+    \endentry
+    \entry{aktacs2016real}{inproceedings}{}{}
+      \name{author}{3}{}{%
+        {{hash=de34030661fabfdad48b67e0901a8c17}{%
+           family={Aktaş},
+           familyi={A\bibinitperiod},
+           given={Faruk},
+           giveni={F\bibinitperiod}}}%
+        {{hash=ec29060c7130abead71758d996b7afd2}{%
+           family={Kavuş},
+           familyi={K\bibinitperiod},
+           given={Emre},
+           giveni={E\bibinitperiod}}}%
+        {{hash=804acf7ded6f47067171f38b2110672c}{%
+           family={Kavuş},
+           familyi={K\bibinitperiod},
+           given={Yunus},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{93759c5fc26a2ef890e317038cf6775e}
+      \strng{fullhash}{2c59388a6cc71b92430dffe68f2e537f}
+      \strng{fullhashraw}{2c59388a6cc71b92430dffe68f2e537f}
+      \strng{bibnamehash}{2c59388a6cc71b92430dffe68f2e537f}
+      \strng{authorbibnamehash}{2c59388a6cc71b92430dffe68f2e537f}
+      \strng{authornamehash}{93759c5fc26a2ef890e317038cf6775e}
+      \strng{authorfullhash}{2c59388a6cc71b92430dffe68f2e537f}
+      \strng{authorfullhashraw}{2c59388a6cc71b92430dffe68f2e537f}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2016 Medical Technologies National Congress (TIPTEKNO)}
+      \field{title}{Real time infant health monitoring system for hard of hearing parents}
+      \field{year}{2016}
+      \field{pages}{1\bibrangedash 4}
+      \range{pages}{4}
+    \endentry
+    \entry{reactnativeIntroductionReact}{misc}{}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://reactnative.dev/docs/getting-started}}
+      \field{note}{[Accessed 21-10-2024]}
+      \field{title}{{I}ntroduction · {R}eact {N}ative --- reactnative.dev}
+    \endentry
+    \entry{googleCloudComputing}{misc}{}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://cloud.google.com/?hl=en}}
+      \field{note}{[Accessed 20-10-2024]}
+      \field{title}{{C}loud {C}omputing {S}ervices | {G}oogle {C}loud --- cloud.google.com}
+    \endentry
+    \entry{googleFirebaseDocumentation}{misc}{}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://firebase.google.com/docs}}
+      \field{note}{[Accessed 20-10-2024]}
+      \field{title}{{F}irebase {D}ocumentation --- firebase.google.com}
+    \endentry
+    \entry{10187295}{inproceedings}{}{}
+      \name{author}{4}{}{%
+        {{hash=6824f2170532a510b705a77cfa2a1c8f}{%
+           family={Singh},
+           familyi={S\bibinitperiod},
+           given={Gurpreet},
+           giveni={G\bibinitperiod}}}%
+        {{hash=0888ef676d8aff2fa5edf645f3bed6b0}{%
+           family={Shekhar},
+           familyi={S\bibinitperiod},
+           given={Abhishek\bibnamedelima Raj},
+           giveni={A\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=44d7c25797072f0081aa96d04a9b36ff}{%
+           family={Yu},
+           familyi={Y\bibinitperiod},
+           given={Xinrui},
+           giveni={X\bibinitperiod}}}%
+        {{hash=b35d5db0249e80ad62c70fbaf9d3cd3f}{%
+           family={Saniie},
+           familyi={S\bibinitperiod},
+           given={Jafar},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{fa6eb7372ec305c504ed462bd3853225}
+      \strng{fullhash}{b9714d5b2f8d387499667502a86a400e}
+      \strng{fullhashraw}{b9714d5b2f8d387499667502a86a400e}
+      \strng{bibnamehash}{b9714d5b2f8d387499667502a86a400e}
+      \strng{authorbibnamehash}{b9714d5b2f8d387499667502a86a400e}
+      \strng{authornamehash}{fa6eb7372ec305c504ed462bd3853225}
+      \strng{authorfullhash}{b9714d5b2f8d387499667502a86a400e}
+      \strng{authorfullhashraw}{b9714d5b2f8d387499667502a86a400e}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2023 IEEE International Conference on Electro Information Technology (eIT)}
+      \field{title}{Smart Infant Monitoring System Using Computer Vision and AI}
+      \field{year}{2023}
+      \field{pages}{1\bibrangedash 6}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/eIT57321.2023.10187295
+      \endverb
+      \keyw{Deep learning;Pediatrics;Computer vision;Speech recognition;Cameras;Real-time systems;Artificial intelligence;infant monitoring system;deep learning;face detection;pose detection;jetson nano;computer vision}
+    \endentry
+    \entry{9292052}{inproceedings}{}{}
+      \name{author}{3}{}{%
+        {{hash=e24da3e9c56bac6bdf0d6f509c0bdcde}{%
+           family={Okuno},
+           familyi={O\bibinitperiod},
+           given={Ayaka},
+           giveni={A\bibinitperiod}}}%
+        {{hash=56f828356f5ab0104d06af50f9533424}{%
+           family={Ishikawa},
+           familyi={I\bibinitperiod},
+           given={Takaaki},
+           giveni={T\bibinitperiod}}}%
+        {{hash=2a6e7c65fc966d6aab37bcd5289b81c6}{%
+           family={Watanabe},
+           familyi={W\bibinitperiod},
+           given={Hiroshi},
+           giveni={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{db5786057cd2d5ddcac9f0f4a0df2ded}
+      \strng{fullhash}{8adaad2369638d4fda0ea037f82d9198}
+      \strng{fullhashraw}{8adaad2369638d4fda0ea037f82d9198}
+      \strng{bibnamehash}{8adaad2369638d4fda0ea037f82d9198}
+      \strng{authorbibnamehash}{8adaad2369638d4fda0ea037f82d9198}
+      \strng{authornamehash}{db5786057cd2d5ddcac9f0f4a0df2ded}
+      \strng{authorfullhash}{8adaad2369638d4fda0ea037f82d9198}
+      \strng{authorfullhashraw}{8adaad2369638d4fda0ea037f82d9198}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2020 IEEE 9th Global Conference on Consumer Electronics (GCCE)}
+      \field{title}{Rollover Detection of Infants Using Posture Estimation Model}
+      \field{year}{2020}
+      \field{pages}{490\bibrangedash 493}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1109/GCCE50665.2020.9292052
+      \endverb
+      \keyw{Surveillance;Rollover;Estimation;Cameras;Turning;Motion pictures;Consumer electronics;OpenPose;CPN;deep learning;Sleep Behavior in Infants}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

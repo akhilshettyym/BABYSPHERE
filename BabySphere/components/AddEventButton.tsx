@@ -1,12 +1,14 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect,  Dispatch, SetStateAction } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Modal, TextInput, Alert, TouchableWithoutFeedback, Keyboard, Animated, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Event } from '../types/types';
 
-interface AddEventButtonProps {
+export interface AddEventButtonProps {
   onAddEvent: (newEvent: Omit<Event, 'id' | 'createdAt'>) => Promise<void>;
   selectedDate: string;
+  isVisible: boolean; 
+  setIsVisible: Dispatch<SetStateAction<boolean>>;
   userId: string | undefined;
 }
 
@@ -35,6 +37,7 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
   const titleInputRef = useRef<TextInput>(null);
   const descriptionInputRef = useRef<TextInput>(null);
   const slideAnimation = useRef(new Animated.Value(0)).current;
+  
 
   useEffect(() => {
     if (modalVisible) {
@@ -72,9 +75,9 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
       description,
       time: formattedTime,
       notificationTime: formattedNotificationTime,
-      date: dateString,
+      date: date.toISOString().split('T')[0], // Use ISO string format
       priority,
-      userId: userId || 'anonymous', // Use 'anonymous' if userId is undefined
+      userId: userId || 'anonymous',
     };
 
     console.log('Attempting to add event:', newEvent);
@@ -113,7 +116,7 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
   const onDateChange = (event: any, selectedDate: Date | undefined) => {
     if (selectedDate) {
       setDate(selectedDate);
-      setDateString(selectedDate.toLocaleDateString());
+      setDateString(selectedDate.toISOString().split('T')[0]);
       setDateError(false);
       setHasUnsavedChanges(true);
     }

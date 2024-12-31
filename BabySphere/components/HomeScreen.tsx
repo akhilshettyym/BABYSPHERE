@@ -1,30 +1,36 @@
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { MoodTracker } from '../components/MoodTracker';
-import { EnergyTracker } from '../components/EnergyTracker';
-import { WellnessInsights } from '../components/WellnessInsights';
-import { RecommendationsCard } from '../components/RecommendationsCard';
-import { colors } from '../utils/colors';
+import { MoodPicker } from '../components/MoodPicker';
+import { SleepQuality } from '../components/SleepQuality';
+import { theme } from '../utils/theme';
 import type { MoodType } from '../types/wellness';
+import { JournalEntry } from '../components/journal/JournalEntry';
+import { WellnessInsights } from '../components/insights/WellnessInsights';
+import { WellnessTrends } from '../components/trends/WellnessTrends';
+import { WellnessTips } from '../components/tips/WellnessTips';
+
 
 export default function HomeScreen() {
   const [selectedMood, setSelectedMood] = useState<MoodType>();
-  const [energyLevel, setEnergyLevel] = useState(5);
+  const [sleepQuality, setSleepQuality] = useState(5);
 
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
-        <MoodTracker
+        <MoodPicker
           onMoodSelect={setSelectedMood}
           selectedMood={selectedMood}
         />
-        <EnergyTracker
-          onEnergySelect={setEnergyLevel}
-          energyLevel={energyLevel}
+        <SleepQuality
+          onQualityChange={setSleepQuality}
+          quality={sleepQuality}
         />
+        <JournalEntry />
         <WellnessInsights />
-        <RecommendationsCard />
+        <WellnessTrends />
+        <WellnessTips />
+
       </ScrollView>
     </SafeAreaView>
   );
@@ -33,9 +39,9 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: theme.colors.background,
   },
   scrollView: {
-    padding: 16,
+    flex: 1,
   },
 });

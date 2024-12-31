@@ -1,0 +1,95 @@
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Acknowledgement}{i}{}%
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Abstract}{ii}{}%
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Table of Contents}{iii}{}%
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }List of Figures}{vii}{}%
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }List of Tables}{viii}{}%
+\contentsline {chapter}{\numberline {1}Introduction}{1}{}%
+\contentsline {section}{\numberline {1.1}Background}{1}{}%
+\contentsline {section}{\numberline {1.2}Problem statement }{2}{}%
+\contentsline {section}{\numberline {1.3}Objectives}{2}{}%
+\contentsline {section}{\numberline {1.4}Scope}{3}{}%
+\contentsline {chapter}{\numberline {2}Literature Survey}{4}{}%
+\contentsline {section}{\numberline {2.1}IoT Based Smart Baby Monitoring System with Emotion Recognition Using Machine Learning}{4}{}%
+\contentsline {section}{\numberline {2.2}IOT Based Baby Monitoring System}{5}{}%
+\contentsline {section}{\numberline {2.3}Internet of Things in Pregnancy Care Coordination and Management}{5}{}%
+\contentsline {section}{\numberline {2.4}Development of an IoT based Smart Baby Monitoring System with Face Recognition}{6}{}%
+\contentsline {section}{\numberline {2.5}IOT Based Baby Monitoring System Smart Cradle}{7}{}%
+\contentsline {section}{\numberline {2.6}Smart Infant Baby Monitoring System Using IoT}{7}{}%
+\contentsline {section}{\numberline {2.7}Development of RTOs Based Internet Connected Baby Monitoring System}{8}{}%
+\contentsline {section}{\numberline {2.8}Smart Caregiving Support Cloud Integration Systems}{9}{}%
+\contentsline {section}{\numberline {2.9}Real time infant health monitoring system for hard of hearing parents}{10}{}%
+\contentsline {section}{\numberline {2.10}Comparison of existing methods}{11}{}%
+\contentsline {section}{\numberline {2.11}Proposed system}{13}{}%
+\contentsline {subsection}{\numberline {2.11.1}Importance of chosen project}{13}{}%
+\contentsline {subsection}{\numberline {2.11.2}Novelty in Proposed project}{14}{}%
+\contentsline {subsection}{\numberline {2.11.3}Advancement of State-of-the-Art}{14}{}%
+\contentsline {subsection}{\numberline {2.11.4}Differentiation from Existing Works}{15}{}%
+\contentsline {chapter}{\numberline {3}Software Requirement Specification}{16}{}%
+\contentsline {section}{\numberline {3.1}Functional Requirements}{16}{}%
+\contentsline {subsection}{\numberline {3.1.1}User Management}{16}{}%
+\contentsline {subsection}{\numberline {3.1.2}Data Monitoring}{16}{}%
+\contentsline {subsection}{\numberline {3.1.3}Alerts and Notifications}{17}{}%
+\contentsline {subsection}{\numberline {3.1.4}Historical Data Access}{17}{}%
+\contentsline {section}{\numberline {3.2}Non-Functional Requirements}{17}{}%
+\contentsline {subsection}{\numberline {3.2.1}Usability}{17}{}%
+\contentsline {subsection}{\numberline {3.2.2}Reliability}{17}{}%
+\contentsline {subsection}{\numberline {3.2.3}Security}{18}{}%
+\contentsline {subsection}{\numberline {3.2.4}Scalability}{18}{}%
+\contentsline {section}{\numberline {3.3}User Interface Design}{18}{}%
+\contentsline {subsection}{\numberline {3.3.1}Layout}{18}{}%
+\contentsline {subsection}{\numberline {3.3.2}Color Scheme and Branding}{19}{}%
+\contentsline {subsection}{\numberline {3.3.3}Accessibility}{19}{}%
+\contentsline {section}{\numberline {3.4}Hardware \& Software Requirements}{19}{}%
+\contentsline {subsection}{\numberline {3.4.1}Hardware Requirements}{19}{}%
+\contentsline {subsection}{\numberline {3.4.2}Software Requirements}{19}{}%
+\contentsline {section}{\numberline {3.5}Performance Requirements}{20}{}%
+\contentsline {subsection}{\numberline {3.5.1}Response Time}{20}{}%
+\contentsline {subsection}{\numberline {3.5.2}Data Processing}{20}{}%
+\contentsline {section}{\numberline {3.6}Design Constraints}{20}{}%
+\contentsline {subsection}{\numberline {3.6.1}Technical Constraints}{20}{}%
+\contentsline {subsection}{\numberline {3.6.2}Environmental Constraints}{21}{}%
+\contentsline {section}{\numberline {3.7}Other Requirements}{21}{}%
+\contentsline {subsection}{\numberline {3.7.1}Compliance Requirements}{21}{}%
+\contentsline {subsection}{\numberline {3.7.2}Documentation}{21}{}%
+\contentsline {chapter}{\numberline {4}System Design}{22}{}%
+\contentsline {section}{\numberline {4.1}Abstract Design}{22}{}%
+\contentsline {subsection}{\numberline {4.1.1}Architectural diagram}{22}{}%
+\contentsline {subsection}{\numberline {4.1.2}Use Case Diagram}{25}{}%
+\contentsline {section}{\numberline {4.2}Functional Design}{25}{}%
+\contentsline {subsection}{\numberline {4.2.1}Sequence diagram}{25}{}%
+\contentsline {section}{\numberline {4.3}Presentation Layer Design}{28}{}%
+\contentsline {subsection}{\numberline {4.3.1}User Interface Flow Design}{28}{}%
+\contentsline {chapter}{\numberline {5}Implementation}{30}{}%
+\contentsline {section}{\numberline {5.1}System Architecture Design}{30}{}%
+\contentsline {section}{\numberline {5.2}Hardware Implementation}{31}{}%
+\contentsline {subsection}{\numberline {5.2.1}CAD representation of the hardware setup}{32}{}%
+\contentsline {section}{\numberline {5.3}Software Implementation}{32}{}%
+\contentsline {section}{\numberline {5.4}Screenshots of the mobile app}{33}{}%
+\contentsline {subsection}{\numberline {5.4.1}Sign Up and Sign In Pages}{33}{}%
+\contentsline {subsection}{\numberline {5.4.2}Dashboard (Live Vitals)}{34}{}%
+\contentsline {subsection}{\numberline {5.4.3}Graph Page (Vitals History)}{35}{}%
+\contentsline {subsection}{\numberline {5.4.4}Live-feed Page}{35}{}%
+\contentsline {subsection}{\numberline {5.4.5}Profile Page}{36}{}%
+\contentsline {subsection}{\numberline {5.4.6}Calendar}{37}{}%
+\contentsline {chapter}{\numberline {6}System Testing}{38}{}%
+\contentsline {section}{\numberline {6.1}Objective}{38}{}%
+\contentsline {section}{\numberline {6.2}Testing Methodology}{39}{}%
+\contentsline {subsection}{\numberline {6.2.1}Unit Testing}{39}{}%
+\contentsline {subsection}{\numberline {6.2.2}Integration Testing}{39}{}%
+\contentsline {subsection}{\numberline {6.2.3}System Testing}{39}{}%
+\contentsline {section}{\numberline {6.3}Tools Used}{40}{}%
+\contentsline {section}{\numberline {6.4}Results and Observations}{40}{}%
+\contentsline {section}{\numberline {6.5}Conclusion}{41}{}%
+\contentsline {chapter}{\numberline {7}Results and Discussion}{42}{}%
+\contentsline {section}{\numberline {7.1}System Performance}{42}{}%
+\contentsline {subsection}{\numberline {7.1.1}Posture Detection Accuracy}{42}{}%
+\contentsline {subsection}{\numberline {7.1.2}Environmental Monitoring Reliability}{43}{}%
+\contentsline {subsection}{\numberline {7.1.3}Alert Notification System}{43}{}%
+\contentsline {section}{\numberline {7.2}Discussion}{44}{}%
+\contentsline {subsection}{\numberline {7.2.1}Strengths}{44}{}%
+\contentsline {section}{\numberline {7.3}Challenges Encountered}{44}{}%
+\contentsline {section}{\numberline {7.4}Conclusion}{45}{}%
+\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{46}{}%
+\contentsline {section}{\numberline {8.1}Conclusion}{46}{}%
+\contentsline {section}{\numberline {8.2}Future Work}{47}{}%
+\contentsline {chapter}{References}{49}{}%
