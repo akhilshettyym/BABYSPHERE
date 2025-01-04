@@ -15,11 +15,11 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
       style={styles.container}
     >
       <View style={styles.imageContainer}>
-        {/* <Image
-          source={require('C:/BABYSPHERE-2.0/BabySphere/assets/images/WhatsApp Image 2024-12-20 at 4.19.06 PM.jpeg')}
+        <Image
+          source={require('../assets/images/Baby.jpeg')}
           style={[styles.image, { height: height * 0.25 }]}
           resizeMode="contain"
-        /> */}
+        /> 
       </View>
       <View style={styles.content}>
         {children}

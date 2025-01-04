@@ -13,7 +13,7 @@ const LiveFeed: React.FC = () => {
 
   const latestData = sensorData.length > 0 ? sensorData[sensorData.length - 1] : null;
 
-  const cameraFeedUri = "http://100.111.110.201:8080/video"; // Replace with your live stream URL
+  const cameraFeedUri = "http://192.168.40.162:5002/processed_feed"; // Replace with your live stream URL
 
   return (
     <SafeAreaView style={styles.container}>
@@ -42,7 +42,7 @@ const LiveFeed: React.FC = () => {
           <WebView 
             source={{ uri: cameraFeedUri }} 
             style={styles.webView} 
-            onError={() => setError("Failed to load live stream")}
+            onError={() => setError("")}
           />
         </View>
       )}
