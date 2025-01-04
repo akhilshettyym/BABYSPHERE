@@ -100,6 +100,8 @@ const BabyMonitorGraphPage: React.FC = () => {
       label: item.timestamp.toLocaleTimeString('en-US', {
         hour: '2-digit',
         minute: '2-digit',
+        hour12: true,
+        timeZone: 'Asia/Kolkata',
       }),
     };
   }
