@@ -24,9 +24,10 @@ const SensorDataFetcher: React.FC<SensorDataFetcherProps> = ({
     startOfDay.setHours(0, 0, 0, 0);
     const endOfDay = new Date(selectedDate);
     endOfDay.setHours(23, 59, 59, 999);
+    
 
     const q = query(
-      collection(db, 'all_sensor_data'),
+      collection(db, 'new_sensor_data'),
       where('timestamp', '>=', startOfDay),
       where('timestamp', '<=', endOfDay),
       orderBy('timestamp', 'desc')

@@ -97,7 +97,7 @@ const BabyMonitorGraphPage: React.FC = () => {
 
     return {
       value: isNaN(value) ? 0 : value,
-      label: item.timestamp.toLocaleTimeString('en-US', {
+      label: item.timestamp.toLocaleTimeString('en-IN', {
         hour: '2-digit',
         minute: '2-digit',
         hour12: true,
