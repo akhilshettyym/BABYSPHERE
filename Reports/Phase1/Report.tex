@@ -1,0 +1,187 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{ragged2e}
+\usepackage{color}
+\usepackage{biblatex}
+\addbibresource{pic/reference.bib}
+
+\geometry{
+a4paper,
+total={210mm,297mm},
+left=1.0in,
+right=0.85in,
+top=0.75in,
+bottom=0.75in,
+}
+\begin{document}
+\pagestyle{empty}
+\begin{center}
+
+{\large \textbf{Visvesvaraya Technological University, Belagavi – 590018}}
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=2.3cm,height=3cm]{./pic/vtu}
+\end{figure}
+
+\textbf{PROJECT PROPOSAL}
+\par
+\textbf{ON}
+\par
+\vspace{6pt}
+{\Large \textbf{Cloud-Based Smart Monitoring System for Baby Health and Safety}}
+\par
+\vspace{12pt}
+\par
+\textit{\textbf{Submitted in partial fulfillment of the requirements for the degree }}
+\par
+\vspace{12pt}
+\large \textbf{BACHELOR OF ENGINEERING }
+\par
+\textbf{in}
+\par
+\large \textbf{COMPUTER SCIENCE \& ENGINEERING}
+\par
+\vspace{12pt}
+\textit{\textbf{Submitted by}}
+\vspace{8pt}
+
+\begin{center}
+\begin{tabular}{l@{\hspace{2cm}}r}
+\textbf{\large Aaron Tauro} & \textbf{4SO21CS002} \\
+\textbf{\large Abhik L Salian} & \textbf{4SO21CS004} \\
+\textbf{\large Akhil Shetty M} & \textbf{4SO21CS013} \\
+\textbf{\large H Karthik P Nayak} & \textbf{4SO21CS058} \\
+\end{tabular}
+\end{center}
+
+\vspace{12pt}
+\textit{\textbf{Under the Guidance of}}
+\par
+\vspace{6pt}
+\textbf{Dr Sridevi Saralaya}
+\par
+\vspace{2pt}
+\normalsize { Professor, Department of CSE }
+\par
+\begin{figure}[hbtp]
+\centering
+\includegraphics[scale=0.6]{./pic/sjeclogo}
+\end{figure}
+\large \textbf{DEPT. OF COMPUTER SCIENCE AND ENGINEERING}
+\par \Large \textbf{ST JOSEPH ENGINEERING COLLEGE}
+\par 
+\textbf{An Autonomous Institution}
+\par
+{\large{(Affiliated to VTU Belagavi, Recognized by AICTE, Accredited by NBA)}}
+\par
+\vspace{3pt}
+{\large \textbf{Vamanjoor, Mangaluru - 575028, Karnataka}}
+\par 
+\vspace{12pt}
+{\Large \textbf{2024-25}}
+\end{center}
+\newpage
+
+%------ Body of document ----------------------
+\pagestyle{plain}
+\setstretch{1.5}
+\pagenumbering{roman}
+
+\section*{Project Title}
+Cloud-Based Smart Monitoring System for Baby Health and Safety
+
+\section*{Type of Project}
+Product based project.
+
+\section*{Background for the  the project}
+In recent years, the rise in Sudden Infant Death Syndrome (SIDS)
+ and other health concerns related to newborns has highlighted 
+ the need for continuous and accurate monitoring of babies\cite{1}. 
+ Many parents face the challenge of balancing their busy 
+ schedules while ensuring their child’s safety, especially when 
+ they are not physically present. Traditional monitoring devices
+  often lack intelligent features that can detect critical signs,
+   such as alerting the parent about variations in body temperature or unsafe sleeping positions. With 
+   advancements in cloud technology and computer vision, there 
+   is an opportunity to develop smart monitoring systems that 
+   provide real-time alerts and actionable insights. Our project aims to address these issues by 
+   creating a cloud-based system capable of monitoring baby 
+   body temperature, room conditions, and movements using 
+   computer vision, helping parents prevent potential dangers 
+   like SIDS through timely alerts.
+
+\section*{Objectives }
+The objectives of the proposed project work are:
+\begin{enumerate}
+    \item To develop a mobile app that collects the body temperature of the baby and room temperature from the cloud, which is transmitted from the monitoring device.
+    \item To integrate computer vision technology to detect unsafe sleeping positions of the baby.
+    \item To create a user-friendly interface that allows parents to easily monitor real-time temperature readings.
+    \item To deliver actionable notifications through app alerts when abnormal readings or unsafe sleeping position is detected.
+\end{enumerate}
+
+\section*{Software / Hardware Requirements}
+\subsection*{Software Requirements}
+\begin{enumerate}
+    \item React Native development framework to build the mobile app for cross-platform support\cite{2}.
+    \item Firebase cloud platform for real-time database management, data storage, and authentication\cite{3}.
+    \item TensorFlow Lite or OpenCV libraries for implementing computer vision algorithms on mobile devices to detect unsafe sleeping positions\cite{4}\cite{5}\cite{6}.
+    \item Mobile-optimized signal processing algorithms to analyze camera data for non-contact heart rate monitoring\cite{7}\cite{8}\cite{9}.
+    \item Node.js or similar backend technologies for handling API requests and interactions with cloud services.
+    \item Firebase Cloud Messaging or similar services for sending push notifications related to temperature changes, movement detection, or abnormal heart rate.
+    \item WebSockets or Firebase Realtime Database to enable real-time data updates in the app for temperature, movement, and heart rate monitoring.
+    \item Firebase Authentication to manage user accounts and secure access to baby monitoring data.
+\end{enumerate}
+\subsection*{Hardware Requirements}
+\begin{enumerate}
+    \item A computer or a laptop with operating system Windows 10 or higher (64-bit), and macOS Big Sur or higher (for iOS app development, macOS is required).
+    \item Intel Core i5 (7th generation or higher) or AMD Ryzen 5 or better processor.
+    \item Integrated GPU such as Radeon or NVIDIA GTX should work fine rather than opting for dedicated GPUs.
+    \item Minimum 8 GB RAM is required.
+    \item Hard disk with a minimum available space of 50 GB.
+    \item A reliable internet connection is essential for downloading packages, accessing cloud services (e.g., Firebase), and for real-time data transmission.
+    \item A mobile device running on Android 10 or higher, and another device running on iOS (if implementing for iOS) for testing of the app.
+\end{enumerate}
+\newpage
+\pagestyle{plain}
+\renewcommand{\bibname}{References}
+\addcontentsline{toc}{chapter}{References}
+
+% \printbibliography
+\begin{thebibliography}{35}
+\bibitem{1}
+Moon, Rachel Y., Rosemary SC Horne, and Fern R. Hauck. ``Sudden infant death syndrome." The Lancet 370, no. 9598 (2007): 1578-1587.
+\bibitem{2}
+
+React Native, ``React Native Documentation," 2023. [Online]. Available: https://reactnative.dev/docs/getting-started.
+
+\bibitem{3}
+Firebase, ``Firebase Documentation," 2023. [Online]. Available: https://firebase.google.com/docs.
+
+
+\bibitem{4}
+Okuno, Ayaka, Takaaki Ishikawa, and Hiroshi Watanabe. ``Rollover detection of infants using posture estimation model." In 2020 IEEE 9th Global Conference on Consumer Electronics (GCCE), pp. 490-493. IEEE, 2020.
+
+\bibitem{5}
+Raghavan, Neethu, and S. Ullas. ``Infant movement detection and constant monitoring using wireless sensors." In 2017 International Conference on Wireless Communications, Signal Processing and Networking (WiSPNET), pp. 2109-2114. IEEE, 2017.
+
+\bibitem{6}
+Singh, Gurpreet, Abhishek Raj Shekhar, Xinrui Yu, and Jafar Saniie. ``Smart Infant Monitoring System Using Computer Vision and AI." In 2023 IEEE International Conference on Electro Information Technology (eIT), pp. 1-6. IEEE, 2023.
+
+\bibitem{7}
+Chen, Yenming J., Lung-Chang Lin, Shu-Ting Yang, Kao-Shing Hwang, Chia-Te Liao, and Wen-Hsien Ho. ``High-reliability non-contact photoplethysmography imaging for newborn care by a generative artificial intelligence." IEEE Access (2023).
+
+\bibitem{8}
+Tang, Chuanxiang, Jiwu Lu, and Jie Liu. ``Non-contact heart rate monitoring by combining convolutional neural network skin detection and remote photoplethysmography via a low-cost camera." In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition Workshops, pp. 1309-1315. 2018.
+
+\bibitem{9}
+Tran, Duc Nhan, Hyukzae Lee, and Changick Kim. ``A robust real time system for remote heart rate measurement via camera." In 2015 IEEE International Conference on Multimedia and Expo (ICME), pp. 1-6. IEEE, 2015.
+
+\end{thebibliography}
+
+\end{document}
