@@ -58,21 +58,141 @@ vaznish@gmail.com}
 \maketitle
 
 \begin{abstract}
-    Caregivers of infants face considerable stress and anxiety around the safety and health
-    of their babies, especially during sleep. Traditional baby monitors lack advanced health
-   tracking capabilities and are primarily audio-based, which provides limited information
-    on the baby’s well-being. The absence of comprehensive health monitoring often leaves
-    caregivers unaware of potential health risks, such as fever, unusual heart rates, or dangerous
-    sleeping postures that can increase the risk of Sudden Infant Death Syndrome (SIDS) or
-    other breathing-related complications. Consequently, caregivers are forced to manually
-    check on their babies frequently, disrupting their sleep and daily lives.
-\end{abstract}
+    The health and safety of infants are major concerns for parents, particularly when they cannot provide constant supervision. Sudden Infant Death Syndrome (SIDS) remains a critical risk, often linked to unsafe sleeping postures and environmental conditions. This research proposes a cloud-based smart monitoring system that integrates real-time sensor data and computer vision algorithms to monitor infants’ health and surroundings. The system promptly alerts parents through a mobile application upon detecting abnormalities, such as unsafe sleeping positions, irregular heart rates, or temperature fluctuations. By leveraging cloud computing, the system enables remote monitoring and ensures scalable deployment.
+    \end{abstract}
+    
+    \begin{IEEEkeywords}
+    Infant health monitoring, cloud computing, real-time alert system, computer vision, SIDS prevention.
+    \end{IEEEkeywords}
+    
+    \section{Introduction}
+    Ensuring the health and safety of infants is a top priority for parents and caregivers. Traditional baby monitors offer only basic surveillance, such as audio and video feeds, but they lack intelligent health analysis, making it difficult to detect critical risks in real-time. Many infants are vulnerable to conditions like Sudden Infant Death Syndrome (SIDS), which can be triggered by improper sleeping positions, environmental factors, or undetected health abnormalities. The challenge lies in developing a system that provides continuous health monitoring, real-time data processing, and instant alerts to ensure timely intervention.
 
-\begin{IEEEkeywords}
-caregivers, infants, Sudden Infant Death Syndrome (SIDS), monitoring
-\end{IEEEkeywords}
+With advancements in sensor technology, cloud computing, and artificial intelligence, there is potential to revolutionize infant monitoring systems. This research introduces a cloud-based smart monitoring system that integrates multiple sensors and computer vision to analyze real-time health data. The system collects vital parameters such as body temperature, room temperature, humidity, and heart rate while simultaneously using computer vision to analyze the baby’s sleeping posture. By leveraging cloud-based data processing, the system ensures remote access and timely notifications to parents via a mobile application. The goal is to provide a reliable, real-time, and efficient infant monitoring solution that addresses the shortcomings of existing systems and enhances infant safety.
+\section{Literature Survey}
+Several studies have explored the use of IoT, cloud computing, and AI in health monitoring systems. A study in \cite{ref1} developed a wearable IoT-based monitoring system to track vital signs and sleeping posture. However, its reliance on physical wearables made it less comfortable for infants. Another work \cite{ref2} introduced a smart crib with integrated motion and temperature sensors, though it lacked cloud connectivity, restricting remote access. Similarly, research in \cite{ref3} examined how cloud-based health monitoring can provide real-time access to data, but concerns regarding data security and latency were highlighted.
 
-\section{Introduction}
+The use of machine learning in posture recognition has also been investigated. In \cite{ref4}, convolutional neural networks (CNNs) were employed to detect human sleeping postures with high accuracy. Another study \cite{ref5} applied deep learning techniques to monitor postural changes in healthcare applications, demonstrating promising results for infant monitoring. However, these studies did not integrate a real-time alert system for immediate intervention.
+
+Moreover, the potential of cloud computing in healthcare applications has been well-documented. Research in \cite{ref6} explored cloud-based storage and processing for medical applications, emphasizing the benefits of scalability and remote accessibility. However, concerns about network reliability and data security were noted. Another study \cite{ref7} demonstrated how cloud computing could enhance real-time health monitoring systems but emphasized the need for efficient data handling mechanisms.
+
+The integration of IoT and AI in healthcare applications has also been explored. A study in \cite{ref8} examined how sensor networks could be utilized for infant health monitoring, but the lack of an AI-driven analytical model limited its effectiveness. Research in \cite{ref9} investigated a multi-sensor approach for monitoring infant vitals, highlighting the importance of combining multiple data sources for improved accuracy. These studies collectively suggest that a holistic system combining IoT, cloud computing, and AI-driven analysis is required to create a comprehensive infant monitoring solution.
+\section{Implementation and Methodology}
+The implementation of the proposed Cloud-Based Smart Monitoring System for Baby Health and Safety follows a structured methodology to ensure real-time data collection, processing, and alert mechanisms. The system architecture consists of multiple integrated components, including sensor modules, cloud computing, and real-time analysis for unsafe sleeping posture detection.
+
+\subsection{Data Collection}
+The system employs multiple sensors to continuously monitor the infant’s vital signs and environmental parameters. The following data points are collected:
+\begin{itemize}
+    \item \textbf{Body Temperature Sensor:} Measures the infant’s body temperature to detect fever or abnormal fluctuations.
+    \item \textbf{Room Temperature and Humidity Sensor:} Monitors the surrounding environment to ensure a safe and comfortable setting.
+    \item \textbf{Heart Rate Sensor:} Tracks the infant’s heartbeat to detect irregularities.
+    \item \textbf{Microphone Module:} Detects crying patterns to identify discomfort or distress.
+\end{itemize}
+The collected data is processed locally on an embedded microcontroller before being transmitted to the cloud for further analysis.
+
+\subsection{Real-Time Sleeping Posture Detection}
+The system utilizes image processing techniques to detect unsafe sleeping postures using a live video stream. 
+\begin{itemize}
+    \item \textbf{Image Acquisition:} A camera module captures a continuous live video stream of the baby.
+    \item \textbf{Preprocessing:} The frames are extracted from the live stream and converted into a suitable format for analysis.
+    \item \textbf{Posture Classification:} Using predefined threshold-based image processing techniques, the system detects whether the baby is in a safe or unsafe sleeping posture.
+    \item \textbf{Alert Generation:} If an unsafe posture (e.g., sleeping on the stomach) is detected, an alert is sent to the parent’s mobile application.
+\end{itemize}
+
+\subsection{Cloud Integration}
+The cloud serves as the backbone of the system, facilitating real-time data storage and processing. The architecture involves:
+\begin{itemize}
+    \item \textbf{Data Transmission:} Sensor and posture data are sent to a cloud database using MQTT or HTTP protocols.
+    \item \textbf{Processing Layer:} Cloud-based algorithms analyze the incoming data to detect abnormalities.
+    \item \textbf{Storage:} Historical data is stored securely for future reference and analysis.
+    \item \textbf{Remote Access:} Parents can access real-time and past data via a mobile application.
+\end{itemize}
+
+\subsection{Alert Mechanism}
+An intelligent alert system ensures that parents are notified immediately when potential risks are detected.
+\begin{itemize}
+    \item \textbf{Push Notifications:} If any abnormality (high fever, irregular heartbeat, unsafe posture, excessive crying) is detected, an instant push notification is sent to the parent’s smartphone.
+    \item \textbf{Audio and Visual Alerts:} The system can activate an alarm if required.
+    \item \textbf{Data Logging:} Alerts and detected abnormalities are logged for further review.
+\end{itemize}
+
+This systematic approach ensures real-time infant health monitoring with high accuracy, providing a reliable and scalable solution for parents and caregivers.
+
+
+\section{System Design}
+This chapter outlines the system design for the Cloud-Based Smart Monitoring System for Baby Health and Safety, detailing the system's architecture, functionality, control flow, access layers, and user interface design. Each section includes design diagrams, descriptions, and an explanation of how they apply to the project.
+\subsection{Abstract Design}
+
+\subsubsection{Architectural diagram}
+
+The architectural diagram in Fig. \ref{fig:architecture} outlines the Cloud-Based Smart Monitoring System for Baby Health and Safety, showcasing how various components interact to provide a comprehensive baby monitoring solution.
+\textbf{User Interaction and Mobile Interface:} The user initiates the monitoring process by accessing the mobile application interface, which includes a live camera feed. The user can request the recording of the baby’s health metrics, which initiates data collection from multiple sensors and a real-time video feed. This interface also displays alerts and processed information regarding the baby’s health.
+
+\textbf{Sensing System:} The sensing system consists of multiple sensors, including Heart rate sensor, Baby temperature sensor, SpO2 (oxygen saturation) sensor, Humidity sensor, Camera sensor.
+
+These sensors collect real-time data from the baby’s physical environment, covering both health metrics and environmental factors. This raw data is then sent to the Processor for initial handling.
+
+\textbf{Processor (Raspberry Pi):} Acting as an intermediary, the Raspberry Pi receives the data from the sensors and forwards relevant data to the \textbf{ML Model (Posture Detector)} to analyze the baby’s sleeping posture. The processor handles the computational load and ensures efficient data processing before sending responses back to the mobile interface. If unsafe postures or abnormal metrics are detected, an alert is generated.
+
+\textbf{ML Model and Database (Firebase):} The ML model, hosted externally as a pre-trained model, plays a crucial role in posture detection. Once the Raspberry Pi sends the data to the ML model, it processes the data and generates a response. Additionally, all data is stored and managed within a \textbf{Firebase} database, which securely holds historical health metrics and retrieves information as required by the user. Firebase also triggers alerts and notifications based on the ML model’s responses and alerts from the sensor data.
+
+\textbf{Alerts and Notifications:} The system is designed to provide timely alerts. When abnormal readings or unsafe sleeping postures are detected, the mobile app immediately notifies the user, allowing them to take quick action. The database and ML model work together to process and extract data, ensuring that alerts are accurate and meaningful.
+
+\textbf{Summary:} This architecture ensures seamless data flow from sensing, processing, and alerting to final user interaction. This integrated approach enhances baby monitoring, helping caregivers make informed decisions to ensure the baby's safety and well-being.
+
+
+\begin{figure}[hbtp]
+  \centering
+  \includegraphics[scale=0.3]{./pic/finarch.png}
+  \caption{Architectural Diagram showing the interaction of various entities of the baby monitoring system.}
+  \label{fig:architecture}
+\end{figure}
+\subsubsection{Use Case Diagram}
+
+This use case diagram in \ref{fig:usecase} outlines the product designed to monitor a baby’s health and safety through interactions with a \textbf{User (Caregiver)}, a \textbf{Sensing System}, and a \textbf{Medical Practitioner}.
+
+\textbf{User:} The User can view a live camera feed and request the recording of health metrics, which are stored in the database. If any unsafe conditions (like risky postures) are detected, the system sends alerts to the User for immediate action.
+    
+\textbf{Sensing System:} The Sensing System collects health data (e.g., posture) and sends it to the monitoring system. The system processes this data to detect potential safety risks, triggering alerts when necessary.
+    
+\textbf{Medical Practitioner:} The Medical Practitioner reviews health metrics stored in the system and provides insights or recommendations, which the system relays to the User to support safe caregiving.
+
+
+Overall, the system combines real-time monitoring, data storage, and expert feedback to ensure the baby’s health and safety effectively.
+
+\begin{figure}[hbtp]
+  \centering
+  \includegraphics[scale=0.5]{./pic/Use case.png}
+  \caption{Use Case Diagram showing the interaction between users and the system.}
+  \label{fig:usecase}
+\end{figure}
+\subsection{Functional Design}
+\subsubsection{Sequence diagram}
+
+The sequence diagram shown in Figure \ref{fig:sequence} illustrates the workflow of a Cloud-Based Smart Monitoring System for Baby Health and Safety. Here’s a breakdown of the interactions among various components in the system:
+
+\textbf{User Interaction:} The user begins by opening the mobile application. This app is designed to fetch real-time data regarding the baby’s health and environmental factors, helping to monitor the baby’s well-being effectively.
+
+\textbf{Mobile Application Requests:} Upon initialization, the mobile application communicates with the Sensing System to retrieve various health parameters. These include the baby’s heartbeat, humidity levels, body and room temperature, SpO2 (oxygen saturation), and a live video feed.
+
+\textbf{Sensing System Data Collection:} The sensing system gathers these metrics from the physical environment where the baby is located. It captures vital data such as heart rate, humidity, body and room temperature, and oxygen levels, along with the live video feed. This data is sent for processing.
+
+\textbf{Data Processing by ML Model:} The data collected is then passed to the Machine Learning (ML) Model for analysis. The ML model processes the data to identify any potential risks, such as unsafe sleeping positions or abnormal readings that may indicate health concerns.
+
+\textbf{Data Storage:} The processed data, including any alerts or historical records, is stored in a Database. This storage enables the system to maintain a log of health metrics over time, allowing caregivers to review past records and track trends.
+
+\textbf{Alerts and Notifications:} If the ML model detects unsafe sleeping positions or abnormal values in the sensed parameters, it triggers an alert. This alert is sent back to the mobile application to notify the user, ensuring immediate awareness of any potential risks to the baby’s health.
+
+\textbf{Viewing Results:} Finally, the user can view real-time data and historical readings from within the mobile app. This user-friendly interface provides caregivers with comprehensive insight into the baby’s health, allowing for timely intervention if needed.
+
+\begin{figure}[hbtp]
+  \centering
+  \includegraphics[scale=0.15]{./pic/seq.png}
+  \caption{Sequence diagram showing the timeline of interaction between different entities in the system}
+  \label{fig:sequence}
+\end{figure}
+
+\section{Introduction2222222}
 The health and safety of infants are critical concerns for parents, par
 ticularly when they are unable to provide constant supervision due to
  other responsibilities. One of the major risks to infants during sleep is
@@ -373,7 +493,7 @@ bottom of columns. Avoid placing them in the middle of columns. Large
 figures and tables may span across both columns. Figure captions should be 
 below the figures; table heads should appear above the tables. Insert 
 figures and tables after they are cited in the text. Use the abbreviation 
-``Fig.~\ref{fig}'', even at the beginning of a sentence.
+``Fig.~\ref{fig:qwe}'', even at the beginning of a sentence.
 
 \begin{table}[htbp]
 \caption{Table Type Styles}
@@ -395,7 +515,7 @@ copy& More table copy$^{\mathrm{a}}$& &  \\
 \begin{figure}[htbp]
 \centerline{\includegraphics{fig1.png}}
 \caption{Example of a figure caption.}
-\label{fig}
+\label{fig:qwe}
 \end{figure}
 
 Figure Labels: Use 8 point Times New Roman for Figure labels. Use words 
@@ -437,15 +557,15 @@ For papers published in translation journals, please give the English
 citation first, followed by the original foreign-language citation \cite{b6}.
 
 \begin{thebibliography}{00}
-\bibitem{b1} G. Eason, B. Noble, and I. N. Sneddon, ``On certain integrals of Lipschitz-Hankel type involving products of Bessel functions,'' Phil. Trans. Roy. Soc. London, vol. A247, pp. 529--551, April 1955.
-\bibitem{b2} J. Clerk Maxwell, A Treatise on Electricity and Magnetism, 3rd ed., vol. 2. Oxford: Clarendon, 1892, pp.68--73.
-\bibitem{b3} I. S. Jacobs and C. P. Bean, ``Fine particles, thin films and exchange anisotropy,'' in Magnetism, vol. III, G. T. Rado and H. Suhl, Eds. New York: Academic, 1963, pp. 271--350.
-\bibitem{b4} K. Elissa, ``Title of paper if known,'' unpublished.
-\bibitem{b5} R. Nicole, ``Title of paper with only first word capitalized,'' J. Name Stand. Abbrev., in press.
-\bibitem{b6} Y. Yorozu, M. Hirano, K. Oka, and Y. Tagawa, ``Electron spectroscopy studies on magneto-optical media and plastic substrate interface,'' IEEE Transl. J. Magn. Japan, vol. 2, pp. 740--741, August 1987 [Digests 9th Annual Conf. Magnetics Japan, p. 301, 1982].
-\bibitem{b7} M. Young, The Technical Writer's Handbook. Mill Valley, CA: University Science, 1989.
-\bibitem{b8} D. P. Kingma and M. Welling, ``Auto-encoding variational Bayes,'' 2013, arXiv:1312.6114. [Online]. Available: https://arxiv.org/abs/1312.6114
-\bibitem{b9} S. Liu, ``Wi-Fi Energy Detection Testbed (12MTC),'' 2023, gitHub repository. [Online]. Available: https://github.com/liustone99/Wi-Fi-Energy-Detection-Testbed-12MTC
+\bibitem{ref1} H. Alam et al., “Iot based smart baby monitoring system with emotion recognition using machine learning,” Wireless Communications and Mobile Computing, vol. 2023, no. 1, p. 1175450, 2023.
+\bibitem{ref2} Y. Singh, “Iot based baby monitoring system,” International  Journal for Research in Applied Science and Engineering Technology, vol. 9, no. 12, pp. 2184–2190, Dec. 2021, issn: 2321-9653. doi: 10.22214/ijraset.2021.39699. [Online]. Available: http://dx.doi.org/10.22214/ijraset.2021.39699.
+\bibitem{ref3} M. M. Hossain et al., “Internet of things in pregnancy care coordination and management: A systematic review,” Sensors, vol. 23, no. 23, p. 9367, Nov. 2023, issn: 1424-8220. doi: 10.3390/s23239367. [Online]. Available: http://dx.doi.org/10.3390/s23239367.
+\bibitem{ref4} H. M. Ishtiaq Salehin, Q. R. Anjum Joy, F. T. Zuhra Aparna, A. T. Ridwan, and R. Khan, “Development of an iot based smart baby monitoring system with face recognition,” in 2021 IEEE World AI IoT Congress (AIIoT), 2021, pp. 0292–0296. doi: 10.1109/AIIoT52608.2021.9454187.
+\bibitem{ref5} S. Joseph, A. Gautham.J, A. Kumar, and M. Harish Babu, “Iot based baby monitoring system smart cradle,” in 2021 7th International Conference on Advanced Computing and Communication Systems (ICACCS), vol. 1, 2021, pp. 748–751. doi: 10.1109/ICACCS51430.2021.9442022.
+\bibitem{ref6} M. R. Kumar, D. Harshitha, A. S. Prathyusha, C. Sangeetha, C. D. Rao, and D.Nitesh, “Smart infant baby monitoring system using iot,” International Journal for Research in Applied Science and Engineering Technology, vol. 11, no. 4, pp. 3003 3008, Apr. 2023, issn: 2321-9653. doi: 10.22214/ijraset.2023.50764. [Online]. Available: http://dx.doi.org/10.22214/ijraset.2023.50764.
+\bibitem{ref7}  S. Mishra, “Development of rtos based internet connected baby monitoring system,”Indian Journal of Public Health Research Development, vol. 9, no. 2, p. 345, 2018.
+\bibitem{ref8} D. T. P. Hapsari, Y. Nataliani, I. Sembiring, and T. Wahyono, “Smart caregiving support cloud integration systems,” in 2024 International Conference on Smart Computing, IoT and Machine Learning (SIML), 2024, pp. 167–173. doi: 10.1109/SIML61815.2024.10578217.
+\bibitem{ref9}  F. Akta¸ s, E. Kavu¸s, and Y. Kavu¸ s, “Real time infant health monitoring system for hard of hearing parents,” in 2016 Medical Technologies National Congress (TIPTEKNO), IEEE, 2016, pp. 1–4.
 \bibitem{b10} ``Treatment episode data set: discharges (TEDS-D): concatenated, 2006 to 2009.'' U.S. Department of Health and Human Services, Substance Abuse and Mental Health Services Administration, Office of Applied Studies, August, 2013, DOI:10.3886/ICPSR30122.v2
 \bibitem{b11} K. Eves and J. Valasek, ``Adaptive control for singularly perturbed systems examples,'' Code Ocean, Aug. 2023. [Online]. Available: https://codeocean.com/capsule/4989235/tree
 \end{thebibliography}
