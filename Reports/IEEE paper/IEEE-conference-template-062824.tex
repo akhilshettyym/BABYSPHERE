@@ -70,14 +70,15 @@ vaznish@gmail.com}
 
 With advancements in sensor technology, cloud computing, and artificial intelligence, there is potential to revolutionize infant monitoring systems. This research introduces a cloud-based smart monitoring system that integrates multiple sensors and computer vision to analyze real-time health data. The system collects vital parameters such as body temperature, room temperature, humidity, and heart rate while simultaneously using computer vision to analyze the baby’s sleeping posture. By leveraging cloud-based data processing, the system ensures remote access and timely notifications to parents via a mobile application. The goal is to provide a reliable, real-time, and efficient infant monitoring solution that addresses the shortcomings of existing systems and enhances infant safety.
 \section{Literature Survey}
-Several studies have explored the use of IoT, cloud computing, and AI in health monitoring systems. A study in \cite{ref1} developed a wearable IoT-based monitoring system to track vital signs and sleeping posture. However, its reliance on physical wearables made it less comfortable for infants. Another work \cite{ref2} introduced a smart crib with integrated motion and temperature sensors, though it lacked cloud connectivity, restricting remote access. Similarly, research in \cite{ref3} examined how cloud-based health monitoring can provide real-time access to data, but concerns regarding data security and latency were highlighted.
+Several studies have explored the use of IoT, cloud computing, and AI in health monitoring systems. A study developed a wearable IoT-based monitoring system to track vital signs and sleeping posture; however, its reliance on physical wearables made it less comfortable for infants \cite{ref1}. Another work introduced a smart crib with integrated motion and temperature sensors, though it lacked cloud connectivity, restricting remote access \cite{ref2}. Similarly, research examined how cloud-based health monitoring can provide real-time access to data, but concerns regarding data security and latency were highlighted \cite{ref3}.  
 
-The use of machine learning in posture recognition has also been investigated. In \cite{ref4}, convolutional neural networks (CNNs) were employed to detect human sleeping postures with high accuracy. Another study \cite{ref5} applied deep learning techniques to monitor postural changes in healthcare applications, demonstrating promising results for infant monitoring. However, these studies did not integrate a real-time alert system for immediate intervention.
+The use of machine learning in posture recognition has also been investigated. Convolutional neural networks (CNNs) were employed to detect human sleeping postures with high accuracy \cite{ref4}. Another study applied deep learning techniques to monitor postural changes in healthcare applications, demonstrating promising results for infant monitoring \cite{ref5}. However, these studies did not integrate a real-time alert system for immediate intervention.  
 
-Moreover, the potential of cloud computing in healthcare applications has been well-documented. Research in \cite{ref6} explored cloud-based storage and processing for medical applications, emphasizing the benefits of scalability and remote accessibility. However, concerns about network reliability and data security were noted. Another study \cite{ref7} demonstrated how cloud computing could enhance real-time health monitoring systems but emphasized the need for efficient data handling mechanisms.
+Moreover, the potential of cloud computing in healthcare applications has been well-documented. Research explored cloud-based storage and processing for medical applications, emphasizing the benefits of scalability and remote accessibility \cite{ref6}. However, concerns about network reliability and data security were noted. Another study demonstrated how cloud computing could enhance real-time health monitoring systems but emphasized the need for efficient data handling mechanisms \cite{ref7}.  
 
-The integration of IoT and AI in healthcare applications has also been explored. A study in \cite{ref8} examined how sensor networks could be utilized for infant health monitoring, but the lack of an AI-driven analytical model limited its effectiveness. Research in \cite{ref9} investigated a multi-sensor approach for monitoring infant vitals, highlighting the importance of combining multiple data sources for improved accuracy. These studies collectively suggest that a holistic system combining IoT, cloud computing, and AI-driven analysis is required to create a comprehensive infant monitoring solution.
-\section{Implementation and Methodology}
+The integration of IoT and AI in healthcare applications has also been explored. A study examined how sensor networks could be utilized for infant health monitoring, but the lack of an AI-driven analytical model limited its effectiveness \cite{ref8}. Research investigated a multi-sensor approach for monitoring infant vitals, highlighting the importance of combining multiple data sources for improved accuracy \cite{ref9}. These studies collectively suggest that a holistic system combining IoT, cloud computing, and AI-driven analysis is required to create a comprehensive infant monitoring solution.  
+
+\section{Methodology}
 The implementation of the proposed Cloud-Based Smart Monitoring System for Baby Health and Safety follows a structured methodology to ensure real-time data collection, processing, and alert mechanisms. The system architecture consists of multiple integrated components, including sensor modules, cloud computing, and real-time analysis for unsafe sleeping posture detection.
 
 \subsection{Data Collection}
@@ -301,6 +302,9 @@ The system reliably delivered real-time alerts to the React Native mobile applic
     \item The Firebase integration ensured seamless data transmission and synchronization.
 \end{itemize}
 
+% ------------------------------------------------------------------------------
+% In Discussion section - Provide detailed explanation of How your system is better than the existing studies explained in Literature Survey.
+
 \subsection{Discussion}
 The results of the testing and implementation phases highlight the following key observations:
 
@@ -308,7 +312,40 @@ The results of the testing and implementation phases highlight the following key
 \begin{itemize}
     \item The system demonstrated high accuracy in detecting unsafe sleeping postures, ensuring timely alerts to caregivers.
     \item Environmental monitoring was consistent and effective, providing reliable data to users.
+    \item Real-time alerts were successfully integrated, allowing caregivers to take immediate action in case of abnormal conditions.
+    \item Cloud connectivity enabled remote access, ensuring that parents could monitor their infants from anywhere.
+    \item The combination of IoT, cloud computing, and AI-driven analysis provided a holistic monitoring approach.
 \end{itemize}
+
+\subsubsection{Comparison with Existing Studies}
+Compared to existing research discussed in the literature survey, our system offers several key advantages:
+
+\begin{itemize}
+    \item \textbf{Comfort and Non-Intrusiveness:} Unlike wearable IoT-based monitoring systems \cite{ref1}, which may cause discomfort for infants, our system uses non-contact sensors for monitoring vital parameters. This ensures continuous tracking without causing irritation or disrupting the baby's natural movements.
+    
+    \item \textbf{Enhanced Remote Monitoring:} Some previous studies integrated smart cribs with motion and temperature sensors but lacked cloud connectivity \cite{ref2}. Our system addresses this limitation by providing real-time cloud-based data access, enabling parents and caregivers to monitor their infants remotely without any geographical constraints.
+
+    \item \textbf{Real-Time Alerts and Immediate Intervention:} While studies on machine learning-based posture recognition achieved high accuracy \cite{ref4, ref5}, they did not incorporate a real-time alert mechanism. Our system bridges this gap by integrating an AI-driven posture detection module that instantly notifies caregivers in case of unsafe sleeping positions.
+
+    \item \textbf{Data Security and Reliability:} Cloud-based health monitoring has previously raised concerns regarding data security and latency issues \cite{ref3, ref6}. Our system employs optimized data transmission techniques with encryption mechanisms to ensure secure and reliable data storage and access.
+
+    \item \textbf{Comprehensive Health Monitoring:} Previous research has explored multi-sensor approaches for infant health monitoring \cite{ref8, ref9}, but many lacked an integrated analytical framework. Our system combines multiple sensors with AI-driven analysis to provide a more comprehensive assessment of an infant’s well-being, including posture recognition, environmental conditions, and health vitals.
+
+\end{itemize}
+
+\subsubsection{Limitations and Future Scope}
+While our system offers significant improvements over existing studies, some areas require further enhancement:
+\begin{itemize}
+    \item The system's accuracy can be further improved by incorporating more advanced deep learning models for posture recognition.
+    \item Future enhancements could include predictive analytics using historical data to anticipate potential health risks.
+    \item Integration with wearable health devices, while maintaining comfort, could provide additional biometric data such as heart rate and oxygen levels.
+\end{itemize}
+
+Overall, our proposed system effectively addresses key challenges in infant health monitoring by integrating IoT, cloud computing, and AI, making it a superior alternative to previously researched models.
+
+
+%------------------------------------------------------------------------------
+
 \subsection{Challenges Encountered}
 Several challenges were encountered during the development of the system. These include:
 
