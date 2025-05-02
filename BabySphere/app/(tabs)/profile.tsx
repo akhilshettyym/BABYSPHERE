@@ -1,8 +1,8 @@
-import React from 'react';
-import { ScrollView, StyleSheet, SafeAreaView } from 'react-native';
-import ParentInfo from '../../components/ParentInfo';
-import BabyInfo from '../../components/BabyInfo';
-import Settings from '../../components/system';
+import { ScrollView, StyleSheet, SafeAreaView } from "react-native"
+import ParentInfo from "../../components/ParentInfo"
+import BabyInfo from "../../components/BabyInfo"
+import Settings from "../../components/system"
+import LogoutButton from "../../components/LogoutButton"
 
 export default function ProfilePage() {
   return (
@@ -11,15 +11,16 @@ export default function ProfilePage() {
         <ParentInfo />
         <BabyInfo />
         <Settings />
+        <LogoutButton />
       </ScrollView>
     </SafeAreaView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F8F9FA',
+    backgroundColor: "#F8F9FA",
   },
   scrollView: {
     flex: 1,
@@ -27,5 +28,4 @@ const styles = StyleSheet.create({
   content: {
     padding: 16,
   },
-});
-
+})

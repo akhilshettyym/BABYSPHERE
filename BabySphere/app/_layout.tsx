@@ -1,26 +1,32 @@
-import { Stack } from 'expo-router';
-import { useEffect } from 'react';
-import { useSegments, useRouter } from 'expo-router';
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../config/firebaseConfig';
+"use client"
+
+import { Stack } from "expo-router"
+import { useEffect } from "react"
+import { useSegments, useRouter } from "expo-router"
+import { onAuthStateChanged } from "firebase/auth"
+import { auth } from "../config/firebaseConfig"
 
 export default function RootLayout() {
-  const segments = useSegments();
-  const router = useRouter();
+  const segments = useSegments()
+  const router = useRouter()
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      const inAuthGroup = segments[0] === '(auth)';
-      
-      if (user && inAuthGroup) {
-        // Redirect authenticated users to the home page if they're on an auth page
-        router.replace('/(tabs)/HomePage');
-      } else if (!user && !inAuthGroup) {
-        // Redirect unauthenticated users to the sign-in page
-        router.replace('/(auth)/sign-in');
-      }
-    });
-  }, [segments]);
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      const inAuthGroup = segments[0] === "(auth)"
+      const inOnboarding = segments[0] === "onboarding" as unknown as string
 
-  return <Stack screenOptions={{ headerShown: false }} />;
+      if (user && (inAuthGroup || inOnboarding)) {
+        // Redirect authenticated users to the home page if they're on an auth page or onboarding
+        router.replace("/(tabs)/HomePage")
+      } else if (!user && !inAuthGroup && !inOnboarding) {
+        // Redirect unauthenticated users to the onboarding page
+        router.replace("./onboarding")
+      }
+    })
+
+    // Cleanup on unmount
+    return () => unsubscribe()
+  }, [segments, router])
+
+  return <Stack screenOptions={{ headerShown: false }} />
 }
