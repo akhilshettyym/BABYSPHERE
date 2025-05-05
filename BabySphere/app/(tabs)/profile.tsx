@@ -20,7 +20,7 @@ export default function ProfilePage() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F8F9FA",
+    backgroundColor: "#1A1A25",
   },
   scrollView: {
     flex: 1,

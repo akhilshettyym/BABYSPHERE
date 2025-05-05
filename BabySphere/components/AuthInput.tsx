@@ -1,11 +1,10 @@
-import React from 'react';
-import { TextInput, Text, View, StyleSheet, TextInputProps } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { TextInput, Text, View, StyleSheet, type TextInputProps } from "react-native"
+import { Ionicons } from "@expo/vector-icons"
 
 interface AuthInputProps extends TextInputProps {
-  label: string;
-  icon: keyof typeof Ionicons.glyphMap;
-  error?: string;
+  label: string
+  icon: keyof typeof Ionicons.glyphMap
+  error?: string
 }
 
 const AuthInput = ({ label, icon, error, ...props }: AuthInputProps) => {
@@ -14,16 +13,12 @@ const AuthInput = ({ label, icon, error, ...props }: AuthInputProps) => {
       <Text style={styles.label}>{label}</Text>
       <View style={[styles.inputContainer, error && styles.inputError]}>
         <Ionicons name={icon} size={20} color="#8AA9B8" style={styles.icon} />
-        <TextInput
-          {...props}
-          style={styles.input}
-          placeholderTextColor="#A0AEC0"
-        />
+        <TextInput {...props} style={styles.input} placeholderTextColor="#A0AEC0" />
       </View>
       {error && <Text style={styles.errorText}>{error}</Text>}
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -31,21 +26,21 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 14,
-    fontWeight: '600',
-    color: '#4A5568',
+    fontWeight: "600",
+    color: "#FFFFFF",
     marginBottom: 8,
   },
   inputContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#F7FAFC',
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#242535",
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: "#2A2A35",
     borderRadius: 12,
     paddingHorizontal: 12,
   },
   inputError: {
-    borderColor: '#FDC1C5',
+    borderColor: "#FF6B6B",
   },
   icon: {
     marginRight: 8,
@@ -54,13 +49,13 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingVertical: 12,
     fontSize: 16,
-    color: '#2D3748',
+    color: "#FFFFFF",
   },
   errorText: {
-    color: '#E53E3E',
+    color: "#FF6B6B",
     fontSize: 12,
     marginTop: 4,
   },
-});
+})
 
-export default AuthInput;
+export default AuthInput

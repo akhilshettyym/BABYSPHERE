@@ -1,21 +1,19 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { theme } from '../utils/theme';
-import type { MoodType } from '../types/wellness';
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native"
+import type { MoodType } from "../types/wellness"
 
 interface MoodPickerProps {
-  onMoodSelect: (mood: MoodType) => void;
-  selectedMood?: MoodType;
+  onMoodSelect: (mood: MoodType) => void
+  selectedMood?: MoodType
 }
 
 export function MoodPicker({ onMoodSelect, selectedMood }: MoodPickerProps) {
   const moods: { type: MoodType; emoji: string; label: string }[] = [
-    { type: 'happy', emoji: '😊', label: 'Happy' },
-    { type: 'content', emoji: '😌', label: 'Content' },
-    { type: 'neutral', emoji: '😐', label: 'Neutral' },
-    { type: 'sad', emoji: '😔', label: 'Sad' },
-    { type: 'stressed', emoji: '😫', label: 'Stressed' },
-  ];
+    { type: "happy", emoji: "😊", label: "Happy" },
+    { type: "content", emoji: "😌", label: "Content" },
+    { type: "neutral", emoji: "😐", label: "Neutral" },
+    { type: "sad", emoji: "😔", label: "Sad" },
+    { type: "stressed", emoji: "😫", label: "Stressed" },
+  ]
 
   return (
     <View style={styles.container}>
@@ -24,10 +22,7 @@ export function MoodPicker({ onMoodSelect, selectedMood }: MoodPickerProps) {
         {moods.map(({ type, emoji, label }) => (
           <TouchableOpacity
             key={type}
-            style={[
-              styles.moodButton,
-              selectedMood === type && styles.selectedMood
-            ]}
+            style={[styles.moodButton, selectedMood === type && styles.selectedMood]}
             onPress={() => onMoodSelect(type)}
           >
             <Text style={styles.emoji}>{emoji}</Text>
@@ -36,7 +31,7 @@ export function MoodPicker({ onMoodSelect, selectedMood }: MoodPickerProps) {
         ))}
       </View>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -45,28 +40,30 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    fontWeight: '600',
-    color: theme.colors.text,
+    fontWeight: "600",
+    color: "#FFFFFF",
     marginBottom: 16,
   },
   moodGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
+    flexDirection: "row",
+    flexWrap: "wrap",
     gap: 12,
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
   },
   moodButton: {
-    width: '18%',
+    width: "18%",
     aspectRatio: 1,
-    backgroundColor: theme.colors.card,
+    backgroundColor: "#242535",
     borderRadius: 12,
     padding: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
-    ...theme.shadows.card,
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth: 1,
+    borderColor: "#2A2A35",
   },
   selectedMood: {
-    backgroundColor: theme.colors.primary,
+    backgroundColor: "#FF9500",
+    borderColor: "#FF9500",
   },
   emoji: {
     fontSize: 24,
@@ -74,7 +71,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 12,
-    color: theme.colors.text,
-    textAlign: 'center',
+    color: "#FFFFFF",
+    textAlign: "center",
   },
-});
+})

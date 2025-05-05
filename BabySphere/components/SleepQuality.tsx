@@ -1,24 +1,24 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { CustomSlider } from './ui/CustomSlider';
-import { theme } from '../utils/theme';
+"use client"
+import { View, Text, StyleSheet } from "react-native"
+import { CustomSlider } from "./ui/CustomSlider"
+import { theme } from "../utils/theme"
 
 interface SleepQualityProps {
-  onQualityChange: (quality: number) => void;
-  quality: number;
+  onQualityChange: (quality: number) => void
+  quality: number
 }
 
 export function SleepQuality({ onQualityChange, quality }: SleepQualityProps) {
   const getQualityLabel = (value: number): string => {
-    if (value <= 2) return 'Poor';
-    if (value <= 5) return 'Average';
-    if (value <= 8) return 'Good';
-    return 'Excellent';
-  };
+    if (value <= 2) return "Poor"
+    if (value <= 5) return "Average"
+    if (value <= 8) return "Good"
+    return "Excellent"
+  }
 
   const handleQualityChange = (newQuality: number) => {
-    onQualityChange(Math.round(newQuality));
-  };
+    onQualityChange(Math.round(newQuality))
+  }
 
   return (
     <View style={styles.container}>
@@ -35,7 +35,7 @@ export function SleepQuality({ onQualityChange, quality }: SleepQualityProps) {
         style={styles.slider}
       />
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -44,18 +44,17 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    fontWeight: '600',
-    color: theme.colors.text,
+    fontWeight: "600",
+    color: "#FFFFFF",
     marginBottom: 8,
   },
   qualityLabel: {
     fontSize: 16,
-    color: theme.colors.primary,
+    color: "#FF9500",
     marginBottom: 16,
-    fontWeight: '500',
+    fontWeight: "500",
   },
   slider: {
-    width: '100%',
+    width: "100%",
   },
-});
-
+})

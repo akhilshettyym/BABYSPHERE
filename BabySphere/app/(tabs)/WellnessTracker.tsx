@@ -1,28 +1,26 @@
-import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from '../../components/HomeScreen';
-import { theme } from '../../utils/theme';
+import { createNativeStackNavigator } from "@react-navigation/native-stack"
+import HomeScreen from "../../components/HomeScreen"
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator()
 
 export default function App() {
   return (
     <Stack.Navigator>
-      <Stack.Screen 
-        name="Home" 
+      <Stack.Screen
+        name="Home"
         component={HomeScreen}
         options={{
-          title: 'Wellness Tracker',
+          title: "Wellness Tracker",
           headerStyle: {
-            backgroundColor: theme.colors.card,
+            backgroundColor: "#1A1A25",
           },
           headerTitleStyle: {
-            fontWeight: 'bold',
-            color: theme.colors.text,
+            fontWeight: "bold",
+            color: "#FF9500",
           },
           headerShadowVisible: false,
         }}
       />
     </Stack.Navigator>
-  );
+  )
 }
