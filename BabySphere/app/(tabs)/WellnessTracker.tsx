@@ -10,7 +10,7 @@ export default function App() {
         name="Home"
         component={HomeScreen}
         options={{
-          title: "Wellness Tracker",
+          title: "WELLNESS TRACKER",
           headerStyle: {
             backgroundColor: "#1A1A25",
           },

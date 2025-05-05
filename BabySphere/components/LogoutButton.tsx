@@ -46,7 +46,7 @@ export default function LogoutButton() {
 
 const styles = StyleSheet.create({
   logoutButton: {
-    backgroundColor: "#FF6B6B",
+    backgroundColor: "#FF9500",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
@@ -54,7 +54,9 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     gap: 8,
     marginTop: 16,
-  },
+    width: 200,            
+    alignSelf: "center",
+  },  
   logoutButtonText: {
     color: "#FFFFFF",
     fontSize: 16,

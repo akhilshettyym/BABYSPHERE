@@ -44,7 +44,7 @@ const NewSensorDashboard: React.FC<NewSensorDashboardProps> = ({ data, isDarkMod
       accessibilityLabel={`${title}: ${value} ${unit}`}
       accessibilityHint={`Tap to view ${title} chart`}
     >
-      <Ionicons name={icon as any} size={24} color="#FF9500" />
+      <Ionicons name={icon as any} size={28} color="#FF9500" />
       <Text style={styles.sensorTitle}>{title}</Text>
       <Text style={styles.sensorValue}>
         {typeof value === "number" ? value.toFixed(1) : value} <Text style={styles.sensorUnit}>{unit}</Text>
@@ -124,30 +124,31 @@ const styles = StyleSheet.create({
     width: "48%",
     backgroundColor: "#242535",
     borderRadius: 10,
-    padding: 15,
+    padding: 20, // Increased padding for bigger cards
     marginBottom: 15,
     alignItems: "center",
     shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
-    shadowRadius: 4,
+    shadowRadius: 6,
     elevation: 5,
     borderWidth: 1,
     borderColor: "#2A2A35",
+    height: 140, // Fixed height for consistency
   },
   sensorTitle: {
-    fontSize: 14,
+    fontSize: 16, // Increased font size
     color: "rgba(255, 255, 255, 0.7)",
-    marginTop: 5,
+    marginTop: 8,
   },
   sensorValue: {
-    fontSize: 24,
+    fontSize: 28, // Increased font size
     fontWeight: "bold",
     color: "#FFFFFF",
-    marginTop: 5,
+    marginTop: 8,
   },
   sensorUnit: {
-    fontSize: 14,
+    fontSize: 16, // Increased font size
     color: "rgba(255, 255, 255, 0.7)",
   },
   graphContainer: {
