@@ -5,7 +5,7 @@ import { Ionicons } from "@expo/vector-icons"
 const NewHeader: React.FC = () => {
   return (
     <View style={styles.header}>
-      <Text style={styles.title}>BabySphere</Text>
+      <Text style={styles.title}>BABYSPHERE</Text>
       <TouchableOpacity style={styles.menuButton}>
         <Ionicons name="menu" size={24} color="#FFFFFF" />
       </TouchableOpacity>
