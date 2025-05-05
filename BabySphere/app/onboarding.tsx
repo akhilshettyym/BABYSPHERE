@@ -47,7 +47,12 @@ export default function OnboardingScreen() {
             Possibilities with{"\n"}
             <Text style={styles.highlight}>BABYSPHERE</Text>
           </Text>
-          <View style={styles.underline} />
+          <Image
+            source={require("../assets/images/path.png")}
+            style={{ width: 100, height: 20, resizeMode: "contain" }}
+          />
+
+          {/* <View style={styles.underline} /> */}
           <Text style={styles.subheading}>
             Peace of Mind for Every Parent: Baby Health in{"\n"}
             the Palm of Your Hand.
@@ -59,10 +64,6 @@ export default function OnboardingScreen() {
           <Text style={styles.buttonText}>Get Started</Text>
         </TouchableOpacity>
 
-        {/* Bottom Indicator */}
-        <View style={styles.indicatorContainer}>
-          <View style={styles.indicator} />
-        </View>
       </View>
     </SafeAreaView>
   )
@@ -135,7 +136,7 @@ const styles = StyleSheet.create({
   subheading: {
     color: "#FFFFFF",
     opacity: 0.7,
-    fontSize: 14,
+    fontSize: 16,
     textAlign: "center",
     marginTop: 20,
     lineHeight: 20,
@@ -143,24 +144,15 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: "#FF9500",
     width: "100%",
-    paddingVertical: 16,
+    paddingBottom: 20,
+    paddingVertical: 20,
     borderRadius: 12,
     alignItems: "center",
     marginTop: 40,
   },
   buttonText: {
     color: "#FFFFFF",
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: "bold",
-  },
-  indicatorContainer: {
-    marginTop: 30,
-    alignItems: "center",
-  },
-  indicator: {
-    width: 60,
-    height: 4,
-    backgroundColor: "#FFFFFF",
-    borderRadius: 2,
   },
 })
