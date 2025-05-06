@@ -246,7 +246,6 @@ const BabyMonitorGraphPage: React.FC = () => {
       yAxisLabelRotation: 270,
       yAxisSuffix: parameters.find((param) => param.key === selectedParameter)?.unit || "",
     };
-    
 
     return (
       <ViewShot ref={graphRef} options={{ format: "png", quality: 0.9 }}>
@@ -259,111 +258,115 @@ const BabyMonitorGraphPage: React.FC = () => {
   }
 
   return (
-    <ScrollView
-      style={styles.container}
-      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
-    >
-      
-      <SensorDataFetcher
-        setSensorData={setSensorData}
-        selectedDate={selectedDate}
-        setIsLoading={setIsLoading}
-        setError={setError}
-      />
-
-      <View style={styles.header}>
-        <TouchableOpacity style={styles.backButton}>
-        </TouchableOpacity>
+    <View style={{ flex: 1 }}>
+      {/* Fixed Header */}
+      <View style={styles.fixedHeader}>
         <Text style={styles.title}>BABY MONITOR GRAPH</Text>
       </View>
 
-      <View style={styles.datePickerContainer}>
-        <DatePicker selectedDate={selectedDate} onDateChange={setSelectedDate} />
-      </View>
+      {/* Scrollable Content */}
+      <ScrollView
+        contentContainerStyle={{ paddingTop: 60 }}
+        style={styles.container}
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+      >
+        <SensorDataFetcher
+          setSensorData={setSensorData}
+          selectedDate={selectedDate}
+          setIsLoading={setIsLoading}
+          setError={setError}
+        />
 
-      <View style={styles.controlsWrapper}>
-        <View style={styles.controlGroup}>
-          <Text style={styles.controlLabel}>Timeframe</Text>
-          <View style={styles.controlButtonGroup}>
-            {timeframes.map((timeframe) => (
-              <TouchableOpacity
-                key={timeframe}
-                style={[
-                  styles.controlButton,
-                  selectedTimeframe === timeframe && styles.controlButtonSelected,
-                ]}
-                onPress={() => setSelectedTimeframe(timeframe)}
-              >
-                <Text
+        <View style={styles.datePickerContainer}>
+          <DatePicker selectedDate={selectedDate} onDateChange={setSelectedDate} />
+        </View>
+
+        <View style={styles.controlsWrapper}>
+          {/* Timeframe Controls */}
+          <View style={styles.controlGroup}>
+            <Text style={styles.controlLabel}>Timeframe</Text>
+            <View style={styles.controlButtonGroup}>
+              {timeframes.map((timeframe) => (
+                <TouchableOpacity
+                  key={timeframe}
                   style={[
-                    styles.controlButtonText,
-                    selectedTimeframe === timeframe && styles.controlButtonTextSelected,
+                    styles.controlButton,
+                    selectedTimeframe === timeframe && styles.controlButtonSelected,
                   ]}
+                  onPress={() => setSelectedTimeframe(timeframe)}
                 >
-                  {timeframe}
-                </Text>
-              </TouchableOpacity>
-            ))}
+                  <Text
+                    style={[
+                      styles.controlButtonText,
+                      selectedTimeframe === timeframe && styles.controlButtonTextSelected,
+                    ]}
+                  >
+                    {timeframe}
+                  </Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+          </View>
+
+          {/* Graph Type Controls */}
+          <View style={styles.controlGroup}>
+            <Text style={styles.controlLabel}>Graph Type</Text>
+            <View style={styles.controlButtonGroup}>
+              {graphTypes.map((type) => (
+                <TouchableOpacity
+                  key={type}
+                  style={[
+                    styles.controlButton,
+                    selectedGraph === type && styles.controlButtonSelected,
+                  ]}
+                  onPress={() => setSelectedGraph(type)}
+                >
+                  <Text
+                    style={[
+                      styles.controlButtonText,
+                      selectedGraph === type && styles.controlButtonTextSelected,
+                    ]}
+                  >
+                    {type}
+                  </Text>
+                </TouchableOpacity>
+              ))}
+            </View>
           </View>
         </View>
 
-        <View style={styles.controlGroup}>
-          <Text style={styles.controlLabel}>Graph Type</Text>
-          <View style={styles.controlButtonGroup}>
-            {graphTypes.map((type) => (
-              <TouchableOpacity
-                key={type}
-                style={[
-                  styles.controlButton,
-                  selectedGraph === type && styles.controlButtonSelected,
-                ]}
-                onPress={() => setSelectedGraph(type)}
-              >
-                <Text
-                  style={[
-                    styles.controlButtonText,
-                    selectedGraph === type && styles.controlButtonTextSelected,
-                  ]}
-                >
-                  {type}
-                </Text>
-              </TouchableOpacity>
-            ))}
-          </View>
-        </View>
-      </View>
-
-      <View style={styles.graphContainer}>
-        {renderGraph()}
-        <TouchableOpacity style={styles.downloadButton} onPress={captureAndShareGraph}>
-          <Ionicons name="download-outline" size={24} color="#FFFFFF" />
-          <Text style={styles.downloadButtonText}>Download Graph</Text>
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.parameterContainer}>
-        {parameters.map((param) => (
-          <TouchableOpacity
-            key={param.key}
-            style={[
-              styles.parameterButton,
-              selectedParameter === param.key && styles.selectedParameterButton,
-            ]}
-            onPress={() => setSelectedParameter(param.key)}
-          >
-            <Text
-              style={[
-                styles.parameterButtonText,
-                selectedParameter === param.key && styles.selectedParameterButtonText,
-              ]}
-            >
-              {param.label}
-            </Text>
-            <Text style={styles.parameterUnit}>{param.unit}</Text>
+        <View style={styles.graphContainer}>
+          {renderGraph()}
+          <TouchableOpacity style={styles.downloadButton} onPress={captureAndShareGraph}>
+            <Ionicons name="download-outline" size={24} color="#FFFFFF" />
+            <Text style={styles.downloadButtonText}>Download Graph</Text>
           </TouchableOpacity>
-        ))}
-      </View>
-    </ScrollView>
+        </View>
+
+        <View style={styles.parameterContainer}>
+          {parameters.map((param) => (
+            <TouchableOpacity
+              key={param.key}
+              style={[
+                styles.parameterButton,
+                selectedParameter === param.key && styles.selectedParameterButton,
+              ]}
+              onPress={() => setSelectedParameter(param.key)}
+            >
+              <Text
+                style={[
+                  styles.parameterButtonText,
+                  selectedParameter === param.key && styles.selectedParameterButtonText,
+                ]}
+              >
+                {param.label}
+              </Text>
+              <Text style={styles.parameterUnit}>{param.unit}</Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+      </ScrollView>
+    </View>
   )
 }
 
@@ -371,20 +374,27 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#1A1A25",
+    paddingTop: 20,
   },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    padding: 16,
-  },
+  fixedHeader: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    height: 60,
+    backgroundColor: "#1A1A25",
+    justifyContent: "center",
+    paddingHorizontal: 16,
+    zIndex: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: "#2A2A35",
+  },  
   title: {
     fontSize: 20,
     fontWeight: "bold",
     color: "#FF9500",
-  },
-  backButton: {
-    marginRight: 16,
-  },
+    textAlign: "left",
+  },  
   datePickerContainer: {
     padding: 16,
     backgroundColor: "#242535",

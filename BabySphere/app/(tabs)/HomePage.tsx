@@ -21,7 +21,7 @@ const HomePage: React.FC = () => {
   const [error, setError] = useState<string | null>(null)
   const [refreshing, setRefreshing] = useState(false)
   const [selectedDate, setSelectedDate] = useState(new Date())
-  const [isDarkMode, setIsDarkMode] = useState(true) // Default to dark mode
+  const [isDarkMode, setIsDarkMode] = useState(true)
   const [showAlertModal, setShowAlertModal] = useState(false)
   const [settings, setSettings] = useState(defaultSettings)
   const { alerts, checkThresholds } = useAlerts()
@@ -96,31 +96,31 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     backgroundColor: "#1A1A25",
-    padding: 24, // Increased from 20
-    marginHorizontal: 8, // Added horizontal margin
+    padding: 24,
+    marginHorizontal: 8,
   },
   alertButton: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#242535",
-    padding: 18, // Increased from 15
-    borderRadius: 12, // Increased from 10
-    marginTop: 24, // Increased from 20
-    marginBottom: 16, // Added bottom margin
-    borderWidth: 1.5, // Increased from 1
+    padding: 18,
+    borderRadius: 12,
+    marginTop: 24,
+    marginBottom: 16,
+    borderWidth: 1.5,
     borderColor: "#FF9500",
-    elevation: 3, // Added elevation for Android shadow
-    shadowColor: "#FF9500", // Added shadow for iOS
+    elevation: 3,
+    shadowColor: "#FF9500",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,
     shadowRadius: 4,
   },
   alertButtonText: {
     color: "#FFFFFF",
-    fontSize: 18, // Increased from 16
+    fontSize: 18,
     fontWeight: "bold",
-    marginLeft: 12, // Increased from 10
+    marginLeft: 12,
   },
   errorText: {
     color: "#FF6B6B",

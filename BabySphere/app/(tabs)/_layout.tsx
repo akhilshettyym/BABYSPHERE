@@ -25,10 +25,10 @@ export default function AppLayout() {
         }}
       />
       <Tabs.Screen
-        name="BabyMonitorGraph"
+        name="GraphPage"
         options={{
-          title: "Baby Monitor",
-          tabBarIcon: ({ color, size }) => <Ionicons name="pulse" size={size} color={color} />,
+          title: "Graph",
+          tabBarIcon: ({ color, size }) => <Ionicons name="analytics" size={size} color={color} />,
         }}
       />
 
