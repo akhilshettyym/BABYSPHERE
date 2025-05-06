@@ -7,10 +7,15 @@ import LogoutButton from "../../components/LogoutButton"
 export default function ProfilePage() {
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
+      <View style={styles.fixedHeader}>
         <Text style={styles.title}>MY PROFILE</Text>
       </View>
-      <ScrollView style={styles.scrollView} contentContainerStyle={styles.content}>
+      <ScrollView
+        style={styles.scrollView}
+        contentContainerStyle={styles.content}
+        contentInsetAdjustmentBehavior="automatic"
+      >
+        <View style={{ height: 60 }} /> 
         <ParentInfo />
         <BabyInfo />
         <Settings />
@@ -25,15 +30,23 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#1A1A25",
   },
-  header: {
+  fixedHeader: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    height: 60,
+    backgroundColor: "#1A1A25",
+    justifyContent: "center",
     paddingHorizontal: 16,
-    paddingTop: 16,
-    paddingBottom: 8,
+    zIndex: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: "#2A2A35",
   },
   title: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: "bold",
-    color: "#FF9500", // Accent color
+    color: "#FF9500",
     textAlign: "left",
   },
   scrollView: {
@@ -41,5 +54,6 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: 16,
+    paddingTop: 0,
   },
 })
