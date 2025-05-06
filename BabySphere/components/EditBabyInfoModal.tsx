@@ -126,12 +126,12 @@ export default function EditBabyInfoModal({ visible, onClose, currentInfo }: Edi
 const styles = StyleSheet.create({
   modalContainer: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: 'rgba(0,0,0,0.6)',
     justifyContent: 'center',
     alignItems: 'center',
   },
   modalContent: {
-    backgroundColor: '#FFF',
+    backgroundColor: '#1A1A25',
     borderRadius: 16,
     padding: 20,
     width: '90%',
@@ -146,37 +146,41 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#8AA9B8',
+    color: '#FF9500',
   },
   form: {
     gap: 16,
   },
   inputGroup: {
     gap: 8,
+    color: '#FFFFFF',
   },
   label: {
     fontSize: 14,
-    color: '#8AA9B8',
+    color: '#FFFFFF',
   },
   input: {
     borderWidth: 1,
-    borderColor: '#E1E1E1',
+    borderColor: '#444',
     borderRadius: 8,
     padding: 12,
     fontSize: 14,
+    color: '#FFFFFF',
+    backgroundColor: '#2A2A3C',
   },
   textArea: {
     height: 80,
     textAlignVertical: 'top',
+    color: '#FFFFFF',
   },
   updateButton: {
-    backgroundColor: '#A3D8F4',
+    backgroundColor: '#FF9500',
     padding: 16,
     borderRadius: 8,
     alignItems: 'center',
   },
   updateButtonText: {
-    color: '#FFF',
+    color: '#FFFFFF',
     fontSize: 16,
     fontWeight: '600',
   },
