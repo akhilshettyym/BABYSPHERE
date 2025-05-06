@@ -263,6 +263,7 @@ const BabyMonitorGraphPage: React.FC = () => {
       style={styles.container}
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
     >
+      
       <SensorDataFetcher
         setSensorData={setSensorData}
         selectedDate={selectedDate}

@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { useState } from "react"
-import { View, Text, StyleSheet, SafeAreaView, Platform } from "react-native"
+import { View, Text, StyleSheet, SafeAreaView, Platform, TouchableOpacity } from "react-native"
 import { WebView } from "react-native-webview"
 import LiveParameters from "./LiveParameters"
 import SensorDataFetcher from "./SensorDataFetcher"
@@ -16,7 +16,7 @@ const LiveFeed: React.FC = () => {
 
   const latestData = sensorData.length > 0 ? sensorData[sensorData.length - 1] : null
 
-  const cameraFeedUri = "http://192.168.40.162:5002/processed_feed" // Replace with your live stream URL
+  const cameraFeedUri = "http://192.168.40.162:5002/processed_feed"
 
   return (
     <SafeAreaView style={styles.container}>
@@ -26,6 +26,7 @@ const LiveFeed: React.FC = () => {
         setIsLoading={setIsLoading}
         setError={setError}
       />
+      
       <View style={styles.header}>
         <View style={styles.liveIndicator}>
           <Text style={styles.liveText}>Live</Text>
