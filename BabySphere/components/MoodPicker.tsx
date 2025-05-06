@@ -12,7 +12,7 @@ export function MoodPicker({ onMoodSelect, selectedMood }: MoodPickerProps) {
     { type: "content", emoji: "😌", label: "Content" },
     { type: "neutral", emoji: "😐", label: "Neutral" },
     { type: "sad", emoji: "😔", label: "Sad" },
-    { type: "stressed", emoji: "😫", label: "Stressed" },
+    { type: "Tired", emoji: "😫", label: "Tired" },
   ]
 
   return (
@@ -46,10 +46,8 @@ const styles = StyleSheet.create({
   },
   moodGrid: {
     flexDirection: "row",
-    flexWrap: "wrap",
-    gap: 12,
     justifyContent: "space-between",
-  },
+  },  
   moodButton: {
     width: "18%",
     aspectRatio: 1,

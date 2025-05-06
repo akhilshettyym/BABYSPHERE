@@ -36,3 +36,5 @@ interface TrendPoint {
   date: string;
   value: number;
 }
+
+export type MoodType = "happy" | "content" | "neutral" | "sad" | "Tired"
