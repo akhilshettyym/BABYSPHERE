@@ -2,7 +2,15 @@
 
 import type React from "react"
 import { useState, useEffect, useCallback, useRef } from "react"
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Dimensions, RefreshControl } from "react-native"
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+  Dimensions,
+  RefreshControl,
+} from "react-native"
 import { LineChart, BarChart } from "react-native-chart-kit"
 import { Ionicons } from "@expo/vector-icons"
 import SensorDataFetcher from "../../components/SensorDataFetcher"
@@ -10,16 +18,17 @@ import DatePicker from "../../components/DatePicker"
 import type { SensorData } from "../../types/SensorData"
 import ViewShot from "react-native-view-shot"
 import * as Sharing from "expo-sharing"
+
 const { width } = Dimensions.get("window")
 
 const BabyMonitorGraphPage: React.FC = () => {
-  const numSlicedDataPoints: number = 5
+  const numSlicedDataPoints = 5
   const graphRef = useRef<ViewShot | null>(null)
 
   const [sensorData, setSensorData] = useState<SensorData[]>([])
-  const [selectedTimeframe, setSelectedTimeframe] = useState<string>("hourly")
-  const [selectedGraph, setSelectedGraph] = useState<string>("line")
-  const [selectedParameter, setSelectedParameter] = useState<string>("baby_temperature")
+  const [selectedTimeframe, setSelectedTimeframe] = useState("hourly")
+  const [selectedGraph, setSelectedGraph] = useState("line")
+  const [selectedParameter, setSelectedParameter] = useState("baby_temperature")
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [selectedDate, setSelectedDate] = useState(new Date())
@@ -111,17 +120,25 @@ const BabyMonitorGraphPage: React.FC = () => {
   function getWeekNumber(d: Date) {
     d = new Date(d.getFullYear(), d.getMonth(), d.getDate())
     d.setDate(d.getDate() + 4 - (d.getDay() || 7))
-    var yearStart = new Date(d.getFullYear(), 0, 1)
-    var weekNum = getWeekDifference(d.valueOf(), yearStart.valueOf())
+    const yearStart = new Date(d.getFullYear(), 0, 1)
+    const weekNum = getWeekDifference(d.valueOf(), yearStart.valueOf())
     return d.getFullYear() + "-W" + leftFillNum(weekNum, 2)
   }
 
-  const calcReqAvg = (daily_or_weekly: "daily" | "weekly", ds: SensorData[], selectedParameter: string) => {
+  const calcReqAvg = (
+    daily_or_weekly: "daily" | "weekly",
+    ds: SensorData[],
+    selectedParameter: string
+  ) => {
     const acc = new Map()
     ds.forEach((cur: SensorData) => {
-      const key: string =
+      const key =
         daily_or_weekly === "daily"
-          ? cur.timestamp.getDate() + "/" + (cur.timestamp.getMonth() + 1) + "/" + cur.timestamp.getFullYear()
+          ? cur.timestamp.getDate() +
+            "/" +
+            (cur.timestamp.getMonth() + 1) +
+            "/" +
+            cur.timestamp.getFullYear()
           : getWeekNumber(cur.timestamp)
 
       const a: any = {
@@ -135,18 +152,21 @@ const BabyMonitorGraphPage: React.FC = () => {
       acc.set(key, a)
     })
 
-    var reqAverage: any[] = []
+    const reqAverage: any[] = []
     acc.forEach((value, key) => {
-      const a: any = {
-        value: acc.get(key).value / acc.get(key).count,
+      reqAverage.push({
+        value: value.value / value.count,
         label: key,
-      }
-      reqAverage.push(a)
+      })
     })
     return reqAverage
   }
 
-  const cleanseData = (sensorData: SensorData[], selectedTimeframe: string, selectedParameter: string) => {
+  const cleanseData = (
+    sensorData: SensorData[],
+    selectedTimeframe: string,
+    selectedParameter: string
+  ) => {
     sensorData = sensorData.filter((data) => {
       switch (selectedParameter) {
         case "baby_temperature":
@@ -160,28 +180,18 @@ const BabyMonitorGraphPage: React.FC = () => {
       }
     })
 
-    if (selectedTimeframe === "daily") {
-      return calcReqAvg(selectedTimeframe, sensorData, selectedParameter)
-    } else if (selectedTimeframe === "weekly") {
+    if (selectedTimeframe === "daily" || selectedTimeframe === "weekly") {
       return calcReqAvg(selectedTimeframe, sensorData, selectedParameter)
     }
 
-    return sensorData.map((cur: SensorData) => {
-      const obj: any = getFormattedValue(cur)
-      return {
-        value: obj.value,
-        label: obj.label,
-      }
-    })
+    return sensorData.map((cur: SensorData) => getFormattedValue(cur))
   }
 
   const renderGraph = () => {
-    if (sensorData.length === 0) {
-      return null
-    }
+    if (sensorData.length === 0) return null
+
     const cleansedData = cleanseData(sensorData, selectedTimeframe, selectedParameter)
     const chartData = cleansedData.slice(-numSlicedDataPoints).reverse()
-    console.log("renderGraph: cleansedData: sliced available data points: " + chartData.length)
     const values = chartData.map((item) => item.value)
     const minValue = Math.min(...values)
     const maxValue = Math.max(...values)
@@ -212,46 +222,31 @@ const BabyMonitorGraphPage: React.FC = () => {
 
     const commonProps = {
       data: {
-        labels: chartData
-          .map((item) => item.label)
-          .filter(
-            (item, index) =>
-              index %
-                (numSlicedDataPoints > 300 ? 120 : numSlicedDataPoints > 40 ? 12 : numSlicedDataPoints > 4 ? 1 : 2) ===
-              0,
-          ),
+        labels: chartData.map((item) => item.label),
         datasets: [{ data: chartData.map((item) => item.value) }],
       },
       width: width - 32,
       height: 260,
       yAxisLabel: parameters.find((param) => param.key === selectedParameter)?.unit || "",
-      yAxisSuffix: "",
       chartConfig: {
         backgroundColor: "#242535",
         backgroundGradientFrom: "#242535",
         backgroundGradientTo: "#242535",
-        decimalPlaces: selectedParameter === "baby_temperature" ? 1 : 0,
+        decimalPlaces: 1,
         color: (opacity = 1) => `rgba(255, 149, 0, ${opacity})`,
         labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-        style: {
-          borderRadius: 16,
-        },
-        propsForDots: {
-          r: "6",
-          strokeWidth: "2",
-          stroke: "#FF9500",
-        },
-        propsForBackgroundLines: {
-          strokeDasharray: "",
-          stroke: "rgba(255, 255, 255, 0.1)",
-        },
-        yAxisInterval: 1,
-        min: yAxisConfig.min,
-        max: yAxisConfig.max,
-        yAxisLabelRotation: 270,
+        style: { borderRadius: 16 },
+        propsForDots: { r: "6", strokeWidth: "2", stroke: "#FF9500" },
+        propsForBackgroundLines: { strokeDasharray: "", stroke: "rgba(255, 255, 255, 0.1)" },
       },
       bezier: true,
-    }
+      yAxisInterval: 1,
+      min: yAxisConfig.min,
+      max: yAxisConfig.max,
+      yAxisLabelRotation: 270,
+      yAxisSuffix: parameters.find((param) => param.key === selectedParameter)?.unit || "", // Add this line
+    };
+    
 
     return (
       <ViewShot ref={graphRef} options={{ format: "png", quality: 0.9 }}>
@@ -286,20 +281,25 @@ const BabyMonitorGraphPage: React.FC = () => {
         <DatePicker selectedDate={selectedDate} onDateChange={setSelectedDate} />
       </View>
 
-      <View style={styles.controlsContainer}>
+      <View style={styles.controlsWrapper}>
         <View style={styles.controlGroup}>
-          <Text style={styles.controlLabel}>Timeframe:</Text>
-          <View style={styles.buttonGroup}>
+          <Text style={styles.controlLabel}>Timeframe</Text>
+          <View style={styles.controlButtonGroup}>
             {timeframes.map((timeframe) => (
               <TouchableOpacity
                 key={timeframe}
-                style={[styles.button, selectedTimeframe === timeframe && styles.selectedButton]}
-                onPress={() => {
-                  console.log("setSelectedTimeframe: " + timeframe)
-                  setSelectedTimeframe(timeframe)
-                }}
+                style={[
+                  styles.controlButton,
+                  selectedTimeframe === timeframe && styles.controlButtonSelected,
+                ]}
+                onPress={() => setSelectedTimeframe(timeframe)}
               >
-                <Text style={[styles.buttonText, selectedTimeframe === timeframe && styles.selectedButtonText]}>
+                <Text
+                  style={[
+                    styles.controlButtonText,
+                    selectedTimeframe === timeframe && styles.controlButtonTextSelected,
+                  ]}
+                >
                   {timeframe}
                 </Text>
               </TouchableOpacity>
@@ -308,18 +308,25 @@ const BabyMonitorGraphPage: React.FC = () => {
         </View>
 
         <View style={styles.controlGroup}>
-          <Text style={styles.controlLabel}>Graph Type:</Text>
-          <View style={styles.buttonGroup}>
+          <Text style={styles.controlLabel}>Graph Type</Text>
+          <View style={styles.controlButtonGroup}>
             {graphTypes.map((type) => (
               <TouchableOpacity
                 key={type}
-                style={[styles.button, selectedGraph === type && styles.selectedButton]}
-                onPress={() => {
-                  console.log("setSelectedGraph: " + type)
-                  setSelectedGraph(type)
-                }}
+                style={[
+                  styles.controlButton,
+                  selectedGraph === type && styles.controlButtonSelected,
+                ]}
+                onPress={() => setSelectedGraph(type)}
               >
-                <Text style={[styles.buttonText, selectedGraph === type && styles.selectedButtonText]}>{type}</Text>
+                <Text
+                  style={[
+                    styles.controlButtonText,
+                    selectedGraph === type && styles.controlButtonTextSelected,
+                  ]}
+                >
+                  {type}
+                </Text>
               </TouchableOpacity>
             ))}
           </View>
@@ -338,10 +345,11 @@ const BabyMonitorGraphPage: React.FC = () => {
         {parameters.map((param) => (
           <TouchableOpacity
             key={param.key}
-            style={[styles.parameterButton, selectedParameter === param.key && styles.selectedParameterButton]}
-            onPress={() => {
-              console.log("setSelectedParameter: " + param.key), setSelectedParameter(param.key)
-            }}
+            style={[
+              styles.parameterButton,
+              selectedParameter === param.key && styles.selectedParameterButton,
+            ]}
+            onPress={() => setSelectedParameter(param.key)}
           >
             <Text
               style={[
@@ -386,8 +394,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#2A2A35",
   },
-  controlsContainer: {
+  controlsWrapper: {
     padding: 16,
+    backgroundColor: "#242535",
+    borderRadius: 16,
+    marginHorizontal: 16,
+    marginBottom: 16,
+    borderWidth: 1,
+    borderColor: "#2A2A35",
   },
   controlGroup: {
     marginBottom: 16,
@@ -398,27 +412,30 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     marginBottom: 8,
   },
-  buttonGroup: {
+  controlButtonGroup: {
     flexDirection: "row",
+    justifyContent: "space-between",
   },
-  button: {
-    backgroundColor: "#242535",
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 20,
+  controlButton: {
+    flex: 1,
     marginRight: 8,
+    paddingVertical: 10,
+    borderRadius: 12,
     borderWidth: 1,
     borderColor: "#2A2A35",
+    backgroundColor: "#1A1A25",
+    alignItems: "center",
   },
-  selectedButton: {
+  controlButtonSelected: {
     backgroundColor: "#FF9500",
     borderColor: "#FF9500",
   },
-  buttonText: {
+  controlButtonText: {
     color: "#FFFFFF",
     fontWeight: "bold",
+    textTransform: "capitalize",
   },
-  selectedButtonText: {
+  controlButtonTextSelected: {
     color: "#FFFFFF",
   },
   graphContainer: {
