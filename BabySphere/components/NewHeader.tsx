@@ -6,9 +6,6 @@ const NewHeader: React.FC = () => {
   return (
     <View style={styles.header}>
       <Text style={styles.title}>BABYSPHERE</Text>
-      <TouchableOpacity style={styles.menuButton}>
-        <Ionicons name="menu" size={24} color="#FFFFFF" />
-      </TouchableOpacity>
     </View>
   )
 }
@@ -22,12 +19,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#1A1A25",
   },
   title: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: "bold",
     color: "#FF9500",
   },
   menuButton: {
-    padding: 5,
+    padding: 2,
   },
 })
 

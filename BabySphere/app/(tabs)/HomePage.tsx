@@ -46,7 +46,10 @@ const HomePage: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <NewHeader />
+      <View style={styles.header}>
+        <NewHeader />
+      </View>
+
       <ScrollView
         contentContainerStyle={styles.scrollContent}
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
@@ -126,6 +129,13 @@ const styles = StyleSheet.create({
     color: "#FF6B6B",
     textAlign: "center",
     marginTop: 20,
+  },
+  header: {
+    height: 63,
+    backgroundColor: "#1A1A25",
+    justifyContent: "center",
+    borderBottomWidth: 2,
+    borderBottomColor: "#2A2A35",
   },
 })
 

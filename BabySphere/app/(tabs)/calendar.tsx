@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { useState, useEffect } from "react"
-import { StyleSheet, Text, Alert } from "react-native"
+import { StyleSheet, Text, Alert, View } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { onAuthStateChanged } from "firebase/auth"
 import { collection, query, where, onSnapshot, addDoc, updateDoc, doc, deleteDoc } from "firebase/firestore"
@@ -94,7 +94,9 @@ const CalendarScreen: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>BABY MONITOR</Text>
+      <View style={styles.header}>
+  <Text style={styles.title}>BABY MONITOR</Text>
+</View>
       <CalendarView selectedDate={selectedDate} onSelectDate={setSelectedDate} events={events} />
       <EventList
         events={events.filter((event) => event.date === selectedDate)}
@@ -116,15 +118,25 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#1A1A25",
-    padding: 16,
+    padding: 20,
+  },
+  header: {
+    height: 50,
+    paddingHorizontal: 2,
+    paddingBottom: 10,
+    marginBottom: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: "#2A2A35",
   },
   title: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: "bold",
     textAlign: "left",
     color: "#FF9500",
-    marginBottom: 16,
+    marginBottom: 0,
+    padding: 2,
   },
 })
+
 
 export default CalendarScreen
