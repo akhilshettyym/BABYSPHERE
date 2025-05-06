@@ -94,7 +94,7 @@ const CalendarScreen: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Baby Monitor</Text>
+      <Text style={styles.title}>BABY MONITOR</Text>
       <CalendarView selectedDate={selectedDate} onSelectDate={setSelectedDate} events={events} />
       <EventList
         events={events.filter((event) => event.date === selectedDate)}
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: "bold",
-    textAlign: "center",
+    textAlign: "left",
     color: "#FF9500",
     marginBottom: 16,
   },
