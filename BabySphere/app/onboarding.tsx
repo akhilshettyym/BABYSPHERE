@@ -30,8 +30,10 @@ export default function OnboardingScreen() {
       <StatusBar barStyle="light-content" />
       <View style={styles.content}>
         {/* Logo */}
+
+        {/* <Text style={styles.highlights}>BABYSPHERE</Text> */}
         <View style={styles.logoContainer}>
-          <View style={styles.logoIcon} />
+          <Image source={require("../assets/images/logo.png")} style={styles.logoIcon} />
           <Text style={styles.logoText}>BABYSPHERE</Text>
         </View>
 
@@ -85,18 +87,21 @@ const styles = StyleSheet.create({
   logoContainer: {
     flexDirection: "row",
     alignItems: "center",
-    alignSelf: "flex-start",
+    justifyContent: "center",
     marginTop: 10,
-  },
+    alignSelf: "center",
+    paddingTop: 20,
+  },  
   logoIcon: {
     width: 40,
     height: 40,
-    backgroundColor: "#FF9500",
     borderRadius: 8,
-  },
+    resizeMode: "contain",
+    backgroundColor: "#FFFFFF",
+  }, 
   logoText: {
     color: "#FFFFFF",
-    fontSize: 20,
+    fontSize: 34,
     fontWeight: "bold",
     marginLeft: 8,
   },
@@ -118,13 +123,19 @@ const styles = StyleSheet.create({
   },
   heading: {
     color: "#FFFFFF",
-    fontSize: 28,
+    fontSize: 32,
     fontWeight: "bold",
     textAlign: "center",
     lineHeight: 34,
   },
   highlight: {
     color: "#FF9500",
+  },
+  highlights: {
+    color: "#FF9500",
+    fontSize: 32,
+    paddingTop: 20,
+    fontWeight: "bold",
   },
   underline: {
     width: 120,
