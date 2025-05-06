@@ -25,7 +25,7 @@ export function JournalEntry() {
         style={styles.input}
         multiline
         placeholder="Write your thoughts..."
-        placeholderTextColor="#FFFFFF" // This sets the placeholder to white
+        placeholderTextColor="#FFFFFF"
         value={content}
         onChangeText={setContent}
         maxLength={500}
