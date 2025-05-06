@@ -11,9 +11,9 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
 
   return (
     <LinearGradient colors={["#A3D8F4", "#F8F9FA"]} style={styles.container}>
-      <View style={styles.imageContainer}>
+      <View style={styles.logoWrapper}>
         <Image
-          source={require("../assets/images/Baby.jpeg")}
+          source={require("../assets/images/logo.png")}
           style={[styles.image, { height: height * 0.25 }]}
           resizeMode="contain"
         />
@@ -26,11 +26,15 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#1A1A25",
   },
-  imageContainer: {
+  logoWrapper: {
+    backgroundColor: "#1A1A1A",
+    // borderRadius: 16,
+    // padding: 10,
     alignItems: "center",
-    paddingTop: 40,
+    // marginTop: 40,
+    // marginHorizontal: 0,
+    // marginVertical: 0,
   },
   image: {
     width: "80%",
