@@ -244,7 +244,7 @@ const BabyMonitorGraphPage: React.FC = () => {
       min: yAxisConfig.min,
       max: yAxisConfig.max,
       yAxisLabelRotation: 270,
-      yAxisSuffix: parameters.find((param) => param.key === selectedParameter)?.unit || "", // Add this line
+      yAxisSuffix: parameters.find((param) => param.key === selectedParameter)?.unit || "",
     };
     
 
@@ -272,9 +272,8 @@ const BabyMonitorGraphPage: React.FC = () => {
 
       <View style={styles.header}>
         <TouchableOpacity style={styles.backButton}>
-          <Ionicons name="arrow-back" size={24} color="#FF9500" />
         </TouchableOpacity>
-        <Text style={styles.title}>Baby Monitor Graphs</Text>
+        <Text style={styles.title}>BABY MONITOR GRAPH</Text>
       </View>
 
       <View style={styles.datePickerContainer}>
@@ -377,13 +376,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 16,
   },
-  backButton: {
-    marginRight: 16,
-  },
   title: {
     fontSize: 20,
     fontWeight: "bold",
-    color: "#FFFFFF",
+    color: "#FF9500",
+  },
+  backButton: {
+    marginRight: 16,
   },
   datePickerContainer: {
     padding: 16,
