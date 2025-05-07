@@ -1,25 +1,27 @@
-import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import LiveFeed from '../../components/LiveFeed';
+import type React from "react"
+import { StyleSheet, View, Text, SafeAreaView } from "react-native"
+import LiveFeed from "../../components/LiveFeed"
 
 const LiveFeedScreen: React.FC = () => {
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.fixedHeader}>
         <Text style={styles.title}>LIVE FEED DATA</Text>
       </View>
-      <LiveFeed />
-    </View>
-  );
-};
+
+      <View style={styles.content}>
+        <LiveFeed />
+      </View>
+    </SafeAreaView>
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1A1A25',
-    padding: 10,
+    backgroundColor: "#1A1A25",
   },
-  header: {
+  fixedHeader: {
     height: 60,
     backgroundColor: "#1A1A25",
     justifyContent: "center",
@@ -29,10 +31,14 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    fontWeight: 'bold',
-    color: '#FF9500',
-    textAlign: 'left',
+    fontWeight: "bold",
+    color: "#FF9500",
+    textAlign: "left",
   },
-});
+  content: {
+    flex: 1,
+    padding: 10,
+  },
+})
 
-export default LiveFeedScreen;
+export default LiveFeedScreen

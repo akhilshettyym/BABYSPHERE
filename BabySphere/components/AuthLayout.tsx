@@ -14,7 +14,7 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
       <View style={styles.logoWrapper}>
         <Image
           source={require("../assets/images/logo.png")}
-          style={[styles.image, { height: height * 0.25 }]}
+          style={[styles.image, { height: height * 0.27 }]}
           resizeMode="contain"
         />
       </View>
@@ -28,13 +28,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   logoWrapper: {
-    backgroundColor: "#1A1A1A",
-    // borderRadius: 16,
-    // padding: 10,
     alignItems: "center",
-    // marginTop: 40,
-    // marginHorizontal: 0,
-    // marginVertical: 0,
   },
   image: {
     width: "40%",
@@ -46,8 +40,6 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     padding: 20,
-    borderTopWidth: 1,
-    borderColor: "#2A2A35",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,

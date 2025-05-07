@@ -94,22 +94,25 @@ const CalendarScreen: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-  <Text style={styles.title}>BABY MONITOR</Text>
-</View>
-      <CalendarView selectedDate={selectedDate} onSelectDate={setSelectedDate} events={events} />
-      <EventList
-        events={events.filter((event) => event.date === selectedDate)}
-        onUpdateEvent={updateEvent}
-        onDeleteEvent={deleteEvent}
-      />
-      <AddEventButton
-        onAddEvent={addEvent}
-        selectedDate={selectedDate}
-        isVisible={isAddEventModalVisible}
-        setIsVisible={setIsAddEventModalVisible}
-        userId={currentUser?.uid}
-      />
+      <View style={styles.fixedHeader}>
+        <Text style={styles.title}>BABY MONITOR</Text>
+      </View>
+
+      <View style={styles.content}>
+        <CalendarView selectedDate={selectedDate} onSelectDate={setSelectedDate} events={events} />
+        <EventList
+          events={events.filter((event) => event.date === selectedDate)}
+          onUpdateEvent={updateEvent}
+          onDeleteEvent={deleteEvent}
+        />
+        <AddEventButton
+          onAddEvent={addEvent}
+          selectedDate={selectedDate}
+          isVisible={isAddEventModalVisible}
+          setIsVisible={setIsAddEventModalVisible}
+          userId={currentUser?.uid}
+        />
+      </View>
     </SafeAreaView>
   )
 }
@@ -118,25 +121,25 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#1A1A25",
-    padding: 20,
   },
-  header: {
-    height: 50,
-    paddingHorizontal: 2,
-    paddingBottom: 10,
-    marginBottom: 20,
+  fixedHeader: {
+    height: 60,
+    backgroundColor: "#1A1A25",
+    justifyContent: "center",
+    paddingHorizontal: 16,
     borderBottomWidth: 1,
     borderBottomColor: "#2A2A35",
   },
   title: {
     fontSize: 20,
     fontWeight: "bold",
-    textAlign: "left",
     color: "#FF9500",
-    marginBottom: 0,
-    padding: 2,
+    textAlign: "left",
+  },
+  content: {
+    flex: 1,
+    padding: 20,
   },
 })
-
 
 export default CalendarScreen

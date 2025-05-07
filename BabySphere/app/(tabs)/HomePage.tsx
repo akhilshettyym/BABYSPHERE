@@ -5,7 +5,6 @@ import { useState, useEffect, useCallback } from "react"
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, RefreshControl, ActivityIndicator } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { Ionicons } from "@expo/vector-icons"
-import NewHeader from "../../components/NewHeader"
 import NewSensorDashboard from "../../components/NewSensorDashboard"
 import DatePicker from "../../components/DatePicker"
 import SensorDataFetcher from "../../components/SensorDataFetcher"
@@ -46,8 +45,8 @@ const HomePage: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <NewHeader />
+      <View style={styles.fixedHeader}>
+        <Text style={styles.title}>BABYSPHERE</Text>
       </View>
 
       <ScrollView
@@ -93,8 +92,23 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#1A1A25",
   },
+  fixedHeader: {
+    height: 60,
+    backgroundColor: "#1A1A25",
+    justifyContent: "center",
+    paddingHorizontal: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: "#2A2A35",
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#FF9500",
+    textAlign: "left",
+  },
   scrollContent: {
     flexGrow: 1,
+    paddingTop: 60, // Add padding to account for fixed header
   },
   content: {
     flex: 1,
