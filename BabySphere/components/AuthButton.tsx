@@ -18,6 +18,8 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: "#FF9500",
     paddingVertical: 16,
+    paddingHorizontal: 25,
+    minWidth: 150,
     borderRadius: 12,
     alignItems: "center",
     shadowColor: "#000",
@@ -28,7 +30,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 3,
     elevation: 4,
-  },
+  },  
   buttonText: {
     color: "#FFFFFF",
     fontSize: 16,
