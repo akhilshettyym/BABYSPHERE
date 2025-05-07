@@ -28,10 +28,9 @@ export default function AppLayout() {
         name="GraphPage"
         options={{
           title: "Graph",
-          tabBarIcon: ({ color, size }) => <Ionicons name="analytics" size={size} color={color} />,
+          tabBarIcon: ({ color, size }) => <Ionicons name="desktop-outline" size={size} color={color} />,
         }}
       />
-
       <Tabs.Screen
         name="calendar"
         options={{
