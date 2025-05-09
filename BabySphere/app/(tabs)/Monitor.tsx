@@ -135,10 +135,10 @@ const BabyMonitorGraphPage: React.FC = () => {
       const key =
         daily_or_weekly === "daily"
           ? cur.timestamp.getDate() +
-            "/" +
-            (cur.timestamp.getMonth() + 1) +
-            "/" +
-            cur.timestamp.getFullYear()
+          "/" +
+          (cur.timestamp.getMonth() + 1) +
+          "/" +
+          cur.timestamp.getFullYear()
           : getWeekNumber(cur.timestamp)
 
       const a: any = {
@@ -388,13 +388,13 @@ const styles = StyleSheet.create({
     zIndex: 10,
     borderBottomWidth: 1,
     borderBottomColor: "#2A2A35",
-  },  
+  },
   title: {
     fontSize: 20,
     fontWeight: "bold",
     color: "#FF9500",
     textAlign: "left",
-  },  
+  },
   datePickerContainer: {
     padding: 16,
     backgroundColor: "#242535",
@@ -481,7 +481,7 @@ const styles = StyleSheet.create({
   selectedParameterButton: {
     backgroundColor: "#FF9500",
     borderColor: "#FF9500",
-    
+
   },
   parameterButtonText: {
     color: "#FFFFFF",
