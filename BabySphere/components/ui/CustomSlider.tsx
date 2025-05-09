@@ -156,4 +156,3 @@ const styles = StyleSheet.create({
     ...theme.shadows.card,
   },
 });
-

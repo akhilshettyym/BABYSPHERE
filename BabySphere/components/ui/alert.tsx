@@ -75,4 +75,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#e74c3c',
   },
 })
-
