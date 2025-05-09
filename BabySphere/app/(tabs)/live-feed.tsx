@@ -41,4 +41,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default LiveFeedScreen
+export default LiveFeedScreen;

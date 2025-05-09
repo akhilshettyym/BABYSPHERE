@@ -8,7 +8,7 @@ import LandingPage from './(auth)/landing';
 import SignInScreen from './(auth)/sign-in';
 import SignUpScreen from './(auth)/sign-up';
 import HomePage from './(tabs)/HomePage';
-import { User } from 'firebase/auth'; // Adjust based on your setup
+import { User } from 'firebase/auth';
 
 export type RootStackParamList = {
   landing: undefined;
@@ -22,8 +22,6 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function App() {
     const [user, setUser] = useState<User | null>(null);
   
-  //When you pass an empty array as the second argument to useEffect, 
-  //you're telling React to only run the effect "once", after the initial render.
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);

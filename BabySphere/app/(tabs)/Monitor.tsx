@@ -511,4 +511,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default BabyMonitorGraphPage
+export default BabyMonitorGraphPage;
