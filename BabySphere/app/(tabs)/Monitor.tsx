@@ -266,7 +266,7 @@ const BabyMonitorGraphPage: React.FC = () => {
 
       {/* Scrollable Content */}
       <ScrollView
-        contentContainerStyle={{ paddingTop: 60 }}
+        contentContainerStyle={{ paddingTop: 60, paddingBottom: 50 }}
         style={styles.container}
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
       >
@@ -466,7 +466,7 @@ const styles = StyleSheet.create({
   parameterContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
-    padding: 16,
+    padding: 20,
   },
   parameterButton: {
     backgroundColor: "#242535",
@@ -476,10 +476,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderWidth: 1,
     borderColor: "#2A2A35",
+
   },
   selectedParameterButton: {
     backgroundColor: "#FF9500",
     borderColor: "#FF9500",
+    
   },
   parameterButtonText: {
     color: "#FFFFFF",
