@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     gap: 8,
     marginTop: 16,
-    width: 200,            
+    width: 190,            
     alignSelf: "center",
   },  
   logoutButtonText: {
