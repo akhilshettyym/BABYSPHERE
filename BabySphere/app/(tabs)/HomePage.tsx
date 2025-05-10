@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     flexGrow: 1,
-    paddingTop: 60, // Add padding to account for fixed header
+    paddingTop: 60,
   },
   content: {
     flex: 1,
