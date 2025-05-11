@@ -73,14 +73,32 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
     }
   }, [modalVisible])
 
-  const isFormValid = title.trim() !== "" && dateString.length === 10 && timeString.length === 5
+  const isFormValid = () => {
+    console.log("Validating form:", {
+      title: title.trim() !== "",
+      dateValid: dateString && !dateError,
+      timeValid: timeString && !timeError,
+    })
+    return title.trim() !== "" && dateString && !dateError && timeString && !timeError
+  }
 
   const handleAddEvent = () => {
+    console.log("Form validation result:", isFormValid())
+    console.log("Current form values:", {
+      title,
+      description,
+      dateString,
+      timeString,
+      timeAmPm,
+      notificationTimeString,
+      notificationTimeAmPm,
+    })
+
     if (!userId) {
       Alert.alert("Error", "You must be logged in to add events.")
       return
     }
-    if (!isFormValid) {
+    if (!isFormValid()) {
       Alert.alert("Error", "Please fill in all required fields correctly.")
       return
     }
@@ -93,7 +111,7 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
       description,
       time: formattedTime,
       notificationTime: formattedNotificationTime,
-      date: date.toISOString().split("T")[0], // Use ISO string format
+      date: dateString, // This should now be in YYYY-MM-DD format
       priority,
       userId: userId || "anonymous",
     }
@@ -132,15 +150,20 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
   }
 
   const onDateChange = (event: any, selectedDate: Date | undefined) => {
+    setShowDatePicker(false) // Close the picker immediately after selection
     if (selectedDate) {
       setDate(selectedDate)
-      setDateString(selectedDate.toISOString().split("T")[0])
+      // Format date as YYYY-MM-DD for consistency
+      const formattedDate = selectedDate.toISOString().split("T")[0]
+      console.log("Selected date formatted:", formattedDate)
+      setDateString(formattedDate)
       setDateError(false)
       setHasUnsavedChanges(true)
     }
   }
 
   const onTimeChange = (event: any, selectedTime: Date | undefined) => {
+    setShowTimePicker(false) // Close the picker immediately after selection
     if (selectedTime) {
       setTime(selectedTime)
       setTimeString(selectedTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }))
@@ -150,6 +173,7 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
   }
 
   const onNotificationTimeChange = (event: any, selectedTime: Date | undefined) => {
+    setShowNotificationTimePicker(false) // Close the picker immediately after selection
     if (selectedTime) {
       setNotificationTime(selectedTime)
       setNotificationTimeString(selectedTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }))
@@ -214,26 +238,14 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
     if (!show) return null
 
     return (
-      <View style={styles.dateTimePickerContainer}>
-        <DateTimePicker
-          testID={`${mode}Picker`}
-          value={value}
-          mode={mode}
-          is24Hour={false}
-          display="default"
-          onChange={onChange}
-        />
-        <TouchableOpacity
-          style={styles.dateTimePickerButton}
-          onPress={() => {
-            if (mode === "date") setShowDatePicker(false)
-            else if (mode === "time") setShowTimePicker(false)
-            else setShowNotificationTimePicker(false)
-          }}
-        >
-          <Text style={styles.dateTimePickerButtonText}>Done</Text>
-        </TouchableOpacity>
-      </View>
+      <DateTimePicker
+        testID={`${mode}Picker`}
+        value={value}
+        mode={mode}
+        is24Hour={false}
+        display="default"
+        onChange={onChange}
+      />
     )
   }
 
@@ -321,44 +333,28 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
                     ))}
                   </View>
                 </View>
+                {/* Update the date input field to handle YYYY-MM-DD format */}
                 <View style={styles.inputContainer}>
                   <Text style={styles.inputLabel}>Date *</Text>
                   <View style={styles.dateTimeContainer}>
                     <TextInput
                       style={[styles.dateTimeInput, dateError && styles.inputError]}
-                      placeholder="DD/MM/YYYY"
+                      placeholder="YYYY-MM-DD"
                       placeholderTextColor="#A0AEC0"
                       value={dateString}
-                      onFocus={() => setDateString("")}
                       onChangeText={(text) => {
-                        const formatted = text
-                          .replace(/\D/g, "")
-                          .replace(/^(\d{2})/, "$1/")
-                          .replace(/^(\d{2})\/(\d{2})/, "$1/$2/")
-                          .slice(0, 10)
-                        setDateString(formatted)
-                        const [day, month, year] = formatted.split("/")
-                        const newDate = new Date(
-                          Number.parseInt(year),
-                          Number.parseInt(month) - 1,
-                          Number.parseInt(day),
-                        )
-                        if (!isNaN(newDate.getTime()) && formatted.length === 10) {
-                          setDate(newDate)
-                          setDateError(false)
-                        } else {
-                          setDateError(true)
-                        }
+                        setDateString(text)
+                        // Simple validation for YYYY-MM-DD format
+                        const isValidDate = /^\d{4}-\d{2}-\d{2}$/.test(text)
+                        setDateError(!isValidDate)
                         setHasUnsavedChanges(true)
                       }}
-                      keyboardType="numeric"
-                      maxLength={10}
                     />
                     <TouchableOpacity style={styles.dateTimeIcon} onPress={() => setShowDatePicker(true)}>
                       <Ionicons name="calendar-outline" size={24} color="#8AA9B8" />
                     </TouchableOpacity>
                   </View>
-                  {dateError && <Text style={styles.errorText}>Invalid date format</Text>}
+                  {dateError && <Text style={styles.errorText}>Invalid date format (YYYY-MM-DD)</Text>}
                   {showDatePicker && renderDateTimePicker(showDatePicker, date, onDateChange, "date")}
                 </View>
                 <View style={styles.inputContainer}>
@@ -490,11 +486,11 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
                   <TouchableOpacity
                     style={[
                       styles.addButton,
-                      !isFormValid && styles.addButtonDisabled,
+                      !isFormValid() && styles.addButtonDisabled,
                       { backgroundColor: getPriorityColor(priority) },
                     ]}
                     onPress={handleAddEvent}
-                    disabled={!isFormValid}
+                    disabled={!isFormValid()}
                   >
                     <Text style={styles.addButtonText}>Add Event</Text>
                   </TouchableOpacity>

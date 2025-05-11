@@ -51,6 +51,7 @@ const CalendarScreen: React.FC = () => {
     }
 
     try {
+      console.log("Adding event to Firestore:", newEvent)
       const eventsRef = collection(db, "events")
       const createdAt = new Date().toISOString()
       const docRef = await addDoc(eventsRef, {
@@ -58,13 +59,16 @@ const CalendarScreen: React.FC = () => {
         userId: currentUser.uid,
         createdAt,
       })
+      console.log("Event added with ID:", docRef.id)
       const addedEvent: Event = { id: docRef.id, ...newEvent, createdAt }
       setEvents([...events, addedEvent])
       Alert.alert("Event Added", `Event "${newEvent.title}" added for ${newEvent.date}`)
       setIsAddEventModalVisible(false)
+      return Promise.resolve()
     } catch (error) {
       console.error("Error adding event: ", error)
       Alert.alert("Error", "Could not add event.")
+      return Promise.reject(error)
     }
   }
 
@@ -142,4 +146,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default CalendarScreen;
+export default CalendarScreen
