@@ -15,7 +15,7 @@ mp_drawing = mp.solutions.drawing_utils
 pose = mp_pose.Pose()
 
 # URL of the Raspberry Pi video feed
-RASPBERRY_PI_VIDEO_URL = "http://172.17.4.90:5000/video_feed"
+RASPBERRY_PI_VIDEO_URL = "http://192.168.99.120:5000/video_feed"
 
 # To store the notification state
 notification_sent = {"tummy": False, "side": False, "normal": False}

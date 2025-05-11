@@ -16,7 +16,7 @@ const LiveFeed: React.FC = () => {
 
   const latestData = sensorData.length > 0 ? sensorData[sensorData.length - 1] : null
 
-  const cameraFeedUri = "http://192.168.40.162:5002/processed_feed"
+  const cameraFeedUri = "http://192.168.105.241:5002/processed_feed"
 
   return (
     <SafeAreaView style={styles.container}>
