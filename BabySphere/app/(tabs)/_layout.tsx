@@ -25,13 +25,6 @@ export default function AppLayout() {
         }}
       />
       <Tabs.Screen
-        name="GraphPage"
-        options={{
-          title: "Graph",
-          tabBarIcon: ({ color, size }) => <Ionicons name="bar-chart" size={size} color={color} />,
-        }}
-      />
-      <Tabs.Screen
         name="calendar"
         options={{
           title: "Calendar",
@@ -43,6 +36,13 @@ export default function AppLayout() {
         options={{
           title: "Live Feed",
           tabBarIcon: ({ color, size }) => <Ionicons name="videocam" size={size} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="Monitor"
+        options={{
+          title: "Monitor",
+          tabBarIcon: ({ color, size }) => <Ionicons name="stats-chart" size={size} color={color} />,
         }}
       />
       <Tabs.Screen
