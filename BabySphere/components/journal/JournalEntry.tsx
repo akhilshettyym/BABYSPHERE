@@ -66,6 +66,7 @@ const styles = StyleSheet.create({
     padding: 12,
     marginBottom: 16,
     textAlignVertical: 'top',
+    color: 'white',
   },
   error: {
     color: theme.colors.error,
