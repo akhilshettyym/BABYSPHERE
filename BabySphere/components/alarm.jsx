@@ -4,7 +4,6 @@ import { LineChart } from 'react-native-chart-kit';
 import * as Notifications from 'expo-notifications';
 import { Audio } from 'expo-av';
 
-// Screen dimensions for responsive chart sizing
 const screenWidth = Dimensions.get('window').width;
 
 const App = () => {
@@ -14,7 +13,6 @@ const App = () => {
     spo2: [98, 97, 95, 94, 92],
   });
 
-  // Thresholds
   const thresholds = {
     heartRate: { min: 60, max: 100 },
     temperature: { min: 36.5, max: 37.5 },
@@ -24,12 +22,12 @@ const App = () => {
   const playAlarm = async () => {
     try {
       const { sound } = await Audio.Sound.createAsync(
-        require('../../assets/alarm.mp3'), // Replace with your alarm sound file
+        require('../../assets/alarm.mp3'),
         { shouldPlay: true }
       );
       sound.setOnPlaybackStatusUpdate((status) => {
         if (status.didJustFinish) {
-          sound.unloadAsync(); // Unload sound after playing
+          sound.unloadAsync();
         }
       });
     } catch (error) {
@@ -45,20 +43,17 @@ const App = () => {
         value < min ? 'below' : 'above'
       } the safe range. Please check immediately.`;
 
-      // Play alarm sound
       await playAlarm();
 
-      // Push notification
       Notifications.scheduleNotificationAsync({
         content: {
           title: 'Baby Health Alert',
           body: alertMessage,
-          sound: true, // Enables default notification sound
+          sound: true,
         },
-        trigger: null, // Trigger immediately
+        trigger: null,
       });
 
-      // In-app alert
       Alert.alert('Health Alert', alertMessage);
     }
   };
@@ -78,14 +73,12 @@ const App = () => {
 
     requestPermissions();
 
-    // Simulate real-time data updates every 5 seconds
     const interval = setInterval(() => {
       setData((prevData) => {
         const newHeartRate = Math.floor(Math.random() * (120 - 50) + 50);
         const newTemperature = parseFloat((Math.random() * (38.5 - 35) + 35).toFixed(1));
         const newSpO2 = Math.floor(Math.random() * (100 - 85) + 85);
 
-        // Check thresholds for each parameter
         checkThresholds('heartRate', newHeartRate);
         checkThresholds('temperature', newTemperature);
         checkThresholds('spo2', newSpO2);
@@ -98,7 +91,7 @@ const App = () => {
       });
     }, 5000);
 
-    return () => clearInterval(interval); // Cleanup on unmount
+    return () => clearInterval(interval);
   }, []);
 
   return (

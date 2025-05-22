@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
-import Svg, { Line, Path, Circle } from 'react-native-svg'; // Added imports
+import Svg, { Line, Path, Circle } from 'react-native-svg';
 import { theme } from '../../utils/theme';
 
 interface DataPoint {
@@ -17,7 +17,7 @@ interface LineChartProps {
 export function LineChart({ data, color, maxValue = 10 }: LineChartProps) {
   if (!data.length) return null;
 
-  const width = Dimensions.get('window').width - 64; // Accounting for padding
+  const width = Dimensions.get('window').width - 64;
   const height = 150;
   const padding = 20;
 
