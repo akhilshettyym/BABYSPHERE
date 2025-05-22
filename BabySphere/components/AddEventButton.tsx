@@ -111,7 +111,7 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
       description,
       time: formattedTime,
       notificationTime: formattedNotificationTime,
-      date: dateString, // This should now be in YYYY-MM-DD format
+      date: dateString,
       priority,
       userId: userId || "anonymous",
     }
@@ -150,10 +150,9 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
   }
 
   const onDateChange = (event: any, selectedDate: Date | undefined) => {
-    setShowDatePicker(false) // Close the picker immediately after selection
+    setShowDatePicker(false)
     if (selectedDate) {
       setDate(selectedDate)
-      // Format date as YYYY-MM-DD for consistency
       const formattedDate = selectedDate.toISOString().split("T")[0]
       console.log("Selected date formatted:", formattedDate)
       setDateString(formattedDate)
@@ -163,7 +162,7 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
   }
 
   const onTimeChange = (event: any, selectedTime: Date | undefined) => {
-    setShowTimePicker(false) // Close the picker immediately after selection
+    setShowTimePicker(false)
     if (selectedTime) {
       setTime(selectedTime)
       setTimeString(selectedTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }))
@@ -173,7 +172,7 @@ export const AddEventButton: React.FC<AddEventButtonProps> = ({ onAddEvent, sele
   }
 
   const onNotificationTimeChange = (event: any, selectedTime: Date | undefined) => {
-    setShowNotificationTimePicker(false) // Close the picker immediately after selection
+    setShowNotificationTimePicker(false)
     if (selectedTime) {
       setNotificationTime(selectedTime)
       setNotificationTimeString(selectedTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }))
