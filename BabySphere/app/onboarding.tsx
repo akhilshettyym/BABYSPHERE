@@ -10,10 +10,8 @@ export default function OnboardingScreen() {
   const router = useRouter()
 
   useEffect(() => {
-    // Check if user is already logged in
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        // If user is logged in, redirect to HomePage
         router.replace("/(tabs)/HomePage")
       }
     })
@@ -29,9 +27,7 @@ export default function OnboardingScreen() {
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="light-content" />
       <View style={styles.content}>
-        {/* Logo */}
 
-        {/* <Text style={styles.highlights}>BABYSPHERE</Text> */}
         <View style={styles.logoContainer}>
           <Image source={require("../assets/images/logo.png")} style={styles.logoIcon} />
           <Text style={styles.logoText}>BABYSPHERE</Text>
