@@ -1,3 +1,155 @@
+// "use client"
+
+// import type React from "react"
+// import { useEffect, useState } from "react"
+// import { View, Text, StyleSheet, TouchableOpacity } from "react-native"
+// import { MaterialCommunityIcons } from "@expo/vector-icons"
+// import { doc, getDoc } from "firebase/firestore"
+// import { db, auth } from "../config/firebaseConfig"
+// import EditBabyInfoModal from "./EditBabyInfoModal"
+
+// interface BabyInfoState {
+//   name: string
+//   dateOfBirth: string
+//   gender: string
+//   medicalConditions: string
+// }
+
+// interface InfoRowProps {
+//   icon: string
+//   label: string
+//   value: string
+// }
+
+// export default function BabyInfo() {
+//   const [isEditModalVisible, setIsEditModalVisible] = useState(false)
+//   const [babyInfo, setBabyInfo] = useState<BabyInfoState>({
+//     name: "",
+//     dateOfBirth: "",
+//     gender: "",
+//     medicalConditions: "",
+//   })
+
+//   const fetchBabyInfo = async () => {
+//     if (auth.currentUser) {
+//       const docRef = doc(db, "users", auth.currentUser.uid)
+//       const docSnap = await getDoc(docRef)
+//       if (docSnap.exists()) {
+//         const data = docSnap.data()
+//         setBabyInfo({
+//           name: data.baby?.name || "",
+//           dateOfBirth: data.baby?.dateOfBirth || "",
+//           gender: data.baby?.gender || "",
+//           medicalConditions: data.baby?.medicalConditions || "",
+//         })
+//       }
+//     }
+//   }
+
+//   useEffect(() => {
+//     fetchBabyInfo()
+//   }, [])
+
+//   const InfoRow: React.FC<InfoRowProps> = ({ icon, label, value }) => (
+//     <View style={styles.infoRow}>
+//       <MaterialCommunityIcons name="baby" size={20} color="#A3D8F4" style={styles.icon} />
+//       <View>
+//         <Text style={styles.label}>{label}</Text>
+//         <Text style={styles.value}>{value}</Text>
+//       </View>
+//     </View>
+//   )
+
+//   return (
+//     <View style={styles.container}>
+//       <View style={styles.header}>
+//         <View style={styles.headerLeft}>
+//           <MaterialCommunityIcons name="baby-face-outline" size={24} color="#8AA9B8" />
+//           <Text style={styles.heading}>Baby Information</Text>
+//         </View>
+//         <TouchableOpacity style={styles.editButton} onPress={() => setIsEditModalVisible(true)}>
+//           <MaterialCommunityIcons name="pencil" size={20} color="#8AA9B8" />
+//         </TouchableOpacity>
+//       </View>
+
+//       <View style={styles.content}>
+//         <InfoRow icon="baby" label="Name" value={babyInfo.name} />
+//         <InfoRow
+//           icon="calendar"
+//           label="Date of Birth"
+//           value={babyInfo.dateOfBirth ? new Date(babyInfo.dateOfBirth).toLocaleDateString() : "Not set"}
+//         />
+//         <InfoRow icon="gender" label="Gender" value={babyInfo.gender} />
+//         <InfoRow icon="medical-bag" label="Medical Conditions" value={babyInfo.medicalConditions || "None"} />
+//       </View>
+
+//       <EditBabyInfoModal
+//         visible={isEditModalVisible}
+//         onClose={() => {
+//           setIsEditModalVisible(false)
+//           fetchBabyInfo()
+//         }}
+//         currentInfo={babyInfo}
+//       />
+//     </View>
+//   )
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     marginBottom: 24,
+//     backgroundColor: "#242535",
+//     borderRadius: 16,
+//     padding: 16,
+//     shadowColor: "#000",
+//     shadowOffset: { width: 0, height: 4 },
+//     shadowOpacity: 0.3,
+//     shadowRadius: 8,
+//     elevation: 5,
+//     borderWidth: 1,
+//     borderColor: "#2A2A35",
+//   },
+//   header: {
+//     flexDirection: "row",
+//     justifyContent: "space-between",
+//     alignItems: "center",
+//     marginBottom: 16,
+//   },
+//   headerLeft: {
+//     flexDirection: "row",
+//     alignItems: "center",
+//     gap: 8,
+//   },
+//   heading: {
+//     fontSize: 18,
+//     fontWeight: "600",
+//     color: "#FF9500",
+//   },
+//   editButton: {
+//     padding: 8,
+//   },
+//   content: {
+//     gap: 16,
+//   },
+//   infoRow: {
+//     flexDirection: "row",
+//     alignItems: "center",
+//     gap: 12,
+//   },
+//   icon: {
+//     width: 24,
+//   },
+//   label: {
+//     fontSize: 12,
+//     color: "rgba(255, 255, 255, 0.7)",
+//     marginBottom: 2,
+//   },
+//   value: {
+//     fontSize: 14,
+//     color: "#FFFFFF",
+//     fontWeight: "500",
+//   },
+// })
 "use client"
 
 import type React from "react"
@@ -50,15 +202,23 @@ export default function BabyInfo() {
     fetchBabyInfo()
   }, [])
 
-  const InfoRow: React.FC<InfoRowProps> = ({ icon, label, value }) => (
-    <View style={styles.infoRow}>
-      <MaterialCommunityIcons name="baby" size={20} color="#A3D8F4" style={styles.icon} />
-      <View>
-        <Text style={styles.label}>{label}</Text>
-        <Text style={styles.value}>{value}</Text>
+  const InfoRow: React.FC<InfoRowProps> = ({ icon, label, value }) => {
+    const isValidIcon = icon in MaterialCommunityIcons.glyphMap
+  
+    return (
+      <View style={styles.infoRow}>
+        {isValidIcon ? (
+          <MaterialCommunityIcons name={icon as any} size={20} color="#A3D8F4" style={styles.icon} />
+        ) : (
+          <MaterialCommunityIcons name="alert-circle-outline" size={20} color="red" style={styles.icon} />
+        )}
+        <View>
+          <Text style={styles.label}>{label}</Text>
+          <Text style={styles.value}>{value}</Text>
+        </View>
       </View>
-    </View>
-  )
+    )
+  }  
 
   return (
     <View style={styles.container}>
@@ -73,7 +233,7 @@ export default function BabyInfo() {
       </View>
 
       <View style={styles.content}>
-        <InfoRow icon="baby" label="Name" value={babyInfo.name} />
+        <InfoRow icon="baby-face-outline" label="Name" value={babyInfo.name} />
         <InfoRow
           icon="calendar"
           label="Date of Birth"
@@ -87,7 +247,7 @@ export default function BabyInfo() {
         visible={isEditModalVisible}
         onClose={() => {
           setIsEditModalVisible(false)
-          fetchBabyInfo() // Refresh data after modal closes
+          fetchBabyInfo()
         }}
         currentInfo={babyInfo}
       />
