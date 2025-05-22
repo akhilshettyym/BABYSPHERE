@@ -66,17 +66,18 @@ export default function EditBabyInfoModal({ visible, onClose, currentInfo }: Edi
                 value={babyInfo.name}
                 onChangeText={(text) => setBabyInfo(prev => ({ ...prev, name: text }))}
                 placeholder="Enter baby's name"
+                placeholderTextColor="white" // Add this line
               />
             </View>
 
             <View style={styles.inputGroup}>
               <Text style={styles.label}>Date of Birth</Text>
-              <TouchableOpacity 
+              <TouchableOpacity
                 style={styles.input}
                 onPress={() => setShowDatePicker(true)}
               >
                 <Text>
-                  {babyInfo.dateOfBirth 
+                  {babyInfo.dateOfBirth
                     ? new Date(babyInfo.dateOfBirth).toLocaleDateString()
                     : 'Select date of birth'}
                 </Text>
