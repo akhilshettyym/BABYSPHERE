@@ -66,7 +66,7 @@ export default function EditBabyInfoModal({ visible, onClose, currentInfo }: Edi
                 value={babyInfo.name}
                 onChangeText={(text) => setBabyInfo(prev => ({ ...prev, name: text }))}
                 placeholder="Enter baby's name"
-                placeholderTextColor="white" // Add this line
+                placeholderTextColor="white"
               />
             </View>
 
@@ -76,7 +76,7 @@ export default function EditBabyInfoModal({ visible, onClose, currentInfo }: Edi
                 style={styles.input}
                 onPress={() => setShowDatePicker(true)}
               >
-                <Text>
+                <Text style={{ color: '#FFFFFF' }}>
                   {babyInfo.dateOfBirth
                     ? new Date(babyInfo.dateOfBirth).toLocaleDateString()
                     : 'Select date of birth'}
@@ -99,6 +99,7 @@ export default function EditBabyInfoModal({ visible, onClose, currentInfo }: Edi
                 value={babyInfo.gender}
                 onChangeText={(text) => setBabyInfo(prev => ({ ...prev, gender: text }))}
                 placeholder="Enter gender"
+                placeholderTextColor="white"
               />
             </View>
 
@@ -111,6 +112,7 @@ export default function EditBabyInfoModal({ visible, onClose, currentInfo }: Edi
                 multiline
                 numberOfLines={3}
                 placeholder="Enter medical conditions (if any)"
+                placeholderTextColor="white"
               />
             </View>
 
