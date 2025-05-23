@@ -73,7 +73,6 @@ export function LineChart({ data, color, maxValue = 10 }: LineChartProps) {
         ))}
       </Svg>
       
-      {/* X-axis labels */}
       <View style={styles.xAxis}>
         {data.map((point, i) => (
           <Text key={i} style={styles.label}>
