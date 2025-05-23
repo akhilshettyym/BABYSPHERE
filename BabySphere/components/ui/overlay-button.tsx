@@ -26,4 +26,3 @@ const OverlayButton = React.forwardRef<HTMLButtonElement, OverlayButtonProps>(
 OverlayButton.displayName = "OverlayButton"
 
 export { OverlayButton }
-
