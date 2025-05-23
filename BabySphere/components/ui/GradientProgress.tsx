@@ -5,14 +5,14 @@ import { theme } from '../../utils/theme';
 
 interface GradientButtonProps {
   onPress: () => void;
-  colors: [string, string]; // Ensure that at least two colors are provided
+  colors: [string, string];
   label: string;
   style?: ViewStyle;
 }
 
 export function GradientButton({
   onPress,
-  colors = [theme.colors.primary, theme.colors.secondary], // Default colors
+  colors = [theme.colors.primary, theme.colors.secondary],
   label,
   style,
 }: GradientButtonProps) {
