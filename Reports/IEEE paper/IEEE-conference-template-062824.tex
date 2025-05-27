@@ -2,7 +2,7 @@
 \IEEEoverridecommandlockouts
 % The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
 %Template version as of 6/27/2024
-
+\usepackage{float}
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
@@ -68,16 +68,31 @@ vaznish@gmail.com}
     \section{Introduction}
     Ensuring the health and safety of infants is a top priority for parents and caregivers. Traditional baby monitors offer only basic surveillance, such as audio and video feeds, but they lack intelligent health analysis, making it difficult to detect critical risks in real-time. Many infants are vulnerable to conditions like Sudden Infant Death Syndrome (SIDS), which can be triggered by improper sleeping positions, environmental factors, or undetected health abnormalities. The challenge lies in developing a system that provides continuous health monitoring, real-time data processing, and instant alerts to ensure timely intervention.
 
-With advancements in sensor technology, cloud computing, and artificial intelligence, there is potential to revolutionize infant monitoring systems. This research introduces a cloud-based smart monitoring system that integrates multiple sensors and computer vision to analyze real-time health data. The system collects vital parameters such as body temperature, room temperature, humidity, and heart rate while simultaneously using computer vision to analyze the baby’s sleeping posture. By leveraging cloud-based data processing, the system ensures remote access and timely notifications to parents via a mobile application. The goal is to provide a reliable, real-time, and efficient infant monitoring solution that addresses the shortcomings of existing systems and enhances infant safety.
+    Existing systems suffer from several drawbacks. Most current systems do not provide livestream functionality\cite{ref1}\cite{ref2}. Some systems focus on the tracking of the health vitals of the mother and the prenatal baby\cite{ref3}. Several kinds of monitoring devices are developed for infant care with livestream functionality but often lack integration of multiple sensing modalities, leverage AI for posture detection or lack robust mechanisms for timely notifications, have no intelligent analysis to interpret collected data, and rarely support remote accessibility or timely alert mechanisms\cite{ref4}. Additionally, Some systems have one or more of the above mentioned functionalities in them, but none have all of them\cite{ref5}. 
+    
+    With advancements in sensor technology, cloud computing, and artificial intelligence, there is potential to revolutionize infant monitoring systems. This research introduces a cloud-based smart monitoring system that integrates multiple sensors and computer vision to analyze real-time health data. The system collects vital parameters such as body temperature, room temperature, humidity, and heart rate while simultaneously using computer vision to analyze the baby’s sleeping posture. By leveraging cloud-based data processing, the system ensures remote access and timely notifications to parents via a mobile application. The goal is to provide a reliable, real-time, and efficient infant monitoring solution that addresses the shortcomings of existing systems and enhances infant safety.
+
+    In Section II we discuss the literature survey, which highlights existing research and systems in the field of infant health monitoring. Section III outlines the methodology used in developing the proposed system, including data collection, real-time analysis, and alert mechanisms. Section IV presents the system design, including architectural diagrams and use case scenarios. Section V details the implementation process, covering both hardware and software components. Finally, Section VI discusses the results obtained from testing the system and provides insights into its performance and future scope.
 \section{Literature Survey}
-Several studies have explored the use of IoT, cloud computing, and AI in health monitoring systems. H Alam et al. developed a wearable IoT-based monitoring system to track vital signs and sleeping posture; however, its reliance on physical wearables made it less comfortable for infants \cite{ref1}. Y Singh introduced a smart crib with integrated motion and temperature sensors, though it lacked cloud connectivity, restricting remote access \cite{ref2}. Similarly, M M Hossain et al. examined how cloud-based health monitoring can provide real-time access to data, but concerns regarding data security and latency were highlighted \cite{ref3}.  
+Several studies have explored the use of IoT, cloud computing, and AI in health monitoring systems. Alam et al. proposed an IoT-based smart baby monitoring system that tracks room temperature, humidity, and crying sounds using sensors, and detects facial emotions via a machine learning model applied to webcam feeds. It allows remote cradle control and live video streaming. However, it lacks posture detection and vital health monitoring\cite{ref1}.
 
-The use of machine learning in posture recognition has also been investigated. Convolutional neural networks (CNNs) were employed to detect human sleeping postures with high accuracy \cite{ref4}. S Joseph et al. applied deep learning techniques to monitor postural changes in healthcare applications, demonstrating promising results for infant monitoring \cite{ref5}. However, these studies did not integrate a real-time alert system for immediate intervention.  
+Singh proposed an IoT-based baby monitoring system using NodeMCU and sensors to monitor ambient conditions and crying. The system includes remote cradle control and toy activation via a Blynk server. A health algorithm analyzes stored data for symptom detection. While cost-effective, it lacks cloud integration and real-time posture or vital monitoring\cite{ref2}.
 
-Moreover, the potential of cloud computing in healthcare applications has been well-documented. M R Kumar et al. explored cloud-based storage and processing for medical applications, emphasizing the benefits of scalability and remote accessibility \cite{ref6}. However, concerns about network reliability and data security were noted. S Mishra demonstrated how cloud computing could enhance real-time health monitoring systems but emphasized the need for efficient data handling mechanisms \cite{ref7}.  
+Hossain et al. conducted a review on IoT-based systems for pregnancy, postpartum, and neonatal care. It evaluated various IoT models and wearables for maternal and neonatal health but focused more on frameworks than real-time monitoring for infants\cite{ref3}.
 
-The integration of IoT and AI in healthcare applications has also been explored. D T P Hapsari et al. examined how sensor networks could be utilized for infant health monitoring, but the lack of an AI-driven analytical model limited its effectiveness \cite{ref8}. F Akta et al. investigated a multi-sensor approach for monitoring infant vitals, highlighting the importance of combining multiple data sources for improved accuracy \cite{ref9}. These studies collectively suggest that a holistic system combining IoT, cloud computing, and AI-driven analysis is required to create a comprehensive infant monitoring solution.  
+Salehin et al. developed an IoT-enabled baby monitoring system using face recognition, sound sensors, and Raspberry Pi with a Pi camera for live streaming. The system also monitors diaper moisture. However, it lacks cloud analytics and AI-based health parameter analysis\cite{ref4}.
 
+Joseph et al. proposed an IoT-based smart cradle with sound-activated swinging and continuous surveillance. While cost-effective, it lacks posture detection and AI-enhanced health analysis\cite{ref5}.
+
+Kumar et al. presented an IoT-based baby monitoring system aimed at reducing SIDS. It uses a Raspberry Pi, sensors for temperature, heart rate, SPO2, and posture detection. Though effective, concerns like latency and data privacy remain\cite{ref6}.
+
+Mishra developed an RTOS-based web-connected baby monitoring system that streams live video and environmental data. However, it focuses on video streaming without integrating health parameters or posture detection. Our system improves on this by adding real-time health monitoring, AI-driven posture detection, and cloud-based alerts\cite{ref7}.
+
+Hapsari et al. proposed a smart caregiving support system with real-time cry analysis using machine learning and IoT connectivity. Their system lacks integration with other vital health parameters like temperature and posture. Our system provides a more comprehensive solution with monitoring of multiple health parameters and cloud-based alerts\cite{ref8}.
+
+Akta developed a real-time infant monitoring system for hard-of-hearing parents, tracking body temperature and heart rate with tactile alerts. However, it lacks cloud-based monitoring, AI-driven posture detection, and health parameter analysis. Our system offers a more scalable solution with advanced features for continuous care\cite{ref9}.
+
+These studies suggest that a holistic system combining IoT, cloud computing, and AI is required to create a comprehensive infant monitoring solution.
 \section{Methodology}
 The implementation of the proposed Cloud-Based Smart Monitoring System for Baby Health and Safety follows a structured methodology to ensure real-time data collection, processing, and alert mechanisms. The system architecture consists of multiple integrated components, including sensor modules, cloud computing, and real-time analysis for unsafe sleeping posture detection.
 
@@ -121,12 +136,12 @@ This systematic approach ensures real-time infant health monitoring with high ac
 
 
 \section{System Design}
-This chapter outlines the system design for the Cloud-Based Smart Monitoring System for Baby Health and Safety, detailing the system's architecture, functionality, control flow, access layers, and user interface design. Each section includes design diagrams, descriptions, and an explanation of how they apply to the project.
+This section outlines the system design for the Cloud-Based Smart Monitoring System for Baby Health and Safety, detailing the system's architecture, functionality, control flow, access layers, and user interface design. Each section includes design diagrams, descriptions, and an explanation of how they apply to the project.
 \subsection{Abstract Design}
 
 \subsubsection{Architectural diagram}
 
-The architectural diagram in Fig. \ref{fig:architecture} outlines the Cloud-Based Smart Monitoring System for Baby Health and Safety, showcasing how various components interact to provide a comprehensive baby monitoring solution.
+Fig. \ref{fig:architecture} outlines the Cloud-Based Smart Monitoring System for Baby Health and Safety, showcasing how various components interact to provide a comprehensive baby monitoring solution.
 \textbf{User Interaction and Mobile Interface:} The user initiates the monitoring process by accessing the mobile application interface, which includes a live camera feed. The user can request the recording of the baby’s health metrics, which initiates data collection from multiple sensors and a real-time video feed. This interface also displays alerts and processed information regarding the baby’s health.
 
 \textbf{Sensing System:} The sensing system consists of multiple sensors, including Heart rate sensor, Baby temperature sensor, SpO2 (oxygen saturation) sensor, Humidity sensor, Camera sensor.
@@ -139,7 +154,7 @@ These sensors collect real-time data from the baby’s physical environment, cov
 
 \textbf{Alerts and Notifications:} The system is designed to provide timely alerts. When abnormal readings or unsafe sleeping postures are detected, the mobile app immediately notifies the user, allowing them to take quick action. The database and ML model work together to process and extract data, ensuring that alerts are accurate and meaningful.
 
-\textbf{Summary:} This architecture ensures seamless data flow from sensing, processing, and alerting to final user interaction. This integrated approach enhances baby monitoring, helping caregivers make informed decisions to ensure the baby's safety and well-being.
+ This architecture ensures seamless data flow from sensing, processing, and alerting to final user interaction. This integrated approach enhances baby monitoring, helping caregivers make informed decisions to ensure the baby's safety and well-being.
 
 
 \begin{figure}[hbtp]
@@ -150,7 +165,13 @@ These sensors collect real-time data from the baby’s physical environment, cov
 \end{figure}
 \subsubsection{Use Case Diagram}
 
-This use case diagram in \ref{fig:usecase} outlines the product designed to monitor a baby’s health and safety through interactions with a \textbf{User (Caregiver)}, a \textbf{Sensing System}, and a \textbf{Medical Practitioner}.
+Fig. \ref{fig:usecase} outlines the product designed to monitor a baby’s health and safety through interactions with a \textbf{User (Caregiver)}, a \textbf{Sensing System}, and a \textbf{Medical Practitioner}.
+\begin{figure}[hbtp]
+  \centering
+  \includegraphics[scale=0.5]{./pic/Use case.png}
+  \caption{Use Case Diagram showing the interaction between users and the system.}
+  \label{fig:usecase}
+\end{figure}
 
 \textbf{User:} The User can view a live camera feed and request the recording of health metrics, which are stored in the database. If any unsafe conditions (like risky postures) are detected, the system sends alerts to the User for immediate action.
     
@@ -161,16 +182,11 @@ This use case diagram in \ref{fig:usecase} outlines the product designed to moni
 
 Overall, the system combines real-time monitoring, data storage, and expert feedback to ensure the baby’s health and safety effectively.
 
-\begin{figure}[hbtp]
-  \centering
-  \includegraphics[scale=0.5]{./pic/Use case.png}
-  \caption{Use Case Diagram showing the interaction between users and the system.}
-  \label{fig:usecase}
-\end{figure}
-\subsection{Functional Design}
-\subsubsection{Sequence diagram}
 
-The sequence diagram shown in Figure \ref{fig:sequence} illustrates the workflow of a Cloud-Based Smart Monitoring System for Baby Health and Safety. Here’s a breakdown of the interactions among various components in the system:
+\subsection{Functional Design}
+\subsubsection*{Sequence diagram}
+
+Fig. \ref{fig:sequence} illustrates the workflow of a Cloud-Based Smart Monitoring System for Baby Health and Safety. Here’s a breakdown of the interactions among various components in the system:
 
 \textbf{User Interaction:} The user begins by opening the mobile application. This app is designed to fetch real-time data regarding the baby’s health and environmental factors, helping to monitor the baby’s well-being effectively.
 
@@ -186,7 +202,7 @@ The sequence diagram shown in Figure \ref{fig:sequence} illustrates the workflow
 
 \textbf{Viewing Results:} Finally, the user can view real-time data and historical readings from within the mobile app. This user-friendly interface provides caregivers with comprehensive insight into the baby’s health, allowing for timely intervention if needed.
 
-\begin{figure}[hbtp]
+\begin{figure}[H]
   \centering
   \includegraphics[scale=0.15]{./pic/seq.png}
   \caption{Sequence diagram showing the timeline of interaction between different entities in the system}
@@ -233,8 +249,8 @@ The hardware implementation involved integrating various sensors and a camera mo
     \item The Raspberry Pi was configured to send the processed data to Firebase over a Wi-Fi connection.
   \end{itemize}
 \end{itemize}
-\subsubsection{CAD representation of the hardware setup}
-Shown in Figure \ref{fig:hardware} is the 3D pictorial representation of the hardware setup which consists of Raspberry Pi, power adaptor and all the sensors along with the camera.
+\subsubsection{Hardware setup}
+Shown in Fig. \ref{fig:hardware} is the representation of the hardware setup which consists of Raspberry Pi, power adaptor and all the sensors along with the camera.
 \begin{figure}[htbp]
   \centering
   \includegraphics[scale=0.65]{./pic/hardware.png}
