@@ -54,4 +54,3 @@ BABYSPHERE-2.0/
 This project is licensed under the MIT License.
 
 ---
-Feel free to add more technical details as your project evolves!
