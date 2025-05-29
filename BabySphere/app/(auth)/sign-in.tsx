@@ -38,7 +38,6 @@ const SignInScreen = () => {
     setLoading(true)
     try {
       await signInWithEmailAndPassword(auth, email, password)
-      // Navigation will be handled by auth state listener
     } catch (error) {
       Alert.alert("Error", "Invalid email or password")
     } finally {
