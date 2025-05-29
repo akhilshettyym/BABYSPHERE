@@ -58,7 +58,6 @@ const SignUpScreen = () => {
         displayName: parentData.name,
       })
 
-      // Store user data in Firestore
       const userData = {
         parent: {
           name: parentData.name,
