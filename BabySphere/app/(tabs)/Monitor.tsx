@@ -282,7 +282,6 @@ const BabyMonitorGraphPage: React.FC = () => {
         </View>
 
         <View style={styles.controlsWrapper}>
-          {/* Timeframe Controls */}
           <View style={styles.controlGroup}>
             <Text style={styles.controlLabel}>Timeframe</Text>
             <View style={styles.controlButtonGroup}>
@@ -308,7 +307,6 @@ const BabyMonitorGraphPage: React.FC = () => {
             </View>
           </View>
 
-          {/* Graph Type Controls */}
           <View style={styles.controlGroup}>
             <Text style={styles.controlLabel}>Graph Type</Text>
             <View style={styles.controlButtonGroup}>
