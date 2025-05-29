@@ -1,12 +1,12 @@
 import { db } from '../config/firebaseConfig';
-import { auth } from '../config/firebaseConfig'; // Import the auth instance
+import { auth } from '../config/firebaseConfig';
 import { collection, addDoc, query, where, getDocs, orderBy, limit } from 'firebase/firestore';
 import type { JournalEntry } from '../types/journal';
 
 export const journalService = {
   async saveEntry(content: string, tags: string[]) {
     try {
-      const userId = auth.currentUser?.uid; // Get the current user's ID
+      const userId = auth.currentUser?.uid;
       if (!userId) {
         throw new Error('User is not authenticated.');
       }
@@ -15,7 +15,7 @@ export const journalService = {
         content,
         tags,
         date: new Date().toISOString(),
-        userId, // Use the authenticated user's ID
+        userId,
       };
 
       const docRef = await addDoc(collection(db, 'journalEntries'), entry);
@@ -28,16 +28,16 @@ export const journalService = {
 
   async getRecentEntries(limitCount = 10) {
     try {
-      const userId = auth.currentUser?.uid; // Get the current user's ID
+      const userId = auth.currentUser?.uid;
       if (!userId) {
         throw new Error('User is not authenticated.');
       }
 
       const q = query(
         collection(db, 'journalEntries'),
-        where('userId', '==', userId), // Filter by the authenticated user's ID
+        where('userId', '==', userId),
         orderBy('date', 'desc'),
-        limit(limitCount) // Correct usage of limit
+        limit(limitCount)
       );
 
       const querySnapshot = await getDocs(q);
